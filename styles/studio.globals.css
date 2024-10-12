@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind utilities;
+@tailwind components;
+
+@layer base {
+	:root {
+		--studio-icon-size: 25px;
+	}
+
+	span[data-testid="Media"] {
+		svg {
+			max-width: var(--studio-icon-size);
+			min-width: var(--studio-icon-size);
+			width: var(--studio-icon-size);
+		}
+	}
+	div[data-ui="Text"] {
+		svg {
+			max-width: var(--studio-icon-size);
+			min-width: var(--studio-icon-size);
+			width: var(--studio-icon-size);
+		}
+	}
+
+	body {
+		@apply m-0;
+	}
+
+	.main-padding { @apply max-w-[1600px] w-full mx-auto px-6 sm:px-12 md:px-20 lg:px-32; }
+}
