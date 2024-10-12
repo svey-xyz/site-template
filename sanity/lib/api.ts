@@ -3,11 +3,6 @@
  * Importing other npm packages here could lead to needlessly increasing the client bundle size, or end up in a server-only function that don't need it.
  */
 
-export const googleMapsKey = assertValue(
-	process.env.NEXT_PUBLIC_GOOGLE_MAPS_API_KEY,
-	'Missing environment variable: NEXT_PUBLIC_GOOGLE_MAPS_API_KEY'
-)
-
 export const dataset = assertValue(
 	process.env.NEXT_PUBLIC_SANITY_DATASET,
 	'Missing environment variable: NEXT_PUBLIC_SANITY_DATASET',

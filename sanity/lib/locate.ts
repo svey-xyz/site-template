@@ -86,50 +86,5 @@ export const locate: DocumentLocationResolver = (params, context) => {
 		)
 	}
 
-
-	// const doc$ = context.documentStore.listenQuery(
-	// 	groq`*[references($id)] {
-	// 		_id,
-	// 		_type,
-	// 		title,
-	// 		slug
-	// 	}`,
-	// 	params,
-	// 	{ perspective: 'previewDrafts' },
-	// ) as Observable<
-	// 	| {
-	// 		_id: string
-	// 		_type: string
-	// 		title: string
-	// 		slug?: { current: string }
-	// 	}[]
-	// 	| null
-	// >
-	// return doc$.pipe(
-	// 	map((docs) => {
-	// 		return {
-	// 			locations: docs
-	// 				?.map((doc) => {
-	// 					// const href = resolveHref(doc._type, doc?.slug?.current)
-	// 					// const href = `/studio/structure/${doc._type};${doc._id}`
-	// 					// const href = resolveHref(doc._type, doc.slug?.current) || ''
-
-	// 					// const path = [{
-	// 					// 	id: doc._id,
-	// 					// 	type: doc._type
-	// 					// }]
-	// 					return {
-	// 						title: doc?.title || 'Untitled',
-	// 						href: ''
-	// 						// href,
-	// 					}
-	// 				}),
-	// 				// .filter((doc) => doc.href !== undefined),
-	// 			message: 'Document referenced in these locations.',
-	// 			tone: 'positive',
-	// 		} satisfies DocumentLocationsState
-	// 	})
-	// )
-
 	return null
 }

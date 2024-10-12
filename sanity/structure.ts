@@ -58,20 +58,6 @@ export const structure = (S: StructureBuilder, context: StructureResolverContext
 				S.listItem().title('Site Settings').icon(MdSettings).child(
 					S.document().title('Site Settings').schemaType('siteSettings').documentId('siteSettings')
 				),
-
-				S.divider(),
-
-				// S.documentTypeListItem('sponsor').title('Sponsors'),
-				S.documentTypeListItem('person').title('People').icon(BsPeopleFill),
-				orderableDocumentListDeskItem({
-					type: 'sponsor',
-					title: 'Sponsors',
-					icon: SiGithubsponsors,
-					menuItems: [], // allow an array of `S.menuItem()` to be injected to orderable document list menu
-					// pass from the structure callback params above
-					S,
-					context,
-				}),
 			]),
 		),
 		S.listItem().title('Pages').icon(RiPagesLine).child(

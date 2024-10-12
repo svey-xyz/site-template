@@ -16,52 +16,6 @@ export const partial_Article: string = groq`
 	}
 `
 
-export const partial_Artist: string = groq`
-	...,
-	"slug":slug.current,
-	tags[]->,
-	image {
-		${partial_ImageObject}
-	}
-`
-
-export const project = groq`
-	gallery[] {
-		${partial_ImageObject}
-	},
-	artists[]->{
-		${partial_Artist}
-	},
-	sponsors[]->{
-		...,
-		image {
-			${partial_ImageObject}
-		}
-	}
-`
-
-export const business = groq`
-	logo {
-		${partial_ImageObject}
-	},
-	addresses[]->
-`
-
-export const partial_Person: string = groq`
-	...,
-	businesses[]-> {
-		...,
-		${partial_Article},
-		${business}
-	}
-`
-
-export const news = groq`
-	authors[]->{
-		${partial_Person}
-	}
-`
-
 const partial_Blocks: string = groq`
 	...,
 	_type == "Archive" => {
@@ -95,20 +49,6 @@ const partial_Blocks: string = groq`
 			${partial_ImageObject}
 		}
 	},
-	_type == "People" => {
-		...,
-		people[]-> {
-			${partial_Person}
-		}
-	},
-	_type == "Map" => {
-		...,
-		featured_Businesses[]-> {
-			...,
-			${partial_Article},
-			${business}
-		}
-	}
 `
 
 export const partial_Sections: string = groq`

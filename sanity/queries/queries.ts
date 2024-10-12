@@ -18,8 +18,7 @@ export const settingsQuery: string = groq`
 				"slug":slug.current,
 				${partial_Sections},
 			},
-		},
-		address->,
+		}
 	}
 `
 

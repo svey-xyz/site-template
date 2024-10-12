@@ -54,16 +54,6 @@ export const settings = defineType({
 			type: 'string',
 		}),
 		defineField({
-			title: 'Keywords',
-			name: 'keywords',
-			type: 'array',
-			of: [
-				defineArrayMember({
-					type: 'string',
-				})
-			],
-		}),
-		defineField({
 			title: 'Contact',
 			name: 'contact',
 			type: 'contact',
@@ -72,12 +62,6 @@ export const settings = defineType({
 			title: 'About',
 			name: 'about',
 			type: 'extraBlockContent',
-		}),
-		defineField({
-			title: 'Address',
-			name: 'address',
-			type: 'reference',
-			to: [{ type: 'address' }]
 		}),
 		defineField({
 			name: 'homepage',
