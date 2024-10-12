@@ -9,7 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@headlessui/react": "^2.1.2",
+    "@headlessui/react": "^2.1.10",
     "@heroicons/react": "^2.1.3",
     "@iconify/react": "^4.1.1",
     "@portabletext/react": "^3.0.15",
@@ -21,17 +21,18 @@
     "@sanity/vision": "latest",
     "@vercel/analytics": "^1.2.2",
     "moment-timezone": "^0.5.45",
-    "next-sanity": "^9.4.2",
+    "next-sanity": "^9.5.0",
     "next-sanity-image": "^6.1.1",
-    "react": "^18.2.0",
+    "react": "^18.3.1",
     "react-pretty-numbers": "^3.0.0",
     "rxjs": "^7.8.1",
-    "sanity-plugin-iconify": "^1.1.2",
-    "sanity-plugin-media": "^2.2.5",
+    "sanity-plugin-iconify": "^2.0.1",
+    "sanity-plugin-media": "^2.3.2",
     "sanity-plugin-note-field": "^2.0.2",
     "server-only": "^0.0.1",
     "slugify": "^1.6.6",
     "swiper": "^11.1.0",
+    "typescript": "^5.6.3",
     "uuid": "^10.0.0"
   },
   "devDependencies": {

@@ -48,7 +48,7 @@ const partial_Blocks: string = groq`
 		images[] {
 			${partial_ImageObject}
 		}
-	},
+	}
 `
 
 export const partial_Sections: string = groq`
