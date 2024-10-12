@@ -1,4 +1,4 @@
-import { article_Address, object_Date } from '@/types';
+import { object_Date } from '@/types';
 import moment from 'moment-timezone';
 import { plural } from 'pluralize'
 import { ReactNode } from 'react';
@@ -32,18 +32,6 @@ export const slugifyWithOptions = (string: string) => {
 
 export const capitalize = (word: string) => {
 	return word.charAt(0).toUpperCase() + word.substring(1);
-}
-
-export const breakAdditionSign = (text: string) => {
-	return text.replace(' + ', '+\n')
-}
-
-export const readableAddress = (address: article_Address): string | undefined => {
-
-	const a = (address.unit && address.number) ? `${address.number}.${address.unit}` : address.number ? `${address.number}` : null
-	const b = (address.street) ? `${address.street}` : null
-
-	return (a && b) ? `${a} ${b}` : a ? a : b ? b : ''
 }
 
 export function readableDate(data?: object_Date, overrideDisplayDateSpecificity?: displayDateSpecificity, endDate?: boolean): ReactNode {

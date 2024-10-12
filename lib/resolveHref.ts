@@ -1,19 +1,10 @@
-import { ArchivePayload, article, object_Contact, PagePayload } from "@/types"
+import { ArchivePayload, article, object_Contact, PagePayload, taxonomy } from "@/types"
 
 export const resolveArticleHref = (
 	article: article,
 ): string | undefined => {
 
 	return `/article/${article._type}/${article.slug}`
-	// switch (documentType) {
-	// 	case 'page':
-	// 		return slug ? `/${slug}` : undefined
-	// 	case 'project':
-	// 		return slug ? `/projects/${slug}` : undefined
-	// 	default:
-	// 		console.warn('Invalid document type:', documentType)
-	// 		return undefined
-	// }
 }
 
 
@@ -23,10 +14,15 @@ export const resolvePageHref = (page: ArchivePayload | PagePayload): string => {
 	return slug
 }
 
-export const resolveArchiveHref = (articleType: string): string => {
+export const resolveArchiveHrefFromArticle = (articleType: string): string => {
 	const slug = `/archives/${articleType}`
 
 	return slug
+}
+
+export const resolveArchiveHrefFromTaxonomy = (taxonomy: taxonomy): string => {
+	const typeParts = taxonomy._type.split('Taxonomy')
+	return resolveArchiveHrefFromArticle(typeParts[0])
 }
 
 export const resolveContactHref = (contact: object_Contact | undefined): string => {

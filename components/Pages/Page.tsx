@@ -3,7 +3,7 @@ import { ArchivePayload, PagePayload, section } from '@/types';
 import { EncodeDataAttributeCallback } from '@sanity/react-loader';
 import React from 'react';
 import { createDataAttribute } from "@sanity/visual-editing";
-import urlFor from '@/lib/urlFor';
+import { urlForImage } from '@/sanity/lib/image';
 
 interface ContainerMap {
 	[key: string]: React.ComponentType<{ data:section, index: number }>
@@ -25,7 +25,7 @@ const ContainerList: ContainerMap = {
 export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 	if (!data) return;
 
-	const BG_URL = data?.heroImage ? urlFor(data?.heroImage).url() : ''
+	const BG_URL = data?.heroImage ? urlForImage(data?.heroImage).url() : ''
 
 	return (
 		<article className=''>

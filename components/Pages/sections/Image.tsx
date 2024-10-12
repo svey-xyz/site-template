@@ -1,10 +1,10 @@
 import { Standard } from './Standard';
-import urlFor from '@/lib/urlFor';
+import { urlForImage } from '@/sanity/lib/image';
 import { section, sanityImage } from '@/types';
 import React, { ReactNode } from 'react';
 
 export const Image = ({ index, data }: { index: number, data: section }) => {
-	const BG_URL = data?.image ? urlFor(data?.image).url() : ''
+	const BG_URL = data?.image ? urlForImage(data?.image).url() : ''
 	return (
 
 		<Standard data={ data } index={ index } className={`
