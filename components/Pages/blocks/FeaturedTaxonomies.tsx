@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { block_FeaturedTaxonomies } from '@/types'
 import { Icon } from '@iconify/react';
 import { resolveArchiveHrefFromTaxonomy } from '@/lib/resolveHref';
 

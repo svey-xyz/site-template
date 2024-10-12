@@ -1,7 +1,6 @@
 'use client'
 
 import client from '@sanity/lib/client';
-import { sanityImage } from '@/types';
 import { useNextSanityImage } from 'next-sanity-image'
 import Img from 'next/image'
 import React, { CSSProperties } from 'react'

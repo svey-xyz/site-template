@@ -1,5 +1,4 @@
 import dynamic from 'next/dynamic'
-import { ArchivePayload, PagePayload, section } from '@/types';
 import { EncodeDataAttributeCallback } from '@sanity/react-loader';
 import React from 'react';
 import { createDataAttribute } from "@sanity/visual-editing";

@@ -1,6 +1,5 @@
 'use client'
 
-import { block_Info } from '@/types';
 import { Icon } from '@iconify/react';
 import React from 'react';
 import NumericLabel from 'react-pretty-numbers';

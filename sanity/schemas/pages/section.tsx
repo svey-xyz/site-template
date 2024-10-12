@@ -1,6 +1,5 @@
 import { camelCaseToWords } from "@/lib/stringFunctions";
 import { blockTypes } from "@/sanity/schemas/pages/blocks";
-import { block } from "@/types";
 import { defineType, defineField, FieldDefinition } from "sanity";
 import { mediaAssetSource } from "sanity-plugin-media";
 import { IoIosColorFill } from "react-icons/io";

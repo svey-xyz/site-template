@@ -1,6 +1,6 @@
-import { portableTextComponents } from "@lib/portableTextComponents";
+import { portableTextComponents } from "@/sanity/lib/portableTextComponents";
 import { PortableText } from "@portabletext/react";
-import { PortableTextBlock, TypedObject } from "sanity";
+import { PortableTextBlock } from "sanity";
 
 export default function TextBlock({ text }: { text?: PortableTextBlock }) {
 	if (!text) return

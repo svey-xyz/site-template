@@ -1,7 +1,5 @@
 import { Blocks } from '@/components/Pages/Blocks';
-import { section } from '@/types';
 import React, { ReactNode } from 'react';
-
 
 type args = {
 	index: number,

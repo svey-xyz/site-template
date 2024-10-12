@@ -1,4 +1,3 @@
-import { article, block_Archive, taxonomy } from '@/types';
 import React from 'react';
 import { loadArticles } from '@/sanity/queries/loadQuery';
 import { Filter } from '@/components/Pages/blocks/Archive/Filter';

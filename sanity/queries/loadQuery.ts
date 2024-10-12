@@ -9,13 +9,6 @@ import {
 	archiveQuery,
 } from '@/sanity/queries/queries'
 
-import {
-	PagePayload,
-	document_Settings,
-	ArchivePayload,
-	taxonomy,
-} from '@/types'
-
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient } from "@sanity/client";
 import { client } from "@/sanity/lib/client";
 import { capitalize, pluralize } from '@/lib/stringFunctions'
@@ -65,7 +58,7 @@ export const loadQuery = (<T>(query: string, params: QueryParams = {}, options: 
 }) satisfies typeof queryStore.loadQuery
 
 export const loadSettings = () => {
-	return loadQuery<document_Settings>(
+	return loadQuery<SettingsPayload>(
 		settingsQuery,
 		{},
 		{ next: { tags: ['settings', 'home', 'page'] } },

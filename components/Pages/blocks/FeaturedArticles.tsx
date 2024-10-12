@@ -1,7 +1,5 @@
-import { block_FeaturedArticles, block, article } from '@/types';
 import React from 'react';
 import dynamic from 'next/dynamic'
-import { capitalize } from '@/lib/stringFunctions';
 
 interface CardMap {
 	[key: string]: React.ComponentType<{

@@ -1,5 +1,5 @@
 import React from 'react';
-import type { object_Social } from '../../types'
+import type { object_Social } from '../../types/documents'
 import { FaLink, FaFacebook, FaInstagram, FaTwitter } from "react-icons/fa6";
 
 import { IconType } from "react-icons";

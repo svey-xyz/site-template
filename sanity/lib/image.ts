@@ -1,6 +1,4 @@
 import createImageUrlBuilder from '@sanity/image-url'
-import type { Image } from 'sanity'
-
 import { dataset, projectId } from './api'
 
 const imageBuilder = createImageUrlBuilder({
@@ -8,6 +6,6 @@ const imageBuilder = createImageUrlBuilder({
   dataset: dataset || '',
 })
 
-export const urlForImage = (source: Image) => {
+export const urlForImage = (source: sanityImage) => {
   return imageBuilder?.image(source).auto('format').fit('max')
 }

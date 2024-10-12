@@ -1,7 +1,6 @@
 'use client'
 
 import NavigationItem from '@/components/ui/NavigationItem';
-import { object_NavigationItem } from '@/types';
 import React, { useEffect, useRef, useState } from 'react';
 import { Button, Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
 import { Bars2Icon } from '@heroicons/react/24/solid';

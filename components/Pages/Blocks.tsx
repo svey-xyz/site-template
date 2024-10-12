@@ -1,4 +1,3 @@
-import { _BLOCK_TYPES, block, SettingsPayload } from '@/types';
 import React from 'react';
 import dynamic from 'next/dynamic'
 import { loadSettings } from '@/sanity/queries/loadQuery';
@@ -20,7 +19,7 @@ const BlockList: BlockMap = {
 	Contact: dynamic(() => import('@/components/Pages/blocks/Contact'))
 }
 
-export const Blocks = async ({ blocks, blockClasses }: { blocks: _BLOCK_TYPES, blockClasses?: string }) => {
+export const Blocks = async ({ blocks, blockClasses }: { blocks: BLOCK_TYPES, blockClasses?: string }) => {
 	const settings = await loadSettings()
 
 	return blocks.map((block, i) => {

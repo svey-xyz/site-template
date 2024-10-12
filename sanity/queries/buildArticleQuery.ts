@@ -1,5 +1,4 @@
 import { partial_Article } from "@/sanity/queries/partials"
-import { taxonomy } from "@/types"
 import { groq } from "next-sanity"
 
 export const single_Article = (partial: string = '') => {

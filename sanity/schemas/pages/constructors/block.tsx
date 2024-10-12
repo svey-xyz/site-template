@@ -2,12 +2,12 @@ import { camelCaseToWords } from "@lib/stringFunctions";
 import { IconType } from "react-icons";
 import { defineType, PreviewConfig, defineField } from "sanity";
 import { RxSection } from "react-icons/rx";
-import { fields } from "@/sanity/lib/types";
+import { sanityFields } from "@/sanity/lib/types";
 
 export const block = (
 	args: {
 		name: string,
-		fields: fields,
+		fields: sanityFields,
 		preview?: PreviewConfig<any>
 		icon?: IconType | undefined
 	}) => {

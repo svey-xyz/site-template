@@ -1,5 +1,4 @@
 import Socials from '@/components/site/Socials';
-import { object_Contact } from '@/types';
 import React from 'react';
 
 export const ContactInfo = ({contact}:{contact: object_Contact}) => {

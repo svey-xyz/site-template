@@ -1,12 +1,9 @@
-import { ArchivePayload, article, object_Contact, PagePayload, taxonomy } from "@/types"
-
 export const resolveArticleHref = (
 	article: article,
 ): string | undefined => {
 
 	return `/article/${article._type}/${article.slug}`
 }
-
 
 export const resolvePageHref = (page: ArchivePayload | PagePayload): string => {
 	const slug = page._type == 'page' ? `/${(page as PagePayload).slug}` : `/archives/${(page as ArchivePayload)._id}`

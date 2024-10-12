@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from '@components/site/Image'
 
-import { article } from '@/types'
 import { resolveArticleHref } from '@/lib/resolveHref';
 
 type args = {

@@ -1,6 +1,5 @@
 import { Standard } from './Standard';
 import { urlForImage } from '@/sanity/lib/image';
-import { section, sanityImage } from '@/types';
 import React, { ReactNode } from 'react';
 
 export const Image = ({ index, data }: { index: number, data: section }) => {

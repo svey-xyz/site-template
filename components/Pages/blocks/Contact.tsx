@@ -1,6 +1,5 @@
 'use client'
 
-import { block_Contact, SettingsPayload } from '@/types';
 import React, { useState, useRef } from 'react';
 import Form, { fieldArgs } from '@/components/site/Form';
 import { ContactInfo } from '@/components/site/ContactInfo';

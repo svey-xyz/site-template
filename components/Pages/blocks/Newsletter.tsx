@@ -1,5 +1,4 @@
 import NewsletterForm from '@/components/site/NewsletterForm';
-import { block_Newsletter, block } from '@/types';
 import React from 'react';
 
 export const Standard = ({ data, className }: { data: block_Newsletter, className?: string }) => {

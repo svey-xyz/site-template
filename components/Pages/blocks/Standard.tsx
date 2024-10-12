@@ -1,4 +1,3 @@
-import { block } from '@/types';
 import React from 'react';
 
 export const Standard = ({data, className}:{data: block, className?:string}) => {

@@ -8,7 +8,6 @@ import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 import "swiper/css";
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { block_Gallery } from "@/types";
 
 export const Gallery = ({ data, className }: { data: block_Gallery, className?: string }) => {
 	const slide = 0
@@ -52,7 +51,6 @@ export default Gallery
 
 // import Image from '@/components/site/Image';
 // import SwiperGallery from '@/components/site/SwiperGallery'
-// import { block_Gallery } from '@/types';
 // import { XMarkIcon } from '@heroicons/react/24/solid'
 
 // import React, { useCallback, useEffect, useRef, useState } from 'react';

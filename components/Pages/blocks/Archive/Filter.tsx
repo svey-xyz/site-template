@@ -1,7 +1,6 @@
 'use client';
 
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
-import { block_Archive, article, taxonomy } from "@/types";
 import dynamic from 'next/dynamic'
 import { useSearchParams } from 'next/navigation';
 

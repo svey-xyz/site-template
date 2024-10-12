@@ -1,4 +1,3 @@
-import { section } from '@/types';
 import React, { ReactNode } from 'react';
 import { Blocks } from '@/components/Pages/Blocks';
 

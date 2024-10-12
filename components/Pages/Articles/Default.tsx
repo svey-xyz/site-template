@@ -1,5 +1,4 @@
 import React from 'react';
-import { article } from '@/types';
 import { notFound } from 'next/navigation'
 
 export interface GenericArticlePageProps {

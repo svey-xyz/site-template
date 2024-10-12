@@ -1,5 +1,4 @@
 import React from 'react';
-import { block_Image } from '@/types';
 import ImageBuilder from '@/components/site/Image'
 
 const Image = ({ data, className }: { data: block_Image | undefined, className?: string }) => {
