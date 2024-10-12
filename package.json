@@ -1,6 +1,6 @@
 {
-  "name": "lptbia-website-database",
-  "version": "0.1.1",
+  "name": "site-template",
+  "version": "2024.10.12",
   "private": true,
   "scripts": {
     "dev": "next dev",
