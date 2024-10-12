@@ -1,5 +1,4 @@
 import { defineType, defineField } from "sanity";
-import { BiLink } from 'react-icons/bi';
 
 const URLExpression = new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._\+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_\+.~#?&//=]*)/)
 const slugExpression = new RegExp(/^[/]+[a-z0-9]+(?:(?:-|_)+[a-z0-9]+)*$/)
@@ -7,7 +6,6 @@ const slugExpression = new RegExp(/^[/]+[a-z0-9]+(?:(?:-|_)+[a-z0-9]+)*$/)
 export const link = defineType({
 	title: 'Link',
 	name: 'link',
-	icon: BiLink,
 	type: 'object',
 	fields: [
 		defineField({
@@ -71,7 +69,6 @@ export const link = defineType({
 			return {
 				title: title ? title  : `Link text not set.`,
 				subtitle: linkText,
-				media: BiLink
 			}
 		}
 	}

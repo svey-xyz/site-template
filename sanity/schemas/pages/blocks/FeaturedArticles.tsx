@@ -1,6 +1,5 @@
-import { defineType, defineField, defineArrayMember } from 'sanity';
+import { defineField } from 'sanity';
 import constructors from '@/sanity/schemas/pages/constructors';
-import { MdWebStories } from 'react-icons/md';
 import ARTICLES from '@/sanity/schemas/articles';
 
 const articleTypes = ARTICLES.flatMap((article) => {
@@ -30,4 +29,4 @@ const fields = [
 	}),
 ]
 
-export const FeaturedArticles = constructors.block({ name: 'FeaturedArticles', fields, icon: MdWebStories })
+export const FeaturedArticles = constructors.block({ name: 'FeaturedArticles', fields })

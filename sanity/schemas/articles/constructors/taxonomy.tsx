@@ -2,7 +2,6 @@ import { camelCaseToWords } from "@lib/stringFunctions";
 import { defineField, defineType } from "sanity";
 import React from "react";
 import { Icon } from '@iconify/react';
-import { FaTag } from "react-icons/fa6";
 
 export const taxonomyTitle = (article: string) => {
 	return `${article}Taxonomy`
@@ -25,7 +24,6 @@ export const taxonomy = (article: string) => {
 		title: camelCaseToWords(TaxonomyTitle),
 		name: TaxonomyTitle,
 		type: 'document',
-		icon: FaTag,
 		description: taxonomicTermDescription,
 		fieldsets: [
 			{
@@ -111,7 +109,7 @@ export const taxonomy = (article: string) => {
 				return {
 					title: value.prefLabel,
 					description: value.description,
-					media: value.icon ? <Icon icon={value.icon.name as string} /> : FaTag,
+					media: value.icon ? <Icon icon={value.icon.name as string} /> : null,
 				}
 			}
 		},

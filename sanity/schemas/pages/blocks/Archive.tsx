@@ -1,7 +1,5 @@
 import { defineField, defineArrayMember } from 'sanity';
-import { } from 'react-icons';
 import constructors from '@/sanity/schemas/pages/constructors';
-import { RiGalleryView } from 'react-icons/ri';
 import ARTICLES from '@/sanity/schemas/articles'
 import { camelCaseToWords } from '@/lib/stringFunctions';
 import { taxonomyTitle } from "@/sanity/schemas/articles/constructors/taxonomy";
@@ -52,4 +50,4 @@ const fields = [
 	})
 ]
 
-export const Archive = constructors.block({ name: 'Archive', fields, icon: RiGalleryView })
+export const Archive = constructors.block({ name: 'Archive', fields })

@@ -1,5 +1,4 @@
 import { defineType, defineField } from "sanity";
-import { FaCalendar } from 'react-icons/fa';
 
 const datetimeOptions = {
 	dateFormat: 'YYYY-MM-DD',
@@ -9,7 +8,6 @@ const datetimeOptions = {
 
 export const basicDate = defineType({
 	name: 'basicDate',
-	icon: FaCalendar,
 	description: 'Date & time settings. Leave End Date blank for dates that do not cover a duration of time.',
 	type: 'object',
 	options: { collapsible: true, collapsed: true, columns: 2 },

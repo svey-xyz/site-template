@@ -1,4 +1,3 @@
-import { RiPagesLine } from 'react-icons/ri';
 import { page as constructor } from '@/sanity/schemas/pages/constructors/page';
 
 import { defineField } from 'sanity';
@@ -17,4 +16,4 @@ const fields = [
 	}),
 ]
 
-export const page = constructor({ name: 'page', fields, icon: RiPagesLine })
+export const page = constructor({ name: 'page', fields })

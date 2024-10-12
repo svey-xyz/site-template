@@ -1,7 +1,6 @@
 import { defineField } from 'sanity';
 import constructors from '@/sanity/schemas/pages/constructors';
 import { mediaAssetSource } from 'sanity-plugin-media';
-import { GrGallery } from "react-icons/gr";
 
 const fields = [
 	defineField({
@@ -36,4 +35,4 @@ const fields = [
 	}),
 ]
 
-export const Gallery = constructors.block({ name: 'Gallery', fields, icon: GrGallery })
+export const Gallery = constructors.block({ name: 'Gallery', fields })

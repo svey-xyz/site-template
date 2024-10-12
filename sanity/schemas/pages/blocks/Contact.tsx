@@ -1,7 +1,5 @@
 import { defineField } from 'sanity';
-import { } from 'react-icons';
 import constructors from '@/sanity/schemas/pages/constructors';
-import { MdOutlineContactMail } from 'react-icons/md';
 
 const fields: any = [
 	defineField({
@@ -11,4 +9,4 @@ const fields: any = [
 	}),
 ]
 
-export const Contact = constructors.block({ name: 'Contact', fields, icon: MdOutlineContactMail })
+export const Contact = constructors.block({ name: 'Contact', fields })

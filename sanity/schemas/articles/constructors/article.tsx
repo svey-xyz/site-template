@@ -1,17 +1,12 @@
 import { camelCaseToWords } from "@lib/stringFunctions";
-import { FaCircleInfo } from "react-icons/fa6";
 import { defineArrayMember, defineField, defineType, FieldGroupDefinition, FieldDefinition, PreviewConfig, DocumentDefinition } from "sanity";
-import { IconType } from "react-icons";
 import { mediaAssetSource } from "sanity-plugin-media";
 import { taxonomy, taxonomyTitle } from "@/sanity/schemas/articles/constructors/taxonomy";
 
-
-type fields = FieldDefinition<"string" | "number" | "boolean" | "object" | "array" | "block" | "date" | "datetime" | "document" | "file" | "geopoint" | "image" | "reference" | "crossDatasetReference" | "slug" | "text" | "url" | "email" | "color", undefined>[]
-
 interface args {
 	type: string,
-	fields?: fields,
-	icon?: IconType,
+	fields?: sanityFields,
+	// icon?: IconType,
 	groups?: FieldGroupDefinition[],
 	customPreview?: PreviewConfig,
 }
@@ -21,7 +16,6 @@ const _GROUPS: FieldGroupDefinition[] = [
 		name: 'about',
 		title: 'About',
 		// default: true,
-		icon: FaCircleInfo,
 	},
 ]
 
@@ -90,7 +84,7 @@ const _FIELDS = (type: string) => [
 	}),
 ]
 
-const _PREVIEW = (icon?: IconType) => {
+const _PREVIEW = () => {
 	return {
 		select: {
 			title: 'title',
@@ -100,7 +94,7 @@ const _PREVIEW = (icon?: IconType) => {
 			const { title, image } = value
 			return {
 				title: title ? title : 'Untitled',
-				media: image ? image : icon
+				media: image ? image : null
 			}
 		}
 	}
@@ -119,19 +113,18 @@ export class ARTICLE {
 }
 
 const article = (args: args) => {
-	const { type, icon, fields, groups } = args
+	const { type, fields, groups } = args
  	let documentFields = [
 		..._FIELDS(type),
 		...fields || [],
 	]
 
-	const documentPreview = args.customPreview || _PREVIEW(icon)
+	const documentPreview = args.customPreview || _PREVIEW()
 
 	return defineType({
 		title: camelCaseToWords(type),
 		name: type,
 		type: 'document',
-		icon: icon,
 		groups: [
 			..._GROUPS,
 			...(groups || [])

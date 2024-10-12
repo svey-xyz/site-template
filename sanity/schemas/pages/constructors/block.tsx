@@ -1,17 +1,14 @@
 import { camelCaseToWords } from "@lib/stringFunctions";
-import { IconType } from "react-icons";
 import { defineType, PreviewConfig, defineField } from "sanity";
-import { RxSection } from "react-icons/rx";
-import { sanityFields } from "@/sanity/lib/types";
 
 export const block = (
 	args: {
 		name: string,
 		fields: sanityFields,
 		preview?: PreviewConfig<any>
-		icon?: IconType | undefined
+		// icon?: IconType | undefined
 	}) => {
-	const { name, fields, icon, preview } = args
+	const { name, fields, preview } = args
 
 	const _PREVIEW = {
 		select: {
@@ -23,7 +20,6 @@ export const block = (
 			const { type, title } = value
 			return {
 				title: type ? camelCaseToWords(type) : 'Unknown Block Type',
-				media: icon ? icon : RxSection,
 			}
 		},
 	}
@@ -41,7 +37,6 @@ export const block = (
 		title: camelCaseToWords(name),
 		name: name,
 		type: 'object',
-		icon,
 		fields: [
 			..._FIELDS,
 			...fields

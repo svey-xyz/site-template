@@ -1,18 +1,10 @@
-import { MdSettings } from "react-icons/md";
 import { StructureBuilder, ListItem, ListItemBuilder, Divider, DefaultDocumentNodeResolver, StructureResolverContext } from "sanity/structure";
 import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
-import { AiFillInfoCircle } from "react-icons/ai";
 
 import { types } from "@/sanity/schema";
-import { RiGalleryView, RiPagesLine } from "react-icons/ri";
 import ARTICLES from "@/sanity/schemas/articles";
 import { camelCaseToWords, pluralize } from "@/lib/stringFunctions";
-import { FaTag } from "react-icons/fa6";
 import { ReferenceList } from "@/components/studio/ReferenceList";
-import { orderableDocumentListDeskItem } from '@sanity/orderable-document-list'
-import { TbChairDirector } from "react-icons/tb";
-import { SiGithubsponsors } from "react-icons/si";
-import { BsPeopleFill } from "react-icons/bs";
 
 export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, options) => {
 
@@ -31,7 +23,7 @@ const singletonTypes = new Set(["siteSettings", "navigation", "theme", "about", 
 const archivePages = (S: StructureBuilder) => ARTICLES.flatMap(article => {
 	const archiveName = `${pluralize(camelCaseToWords(article.type))} Archive`
 
-	return S.listItem().title(archiveName).icon(RiPagesLine).child(
+	return S.listItem().title(archiveName).child(
 		(S.document().title(archiveName).schemaType('archive').documentId(`${article.document.name}`))
 	)
 }).filter((item)=>{ return item !== undefined})
@@ -40,7 +32,7 @@ const typesList = (S: StructureBuilder) => ARTICLES.flatMap(article => {
 	const Title = camelCaseToWords(article.type)
 
 	let listItems: (ListItemBuilder | ListItem | Divider )[] = [
-		S.documentTypeListItem(article.taxonomy.name).title(`${Title} Taxonomies`).icon(FaTag),
+		S.documentTypeListItem(article.taxonomy.name).title(`${Title} Taxonomies`),
 		S.divider(),
 		S.documentTypeListItem(article.document.name).title(pluralize(Title))
 	]
@@ -53,16 +45,16 @@ const typesList = (S: StructureBuilder) => ARTICLES.flatMap(article => {
 export const structure = (S: StructureBuilder, context: StructureResolverContext) =>
 	S.list().title('Content').items([
 		/** ABOUT */
-		S.listItem().title('About').icon(AiFillInfoCircle).child(
+		S.listItem().title('About').child(
 			S.list().title('About').items([
-				S.listItem().title('Site Settings').icon(MdSettings).child(
+				S.listItem().title('Site Settings').child(
 					S.document().title('Site Settings').schemaType('siteSettings').documentId('siteSettings')
 				),
 			]),
 		),
-		S.listItem().title('Pages').icon(RiPagesLine).child(
+		S.listItem().title('Pages').child(
 			S.list().title('Pages').items([
-				S.listItem().title('Archives').icon(RiGalleryView).child(
+				S.listItem().title('Archives').child(
 					S.list().title('Archives').items([
 						...archivePages(S)
 					])
@@ -70,7 +62,7 @@ export const structure = (S: StructureBuilder, context: StructureResolverContext
 
 				S.divider(),
 
-				S.documentTypeListItem('page').title('Pages').icon(RiPagesLine),
+				S.documentTypeListItem('page').title('Pages'),
 
 			]),
 		),

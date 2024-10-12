@@ -1,7 +1,6 @@
 import { defineField } from 'sanity';
 import constructors from '@/sanity/schemas/pages/constructors';
 import { mediaAssetSource } from 'sanity-plugin-media';
-import { FaImage } from 'react-icons/fa6';
 import { camelCaseToWords } from '@/lib/stringFunctions';
 
 const fields = [
@@ -47,9 +46,9 @@ const preview = {
 		const { type, title, image } = value
 		return {
 			title: type ? camelCaseToWords(type) : 'Unknown Block Type',
-			media: image.asset ? image.asset : FaImage,
+			media: image.asset ? image.asset : null,
 		}
 	},
 }
 
-export const Image = constructors.block({ name: 'Image', fields, icon: FaImage, preview })
+export const Image = constructors.block({ name: 'Image', fields, preview })

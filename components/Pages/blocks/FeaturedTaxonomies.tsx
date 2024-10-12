@@ -1,7 +1,6 @@
 'use client';
 
 import React from 'react';
-import { Icon } from '@iconify/react';
 import { resolveArchiveHrefFromTaxonomy } from '@/lib/resolveHref';
 
 export const FeaturedTaxonomies = ({ data, className } : { data: block_FeaturedTaxonomies | undefined, className?: string } ) => {
@@ -21,9 +20,6 @@ export const FeaturedTaxonomies = ({ data, className } : { data: block_FeaturedT
 								WebkitFilter: `brightness(${brightness}%)`,
 								filter: `brightness(${brightness}%)`,
 							}}/>
-						{ tax.icon?.name &&
-							<Icon icon={tax.icon?.name} width={60} className='-rotate-12 group-hover:-rotate-6 group-hover:scale-110 transition-transform duration-300'/>
-						}
 						<span className='text-lg font-bold opacity-80 group-hover:opacity-100 leading-tight' style={{ whiteSpace: "pre-line" }}>
 							{ tax.prefLabel }
 						</span>

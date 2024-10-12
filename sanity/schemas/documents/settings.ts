@@ -1,11 +1,8 @@
 import {
-	defineArrayMember,
 	defineField,
 	defineType,
 } from "sanity";
 import { mediaAssetSource } from "sanity-plugin-media";
-
-import { PiTabsDuotone } from "react-icons/pi";
 
 export const settings = defineType({
 	title: 'Settings',
@@ -81,7 +78,6 @@ export const settings = defineType({
 					name: 'Navigation Item',
 					title: 'item',
 					type: 'object',
-					icon: PiTabsDuotone,
 					fields: [
 						{
 							title: 'Title',

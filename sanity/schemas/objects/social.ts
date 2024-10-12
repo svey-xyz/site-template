@@ -1,5 +1,4 @@
 import { defineType, defineField } from "sanity";
-import { HiAtSymbol } from 'react-icons/hi';
 
 const socialTypes = [
 	{ title: 'Twitter / X', value: 'twitter' },
@@ -14,7 +13,6 @@ export const social = defineType({
 	title: 'Social',
 	name: 'social',
 	description: 'Link to a social platform.',
-	icon: HiAtSymbol,
 	type: 'object',
 	fields: [
 		defineField({
@@ -52,7 +50,6 @@ export const social = defineType({
 			return {
 				title: `${socialSiteTypeTitle}`,
 				subtitle: value.title,
-				media: HiAtSymbol
 			}
 		}
 	}

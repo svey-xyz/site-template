@@ -2,10 +2,6 @@ import { camelCaseToWords } from "@/lib/stringFunctions";
 import { blockTypes } from "@/sanity/schemas/pages/blocks";
 import { defineType, defineField, FieldDefinition } from "sanity";
 import { mediaAssetSource } from "sanity-plugin-media";
-import { IoIosColorFill } from "react-icons/io";
-import { BiMoviePlay } from "react-icons/bi";
-import { FaImage } from "react-icons/fa";
-import { TbSection } from "react-icons/tb";
 
 export const section = defineType({
 	title: 'Section',
@@ -110,18 +106,18 @@ export const section = defineType({
 			return {
 				title: `${type} Section`,
 				subtitle,
-				media: (() => {
-					switch (type) {
-						case ('Colour'):
-							return IoIosColorFill 
-						case ('Image'):
-							return FaImage
-						case ('Video'):
-							return BiMoviePlay
-						default:
-							return TbSection
-					}
-				})(),
+				// media: (() => {
+				// 	switch (type) {
+				// 		case ('Colour'):
+				// 			return IoIosColorFill 
+				// 		case ('Image'):
+				// 			return FaImage
+				// 		case ('Video'):
+				// 			return BiMoviePlay
+				// 		default:
+				// 			return TbSection
+				// 	}
+				// })(),
 			}
 		},
 	},

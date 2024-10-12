@@ -1,9 +1,6 @@
-import { defineType, defineField, defineArrayMember } from 'sanity';
-import { } from 'react-icons';
-import { mediaAssetSource } from 'sanity-plugin-media';
+import { defineField } from 'sanity';
 
 import constructors from '@/sanity/schemas/pages/constructors';
-import { BsJournalRichtext } from 'react-icons/bs';
 
 const fields = [
 	defineField({
@@ -22,4 +19,4 @@ const fields = [
 	}),
 ]
 
-export const Text = constructors.block({ name: 'Text', fields, icon: BsJournalRichtext })
+export const Text = constructors.block({ name: 'Text', fields })

@@ -1,8 +1,4 @@
-import Link from "next/link"
-import { CgWebsite } from "react-icons/cg"
-import { MdPreview } from "react-icons/md"
-
-function StudioHeader(props: any) {
+const StudioHeader = (props: any) => {
 	return (
 		<div>
 			{/* <div className="flex items-center justify-between p-5">

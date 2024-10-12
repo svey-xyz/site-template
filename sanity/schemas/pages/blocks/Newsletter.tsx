@@ -1,5 +1,4 @@
 import constructors from '@/sanity/schemas/pages/constructors';
-import { RiInputField } from 'react-icons/ri';
 import { defineField } from 'sanity';
 
 
@@ -22,4 +21,4 @@ const fields: any = [
 	})
 ]
 
-export const Newsletter = constructors.block({ name: 'Newsletter', fields, icon: RiInputField })
+export const Newsletter = constructors.block({ name: 'Newsletter', fields })

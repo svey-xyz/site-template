@@ -4,7 +4,6 @@ import { Popover, PopoverButton, PopoverPanel, CloseButton } from '@headlessui/r
 import React from 'react';
 import Link from 'next/link'
 import { resolvePageHref } from '@/lib/resolveHref';
-import { FaChevronDown } from "react-icons/fa";
 
 type NavigationItemParams = {
 	item: object_NavigationItem,
@@ -31,9 +30,6 @@ const NavigationTitle = ({ title, className, chevron }: NavigationTitleParams) =
 	return (
 		<span className={`${className} px-4 py-1 flex flex-row items-center justify-center gap-1`}>
 			{title}
-			{ chevron &&
-				<FaChevronDown className='' />
-			}
 		</span>
 	)
 }
