@@ -49,13 +49,11 @@ module.exports = {
 				fg: {
 					primary: 'hsl(var(--primary-fg) / <alpha-value>)',
 					DEFAULT: 'hsl(var(--primary-fg) / <alpha-value>)',
-					// secondary: 'hsl(var(--secondary-fg) / <alpha-value>)',
 				},
 				accent: {
 					primary: 'hsl(var(--primary-accent) / <alpha-value>)',
 					DEFAULT: 'hsl(var(--primary-accent) / <alpha-value>)',
 					secondary: 'hsl(var(--secondary-accent) / <alpha-value>)',
-					'secondary-dark': 'hsl(var(--secondary-accent-dark) / <alpha-value>)',
 					warning: 'hsl(var(--warning-accent) / <alpha-value>)',
 					failure: 'hsl(var(--failure-accent) / <alpha-value>)',
 					success: 'hsl(var(--primary-accent) / <alpha-value>)',
