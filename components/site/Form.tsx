@@ -36,7 +36,7 @@ export const Form = ({ submitFn, fields, submitText = 'Submit', FormLegend, mess
 					type="submit"
 					className="w-fit px-8 py-2"
 				>
-					{submitText }
+					{ submitText }
 				</Button>
 				{ message && (
 					<div className={`${error ? 'text-accent-failure' : 'text-accent-success'}`}>
