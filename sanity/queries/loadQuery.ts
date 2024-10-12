@@ -11,7 +11,7 @@ import {
 
 import {
 	PagePayload,
-	SettingsPayload,
+	document_Settings,
 	ArchivePayload,
 	taxonomy,
 } from '@/types'
@@ -65,7 +65,7 @@ export const loadQuery = (<T>(query: string, params: QueryParams = {}, options: 
 }) satisfies typeof queryStore.loadQuery
 
 export const loadSettings = () => {
-	return loadQuery<SettingsPayload>(
+	return loadQuery<document_Settings>(
 		settingsQuery,
 		{},
 		{ next: { tags: ['settings', 'home', 'page'] } },

@@ -1,12 +1,12 @@
 'use client'
 
-import { block_Contact, object_Contact, SettingsPayload } from '@/types';
+import { block_Contact, object_Contact, document_Settings } from '@/types';
 import React, { useState, useRef } from 'react';
 import Form, { fieldArgs } from '@/components/site/Form';
 import { Address } from '@/components/site/Address';
 import { ContactInfo } from '@/components/site/ContactInfo';
 
-export const Contact = ({ data, className, siteData }: { data: block_Contact | undefined, className?: string, siteData?: SettingsPayload }) => {
+export const Contact = ({ data, className, siteData }: { data: block_Contact | undefined, className?: string, siteData?: document_Settings }) => {
 	const nameRef = useRef<HTMLInputElement>(null);
 	const emailRef = useRef<HTMLInputElement>(null);
 	const messageRef = useRef<HTMLInputElement>(null);

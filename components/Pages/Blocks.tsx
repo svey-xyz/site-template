@@ -1,10 +1,10 @@
-import { _BLOCK_TYPES, block, SettingsPayload } from '@/types';
+import { _BLOCK_TYPES, block, document_Settings } from '@/types';
 import React from 'react';
 import dynamic from 'next/dynamic'
 import { loadSettings } from '@/sanity/queries/loadQuery';
 
 interface BlockMap {
-	[key: string]: React.ComponentType<{ data: any, className?: string, siteData?: SettingsPayload | undefined }>
+	[key: string]: React.ComponentType<{ data: any, className?: string, siteData?: document_Settings | undefined }>
 }
 
 const BlockList: BlockMap = {

@@ -1,4 +1,3 @@
-import { Geopoint } from "@sanity/google-maps-input"
 import { ImageAsset, Slug, PortableTextBlock, Image } from "sanity"
 import { DocumentContainers } from '@/sanity/schemas/articles'
 
@@ -32,20 +31,6 @@ export interface object_Date extends inherentObjectData {
 	recurrence: '' | 'RRULE:FREQ=DAILY;INTERVAL=1' | 'RRULE:FREQ=WEEKLY;INTERVAL=1' | 'RRULE:FREQ=MONTHLY;INTERVAL=1' | 'RRULE:FREQ=YEARLY;INTERVAL=1',
 	startDate?: string,
 	endDate?: string,
-}
-
-export interface geopoint {
-	lng: number,
-	lat: number,
-}
-
-export interface object_Location extends inherentObjectData {
-	location?: geopoint,
-	unit?: string,
-	number?: number,
-	street?: string,
-	notes?: string,
-	preciseLocation?: boolean,
 }
 
 export interface object_Link extends inherentObjectData {
@@ -96,11 +81,6 @@ export interface block_Gallery extends block {
 	images: Array<sanityImage>,
 }
 
-export interface block_Map extends block {
-	centre: geopoint,
-	featured_Businesses?: Array<taxonomy_Business>
-}
-
 export interface block_Newsletter extends block {
 	callToAction: string,
 	text: string,
@@ -109,10 +89,6 @@ export interface block_Newsletter extends block {
 export interface block_FeaturedArticles extends block {
 	title: string,
 	articles?: _ARTICLE_TYPES,
-}
-
-export interface block_People extends block {
-	people: Array<person>,
 }
 
 export interface block_Info extends block {
@@ -139,7 +115,7 @@ export interface block_Contact extends block {
 	buttonText: string
 }
 
-export type _BLOCK_TYPES = [block_FeaturedTaxonomies, block_Text, block_Map, block_Newsletter, block_FeaturedArticles, block_Archive, block_People, block_Columns, block_Hero]
+export type _BLOCK_TYPES = [block_FeaturedTaxonomies, block_Text, block_Newsletter, block_FeaturedArticles, block_Archive, block_Columns]
 
 export interface section extends inherentObjectData {
 	type: 'standard' | 'colour' | 'image' | 'video',
@@ -151,12 +127,10 @@ export interface section extends inherentObjectData {
 	blocks?: _BLOCK_TYPES
 }
 
-
-
 // DOCUMENT INTERFACES
 
 export type _ARTICLE_TYPES = [
-	article_Business, article_Project, article_News, article_Address
+	article_Article
 ]
 
 export interface article extends inherentDocumentData {
@@ -167,38 +141,7 @@ export interface article extends inherentDocumentData {
 	taxonomies?: Array<taxonomy>,
 }
 
-export interface article_News extends article {
-	_type: "news",
-	content?: PortableTextBlock,
-	date?: object_Date,
-	author?: Array<person>,
-}
-
-export interface article_Project extends article {
-	writeup?: PortableTextBlock,
-	credits?: PortableTextBlock,
-	date?: object_Date,
-	gallery?: Array<sanityImage>,
-	sponsors?: Array<sponsor>
-	// media?: Array<any>, // needs type definition
-}
-
-export interface article_Business extends article {
-	addresses?: Array<article_Address>,
-	logo?: sanityImage,
-	publicContact?: object_Contact,
-	internalContact?: Array<object_Contact>
-}
-
-export interface article_Address extends article {
-	icon?: icon,
-	// location?: object_Location,
-	location: geopoint,
-	unit?: string,
-	number?: number,
-	street?: string,
-	postalCode?: string,
-	notes: string,
+export interface article_Article extends article {
 }
 
 export interface taxonomy extends inherentDocumentData {
@@ -210,28 +153,7 @@ export interface taxonomy extends inherentDocumentData {
 	narrower?: Array<taxonomy>,
 }
 
-export interface taxonomy_Business extends taxonomy {
-}
-
-export interface taxonomy_News extends taxonomy {
-}
-
-export interface taxonomy_Project extends taxonomy {
-}
-
-export interface sponsor extends inherentDocumentData {
-	title: string,
-	image?: sanityImage,
-	website?: string,
-	socials?: Array<object_Social>,
-	about?: PortableTextBlock,
-}
-
-export interface person extends inherentDocumentData {
-	name: string,
-	position?: string,
-	businesses?: Array<article_Business>,
-	contact?: object_Contact,
+export interface taxonomy_Article extends taxonomy {
 }
 
 export interface SettingsPayload extends inherentDocumentData {
@@ -239,12 +161,8 @@ export interface SettingsPayload extends inherentDocumentData {
 	logo?: sanityImage,
 	motto?: string,
 	blurb?: string,
-	keywords?: Array<string>,
 	contact?: object_Contact,
 	about?: PortableTextBlock,
-	landAcknowledgement?: PortableTextBlock,
-	partners?: Array<sponsor>,
-	address?: article_Address,
 	homepage?: PagePayload,
 	navigation?: Array<object_NavigationItem>,
 }
