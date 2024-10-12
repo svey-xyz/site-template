@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation'
 import dynamic from 'next/dynamic'
-import { capitalize } from '@/lib/stringFunctions'
 import { load_singleArticle } from '@/sanity/queries/loadQuery'
 import { article } from '@/types'
 
@@ -16,9 +15,7 @@ interface ArticleMap {
 }
 
 const ArticleList: ArticleMap = {
-	Standard: dynamic(() => import('@components/Pages/Articles/Generic')),
-	news: dynamic(() => import('@components/Pages/Articles/News')),
-	project: dynamic(() => import('@components/Pages/Articles/Project')),
+	Default: dynamic(() => import('@/components/Pages/Articles/Default')),
 }
 
 export const ArticleRoute = async ({ type, slug }: ArticleRouteProps) => {
@@ -28,7 +25,7 @@ export const ArticleRoute = async ({ type, slug }: ArticleRouteProps) => {
 	const article = articlePayload.data
 	if (!article) return notFound()
 
-	const ArticlePage = ArticleList[article._type] ?? ArticleList.Standard
+	const ArticlePage = ArticleList[article._type] ?? ArticleList.Default
 
 	return <ArticlePage data={articlePayload.data} />
 

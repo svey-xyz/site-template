@@ -30,7 +30,7 @@ type NavigationTitleParams = {
 
 const NavigationTitle = ({ title, className, chevron }: NavigationTitleParams) => {
 	return (
-		<span className={`${className} font-bold text-bg outline-none px-4 py-1 transition-colors duration-200 flex flex-row items-center justify-center gap-1`}>
+		<span className={`${className} px-4 py-1 flex flex-row items-center justify-center gap-1`}>
 			{title}
 			{ chevron &&
 				<FaChevronDown className='' />
@@ -47,7 +47,7 @@ type StaticNavigationParams = {
 const StaticNavigation = ({ title, page }: StaticNavigationParams) => {
  return (
 	 <Link href={resolvePageHref(page)} className='group'>
-		 <NavigationTitle title={title} className={`bg-accent-secondary/60 group-hover:bg-accent-secondary/80`} />
+		 <NavigationTitle title={title} className={``} />
 	</Link>
  )
 }
@@ -61,21 +61,21 @@ const PopoverNavigation = ({ title, pages }: PopoverParams) => {
 
 	return (
 	<Popover className="group relative z-10">
-		<PopoverButton className={`outline-none flex flex-row`} >
+		<PopoverButton className={`flex flex-row`} >
 			<NavigationTitle title={title} chevron={true}
-				className='bg-accent-secondary/60 group-hover:bg-accent-secondary/80 group-data-[open]:bg-accent/80 group-data-[open]:hover:bg-accent/60' />
+				className='' />
 		</PopoverButton>
 		<PopoverPanel>
 			{({ close }) => {
 				const items = pages.flatMap((page) => {
 					return (
-						<Link href={resolvePageHref(page)} key={page._id} className='relative z-10 px-4 py-2 text-sm font-bold hover:underline' onClick={() => { close() }}>
+						<Link href={resolvePageHref(page)} key={page._id} className='relative z-10 px-4 py-2' onClick={() => { close() }}>
 							{page.title}
 						</Link>
 					)
 				})
 				return (
-					<div className="absolute flex flex-col z-50 bg-bg w-full gap-1 py-4 h-fit mt-1">
+					<div className="absolute flex flex-col z-50 w-full gap-1 py-4 h-fit mt-1">
 						{ items }
 					</div>
 				)

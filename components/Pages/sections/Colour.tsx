@@ -1,6 +1,5 @@
 import { section } from '@/types';
 import React, { ReactNode } from 'react';
-import { Standard } from './Standard'
 import { Blocks } from '@/components/Pages/Blocks';
 
 interface ColourMap {
@@ -41,7 +40,6 @@ export const Colour = ({ data, index }: { data: section, index: number }) => {
 				</div>
 			</div>
 		</div>
-		// <Standard data={ data } index={ index } className={`${bgColour} ${fgColour}`} />
 	);
 };
 

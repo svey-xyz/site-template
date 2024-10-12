@@ -73,8 +73,8 @@ module.exports = {
 				'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
 			},
 			fontFamily: {
-				heading: ['var(--font-fira-code)'],
-				body: ['var(--font-fira-code)']
+				heading: ['var(--custom-font)'],
+				body: ['var(--custom-font)']
 			},
 			animation: {
 				'breathing': 'bounceScale 2s linear infinite',

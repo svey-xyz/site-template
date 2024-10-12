@@ -40,7 +40,7 @@ export const GenericArchiveCard = async ({ article, filtered = true }: args) => 
 				</div>
 				
 				<div className='py-2 bg-bg w-full flex flex-col gap-4'>
-					<span className='text-xl text-accent font-black'>
+					<span className=''>
 						{article.title}
 					</span>
 				</div>

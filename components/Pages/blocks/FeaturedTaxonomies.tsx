@@ -18,8 +18,8 @@ export const FeaturedTaxonomies = ({ data, className } : { data: block_FeaturedT
 					<a
 						key={tax._id}
 						href={`${resolveArchiveHref(taxTypeToArticleType(tax))}?filter=${encodeURIComponent(tax.prefLabel)}`} 
-						className='group relative flex flex-col gap-4 flex-grow px-5 pt-4 lg:pb-16 pb-8 text-bg justify-end border-transparent border-t-2 hover:border-accent-secondary'>
-						<div className='absolute inset-0 -z-1 bg-accent/75 saturate-150'
+						className='group relative flex flex-col gap-4 flex-grow px-5 pt-4 lg:pb-16 pb-8 text-bg justify-end'>
+						<div className='absolute inset-0 -z-1'
 							style={{
 								WebkitFilter: `brightness(${brightness}%)`,
 								filter: `brightness(${brightness}%)`,

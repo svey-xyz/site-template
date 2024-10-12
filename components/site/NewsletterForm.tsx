@@ -30,7 +30,7 @@ const NewsletterForm = ({stacked, className}:{stacked?:boolean,className?:string
 			method='post'
 			className={`${ className } ${ stacked ? 'flex-col' : 'flex-row' } flex relative w-full gap-4`}>
 			<label
-				className='text-bg font-bold text-sm'
+				className=''
 				htmlFor={`email-field-${uuid}`}
 				hidden={true}
 			>
@@ -41,13 +41,13 @@ const NewsletterForm = ({stacked, className}:{stacked?:boolean,className?:string
 				type='email'
 				name='email'
 				required={true}
-				className={`bg-bg py-1 px-3 text-fg outline-none focus:outline focus:outline-1 focus:outline-accent-secondary w-full`}
+				className={`bg-bg py-1 px-3 w-full`}
 				placeholder="Email"
 				value={email}
 				onChange={e => { handleChange(e.target.value); }}
 			/>
 			<button
-				className='bg-accent-secondary py-1 px-10 text-bg hover:bg-accent-secondary/80 transition-colors duration-300'
+				className='py-1 px-10'
 				onClick={() => { handleSubmit(); }}
 				type='submit'
 			>

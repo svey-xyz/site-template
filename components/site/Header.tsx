@@ -1,7 +1,6 @@
 import { loadSettings } from '@/sanity/queries/loadQuery'
 import Image from '@components/site/Image'
 import Link from 'next/link'
-import NavigationItem from '@/components/ui/NavigationItem'
 import { Navigation } from '@/components/site/Navigation'
 
 const Header = async() => {

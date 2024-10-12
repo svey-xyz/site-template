@@ -24,7 +24,7 @@ export const Form = ({ submitFn, fields, submitText = 'Submit', FormLegend, mess
 		<form onSubmit={submitFn} className='w-full'>
 			<Fieldset className="flex flex-col w-full gap-6">
 				{ FormLegend &&
-					<Legend className="text-sm font-bold">
+					<Legend className="">
 							{ FormLegend }
 					</Legend>
 				}
@@ -34,12 +34,12 @@ export const Form = ({ submitFn, fields, submitText = 'Submit', FormLegend, mess
 				}
 				<Button
 					type="submit"
-					className="w-fit px-8 py-2 bg-accent-secondary hover:bg-accent transition-colors duration-300 text-bg"
+					className="w-fit px-8 py-2"
 				>
 					{submitText }
 				</Button>
 				{ message && (
-					<div className={`${error ? 'text-accent-failure' : 'text-accent-success'} font-bold drop-shadow`}>
+					<div className={`${error ? 'text-accent-failure' : 'text-accent-success'}`}>
 						{ message }
 					</div>
 				)}
@@ -51,8 +51,8 @@ export const Form = ({ submitFn, fields, submitText = 'Submit', FormLegend, mess
 const FieldGenerator = ({ args }: { args: fieldArgs }) => {
 	return (
 		<Field className='flex flex-col gap-2'>
-			<Label className="block text-accent">{args.label}</Label>
-			<Input className="p-2 w-full bg-bg outline-none border border-accent-secondary" name="username" ref={args.ref} required={args.required} />
+			<Label className="block">{args.label}</Label>
+			<Input className="p-2 w-full" name="username" ref={args.ref} required={args.required} />
 		</Field>
 	)
 }

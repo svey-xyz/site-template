@@ -7,12 +7,10 @@ const Page = async() => {
 	if (!initial || !initial.data.homepage) {
 		return (
 			<div className="text-center">
-				You don&rsquo;t have a homepage yet
+				No homepage set.
 			</div>
 		)
 	}
-
-	
 
 	return <Pages.PageRoute params={{ slug: [initial.data.homepage.slug] }} />
 }

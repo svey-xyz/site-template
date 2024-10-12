@@ -16,8 +16,6 @@ export async function generateMetadata(
 			template: titleTemplate,
 			default: settings.title,
 		},
-		// description: "Generic description.",
-		// keywords: ['Next.js', 'React', 'JavaScript'],
 	}
 }
 export default function RootLayout({

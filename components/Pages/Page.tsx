@@ -31,8 +31,7 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 		<article className=''>
 			{	BG_URL &&
 				<div
-					className={`-mt-[--total-header-height] relative max-w-full bg-fixed bg-no-repeat bg-cover bg-center text-accent
-						after:absolute after:inset-0 after:bg-gradient-to-t after:from-bg after:to-bg/0`}
+					className={`relative max-w-full bg-fixed bg-no-repeat bg-cover bg-center`}
 					style={{
 						backgroundImage: `url(${BG_URL})`
 					}}

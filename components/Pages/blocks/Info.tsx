@@ -19,12 +19,12 @@ export const Info = ({ data, className }: { data: block_Info, className?: string
 					return (
 						<div key={item.title} className='flex flex-col items-start text-left'>
 							{ item.icon &&
-								<div className='rounded-full bg-accent-secondary text-4xl text-bg p-3 mb-2 w-fit'>
+								<div className='rounded-full p-3 mb-2 w-fit'>
 									<Icon icon={item.icon.name} />
 								</div>
 							}
 							{ item.number &&
-								<div className='text-4xl p-3 mb-2 font-black'>
+								<div className='p-3 mb-2'>
 									<NumericLabel params={{ wholenumber: true, justification: 'L', shortFormat: true, commafy: true }}>
 										{item.number}
 									</NumericLabel>

@@ -36,10 +36,10 @@ export const Navigation = ({ navItems, className }: { navItems: Array<object_Nav
 			<Popover className="absolute right-0 top-0 h-full flex flex-col items-center justify-center">
 				<PopoverButton>
 					<Button className='relative z-10'>
-						<Bars2Icon className='w-icon h-icon text-accent-secondary stroke-1 stroke-accent-secondary' />
+						<Bars2Icon className='w-icon h-icon' />
 					</Button>
 				</PopoverButton>
-				<PopoverPanel modal={true} focus={true} className="fixed inset-0 bg-bg/80 backdrop-blur-xl pt-[--total-header-height]" >
+				<PopoverPanel modal={true} focus={true} className="fixed inset-0 pt-[--header-height]" >
 					<div className='relative flex flex-col main-padding gap-4'>
 						{navItems.flatMap((item) => {
 							return <NavigationItem key={item.title} item={item} />

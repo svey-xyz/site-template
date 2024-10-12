@@ -3,7 +3,6 @@
 import React, { ChangeEvent, useEffect, useRef, useState } from "react";
 import { block_Archive, article, taxonomy } from "@/types";
 import dynamic from 'next/dynamic'
-import { capitalize } from "@/lib/stringFunctions";
 import { useSearchParams } from 'next/navigation';
 
 const alltaxonomy: taxonomy = {
@@ -28,9 +27,7 @@ interface CardMap {
 }
 
 const CardList: CardMap = {
-	Standard: dynamic(() => import('@/components/Pages/blocks/Archive/cards/Generic')),
-	business: dynamic(() => import('@/components/Pages/blocks/Archive/cards/Business')),
-
+	Default: dynamic(() => import('@/components/Pages/blocks/Archive/cards/Default')),
 }
 
 export const Filter = ({ articles, archive }: args) => {
@@ -41,7 +38,7 @@ export const Filter = ({ articles, archive }: args) => {
 	const [filteredEncodedLabel, setFilteredEncodedLabel] = useState<string>(alltaxonomy.prefLabel)
 	const alltaxonomyRef = useRef<HTMLInputElement>(null)
 
-	const ArchiveCard = CardList[archive.archiveType] ?? CardList.Standard
+	const ArchiveCard = CardList[archive.archiveType] ?? CardList.Default
 
 	let taxonomies: Array<taxonomy> = []
 	let taxonomyNames: Array<string> = []
@@ -81,10 +78,12 @@ export const Filter = ({ articles, archive }: args) => {
 										className="peer absolute left-1/2 -translate-x-1/2 h-full w-full appearance-none
 											cursor-pointer transition-all duration-200
 											origin-center"
-										checked={filteredEncodedLabel == encodeURIComponent(taxonomy.prefLabel)} onChange={handleFilterChange} ref={(() => { if (filteredEncodedLabel == encodeURIComponent(taxonomy.prefLabel)) return alltaxonomyRef})() } />
-									<label className="text-accent-secondary/60
-										group-hover:text-accent peer-checked:text-accent-secondary peer-checked:brightness-75">
-										{taxonomy.prefLabel}
+										checked={filteredEncodedLabel == encodeURIComponent(taxonomy.prefLabel)}
+										onChange={handleFilterChange}
+										ref={(() => { if (filteredEncodedLabel == encodeURIComponent(taxonomy.prefLabel)) return alltaxonomyRef})() }
+									/>
+									<label className="group-hover:brightness-90 peer-checked:brightness-75">
+										{ taxonomy.prefLabel }
 									</label>
 								</div>
 							)

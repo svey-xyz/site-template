@@ -8,13 +8,9 @@ import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 import "swiper/css";
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
-import { block_Gallery, sanityImage } from "@/types";
+import { block_Gallery } from "@/types";
 
 export const Gallery = ({ data, className }: { data: block_Gallery, className?: string }) => {
-	const SwiperStyles = {
-		'--swiper-navigation-color': `theme('colors.accent.secondary')`,
-		'--swiper-pagination-color': `theme('colors.accent.secondary')`,
-	} as React.CSSProperties;
 	const slide = 0
 
 	return (
@@ -24,7 +20,6 @@ export const Gallery = ({ data, className }: { data: block_Gallery, className?: 
 				initialSlide={slide}
 				observer={true}
 				navigation={true} modules={[Pagination, Navigation, Keyboard]}
-				style={SwiperStyles}
 				keyboard={{
 					enabled: true,
 				}}
@@ -51,7 +46,7 @@ export const Gallery = ({ data, className }: { data: block_Gallery, className?: 
 
 export default Gallery
 
-
+/** Tiled gallery */
 
 // 'use client'
 

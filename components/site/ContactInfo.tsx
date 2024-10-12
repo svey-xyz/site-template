@@ -5,24 +5,24 @@ import React from 'react';
 export const ContactInfo = ({contact}:{contact: object_Contact}) => {
 	
 	return (
-		<div className='flex flex-col gap-2 underline text-accent-secondary'>
+		<div className='flex flex-col gap-2'>
 			{ contact.website &&
-				<a href={contact.website} target='_blank' className=' hover:text-accent'>
+				<a href={contact.website} target='_blank'>
 					Website
 				</a>
 			}
 			{ contact.email &&
-				<a href={`mailto:${contact.email}`} className=' hover:text-accent'>
+				<a href={`mailto:${contact.email}`}>
 					{ contact.email }
 				</a>
 			}
 			{ contact.phone &&
-				<a href={`tel:${contact.phone}`} className=' hover:text-accent'>
+				<a href={`tel:${contact.phone}`}>
 					{ contact.phone }
 				</a>
 			}
 			{ contact.socials &&
-				<Socials socials={contact.socials} className='text-accent-secondary-dark' />
+				<Socials socials={contact.socials}/>
 			}
 		</div>
 	);

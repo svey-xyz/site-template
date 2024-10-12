@@ -28,7 +28,7 @@ export const ReferenceList = ({ documentId } : { documentId : string }) => {
 	return (
 		<div className='main-padding my-8'>
 			<div className='flex flex-col gap-2'>
-				<h2 className='text-lg font-black'>Referenced In:</h2>
+				<h2 className=''>Referenced In:</h2>
 
 				{(referencingDocs && referencingDocs.length > 0) ? (
 					<ul>

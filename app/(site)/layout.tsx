@@ -13,10 +13,10 @@ import { loadSettings } from '@/sanity/queries/loadQuery';
 import { AutomaticVisualEditing } from '@/components/AutomaticVisualEditing';
 
 const inter = Inter({ subsets: ['latin'] })
-const firaCode = localFont({
-	src: "../../public/fonts/Montserrat/Montserrat-VariableFont_wght.ttf",
-	variable: "--font-montserrat",
-});
+// const font = localFont({
+// 	src: "../../public/fonts/",
+// 	variable: "--custom-font",
+// });
 
 export async function generateMetadata(
 	{ params }: any,
@@ -45,7 +45,7 @@ export default async function RootLayout({
 	children: React.ReactNode,
 }) {
 
-	let documentClasses = `${inter.className} ${firaCode.variable} relative`
+	let documentClasses = `${inter.className} relative` // ${font.variable}
 	
 	return (
 		<html lang="en" className={documentClasses} suppressHydrationWarning>

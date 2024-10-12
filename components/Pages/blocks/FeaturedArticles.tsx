@@ -11,9 +11,7 @@ interface CardMap {
 }
 
 const CardList: CardMap = {
-	Standard: dynamic(() => import('@/components/Pages/blocks/Archive/cards/Generic')),
-	business: dynamic(() => import('@/components/Pages/blocks/Archive/cards/Business')),
-
+	Default: dynamic(() => import('@/components/Pages/blocks/Archive/cards/Default')),
 }
 
 export const FeaturedArticles = ({ data, className }: { data: block_FeaturedArticles, className?: string }) => {
@@ -27,7 +25,7 @@ export const FeaturedArticles = ({ data, className }: { data: block_FeaturedArti
 			<div className='relative flex flex-col lg:flex-row gap-8 items-center lg:items-start lg:justify-center'>
 				{	data.articles?.map((article) => {
 
-					const FeaturedCard = CardList[article._type] ?? CardList.Standard
+					const FeaturedCard = CardList[article._type] ?? CardList.Default
 
 					return <FeaturedCard key={`${data._key}-${article._id}`} article={article} />
 				})}
