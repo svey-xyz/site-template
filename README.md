@@ -37,8 +37,6 @@ Even though this tempalte makes heavy use of *Tailwindcss* it attempts to sepera
 ## Getting Started
 After cloning the repo the first step is to create a .env file with the following variables set:
 
-*you can aslo store these in GitHub repo settings/secrets if you're worried about losing them*
-
 ***.env***
 
 SANITY_API_READ_TOKEN
@@ -51,7 +49,7 @@ NEXT_PUBLIC_SANITY_DATASET
 
 NEXT_PUBLIC_SANITY_PROJECT_ID
 
-Creating new *articles*, *sections*, and *blocks* all follow a similar process, steps for each are documented below.
+*Creating new *articles*, *sections*, and *blocks* all follow a similar process, steps for each are documented below.*
 
 ### Creating an article
 
@@ -74,6 +72,8 @@ On the frontend blocks each have their own components located in `components/Pag
 ## Deployment
 
 Since this template makes use of Nextjs server functionality the most straightforward deployment option is with [Vercel](https://vercel.com). For more information on integrating Vercel deployments with your GitHub repo read [here](https://vercel.com/docs/deployments/git#deploying-a-git-repository).
+
+To enable deployment status previews in your GitHub repo ensure that the Vercel project is setup to integrate with your repo. Also ensure that you add all the necessary env variables to the Vercel project. 
 
 ## Roadmap
 
