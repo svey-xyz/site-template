@@ -7,8 +7,7 @@ export async function generateMetadata(
 	{ params }: any,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const initial = await loadSettings()
-	const settings = initial.data
+	const settings = await loadSettings()
 
 	const titleTemplate = `${settings.title} | %s`
 	return {

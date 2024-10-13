@@ -31,6 +31,8 @@ Even though this tempalte makes heavy use of *Tailwindcss* it attempts to sepera
 ## Getting Started
 After cloning the repo the first step is to create a .env file with the following variables set:
 
+*you can aslo store these in GitHub repo settings/secrets if you're worried about losing them*
+
 ***.env***
 
 SANITY_API_READ_TOKEN
@@ -62,6 +64,10 @@ On the frontend sections each have their own components located in `components/P
 Block schemas are kept in `sanity/schemas/pages/blocks/`. Once you have created your block be sure to add it to the imports and export of `sanity/schemas/pages/blocks/index.ts`.
 
 On the frontend blocks each have their own components located in `components/Pages/blocks/`. Ensure that you add your block to `components/Pages/Blocks.tsx`.
+
+## Deployment
+
+Since this template makes use of Nextjs server functionality the most straightforward deployment option is with [Vercel](https://vercel.com). For more information on integrating Vercel deployments with your GitHub repo read [here](https://vercel.com/docs/deployments/git#deploying-a-git-repository).
 
 ## Roadmap
 
