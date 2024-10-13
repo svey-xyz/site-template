@@ -4,7 +4,6 @@
 ## Latest Deployment Info
 
 - **Vercel Build Status**: <!--vercel-build-status-->
-- **Preview**: [Live Preview](<!--vercel-preview-url-->)  
 - **Build Date**: <!--vercel-build-date-->
 
 ## Description
