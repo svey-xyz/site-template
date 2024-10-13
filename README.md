@@ -3,9 +3,9 @@
 
 ## Latest Deployment Info
 
-- **Vercel Build Status**: <!--vercel-build-status-->
-- **Preview**: [Live Preview](<!--vercel-preview-url-->)  
-- **Build Date**: <!--vercel-build-date-->
+- **Vercel Build Status**: CANCELED
+- **Preview**: [Live Preview](https://site-template-l8x0x2av5-sveys-projects-ec762071.vercel.app)  
+- **Build Date**: 2024-10-13 19:53:42
 
 ## Description
 This repo is a template for the sites I build, it is designed to be highly flexible and customizable while providing a solid foundation to build on.
