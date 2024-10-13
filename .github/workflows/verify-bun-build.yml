@@ -27,7 +27,7 @@ jobs:
 
       # Run the build command with Bun
       - name: Build project
-        run: bun build
+        run: bun run build
 
       # Optionally, run tests if your build includes a testing step
       # - name: Run tests
