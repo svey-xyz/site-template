@@ -3,8 +3,8 @@
 
 ## Latest Deployment Info
 
-- **Vercel Build Status**: <!--vercel-build-status-->
-- **Build Date**: <!--vercel-build-date-->
+- **Vercel Build Status**: 
+- **Build Date**: 
 
 ## Description
 This repo is a template for the sites I build, it is designed to be highly flexible and customizable while providing a solid foundation to build on.
