@@ -22,6 +22,7 @@ module.exports = {
 			height: {
 				'icon': 'var(--icon-size)',
 				'icon-sm': 'var(--icon-size-sm)',
+				'header-item': 'var(--header-item)',
 			},
 			width: {
 				'icon': 'var(--icon-size)',

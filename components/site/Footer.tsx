@@ -4,10 +4,8 @@ import Socials from '@components/site/Socials'
 import { loadSettings } from '@/sanity/queries/loadQuery';
 
 const Footer = async ({}:{}) => {
-	const initial = await loadSettings()
-	if (!initial) return
-
-	const settings = initial.data
+	const settings = await loadSettings()
+	if (!settings) return
 	
 	return (
 		<section className='relative w-full'>

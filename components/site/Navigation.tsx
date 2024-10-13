@@ -48,7 +48,7 @@ export const Navigation = ({ navItems, className }: { navItems: Array<object_Nav
 	}
 
 	return (
-		<div className={`relative max-w-full w-full overflow-x-hiden overflow-y-visible ${className}`} autoFocus>
+		<div className={`max-w-full w-full overflow-x-hiden overflow-y-visible ${className}`} autoFocus>
 			<div
 				className={`relative flex flex-row min-h-full items-center w-fit max-w-full ml-auto ${(gapWidth > _BREAK_POINT) ? 'visible' : 'invisible'}`}
 				ref={navContainer}

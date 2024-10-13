@@ -10,13 +10,13 @@ const Header = async() => {
 	return (
 		<div className="relative h-full flex flex-col items-center justify-center z-50">
 			<div className="relative main-padding">
-				<div className='relative flex flex-row justify-between gap-4 my-4'>
-					<Link href='/' aria-label='Link to the site home.' className='relative z-10 flex-grow'>
+				<div className='relative flex flex-row justify-between gap-4 my-4 items-center'>
+					<Link href='/' aria-label='Link to the site home.' className='relative z-10'>
 						{ settings.logo &&
 							<Image
 								image={settings.logo}
-								size={{ width: 165, height: 100, sizes: "(max-width: 244px) 50vw, (max-width: 244px) 50vw, 50vw" }}
-								className='min-w-[165px] max-w-[165px] w-auto h-auto'
+								size={{ width: 200, height: 200, sizes: "(max-width: 244px) 50vw, (max-width: 244px) 50vw, 50vw" }}
+								className='w-auto min-w-fit h-header-item'
 							/>
 						}
 					</Link>

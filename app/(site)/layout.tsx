@@ -56,8 +56,8 @@ export default async function RootLayout({
 					{ children }
 				</main>
 				{ draftMode().isEnabled && <AutomaticVisualEditing /> }
-				{/* <Footer /> */}
-				{/* <Analytics /> */}
+				<Footer />
+				<Analytics />
 			</body>
 		</html>
 	) 
