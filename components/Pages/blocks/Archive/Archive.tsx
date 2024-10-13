@@ -5,16 +5,14 @@ import { Filter } from '@/components/Pages/blocks/Archive/Filter';
 export const Archive = async ({ data, className }: { data: block_Archive, className?:string }) => {
 	if (!data) return
 
-	const initialPayload = await loadArticles<article>(data.archiveType, data.featuredTaxonomies)
-	if (!initialPayload) return []
-	
-	const archiveItems = initialPayload.data
+	const articles = await loadArticles<article>(data.archiveType, data.featuredTaxonomies)
+	if (!articles) return []
 
 	// const archiveTitle = `${pluralize(camelCaseToWords(data.archiveType))} Archive`
 
 	return (
 		<div className={`${className}`}>
-			<Filter articles={archiveItems} archive={data} />
+			<Filter articles={articles} archive={data} />
 		</div>
 	);
 };
