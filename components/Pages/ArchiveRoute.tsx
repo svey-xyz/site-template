@@ -8,11 +8,11 @@ type Props = {
 }
 
 export const ArchiveRoute = async ({ params }: Props) => {
-	const initial = await loadArchive(params.slug)
+	const data = await loadArchive(params.slug)
 
-	if (!initial.data) {
+	if (!data) {
 		notFound()
 	}
 
-	return <Page data={initial.data} />
+	return <Page data={data} />
 }

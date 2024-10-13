@@ -26,7 +26,7 @@ export const Blocks = async ({ blocks, blockClasses }: { blocks: BLOCK_TYPES, bl
 		const BlockComponent = BlockList[block._type] ?? BlockList.Standard
 
 		return (
-			<BlockComponent data={block} className={`${blockClasses} ${ block.hiddenOnMobile && 'hidden lg:flex' }`} siteData={settings.data} />
+			<BlockComponent data={block} className={`${blockClasses} ${ block.hiddenOnMobile && 'hidden lg:flex' }`} siteData={settings} />
 		)
 	})
 };

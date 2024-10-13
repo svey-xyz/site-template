@@ -10,7 +10,7 @@ export const generateMetadata = async(
 	{ params }: Props,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> => {
-	const { data: page } = await loadPage(params.slug)
+	const page = await loadPage(params.slug)
 
 	return {
 		title: page?.title,

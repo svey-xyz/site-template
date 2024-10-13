@@ -10,7 +10,7 @@ export const generateMetadata = async(
 	{ params }: Props,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> => {
-	const { data: archive } = await loadArchive(params.slug)
+	const archive = await loadArchive(params.slug)
 
 	return {
 		title: archive?.title,

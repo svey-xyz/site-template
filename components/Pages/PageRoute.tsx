@@ -8,11 +8,11 @@ type Props = {
 }
 
 export const PageRoute = async ({ params }: Props) => {
-	const initial = await loadPage(params.slug[0])
+	const data = await loadPage(params.slug[0])
 
-	if (!initial.data) {
+	if (!data) {
 		notFound()
 	}
 
-	return <Page data={initial.data} />
+	return <Page data={data} />
 }

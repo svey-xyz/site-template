@@ -21,6 +21,7 @@
     "@sanity/vision": "latest",
     "@vercel/analytics": "^1.2.2",
     "moment-timezone": "^0.5.45",
+    "next": "^14.2.15",
     "next-sanity": "^9.5.0",
     "next-sanity-image": "^6.1.1",
     "react": "^18.3.1",
@@ -31,15 +32,17 @@
     "sanity-plugin-note-field": "^2.0.2",
     "server-only": "^0.0.1",
     "slugify": "^1.6.6",
-    "swiper": "^11.1.0",
-    "typescript": "^5.6.3"
+    "swiper": "^11.1.0"
   },
   "devDependencies": {
+    "typescript": "^5.6.3",
     "@tailwindcss/typography": "^0.5.12",
     "autoprefixer": "^10.4.19",
     "postcss": "^8.4.38",
     "@types/node": "20.12.3",
     "@types/pluralize": "^0.0.33",
-    "@types/react": "18.2.74"
+    "@types/react": "18.2.74",
+    "eslint": "^9.12.0",
+    "eslint-config-next": "^14.2.15"
   }
 }

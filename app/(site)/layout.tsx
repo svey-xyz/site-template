@@ -22,8 +22,8 @@ export async function generateMetadata(
 	{ params }: any,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const initial = await loadSettings()
-	const settings = initial.data
+	const data = await loadSettings()
+	const settings = data
 	
 	const titleTemplate = `${settings.title} | %s`
 	return {
@@ -48,7 +48,7 @@ export default async function RootLayout({
 	let documentClasses = `${inter.className} relative` // ${font.variable}
 	
 	return (
-		<html lang="en" className={documentClasses} suppressHydrationWarning>
+		<html lang="en" className={documentClasses}>
 			<Head />
 			<body className='min-h-screen h-full overflow-x-hidden flex flex-col'>
 				<Header />
@@ -56,8 +56,8 @@ export default async function RootLayout({
 					{ children }
 				</main>
 				{ draftMode().isEnabled && <AutomaticVisualEditing /> }
-				<Footer />
-				<Analytics />
+				{/* <Footer /> */}
+				{/* <Analytics /> */}
 			</body>
 		</html>
 	) 

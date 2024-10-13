@@ -19,13 +19,12 @@ const ArticleList: ArticleMap = {
 
 export const ArticleRoute = async ({ type, slug }: ArticleRouteProps) => {
 
-
-	const articlePayload = await load_singleArticle<article>(type, slug)
-	const article = articlePayload.data
+	const data = await load_singleArticle<article>(type, slug)
+	const article = data
 	if (!article) return notFound()
 
 	const ArticlePage = ArticleList[article._type] ?? ArticleList.Default
 
-	return <ArticlePage data={articlePayload.data} />
+	return <ArticlePage data={data} />
 
 }

@@ -4,10 +4,8 @@ import Link from 'next/link'
 import { Navigation } from '@/components/site/Navigation'
 
 const Header = async() => {
-	const initial = await loadSettings()
-	if (!initial) return;
-
-	const settings = initial.data;
+	const settings = await loadSettings()
+	if (!settings) return;
 	
 	return (
 		<div className="relative h-full flex flex-col items-center justify-center z-50">
@@ -18,7 +16,7 @@ const Header = async() => {
 							<Image
 								image={settings.logo}
 								size={{ width: 165, height: 100, sizes: "(max-width: 244px) 50vw, (max-width: 244px) 50vw, 50vw" }}
-								className='min-w-[165px]'
+								className='min-w-[165px] max-w-[165px] w-auto h-auto'
 							/>
 						}
 					</Link>

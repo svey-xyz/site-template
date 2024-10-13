@@ -11,7 +11,7 @@ import {
 
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient } from "@sanity/client";
 import { client } from "@/sanity/lib/client";
-import { capitalize, pluralize } from '@/lib/stringFunctions'
+import { pluralize } from '@/lib/stringFunctions'
 import * as _PARTIAL_ARTICLE_QUERIES from '@/sanity/queries/partials'
 import { single_Article, bundle_Articles } from '@/sanity/queries/buildArticleQuery'
 
@@ -57,12 +57,15 @@ export const loadQuery = (<T>(query: string, params: QueryParams = {}, options: 
 	}) as Promise<{ data: T, sourceMap: ContentSourceMap }>
 }) satisfies typeof queryStore.loadQuery
 
-export const loadSettings = () => {
-	return loadQuery<SettingsPayload>(
+export const loadSettings = async () => {
+	const initial = await loadQuery<SettingsPayload>(
 		settingsQuery,
 		{},
 		{ next: { tags: ['settings', 'home', 'page'] } },
 	)
+
+	const data = initial.data
+	return data
 }
 
 export const load_singleArticle = async <T>(type: string, slug: string) => {
@@ -71,11 +74,14 @@ export const load_singleArticle = async <T>(type: string, slug: string) => {
 		_PARTIAL_ARTICLE_QUERIES[type as keyof typeof _PARTIAL_ARTICLE_QUERIES] :
 		''
 
-	return loadQuery<T>(
+	const initial = await loadQuery<T>(
 		single_Article(partial),
 		{ type, slug, partial },
 		{ next: { tags: [type, pluralize(type), 'article', 'articles'] } },
 	)
+
+	const data = initial.data
+	return data
 }
 
 export const loadArticles = async <T>(type: string, taxonomies?:Array<taxonomy>) => {
@@ -84,25 +90,34 @@ export const loadArticles = async <T>(type: string, taxonomies?:Array<taxonomy>)
 			_PARTIAL_ARTICLE_QUERIES[type as keyof typeof _PARTIAL_ARTICLE_QUERIES] :
 			''
 
-	return loadQuery<Array<T>>(
+	const initial = await loadQuery<Array<T>>(
 		bundle_Articles(partial, taxonomies),
 		{ type, partial },
 		{ next: { tags: [type, pluralize(type), 'article', 'articles'] } },
 	)
+
+	const data = initial.data
+	return data
 }
 
-export const loadPage = (slug: string) => {
-	return loadQuery<PagePayload | null>(
+export const loadPage = async (slug: string) => {
+	const initial = await loadQuery<PagePayload | null>(
 		pageQuery,
 		{ slug },
 		{ next: { tags: [`page:${slug}`, 'home'] } },
 	)
+
+	const data = initial.data
+	return data
 }
 
-export const loadArchive = (archiveID: string) => {
-	return loadQuery<ArchivePayload | null>(
+export const loadArchive = async (archiveID: string) => {
+	const initial = await loadQuery<ArchivePayload | null>(
 		archiveQuery,
 		{ archiveID },
 		{ next: { tags: [`archive:${archiveID}`, 'archive'] } },
 	)
+
+	const data = initial.data
+	return data
 }
