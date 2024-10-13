@@ -1,6 +1,12 @@
 # site-template
 *by [svey](https://svey.xyz)*
 
+## Latest Deployment Info
+
+- **Vercel Build Status**: <!--vercel-build-status-->
+- **Preview**: [Live Preview](<!--vercel-preview-url-->)  
+- **Build Date**: <!--vercel-build-date-->
+
 ## Description
 This repo is a template for the sites I build, it is designed to be highly flexible and customizable while providing a solid foundation to build on.
 
