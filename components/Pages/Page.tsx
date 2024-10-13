@@ -13,12 +13,11 @@ export interface PageProps {
 	encodeDataAttribute?: EncodeDataAttributeCallback
 }
 
-const ContainerList: ContainerMap = {
+const SectionList: ContainerMap = {
 	Standard: dynamic(() => import('@/components/Pages/sections/Standard')),
 	Video: dynamic(() => import('@/components/Pages/sections/Video')),
 	Image: dynamic(() => import('@/components/Pages/sections/Image')),
 	Colour: dynamic(() => import('@/components/Pages/sections/Colour')),
-
 }
 
 export const Page = ({ data, encodeDataAttribute }: PageProps) => {
@@ -45,7 +44,7 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 
 			{ data.sections &&
 				data.sections.map((section, i) => {
-					const Section = ContainerList[section.type] ?? ContainerList.Standard
+					const Section = SectionList[section.type] ?? SectionList.Standard
 					const attr = createDataAttribute({
 						id: data._id,
 						type: data._type,

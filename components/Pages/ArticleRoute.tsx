@@ -14,7 +14,7 @@ interface ArticleMap {
 }
 
 const ArticleList: ArticleMap = {
-	Default: dynamic(() => import('@/components/Pages/Articles/Default')),
+	Default: dynamic(() => import('@/components/Pages/articles/Default')),
 }
 
 export const ArticleRoute = async ({ type, slug }: ArticleRouteProps) => {
