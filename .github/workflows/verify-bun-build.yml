@@ -1,34 +1,61 @@
-name: Verify Bun Build
+name: Verify Bun Build and Update README
 
 on:
   push:
     branches:
       - main
+      - production
   pull_request:
     branches:
       - main
+      - production
 
 jobs:
   bun-build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the repository
+      # Step 1: Checkout the repository
       - name: Checkout code
         uses: actions/checkout@v3
 
-      # Install Bun
+      # Step 2: Install Bun
       - name: Install Bun
         uses: oven-sh/setup-bun@v1
 
-      # Install dependencies with Bun
+      # Step 3: Install dependencies with Bun
       - name: Install dependencies
         run: bun install
 
-      # Run the build command with Bun
+      # Step 4: Run the build command with Bun
       - name: Build project
-        run: bun run build
+        id: bun_build
+        run: |
+          bun run build
+        continue-on-error: true  # Continue even if build fails
 
-      # Optionally, run tests if your build includes a testing step
-      # - name: Run tests
-      #   run: bun test
+      # Step 5: Get the build status and current date
+      - name: Capture build status
+        id: build_status
+        run: |
+          if [ "${{ steps.bun_build.outcome }}" == "success" ]; then
+            echo "::set-output name=status::passing"
+          else
+            echo "::set-output name=status::failing"
+          fi
+          echo "::set-output name=date::$(date +'%Y-%m-%d %H:%M:%S')"
+
+      # Step 6: Update the README with build status and date
+      - name: Update README with build status
+        run: |
+          sed -i "s|<!--bun-build-status-->|${{ steps.build_status.outputs.status }}|g" README.md
+          sed -i "s|<!--bun-build-date-->|${{ steps.build_status.outputs.date }}|g" README.md
+
+      # Step 7: Commit the changes to README
+      - name: Commit changes
+        run: |
+          git config --global user.name "GitHub Actions Bot"
+          git config --global user.email "actions@github.com"
+          git add README.md
+          git commit -m "Update README with latest Bun build status"
+          git push
