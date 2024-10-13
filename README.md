@@ -1,11 +1,11 @@
 # site-template
 *by [svey](https://svey.xyz)*
 
-## Latest Deployment Info
-
-- **Vercel Build Status**: <!--vercel-build-status-->
-- **Preview**: [Live Preview](<!--vercel-preview-url-->)  
-- **Build Date**: <!--vercel-build-date-->
+[![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/svey-xyz/site-template?include_prereleases&sort=semver)](https://GitHub.com/svey-xyz/site-template/releases/)
+[![GitHub commits](https://badgen.net/github/commits/svey-xyz/site-template)](https://GitHub.com/svey-xyz/site-template/commit/)
+[![GitHub latest commit](https://badgen.net/github/last-commit/svey-xyz/site-template)](https://GitHub.com/svey-xyz/site-template/commit/)
+[![GitHub issues](https://img.shields.io/github/issues/svey-xyz/site-template)](https://GitHub.com/svey-xyz/site-template/issues/)
+[![GNU license v3.0](https://img.shields.io/badge/License-GNU-green.svg)](https://github.com/svey-xyz/site-template/LICENSE)
 
 ## Description
 This repo is a template for the sites I build, it is designed to be highly flexible and customizable while providing a solid foundation to build on.
