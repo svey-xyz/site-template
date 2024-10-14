@@ -15,10 +15,16 @@ export const projectId = assertValue(
 
 // see https://www.sanity.io/docs/api-versioning for how versioning works
 export const apiVersion =
-	process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2023-06-21'
+	process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-10-14'
 
-// See the app/api/revalidate/route.ts for how this is used
-export const revalidateSecret = process.env.SANITY_REVALIDATE_SECRET
+export const configStudioBasePath =
+	process.env.SANITY_CONFIG_STUDIO_BASE_PATH || '/studio'
+
+export const configStudioName =
+	process.env.SANITY_CONFIG_STUDIO_NAME || 'studio'
+
+export const configStudioTitle =
+	process.env.SANITY_CONFIG_STUDIO_TITLE || 'studio'
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {
 	if (v === undefined) {
@@ -27,7 +33,3 @@ function assertValue<T>(v: T | undefined, errorMessage: string): T {
 
 	return v
 }
-/**
- * Used to configure edit intent links, for Presentation Mode, as well as to configure where the Studio is mounted in the router.
- */
-export const studioUrl = '/studio'

@@ -1,5 +1,5 @@
 import { createClient } from '@sanity/client'
-import { projectId, dataset, apiVersion } from './api'
+import { projectId, dataset, apiVersion, configStudioBasePath } from './api'
 
 export const client = createClient({
 	projectId,
@@ -9,7 +9,7 @@ export const client = createClient({
 	perspective: "published",
 	stega: {
 		enabled: false,
-		studioUrl: "/studio",
+		studioUrl: configStudioBasePath,
 	},
 })
 

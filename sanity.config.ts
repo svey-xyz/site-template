@@ -9,7 +9,7 @@ import { noteField } from 'sanity-plugin-note-field'
 import { visionTool } from '@sanity/vision'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, dataset, projectId } from '@sanity/lib/api'
+import { apiVersion, configStudioName, configStudioTitle, dataset, projectId } from '@sanity/lib/api'
 import { studioTheme } from '@styles/studio.theme'
 import StudioHeader from '@components/studio/StudioHeader'
 import StudioLogo from '@components/studio/StudioLogo'
@@ -44,8 +44,8 @@ const deskPlugins = [
 
 const config = defineConfig({
   basePath: '/studio',
-	name: 'lptbia_studio',
-	title: 'LPT BIA Studio',
+	name: configStudioName,
+	title: configStudioTitle,
   projectId,
   dataset,
 	schema: schemaOptions,

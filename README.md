@@ -38,16 +38,20 @@ Even though this tempalte makes heavy use of *Tailwindcss* it attempts to sepera
 After cloning the repo the first step is to create a .env file with the following variables set:
 
 ***.env***
+```properties
+# required
+SANITY_API_READ_TOKEN=''
+SANITY_API_WRITE_TOKEN=''
+NEXT_PUBLIC_SANITY_PROJECT_ID=''
 
-SANITY_API_READ_TOKEN
+# optional - defaults set in sanity/lib/api
+NEXT_PUBLIC_SANITY_DATASET='production'
+NEXT_PUBLIC_SANITY_API_VERSION='2024-10-14'
+SANITY_CONFIG_STUDIO_NAME='studio'
+SANITY_CONFIG_STUDIO_TITLE='studio'
+```
 
-SANITY_API_WRITE_TOKEN
-
-NEXT_PUBLIC_SANITY_API_VERSION
-
-NEXT_PUBLIC_SANITY_DATASET
-
-NEXT_PUBLIC_SANITY_PROJECT_ID
+After head to [Sanity.io](https://sanity.io) and create a new project from scratch; making sure to add your api tokens and cors origin.
 
 *Creating new *articles*, *sections*, and *blocks* all follow a similar process, steps for each are documented below.*
 
