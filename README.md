@@ -80,13 +80,18 @@ To enable deployment status previews in your GitHub repo ensure that the Vercel 
 This is a living template intended to evolve and grow with each project and with changing web technologies.
 
 ## Tools
-[Sanity](https://www.sanity.io/)
+<a href="https://bun.sh/"><img src="../assets/logos/bun-logo.svg" alt="bun logo" height="40px"/></a>
+&nbsp;
+<a href="https://www.sanity.io/"><img src="../assets/logos/sanity-io-logo.webp" alt="Sanity.io logo" height="40px"/></a>
+&nbsp;
+<a href="https://nextjs.org"><img src="../assets/logos/NextJS-logo.png" alt="NextJS logo" height="40px"/></a>
+&nbsp;
+<a href="https://tailwindcss.com/"><img src="../assets/logos/TailwindCSS-logo.png" alt="TailwindCSS logo" height="40px"/></a>
+&nbsp;
+<a href="https://headlessui.com/"><img src="../assets/logos/HeadlessUI-logo.svg" alt="HeadlessUI logo" height="40px"/></a>
+&nbsp;
+<a href="https://heroicons.com/"><img src="../assets/logos/heroicons-logo.svg" alt="heroicons logo" height="40px"/></a>
 
-[Next.js](https://nextjs.org/)
+*For a full list of tools used check the package.json*
 
-[Tailwindcss](https://tailwindcss.com/)
-
-[HeadlessUI](https://headlessui.com/)
-
-[heroicons](https://heroicons.com/)
 
