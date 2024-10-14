@@ -1,4 +1,4 @@
-import { loadSettings } from '@/sanity/queries/loadQuery';
+import { configStudioTitle } from '@/sanity/lib/api';
 import '@styles/studio.globals.css'
 
 import { Metadata, ResolvingMetadata } from 'next';
@@ -7,13 +7,12 @@ export async function generateMetadata(
 	{ params }: any,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const settings = await loadSettings()
 
-	const titleTemplate = `${settings.title} | %s`
+	const titleTemplate = `${configStudioTitle} | %s`
 	return {
 		title: {
 			template: titleTemplate,
-			default: settings.title,
+			default: configStudioTitle,
 		},
 	}
 }

@@ -7,6 +7,7 @@ const socialTypes = [
 	{ title: 'Vimeo', value: 'vimeo' },
 	{ title: 'LinkedIn', value: 'linkedin' },
 	{ title: 'GitHub', value: 'github' },
+	{ title: 'Mastadon', value: 'mastadon' },
 ]
 
 export const social = defineType({

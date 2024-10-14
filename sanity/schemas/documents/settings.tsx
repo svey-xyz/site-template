@@ -1,13 +1,17 @@
+import { customMediaAssetSource } from "@/sanity/lib/assetSource";
+import { Cog6ToothIcon } from "@heroicons/react/24/solid";
 import {
 	defineField,
 	defineType,
 } from "sanity";
-import { mediaAssetSource } from "sanity-plugin-media";
+
+const _Cog6ToothIcon = () => <Cog6ToothIcon />;
 
 export const settings = defineType({
 	title: 'Settings',
 	name: 'siteSettings',
 	type: 'document',
+	icon: _Cog6ToothIcon,
 	fields: [
 		defineField({
 			title: 'Title',
@@ -21,7 +25,7 @@ export const settings = defineType({
 			type: 'image',
 			description: 'Featured image.',
 			options: {
-				sources: [mediaAssetSource]
+				sources: [customMediaAssetSource]
 			},
 			preview: {
 				select: {

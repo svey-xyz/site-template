@@ -3,7 +3,8 @@
 
 [![GitHub release (latest by date including pre-releases)](https://img.shields.io/github/v/release/svey-xyz/site-template?include_prereleases&sort=semver)](https://GitHub.com/svey-xyz/site-template/releases/)
 [![GitHub commits](https://badgen.net/github/commits/svey-xyz/site-template)](https://GitHub.com/svey-xyz/site-template/commit/)
-[![GitHub latest commit](https://badgen.net/github/last-commit/svey-xyz/site-template)](https://GitHub.com/svey-xyz/site-template/commit/)
+[![GitHub latest commit](https://img.shields.io/github/last-commit/svey-xyz/site-template/main
+)](https://GitHub.com/svey-xyz/site-template/commit/)
 [![GitHub issues](https://img.shields.io/github/issues/svey-xyz/site-template)](https://GitHub.com/svey-xyz/site-template/issues/)
 [![GNU license v3.0](https://img.shields.io/badge/License-GNU-green.svg)](https://github.com/svey-xyz/site-template/LICENSE)
 
@@ -34,7 +35,9 @@ Each article will generate a matching taxonomy definition.
 
 Even though this tempalte makes heavy use of *Tailwindcss* it attempts to seperate much of the styling from the layout to allow for easier styling options when starting a new project. Core files implement *Tailwind* layout classes.
 
-## Getting Started
+## Getting Started'
+Head to [Sanity.io](https://sanity.io) and create a new project from scratch; making sure to add the rrequired api tokens and cors origin.
+
 After cloning the repo the first step is to create a .env file with the following variables set:
 
 ***.env***
@@ -50,8 +53,7 @@ NEXT_PUBLIC_SANITY_API_VERSION='2024-10-14'
 SANITY_CONFIG_STUDIO_NAME='studio'
 SANITY_CONFIG_STUDIO_TITLE='studio'
 ```
-
-After head to [Sanity.io](https://sanity.io) and create a new project from scratch; making sure to add your api tokens and cors origin.
+Then run a dev environment and navigate to the studio to add all the required fields.
 
 *Creating new *articles*, *sections*, and *blocks* all follow a similar process, steps for each are documented below.*
 

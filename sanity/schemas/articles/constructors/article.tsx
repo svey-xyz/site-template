@@ -1,12 +1,13 @@
 import { camelCaseToWords } from "@lib/stringFunctions";
 import { defineArrayMember, defineField, defineType, FieldGroupDefinition, FieldDefinition, PreviewConfig, DocumentDefinition } from "sanity";
-import { mediaAssetSource } from "sanity-plugin-media";
 import { taxonomy, taxonomyTitle } from "@/sanity/schemas/articles/constructors/taxonomy";
+import { customMediaAssetSource } from "@/sanity/lib/assetSource";
+import { ComponentType } from "react";
 
 interface args {
 	type: string,
 	fields?: sanityFields,
-	// icon?: IconType,
+	icon?: ComponentType,
 	groups?: FieldGroupDefinition[],
 	customPreview?: PreviewConfig,
 }
@@ -64,7 +65,7 @@ const _FIELDS = (type: string) => [
 		type: 'image',
 		group: 'about',
 		options: {
-			sources: [mediaAssetSource],
+			sources: [customMediaAssetSource],
 		},
 		preview: {
 			select: {
@@ -84,7 +85,7 @@ const _FIELDS = (type: string) => [
 	}),
 ]
 
-const _PREVIEW = () => {
+const _PREVIEW = (icon?: ComponentType) => {
 	return {
 		select: {
 			title: 'title',
@@ -94,7 +95,7 @@ const _PREVIEW = () => {
 			const { title, image } = value
 			return {
 				title: title ? title : 'Untitled',
-				media: image ? image : null
+				media: image ? image : icon
 			}
 		}
 	}
@@ -113,7 +114,7 @@ export class ARTICLE {
 }
 
 const article = (args: args) => {
-	const { type, fields, groups } = args
+	const { type, fields, groups, icon } = args
  	let documentFields = [
 		..._FIELDS(type),
 		...fields || [],
@@ -125,6 +126,7 @@ const article = (args: args) => {
 		title: camelCaseToWords(type),
 		name: type,
 		type: 'document',
+		icon: icon as any,
 		groups: [
 			..._GROUPS,
 			...(groups || [])

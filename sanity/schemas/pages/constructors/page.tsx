@@ -1,6 +1,9 @@
 import { camelCaseToWords } from "@lib/stringFunctions";
-import { defineField, defineType, FieldDefinition } from "sanity";
-import { mediaAssetSource } from "sanity-plugin-media";
+import { defineField, defineType } from "sanity";
+import { DocumentTextIcon } from '@heroicons/react/24/solid'
+import { customMediaAssetSource } from "@/sanity/lib/assetSource";
+
+const _DocumentTextIcon = () => <DocumentTextIcon />;
 
 export const page = (args: { name: string, fields?: sanityFields }) => {
 	const { name, fields } = args
@@ -42,7 +45,7 @@ export const page = (args: { name: string, fields?: sanityFields }) => {
 			type: 'image',
 			description: 'When a hero image is set, a hero will appear with the page title and image.',
 			options: {
-				sources: [mediaAssetSource],
+				sources: [customMediaAssetSource],
 			},
 			preview: {
 				select: {
@@ -72,6 +75,7 @@ export const page = (args: { name: string, fields?: sanityFields }) => {
 		title: camelCaseToWords(name),
 		name: name,
 		type: 'document',
+		icon: _DocumentTextIcon,
 		fields: [
 			..._FIELDS,
 			...customPageFields,
