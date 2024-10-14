@@ -1,7 +1,7 @@
 {
   "name": "site-template",
-  "version": "2024.10.12",
-  "private": true,
+  "version": "2024.10.13",
+  "private": false,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
