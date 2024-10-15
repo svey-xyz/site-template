@@ -1,12 +1,21 @@
 import { camelCaseToWords } from "@/lib/stringFunctions";
 import { blockTypes } from "@/sanity/schemas/pages/blocks";
 import { defineType, defineField, FieldDefinition } from "sanity";
-import { mediaAssetSource } from "sanity-plugin-media";
+import { customMediaAssetSource } from "@/sanity/lib/assetSource";
+
+import { RectangleGroupIcon, PhotoIcon, PaintBrushIcon, FilmIcon } from '@heroicons/react/24/solid'
+
+const _RectangleGroupIcon = () => <RectangleGroupIcon />
+const _PhotoIcon = () => <PhotoIcon />
+const _PaintBrushIcon = () => <PaintBrushIcon />
+const _FilmIcon = () => <FilmIcon />
+
 
 export const section = defineType({
 	title: 'Section',
 	name: 'section',
 	type: 'object',
+	icon: _RectangleGroupIcon,
 	fields: [
 		defineField({
 			name: 'type',
@@ -47,7 +56,7 @@ export const section = defineType({
 			name: 'image',
 			type: 'image',
 			options: {
-				sources: [mediaAssetSource],
+				sources: [customMediaAssetSource],
 			},
 			preview: {
 				select: {
@@ -106,18 +115,18 @@ export const section = defineType({
 			return {
 				title: `${type} Section`,
 				subtitle,
-				// media: (() => {
-				// 	switch (type) {
-				// 		case ('Colour'):
-				// 			return IoIosColorFill 
-				// 		case ('Image'):
-				// 			return FaImage
-				// 		case ('Video'):
-				// 			return BiMoviePlay
-				// 		default:
-				// 			return TbSection
-				// 	}
-				// })(),
+				media: (() => {
+					switch (type) {
+						case ('Colour'):
+							return _PaintBrushIcon
+						case ('Image'):
+							return _PhotoIcon
+						case ('Video'):
+							return _FilmIcon
+						default:
+							return _RectangleGroupIcon
+					}
+				})(),
 			}
 		},
 	},
