@@ -9,7 +9,7 @@ import { noteField } from 'sanity-plugin-note-field'
 import { visionTool } from '@sanity/vision'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, configStudioName, configStudioTitle, dataset, projectId } from '@sanity/lib/api'
+import { apiVersion, configStudioBasePath, configStudioName, configStudioTitle, dataset, projectId } from '@sanity/lib/api'
 import { studioTheme } from '@styles/studio.theme'
 import StudioHeader from '@components/studio/StudioHeader'
 import StudioLogo from '@components/studio/StudioLogo'
@@ -31,7 +31,9 @@ const deskPlugins = [
 	media(),
 	iconify({ showName: false, }),
 	presentationTool({
-		locate,
+		resolve: {
+			locations: locate
+		},
 		previewUrl: {
 			draftMode: {
 				enable: '/api/draft',
@@ -43,7 +45,7 @@ const deskPlugins = [
 
 
 const config = defineConfig({
-  basePath: '/studio',
+  basePath: configStudioBasePath,
 	name: configStudioName,
 	title: configStudioTitle,
   projectId,
