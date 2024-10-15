@@ -2,6 +2,9 @@ import { defineField } from 'sanity';
 import constructors from '@/sanity/schemas/pages/constructors';
 import { Icon } from '@iconify/react';
 
+import { IdentificationIcon } from '@heroicons/react/24/solid'
+
+
 const fields = [
 	defineField({
 		title: 'Title',
@@ -83,4 +86,4 @@ const fields = [
 	}),
 ]
 
-export const Info = constructors.block({ name: 'Info', fields })
+export const Info = constructors.block({ name: 'Info', fields, Icon: IdentificationIcon })

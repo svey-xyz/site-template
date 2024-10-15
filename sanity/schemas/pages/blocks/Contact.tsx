@@ -1,6 +1,8 @@
 import { defineField } from 'sanity';
 import constructors from '@/sanity/schemas/pages/constructors';
 
+import { InboxArrowDownIcon } from '@heroicons/react/24/solid'
+
 const fields: any = [
 	defineField({
 		title: 'Button Text',
@@ -9,4 +11,4 @@ const fields: any = [
 	}),
 ]
 
-export const Contact = constructors.block({ name: 'Contact', fields })
+export const Contact = constructors.block({ name: 'Contact', fields, Icon: InboxArrowDownIcon })

@@ -1,7 +1,9 @@
 import { defineField } from 'sanity';
 import constructors from '@/sanity/schemas/pages/constructors';
-import { mediaAssetSource } from 'sanity-plugin-media';
+import { customMediaAssetSource } from '@/sanity/lib/assetSource';
 import { camelCaseToWords } from '@/lib/stringFunctions';
+
+import { PhotoIcon } from '@heroicons/react/24/solid'
 
 const fields = [
 	defineField({
@@ -9,7 +11,7 @@ const fields = [
 		name: 'image',
 		type: 'image',
 		options: {
-			sources: [mediaAssetSource],
+			sources: [customMediaAssetSource],
 		},
 		preview: {
 			select: {
@@ -51,4 +53,4 @@ const preview = {
 	},
 }
 
-export const Image = constructors.block({ name: 'Image', fields, preview })
+export const Image = constructors.block({ name: 'Image', fields, preview, Icon: PhotoIcon })

@@ -1,6 +1,7 @@
 import constructors from '@/sanity/schemas/pages/constructors';
 import { defineField } from 'sanity';
 
+import { EnvelopeOpenIcon } from '@heroicons/react/24/solid'
 
 const fields: any = [
 	defineField({
@@ -21,4 +22,4 @@ const fields: any = [
 	})
 ]
 
-export const Newsletter = constructors.block({ name: 'Newsletter', fields })
+export const Newsletter = constructors.block({ name: 'Newsletter', fields, Icon: EnvelopeOpenIcon })

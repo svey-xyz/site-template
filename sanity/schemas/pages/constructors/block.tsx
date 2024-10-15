@@ -1,14 +1,15 @@
 import { camelCaseToWords } from "@lib/stringFunctions";
-import { defineType, PreviewConfig, defineField } from "sanity";
+import { ComponentType } from "react";
+import { defineType, PreviewConfig, defineField, EmptyProps } from "sanity";
 
 export const block = (
 	args: {
 		name: string,
 		fields: sanityFields,
 		preview?: PreviewConfig<any>
-		// icon?: IconType | undefined
+		Icon?: ComponentType
 	}) => {
-	const { name, fields, preview } = args
+	const { name, fields, preview, Icon } = args
 
 	const _PREVIEW = {
 		select: {
@@ -37,6 +38,7 @@ export const block = (
 		title: camelCaseToWords(name),
 		name: name,
 		type: 'object',
+		icon: Icon ? () => <Icon /> : undefined,
 		fields: [
 			..._FIELDS,
 			...fields

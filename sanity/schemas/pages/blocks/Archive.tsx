@@ -4,6 +4,8 @@ import ARTICLES from '@/sanity/schemas/articles'
 import { camelCaseToWords } from '@/lib/stringFunctions';
 import { taxonomyTitle } from "@/sanity/schemas/articles/constructors/taxonomy";
 
+import { ArchiveBoxIcon } from '@heroicons/react/24/solid'
+
 const archiveTypes = ARTICLES.flatMap((article) => {
 	return { title: camelCaseToWords(article.type), value: article.type }
 })
@@ -50,4 +52,4 @@ const fields = [
 	})
 ]
 
-export const Archive = constructors.block({ name: 'Archive', fields })
+export const Archive = constructors.block({ name: 'Archive', fields, Icon: ArchiveBoxIcon })
