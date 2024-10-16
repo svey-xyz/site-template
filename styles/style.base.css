@@ -16,17 +16,17 @@
 
 		--icon-size: 28px;
 		--icon-size-sm: 22px;
+
+		--text-base-size: 1rem;
+		--text-scale: 1.2;
 	}
 
 	body {
-		@apply font-body text-left text-fg-primary bg-bg-primary transition-colors duration-300;
+		@apply font-body text-left text-base text-fg-primary bg-bg-primary transition-colors duration-300;
 	}
 
-	h1, h2, h3, h4, h5, h6 { @apply font-heading font-bold text-accent mt-4; }
-	h1, h2 { @apply text-accent-secondary; }
-	h1 { @apply text-5xl; }
-	h2 { @apply text-4xl; }
-	h3 { @apply text-2xl; }
+	h1, h2, h3, h4, h5, h6 { @apply font-heading font-bold text-accent mt-4 text-xl; }
+	h1, h2 { @apply text-accent-secondary text-2xl; }
 	p { @apply mt-2; }
 	a { @apply cursor-pointer transition-opacity duration-300; }
 	em { @apply font-light; }
