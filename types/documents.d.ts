@@ -4,7 +4,6 @@ import { DocumentContainers } from '@/sanity/schemas/articles'
 export interface _SettingsPayload extends inherentDocumentData {
 	title: string,
 	logo?: sanityImage,
-	motto?: string,
 	blurb?: string,
 	contact?: object_Contact,
 	about?: PortableTextBlock,

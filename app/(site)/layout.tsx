@@ -5,7 +5,7 @@ import Header from '@components/site/Header'
 import Footer from '@components/site/Footer'
 
 import { Inter } from 'next/font/google'
-import Head from '@site/head'
+import Head from './head'
 import { draftMode } from 'next/headers';
 import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
