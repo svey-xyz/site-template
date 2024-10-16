@@ -5,7 +5,7 @@ export interface _sanityImage extends Image {
 }
 
 export interface _object_Social extends inherentObjectData {
-	socialType: 'twitter' | 'instagram' | 'facebook' | 'vimeo' | 'linkedin' | 'github' | 'mastodon',
+	socialType: 'twitter' | 'instagram' | 'facebook' | 'vimeo' | 'linkedin' | 'github' | 'mastodon' | 'youtube',
 	socialTitle: string,
 	url: string,
 }

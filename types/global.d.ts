@@ -13,7 +13,7 @@ import {
 } from './documents'
 
 import {
-	_block, _BLOCK_TYPES,
+	_block, _BLOCK_TYPES, _BLOCK_MAP,
 	_block_Archive, _block_Contact, _block_FeaturedArticles, _block_FeaturedTaxonomies, _block_Gallery, _block_Image, _block_Info, _block_Newsletter, _block_Text,
 } from './blocks'
 
@@ -53,6 +53,7 @@ declare global {
 	type block_Newsletter = _block_Newsletter;
 	type block_Text = _block_Text;
 	type BLOCK_TYPES = _BLOCK_TYPES;
+	type BLOCK_MAP = _BLOCK_MAP
 
 	// OBJECTS
 	type sanityImage = _sanityImage;

@@ -23,6 +23,7 @@
       "@/*": ["./*"],
 			"@styles/*": ["./styles/*"],
 			"@public/*": ["./public/*"],
+			"@theme/*": ["./theme/*"],
 			"@components/*": ["./components/*"],
 			"@sanity/*": ["./sanity/*"],
 			"@schemas/*": ["./sanity/schemas/*"],

@@ -1,7 +1,7 @@
 import React from 'react';
 import TextBlock from '@/components/site/TextBlock';
 
-const Text = ({ data, className }: { data: block_Text | undefined, className?:string }) => {
+export const Text = ({ data, className }: { data: block_Text | undefined, className?:string }) => {
 	if (!data) return;
 	return (
 		<div className={`${className}`}>
