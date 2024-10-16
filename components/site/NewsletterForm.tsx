@@ -26,9 +26,8 @@ const NewsletterForm = ({stacked, className}:{stacked?:boolean,className?:string
 	return (
 		<form
 			name='newsletter'
-			method='post'
-			className={`${ className } ${ stacked ? 'flex-col' : 'flex-row' } flex relative w-full gap-4`}>
-			<Fieldset>
+			method='post'>
+			<Fieldset className={`${className} ${stacked ? 'flex-col' : 'flex-row'} flex relative w-full gap-4`}>
 				<Field>
 					<Label className='' hidden={true}>
 						Email
@@ -37,7 +36,7 @@ const NewsletterForm = ({stacked, className}:{stacked?:boolean,className?:string
 						type='email'
 						name='email'
 						required={true}
-						className={`bg-bg py-1 px-3 w-full`}
+						className={`py-1 px-3 w-full`}
 						placeholder="Email"
 						value={email}
 						onChange={e => { handleChange(e.target.value); }}
