@@ -2,8 +2,19 @@
 // Project specific theme customization
 
 module.exports = {
+	darkMode: 'class',
+	future: {
+		hoverOnlyWhenSupported: true,
+	},
+	content: [
+		'./app/**/*.{js,ts,jsx,tsx,mdx}',
+		'./components/**/*.{js,ts,jsx,tsx,mdx}',
+		'./lib/**/*.{js,ts,jsx,tsx,mdx}',
+		'./styles/**/*.{js,ts,jsx,tsx,mdx}',
+	],
 	presets: [
-		require('./styles/tailwind.base.js')
+		require('./styles/tailwind.base.js'),
+		require('./theme/style/tailwind.theme.js')
 	],
 	theme: {
 		extend: {

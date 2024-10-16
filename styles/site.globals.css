@@ -6,3 +6,5 @@
 @import "./style.utilities.css";
 
 @import "tailwindcss/components"; 
+
+@import "../theme/style/style.theme.css"

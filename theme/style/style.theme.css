@@ -1,0 +1,18 @@
+@layer base {
+	:root {
+		/* COLOURS */
+		/* --primary-fg: 0deg 0% 0%;
+		--primary-bg: 0deg 0% 100%;
+		--secondary-bg: 0deg 0% 85%;
+
+		--primary-accent: 0deg 0% 0%;
+		--secondary-accent: 0deg 0% 50%;
+
+		--text-base-size: 1rem;
+		--text-scale: 1.2; */
+
+		/* STYLES */
+		/* --rounded-size: 0.25rem;
+		--rounded-scale: 1.3; */
+	}
+}
