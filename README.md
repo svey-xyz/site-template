@@ -35,7 +35,7 @@ Each article will generate a matching taxonomy definition.
 
 Even though this tempalte makes heavy use of *Tailwindcss* it attempts to seperate much of the styling from the layout to allow for easier styling options when starting a new project. Core files implement *Tailwind* layout classes.
 
-## Getting Started'
+## Getting Started
 Head to [Sanity.io](https://sanity.io) and create a new project from scratch; making sure to add the rrequired api tokens and cors origin.
 
 After cloning the repo the first step is to create a .env file with the following variables set:
