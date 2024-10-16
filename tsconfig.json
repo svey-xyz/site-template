@@ -24,10 +24,8 @@
 			"@styles/*": ["./styles/*"],
 			"@public/*": ["./public/*"],
 			"@components/*": ["./components/*"],
-			"@lib/*": ["./lib/*"],
 			"@sanity/*": ["./sanity/*"],
 			"@schemas/*": ["./sanity/schemas/*"],
-			"@site/*": ["./app/(site)/*"],
 			"@Pages/*": ["./components/Pages/*"]
     }
   },
