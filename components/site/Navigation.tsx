@@ -36,7 +36,7 @@ export const Navigation = ({ navItems, className }: { navItems: Array<object_Nav
 				<PopoverButton>
 					<Bars2Icon className='w-icon h-icon' />
 				</PopoverButton>
-				<PopoverPanel modal={true} focus={true} className="fixed inset-0 pt-[--header-height]" >
+				<PopoverPanel modal={true} focus={true} className="fixed inset-0" >
 					<div className='relative flex flex-col main-padding gap-4'>
 						{navItems.flatMap((item) => {
 							return <NavigationItem key={item.title} item={item} />

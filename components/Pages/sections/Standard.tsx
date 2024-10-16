@@ -16,13 +16,13 @@ export const Standard = ({ index, data, className, style, children }: args) => {
 			style={style}
 		>
 			{ children }
-			<div className={`relative main-padding flex flex-col h-full w-full gap-6`}>
+			<div className={`relative main-padding flex flex-col h-full w-full`}>
 				{ data.header &&
 					<h2 className=''>
 						{ data.header }
 					</h2>
 				}
-				<div className={`relative flex flex-col h-full w-full z-10 gap-12 justify-center
+				<div className={`relative flex flex-col h-full w-full z-10 justify-center
 					${(data.columns) && 'md:flex-wrap md:!flex-row'}`}>
 						{data.blocks &&
 							<Blocks blocks={data?.blocks} blockClasses={`section-block`} />

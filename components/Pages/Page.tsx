@@ -35,7 +35,7 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 					}}
 				>
 					<div className='relative main-padding'>
-						<h2 className='relative pt-80 pb-6 z-10'>
+						<h2 className='relative z-10'>
 							{data.title}
 						</h2>
 					</div>

@@ -11,7 +11,7 @@ const Header = async() => {
 		<div className="relative h-full flex flex-col items-center justify-center z-50">
 			<div className="relative main-padding">
 				<div className='relative flex flex-row justify-between gap-4 my-4 items-center'>
-					<Link href='/' aria-label='Link to the site home.' className='relative z-10'>
+					<Link href='/' aria-label='Link to the site home.' className='relative flex z-10 h-header-item flex-col items-center justify-center'>
 						{ settings.logo ?
 							<Image
 								image={settings.logo}
