@@ -2,16 +2,6 @@
 // Cross project base styles
 
 module.exports = {
-	darkMode: 'class',
-	future: {
-		hoverOnlyWhenSupported: true,
-	},
-	content: [
-		'./app/**/*.{js,ts,jsx,tsx,mdx}',
-		'./components/**/*.{js,ts,jsx,tsx,mdx}',
-		'./lib/**/*.{js,ts,jsx,tsx,mdx}',
-		'./styles/**/*.{js,ts,jsx,tsx,mdx}',
-	],
 	theme: {
 		screens: {
 			sm: "480px",

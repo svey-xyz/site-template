@@ -1,3 +1,4 @@
+import { socialIcon } from "@/lib/SocialIcon";
 import { defineType, defineField } from "sanity";
 
 const socialTypes = [
@@ -47,10 +48,11 @@ export const social = defineType({
 		},
 		prepare(value: any) {
 			const socialSiteTypeTitle = value.type && socialTypes.flatMap(option => option.value === value.type ? [option.title] : [])
-
+			const Icon = socialIcon(`${value.type}`)
 			return {
 				title: `${socialSiteTypeTitle}`,
 				subtitle: value.title,
+				media: <Icon className="text-accent" />
 			}
 		}
 	}
