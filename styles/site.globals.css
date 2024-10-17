@@ -1,10 +1,11 @@
 /* tailwindcss recomends \@import over \@tailwind when using other \@import statements */
 @import "tailwindcss/base"; 
-@import "./style.base.css";
+@import "./site.base.css";
 
 @import "tailwindcss/utilities"; 
-@import "./style.utilities.css";
+@import "./site.utilities.css";
 
 @import "tailwindcss/components"; 
+@import "./site.components.css";
 
-@import "../theme/style/style.theme.css"
+@import "../theme/style/theme.index.css"

@@ -24,4 +24,26 @@
 	.image-fade {
 		mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1.0) 0%, transparent 100%);
 	}
+
+	.variable-transition {
+		@apply motion-safe:transition motion-safe:duration-150 motion-reduce:duration-0;
+	}
+
+	.hover-button {
+		@apply cursor-pointer transform variable-transition motion-safe:hover:scale-105;
+	}
+
+	.hover-text {
+		@apply cursor-pointer variable-transition motion-safe:hover:opacity-85 motion-safe:hover:brightness-105;
+	}
+
+	.main-padding {
+		@apply max-w-[1600px] w-full mx-auto px-6 sm:px-12 md:px-20 lg:px-32;
+	}
+	.separator {
+		@apply before:-z-1 before:absolute before:inset-0 before:border-b-2 before:border-solid before:border-fg before:opacity-60;
+	}
+	.separator-top {
+		@apply before:-z-1 before:absolute before:inset-0 before:border-t-2 before:border-solid before:border-fg before:opacity-60;
+	}
 }

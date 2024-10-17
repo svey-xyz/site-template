@@ -13,8 +13,8 @@ module.exports = {
 		'./styles/**/*.{js,ts,jsx,tsx,mdx}',
 	],
 	presets: [
-		require('./styles/tailwind.base.js'),
-		require('./theme/style/tailwind.theme.js')
+		require('./styles/site.tailwind.js'),
+		require('./theme/style/theme.tailwind.js')
 	],
 	theme: {
 		extend: {
