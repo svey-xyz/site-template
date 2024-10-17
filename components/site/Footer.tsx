@@ -1,6 +1,7 @@
 import React from 'react';
 import Socials from '@components/site/Socials'
 import { loadSettings } from '@/sanity/queries/loadQuery';
+import ThemeButton from '@/components/ui/ThemeButton';
 
 const Footer = async ({}:{}) => {
 	const settings = await loadSettings()
@@ -12,8 +13,8 @@ const Footer = async ({}:{}) => {
 				{ settings.contact?.socials &&
 					<Socials socials={settings.contact.socials} className='' />
 				}
+				<ThemeButton />
 			</div>
-
 		</section>
 	);
 };

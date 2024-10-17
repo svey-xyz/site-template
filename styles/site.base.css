@@ -26,6 +26,16 @@
 		--rounded-scale: 1.3;
 	}
 
+	.dark {
+		--primary-fg: 0deg 0% 100%;
+
+		--primary-bg: 184deg 3% 12%;
+		--secondary-bg: 178deg 4% 15%;
+
+		--primary-accent: 186deg 13% 89%;
+		--secondary-accent: 186deg 13% 89%;
+	}
+
 	body {
 		@apply font-body text-left text-base text-fg-primary bg-bg-primary transition-colors duration-300;
 	}

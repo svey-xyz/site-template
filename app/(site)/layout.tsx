@@ -11,6 +11,7 @@ import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
 import { loadSettings } from '@/sanity/queries/loadQuery';
 import { AutomaticVisualEditing } from '@/components/AutomaticVisualEditing';
+import ThemeHandler from '@/components/ThemeHandler';
 
 const inter = Inter({ subsets: ['latin'] })
 // const font = localFont({
@@ -45,18 +46,21 @@ export default async function RootLayout({
 	children: React.ReactNode,
 }) {
 
-	let documentClasses = `${inter.className} relative` // ${font.variable}
+	let documentClasses = `${inter.className} relative dark` // ${font.variable}
 	
 	return (
-		<html lang="en" className={documentClasses}>
+		// suppress hydration required for theme handler
+		<html lang="en" className={documentClasses} suppressHydrationWarning> 
 			<Head />
 			<body className='min-h-screen h-full overflow-x-hidden flex flex-col'>
-				<Header />
-				<main className='min-h-full flex-grow'>
-					{ children }
-				</main>
-				{ draftMode().isEnabled && <AutomaticVisualEditing /> }
-				<Footer />
+				<ThemeHandler>
+					<Header />
+					<main className='min-h-full flex-grow'>
+						{ children }
+					</main>
+					{ draftMode().isEnabled && <AutomaticVisualEditing /> }
+					<Footer />
+					</ThemeHandler>
 				<Analytics />
 			</body>
 		</html>
