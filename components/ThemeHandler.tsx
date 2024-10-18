@@ -26,7 +26,6 @@ export default function ThemeHandler({
 
 		(async () => {
 			const listener = () => {
-				console.log('Scroll: ', window.scrollY)
 				if (window.scrollY > 140) {
 					topChevron?.current?.classList.add('is-visible')
 				} else {

@@ -46,7 +46,7 @@ export default async function RootLayout({
 	children: React.ReactNode,
 }) {
 
-	let documentClasses = `${inter.className} relative dark` // ${font.variable}
+	let documentClasses = `${inter.className} relative` // ${font.variable}
 	
 	return (
 		// suppress hydration required for theme handler
