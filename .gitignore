@@ -38,3 +38,4 @@ sanity.json
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+*.lockb
