@@ -2,7 +2,6 @@
  * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...index]]/page.tsx` route
  */
 import { structureTool } from 'sanity/structure'
-import { presentationTool } from 'sanity/presentation'
 
 /** PLUGINS */
 import { noteField } from 'sanity-plugin-note-field'
@@ -19,8 +18,6 @@ import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 
-import { locate } from '@/sanity/lib/locate'
-
 const defaultDesk = structureTool({
 	structure,
 	defaultDocumentNode
@@ -31,17 +28,7 @@ const deskPlugins = [
 	noteField(),
 	media(),
 	iconify({ showName: false, }),
-	vercelDeployTool(),
-	presentationTool({
-		resolve: {
-			locations: locate
-		},
-		previewUrl: {
-			draftMode: {
-				enable: '/api/draft',
-			},
-		},
-	}),
+	vercelDeployTool()
 
 ] as PluginOptions[]
 

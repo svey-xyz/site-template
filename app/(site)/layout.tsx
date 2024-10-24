@@ -6,11 +6,9 @@ import Footer from '@components/site/Footer'
 
 import { Inter } from 'next/font/google'
 import Head from './head'
-import { draftMode } from 'next/headers';
 import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
 import { loadSettings } from '@/sanity/queries/loadQuery';
-import { AutomaticVisualEditing } from '@/components/AutomaticVisualEditing';
 import ThemeHandler from '@/components/ThemeHandler';
 
 const inter = Inter({ subsets: ['latin'] })
@@ -58,9 +56,8 @@ export default async function RootLayout({
 					<main className='min-h-full flex-grow'>
 						{ children }
 					</main>
-					{ draftMode().isEnabled && <AutomaticVisualEditing /> }
 					<Footer />
-					</ThemeHandler>
+				</ThemeHandler>
 				<Analytics />
 			</body>
 		</html>

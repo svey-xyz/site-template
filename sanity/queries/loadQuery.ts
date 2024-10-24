@@ -1,7 +1,6 @@
 import 'server-only'
 
 import * as queryStore from '@sanity/react-loader'
-import { draftMode } from 'next/headers'
 
 import {
 	pageQuery,
@@ -37,7 +36,7 @@ const usingCdn = serverClient.config().useCdn
 
 export const loadQuery = (<T>(query: string, params: QueryParams = {}, options: QueryOptions = {}) => {
 	const {
-		perspective = draftMode().isEnabled ? 'previewDrafts' : 'published',
+		perspective = 'published',
 	} = options
 	// Don't cache by default
 	let revalidate: NextFetchRequestConfig['revalidate'] = 0
@@ -53,9 +52,8 @@ export const loadQuery = (<T>(query: string, params: QueryParams = {}, options: 
 			revalidate,
 			...(options.next || {}),
 		},
-		perspective,
+		perspective
 		// Enable stega if in Draft Mode, to enable overlays when outside Sanity Studio
-		stega: draftMode().isEnabled,
 	}) as Promise<{ data: T, sourceMap: ContentSourceMap }>
 }) satisfies typeof queryStore.loadQuery
 
