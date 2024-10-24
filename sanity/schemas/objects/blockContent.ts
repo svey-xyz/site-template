@@ -1,3 +1,4 @@
+import { customMediaAssetSource } from '@/sanity/lib/assetSource'
 import { defineType, defineArrayMember } from 'sanity'
 import { mediaAssetSource } from 'sanity-plugin-media'
 
@@ -77,7 +78,7 @@ export const extraBlockContent = defineType({
 		defineArrayMember({
 			type: 'image',
 			options: {
-				sources: [mediaAssetSource],
+				sources: [customMediaAssetSource],
 				hotspot: true
 			},
 		}),

@@ -1,4 +1,5 @@
 // BLOCKS
+import { _ARTICLE_TYPES } from './articles'
 
 export interface _block extends inherentObjectData {
 	hiddenOnMobile?: boolean
