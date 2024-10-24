@@ -33,6 +33,7 @@
     "sanity-plugin-iconify": "^2.0.1",
     "sanity-plugin-media": "^2.3.2",
     "sanity-plugin-note-field": "^2.0.2",
+    "sanity-plugin-vercel-deploy": "^3.3.4",
     "server-only": "^0.0.1",
     "slugify": "^1.6.6",
     "swiper": "^11.1.0"

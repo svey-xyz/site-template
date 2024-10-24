@@ -17,6 +17,7 @@ import { structure, schemaOptions, documentOptions, defaultDocumentNode } from '
 import { PluginOptions, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
+import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 
 import { locate } from '@/sanity/lib/locate'
 
@@ -30,6 +31,7 @@ const deskPlugins = [
 	noteField(),
 	media(),
 	iconify({ showName: false, }),
+	vercelDeployTool(),
 	presentationTool({
 		resolve: {
 			locations: locate
