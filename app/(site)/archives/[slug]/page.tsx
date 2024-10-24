@@ -3,15 +3,15 @@ import { loadArchive, loadStaticArchives } from '@/sanity/queries/loadQuery'
 import Pages from '@/components/Pages'
 import { notFound } from 'next/navigation';
 
-export const generateStaticParams = async () => {
-	const archives = await loadStaticArchives();
+// export const generateStaticParams = async () => {
+// 	const archives = await loadStaticArchives();
 
-	if (!archives) return notFound()
+// 	if (!archives) return []
 
-	return archives.map((archive) => ({
-		slug: archive._id,
-	}));
-}
+// 	return archives.map((archive) => ({
+// 		slug: archive._id,
+// 	}));
+// }
 
 type Props = {
 	params: { slug: string }

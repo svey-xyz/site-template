@@ -4,18 +4,18 @@ import Pages from '@/components/Pages'
 import ARTICLES from '@/sanity/schemas/articles'
 import { notFound } from 'next/navigation'
 
-export const generateStaticParams = async () => {
-	return ARTICLES.flatMap(async (ArticleType) => {
-		const articles = await loadArticles<article>(ArticleType.type);
+// export const generateStaticParams = async () => {
+// 	return ARTICLES.flatMap(async (ArticleType) => {
+// 		const articles = await loadArticles<article>(ArticleType.type);
 
-		if (!articles) notFound()
+// 		if (!articles) []
 
-		return articles.map((article) => ({
-			slug: [article._type, article.slug],
-		}));
-	})
+// 		return articles.map((article) => ({
+// 			slug: [article._type, article.slug]
+// 		}));
+// 	})
 	
-}
+// }
 
 
 type Props = {
@@ -30,7 +30,7 @@ export const generateMetadata = async(
 	const article = await load_singleArticle<article>(slug[0], slug[1])
 
 	return {
-		title: article?.title,
+		title: article?.title
 		// description: page?.overview
 		// 	? toPlainText(page.overview)
 		// 	: (await parent).description,
