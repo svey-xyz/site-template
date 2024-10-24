@@ -1,6 +1,17 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { loadArticles, loadPage } from '@/sanity/queries/loadQuery'
+import { loadPage, loadStaticPages } from '@/sanity/queries/loadQuery'
 import Pages from '@/components/Pages'
+import { notFound } from 'next/navigation';
+
+export const generateStaticParams = async () => {
+	const pages = await loadStaticPages();
+	console.log('Pages: ', pages)
+	if (!pages) notFound()
+
+	return pages.map((page) => ({
+		slug: page.slug,
+	}));
+}
 
 type Props = {
 	params: { slug: Array<string> }

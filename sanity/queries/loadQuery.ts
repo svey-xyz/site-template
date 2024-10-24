@@ -7,6 +7,8 @@ import {
 	pageQuery,
 	settingsQuery,
 	archiveQuery,
+	staticPagesQuery,
+	staticArchivesQuery,
 } from '@/sanity/queries/queries'
 
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient } from "@sanity/client";
@@ -116,6 +118,28 @@ export const loadArchive = async (archiveID: string) => {
 		archiveQuery,
 		{ archiveID },
 		{ next: { tags: [`archive:${archiveID}`, 'archive'] } },
+	)
+
+	const data = initial.data
+	return data
+}
+
+export const loadStaticPages = async () => {
+	const initial = await loadQuery<Array<PagePayload> | null>(
+		staticPagesQuery,
+		{ },
+		{ next: { tags: [`pages`, 'page'] } },
+	)
+
+	const data = initial.data
+	return data
+}
+
+export const loadStaticArchives = async () => {
+	const initial = await loadQuery<Array<ArchivePayload> | null>(
+		staticArchivesQuery,
+		{},
+		{ next: { tags: ['archive', 'archives'] } },
 	)
 
 	const data = initial.data

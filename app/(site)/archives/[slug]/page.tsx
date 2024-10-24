@@ -1,6 +1,17 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { loadArchive } from '@/sanity/queries/loadQuery'
+import { loadArchive, loadStaticArchives } from '@/sanity/queries/loadQuery'
 import Pages from '@/components/Pages'
+import { notFound } from 'next/navigation';
+
+export const generateStaticParams = async () => {
+	const archives = await loadStaticArchives();
+
+	if (!archives) return notFound()
+
+	return archives.map((archive) => ({
+		slug: archive._id,
+	}));
+}
 
 type Props = {
 	params: { slug: string }

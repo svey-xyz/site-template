@@ -16,9 +16,24 @@ export const settingsQuery: string = groq`
 			pages[]->{
 				...,
 				"slug":slug.current,
-				${partial_Sections},
-			},
+				${partial_Sections}
+			}
 		}
+	}
+`
+
+export const staticPagesQuery: string = groq`
+	*[_type == 'page'] {
+		...,
+		"slug":slug.current,
+		${partial_Sections}
+	}
+`
+
+export const staticArchivesQuery: string = groq`
+	*[_type == 'archive'] {
+		...,
+		${partial_Sections}
 	}
 `
 
@@ -26,14 +41,14 @@ export const pageQuery: string = groq`
 	*[_type=='page' && slug.current == $slug][0] {
   	...,
 		"slug":slug.current,
-		${partial_Sections},
+		${partial_Sections}
 	}
 `
 
 export const archiveQuery: string = groq`
 	*[_type=='archive' && _id == $archiveID][0] {
   	...,
-		${partial_Sections},
+		${partial_Sections}
 	}
 `
 
