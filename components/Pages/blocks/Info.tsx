@@ -2,7 +2,6 @@
 
 import { Icon } from '@iconify/react';
 import React from 'react';
-import NumericLabel from 'react-pretty-numbers';
 
 export const Info = ({ data, className }: { data: block_Info, className?: string }) => {
 	return (
@@ -24,9 +23,7 @@ export const Info = ({ data, className }: { data: block_Info, className?: string
 							}
 							{ item.number &&
 								<div className='p-3 mb-2'>
-									<NumericLabel params={{ wholenumber: true, justification: 'L', shortFormat: true, commafy: true }}>
-										{item.number}
-									</NumericLabel>
+									{item.number}
 								</div>
 							}
 							<h4>

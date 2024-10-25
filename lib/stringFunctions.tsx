@@ -1,4 +1,3 @@
-import moment from 'moment-timezone';
 import { plural } from 'pluralize'
 import { ReactNode } from 'react';
 import slugify from 'slugify'
@@ -31,27 +30,4 @@ export const slugifyWithOptions = (string: string) => {
 
 export const capitalize = (word: string) => {
 	return word.charAt(0).toUpperCase() + word.substring(1);
-}
-
-export function readableDate(data?: object_Date, overrideDisplayDateSpecificity?: displayDateSpecificity, endDate?: boolean): ReactNode {
-	if (!data) return;
-
-	const startDateText = data.startDate ? moment(data.startDate).tz('America/Toronto').format(overrideDisplayDateSpecificity ?? data.displayDateSpecificity) : ''
-
-	const endDateText = data.endDate ? moment(data.endDate).tz('America/Toronto').format(overrideDisplayDateSpecificity ?? data.displayDateSpecificity) : ''
-
-	const displayEndDate = endDateText && endDate
-	return (
-		<div>
-		<span className= "block" >
-		{ startDateText } { displayEndDate ? ':' : '' }
-	</span>
-	{
-		displayEndDate &&
-		<span className="block" >
-			{ endDateText }
-			</span>
-	}
-	</div>
-	);
 }

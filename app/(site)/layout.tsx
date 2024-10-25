@@ -1,6 +1,5 @@
 import '@styles/site.globals.css'
 
-import { Analytics } from '@vercel/analytics/react';
 import Header from '@components/site/Header'
 import Footer from '@components/site/Footer'
 
@@ -58,7 +57,6 @@ export default async function RootLayout({
 					</main>
 					<Footer />
 				</ThemeHandler>
-				<Analytics />
 			</body>
 		</html>
 	) 
