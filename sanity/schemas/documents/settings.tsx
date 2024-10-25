@@ -57,7 +57,7 @@ export const settings = defineType({
 		defineField({
 			title: 'About',
 			name: 'about',
-			type: 'extraBlockContent',
+			type: 'mdx',
 		}),
 		defineField({
 			name: 'homepage',

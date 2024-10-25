@@ -16,6 +16,7 @@ import { PluginOptions, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
+import { markdownSchema } from 'sanity-plugin-markdown'
 
 const defaultDesk = structureTool({
 	structure,

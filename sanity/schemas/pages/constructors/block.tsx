@@ -25,13 +25,7 @@ export const block = (
 		},
 	}
 
-	const _FIELDS = [
-		defineField({
-			name: 'hiddenOnMobile',
-			title: 'Hidden on mobile',
-			description: 'When enable this block will be hidden on small screens and mobile devices.',
-			type: 'boolean'
-		})
+	const _FIELDS: Array<{}> = [
 	]
 
 	return defineType({
