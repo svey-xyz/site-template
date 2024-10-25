@@ -16,12 +16,12 @@ export interface _PagePayload extends inherentDocumentData {
 	slug: string,
 	description?: PortableTextBlock,
 	heroImage?: sanityImage,
-	sections?: Array<section>
+	blocks?: BLOCK_TYPES
 }
 
 export interface _ArchivePayload extends inherentDocumentData {
 	title?: string,
-	sections?: Array<section>
+	blocks?: BLOCK_TYPES
 	description?: PortableTextBlock,
 	heroImage?: sanityImage,
 }

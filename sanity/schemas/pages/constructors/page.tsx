@@ -2,6 +2,7 @@ import { camelCaseToWords } from "@lib/stringFunctions";
 import { defineField, defineType } from "sanity";
 import { DocumentTextIcon } from '@heroicons/react/24/solid'
 import { customMediaAssetSource } from "@/sanity/lib/assetSource";
+import { blockTypes } from "@/sanity/schemas/pages/blocks";
 
 const _DocumentTextIcon = () => <DocumentTextIcon />;
 
@@ -16,14 +17,21 @@ export const page = (args: { name: string, fields?: sanityFields }) => {
 		select: {
 			title: 'title',
 			image: 'image',
+			blocks: 'blocks'
 		},
 		prepare(value: any) {
-			const { title, image } = value
+			const { image, blocks, title } = value
+			const subtitle = blocks ?
+				`Blocks: ${blocks?.map((block: block, i: number, arr: Array<block>) => {
+					return ` ${camelCaseToWords(block._type)}`
+				})}` :
+				`No blocks configured!`
 			return {
-				title: title ? title : 'Untitled',
-				media: image ? image : null
+				title: `${title}`,
+				subtitle,
+				media: image ? image : _DocumentTextIcon
 			}
-		}
+		},
 	}
 
 	const _FIELDS = [
@@ -64,10 +72,10 @@ export const page = (args: { name: string, fields?: sanityFields }) => {
 			},
 		}),
 		defineField({
-			title: 'Sections',
-			name: 'sections',
+			title: 'Blocks',
+			name: 'blocks',
 			type: 'array',
-			of: [{ type: 'section' }],
+			of: blockTypes,
 		}),
 	]
 
