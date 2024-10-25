@@ -1,21 +1,34 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import { load_singleArticle, loadArticles } from '@/sanity/queries/loadQuery'
 import Pages from '@/components/Pages'
-import ARTICLES from '@/sanity/schemas/articles'
-import { notFound } from 'next/navigation'
+import { _ARTICLE_TYPES } from '@/sanity/schemas/articles/types';
 
-// export const generateStaticParams = async () => {
-// 	return ARTICLES.flatMap(async (ArticleType) => {
-// 		const articles = await loadArticles<article>(ArticleType.type);
+type Params = {
+	slug: string[];
+}
 
-// 		if (!articles) []
+export const generateStaticParams = async () => {
+	try {
+		const TypeArray = Object.keys(_ARTICLE_TYPES)
+		let articlePaths: Array<Params> = []
 
-// 		return articles.map((article) => ({
-// 			slug: [article._type, article.slug]
-// 		}));
-// 	})
-	
-// }
+		TypeArray.map(async (ArticleType) => {
+			const articles = await loadArticles<article>(ArticleType)
+			if (!articles) return []
+
+			articles.map((article) => {
+				articlePaths.push({
+					slug: [article._type, article.slug]
+				})
+			});
+		});
+
+		return articlePaths
+	} catch (error) {
+		console.error("Error fetching archives:", error);
+		throw new Error("Failed to fetch archives");
+	}
+}
 
 
 type Props = {

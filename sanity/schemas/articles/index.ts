@@ -1,8 +1,8 @@
-import { articles } from './article';
+import { article } from './article';
 import { ARTICLE } from '@/sanity/schemas/articles/constructors/article';
 
-const ARTICLES: ARTICLE[] = [
-	articles
+export const ARTICLES: ARTICLE[] = [
+	article
 ]
 
 export default ARTICLES;

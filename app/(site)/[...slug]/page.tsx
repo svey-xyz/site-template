@@ -2,25 +2,18 @@ import type { Metadata, ResolvingMetadata } from 'next'
 import { loadPage, loadStaticPages } from '@/sanity/queries/loadQuery'
 import Pages from '@/components/Pages'
 
-export async function generateStaticParams() {
-	
+export const generateStaticParams = async () => {
 	try {
 		const pages = await loadStaticPages();
-		console.log('Pages: ', pages)
 		if (!pages) return []
 
 		return pages.map((page) => ({
 			slug: page.slug.split('/'),
 		}));
-		// return ([{
-		// 	slug: ['home']
-		// }])
 	} catch (error) {
-		console.error("Error fetching products:", error);
-		throw new Error("Failed to fetch products");
+		console.error("Error fetching pages:", error);
+		throw new Error("Failed to fetch pages");
 	}
-
-	
 }
 
 type Props = {

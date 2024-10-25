@@ -1,17 +1,20 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import { loadArchive, loadStaticArchives } from '@/sanity/queries/loadQuery'
 import Pages from '@/components/Pages'
-import { notFound } from 'next/navigation';
 
-// export const generateStaticParams = async () => {
-// 	const archives = await loadStaticArchives();
+export const generateStaticParams = async () => {
+	try {
+		const archives = await loadStaticArchives();
+		if (!archives) return []
 
-// 	if (!archives) return []
-
-// 	return archives.map((archive) => ({
-// 		slug: archive._id,
-// 	}));
-// }
+		return archives.map((archive) => ({
+			slug: [archive._id],
+		}));
+	} catch (error) {
+		console.error("Error fetching archives:", error);
+		throw new Error("Failed to fetch archives");
+	}
+}
 
 type Props = {
 	params: { slug: string }
