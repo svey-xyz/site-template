@@ -11,36 +11,36 @@ const props = {
 }
 
 export const studioTheme = buildLegacyTheme({
-	/* Base colours */
-	"--white": props["--custom-white"],
-	"--black": props["--custom-black"],
+	// /* Base colours */
+	// "--white": props["--custom-white"],
+	// "--black": props["--custom-black"],
 
-	"--gray": props["--custom-grey"],
-	"--gray-base": props["--custom-grey"],
+	// "--gray": props["--custom-grey"],
+	// "--gray-base": props["--custom-grey"],
 
-	"--component-bg": props["--custom-black"],
-	"--component-text-color": props["--custom-white"],
+	// "--component-bg": props["--custom-black"],
+	// "--component-text-color": props["--custom-white"],
 
-	/* Brand */
-	"--brand-primary": props["--primary-accent"],
+	// /* Brand */
+	// "--brand-primary": props["--primary-accent"],
 
-	/* Default button */
-	"--default-button-color": props["--custom-grey"],
-	"--default-button-primary-color": props["--primary-accent"],
-	"--default-button-success-color": props["--custom-green"],
-	"--default-button-warning-color": props["--custom-yellow"],
-	"--default-button-danger-color": props["--custom-red"],
+	// /* Default button */
+	// "--default-button-color": props["--custom-grey"],
+	// "--default-button-primary-color": props["--primary-accent"],
+	// "--default-button-success-color": props["--custom-green"],
+	// "--default-button-warning-color": props["--custom-yellow"],
+	// "--default-button-danger-color": props["--custom-red"],
 
-	/* State */
-	"--state-info-color": props["--primary-accent"],
-	"--state-success-color": props["--custom-green"],
-	"--state-warning-color": props["--custom-yellow"],
-	"--state-danger-color": props["--custom-red"],
+	// /* State */
+	// "--state-info-color": props["--primary-accent"],
+	// "--state-success-color": props["--custom-green"],
+	// "--state-warning-color": props["--custom-yellow"],
+	// "--state-danger-color": props["--custom-red"],
 
-	/* Navbar */
-	"--main-navigation-color": props["--custom-black"],
-	"--main-navigation-color--inverted": props["--custom-white"],
+	// /* Navbar */
+	// "--main-navigation-color": props["--custom-black"],
+	// "--main-navigation-color--inverted": props["--custom-white"],
 
-	"--focus-color": props["--primary-accent"],
+	// "--focus-color": props["--primary-accent"],
 
 })

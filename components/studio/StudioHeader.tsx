@@ -1,3 +1,5 @@
+import ThemeButton from "@/components/ui/ThemeButton"
+
 const StudioHeader = (props: any) => {
 	return (
 		<div>
@@ -11,7 +13,9 @@ const StudioHeader = (props: any) => {
 					<MdPreview className="h-6 w-6 text-oam-accent ml-2" />
 				</Link>
 			</div> */}
+
 			<>{props.renderDefault(props)}</>
+
 		</div>
 	)
 }
