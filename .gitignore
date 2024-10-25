@@ -40,3 +40,5 @@ sanity.json
 *.tsbuildinfo
 next-env.d.ts
 *.lockb
+
+node_modules
