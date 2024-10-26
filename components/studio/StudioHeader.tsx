@@ -6,7 +6,7 @@ const StudioHeader = (props: any) => {
 	console.log('Dark Theme: ', theme.sanity.v2?.color._dark)
 	
 	return (
-		<div>
+		<div className="flex flex-row w-screen">
 			{/* <div className="flex items-center justify-between p-5">
 				<Link href="/" target="_blank" className="text-oam-accent flex items-center">
 					<CgWebsite className="h-6 w-6 text-oam-accent mr-2" />
@@ -17,9 +17,11 @@ const StudioHeader = (props: any) => {
 					<MdPreview className="h-6 w-6 text-oam-accent ml-2" />
 				</Link>
 			</div> */}
-			<ThemeButton />
 
-			<>{props.renderDefault(props)}</>
+			<div className="w-full">
+				{props.renderDefault(props)}
+			</div>
+			<ThemeButton className='px-4' />
 
 		</div>
 	)
