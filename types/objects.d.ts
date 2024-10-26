@@ -40,13 +40,3 @@ export interface _object_NavigationItem extends inherentObjectData {
 	title: string,
 	pages?: Array<PagePayload | ArchivePayload>,
 }
-
-export interface _section extends inherentObjectData {
-	type: 'standard' | 'colour' | 'image' | 'video',
-	columns?: boolean,
-	header?: string,
-	video?: string,
-	image?: sanityImage,
-	colour?: undefined | 'accent',
-	blocks?: _BLOCK_TYPES
-}

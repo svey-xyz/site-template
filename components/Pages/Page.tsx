@@ -1,23 +1,11 @@
-import dynamic from 'next/dynamic'
 import { EncodeDataAttributeCallback } from '@sanity/react-loader';
 import React from 'react';
-import { createDataAttribute } from "@sanity/visual-editing";
 import { urlForImage } from '@/sanity/lib/image';
-
-interface ContainerMap {
-	[key: string]: React.ComponentType<{ data:section, index: number }>
-}
+import { Blocks } from '@/components/Pages/Blocks';
 
 export interface PageProps {
 	data: PagePayload | ArchivePayload | null
 	encodeDataAttribute?: EncodeDataAttributeCallback
-}
-
-const SectionList: ContainerMap = {
-	Standard: dynamic(() => import('@/components/Pages/sections/Standard')),
-	Video: dynamic(() => import('@/components/Pages/sections/Video')),
-	Image: dynamic(() => import('@/components/Pages/sections/Image')),
-	Colour: dynamic(() => import('@/components/Pages/sections/Colour')),
 }
 
 export const Page = ({ data, encodeDataAttribute }: PageProps) => {
@@ -42,21 +30,8 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 				</div>
 			}
 
-			{ data.sections &&
-				data.sections.map((section, i) => {
-					const Section = SectionList[section.type] ?? SectionList.Standard
-					const attr = createDataAttribute({
-						id: data._id,
-						type: data._type,
-						path: ['sections', i]
-					});
-
-					return (
-						<div data-sanity={attr()} key={section._key}>
-							<Section data={section} index={i} />
-						</div>
-					)
-				})
+			{ data.blocks &&
+				<Blocks blocks={data.blocks} blockClasses={`section-block`} />
 			}
 		</article>
 	);
