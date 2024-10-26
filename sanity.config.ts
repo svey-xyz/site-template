@@ -16,7 +16,10 @@ import { PluginOptions, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
-import { markdownSchema } from 'sanity-plugin-markdown'
+
+// const { theme } = (await import(
+// 	'https://themer.sanity.build/api/hues?default=8690a0;400'
+// )) as { theme: import('sanity').StudioTheme }
 
 const defaultDesk = structureTool({
 	structure,
@@ -33,6 +36,7 @@ const deskPlugins = [
 
 
 const config = defineConfig({
+	// theme,
   basePath: configStudioBasePath,
 	name: configStudioName,
 	title: configStudioTitle,
@@ -47,6 +51,6 @@ const config = defineConfig({
 			navbar: StudioHeader
 		}
 	},
-	theme: studioTheme
+	// theme: studioTheme
 })
 export default config;

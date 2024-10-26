@@ -1,6 +1,9 @@
 @import "tailwindcss/base"; 
 @import "tailwindcss/utilities"; 
 @import "tailwindcss/components"; 
+@import "./global.utilities.css";
+@import "./global.variables.css";
+
 
 @import url('@radix-ui/colors/tomato-dark.css');
 @import url('@radix-ui/colors/mauve-dark.css');

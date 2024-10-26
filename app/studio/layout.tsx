@@ -27,7 +27,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="m-0 h-0">
-				{children}
+				<ThemeHandler>
+					{children}
+				</ThemeHandler>
 			</body>
     </html>
   )

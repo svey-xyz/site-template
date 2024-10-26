@@ -3,9 +3,10 @@
 @import "./site.base.css";
 
 @import "tailwindcss/utilities"; 
-@import "./site.utilities.css";
+@import "./global.utilities.css";
 
 @import "tailwindcss/components"; 
 @import "./site.components.css";
 
+@import "./global.variables.css";
 @import "../theme/style/theme.index.css";

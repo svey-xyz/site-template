@@ -1,0 +1,38 @@
+@layer base {
+	:root {
+		/* COLOURS */
+		--primary-fg: 0deg 0% 0%;
+		--primary-bg: 0deg 0% 100%;
+		--secondary-bg: 0deg 0% 85%;
+
+		--primary-accent: 0deg 0% 0%;
+		--secondary-accent: 0deg 0% 50%;
+
+		--failure-accent: 11deg 83% 77%;
+		--warning-accent: 50deg 83% 77%;
+		--success-accent: 142deg 83% 77%;
+
+		/* SIZES */
+		--header-item: 40px;
+
+		--icon-size: 28px;
+		--icon-size-sm: 22px;
+
+		--text-base-size: 1rem;
+		--text-scale: 1.2;
+
+		/* STYLES */
+		--rounded-size: 0.25rem;
+		--rounded-scale: 1.3;
+	}
+
+	.dark {
+		--primary-fg: 0deg 0% 100%;
+
+		--primary-bg: 184deg 3% 12%;
+		--secondary-bg: 178deg 4% 15%;
+
+		--primary-accent: 186deg 13% 89%;
+		--secondary-accent: 186deg 13% 89%;
+	}
+}

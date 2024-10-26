@@ -5,6 +5,7 @@ import { themes } from '@components/ThemeHandler'
 import React, { useEffect, useRef, useState } from "react";
 import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
 import { Button } from '@headlessui/react';
+import { useColorSchemeSetValue } from 'sanity'
 
 export const ThemeButton = () => {
 
@@ -16,11 +17,17 @@ export const ThemeButton = () => {
 		setMounted(true)
 	}, [])
 
+	const ahhh = useColorSchemeSetValue()
+
+
 	const changeTheme = ((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
 
 		const curThemeIndex = themes.findIndex((t) => theme == t)
 		const nextTheme = (curThemeIndex + 1) < (themes.length) ? themes[curThemeIndex + 1] : themes[0]
 		setTheme(nextTheme)
+
+		if (ahhh) 
+			ahhh(nextTheme)
 	})
 
 	if (!mounted || !theme) return <MoonIcon className="z-10 block relative h-icon w-icon hover-button" />
