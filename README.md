@@ -16,9 +16,6 @@ This repo is a template for the sites I build, it is designed to be highly flexi
 
 My sites are built to be managed by my clients. A core part of that is being able to easily update and maintain content. This template includes a block style content management system I designed for Sanity to allow for easy control of page content and layout. In combination with Sanity's live preview functionality it puts the clients in full control, while ensuring proper standards and a design consistency are met.
 
-#### Sections
-Sections are built to hold and arrange blocks while providing the client with styling options.
-
 ### Articles
 
 Similarly to old-school CMSs like *Wordpress* or *Drupal*, this template is built around a primary document type called *articles*. *Articles* have a set of core fields so that they can be easily displayed in any existing content block, but they also allow for easy extension. A project can have any number of unique articles; some example article types might include- news, projects, places, etc.
@@ -62,12 +59,6 @@ Then run a dev environment and navigate to the studio to add all the required fi
 Article schemas are kept in `sanity/schemas/articles/`. Once you have created your article be sure to add it to the imports and export of `sanity/schemas/articles/index.ts`.
 
 On the frontend articles share a default singleton page but new singletons can be added for each article type. `components/Pages/articles/` is the directory for creating new article pages; ensure that you add your page to `components/Pages/ArticleRoute.tsx`
-
-### Creating a section
-
-All sections are managed in a single schema, located in `sanity/schemas/pages/section.tsx`.
-
-On the frontend sections each have their own components located in `components/Pages/sections/`. Ensure that you add your section to `components/Pages/Page.tsx`.
 
 ### Creating a block
 
