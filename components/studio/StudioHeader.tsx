@@ -1,14 +1,17 @@
 import ThemeButton from "@/components/ui/ThemeButton"
+import { Box, useTheme } from '@sanity/ui'
 
 const StudioHeader = (props: any) => {
+	const theme = useTheme()
 	return (
 		<div className="flex flex-row w-screen">
 			<div className="w-full">
 				{props.renderDefault(props)}
 			</div>
 
-			{/* bvlyul is sanity built in class for bottom border? this might change, this solution is kinda jank */}
-			<ThemeButton className='px-4 bvlyul' />
+			<Box className='h-full' style={{ borderBottom: `1px solid ${theme.sanity.v2?.color.border}` }}>
+				<ThemeButton className='pr-4 h-full items-center justify-center' />
+			</Box>
 
 		</div>
 	)
