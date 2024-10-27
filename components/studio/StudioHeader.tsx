@@ -1,25 +1,17 @@
 import ThemeButton from "@/components/ui/ThemeButton"
-import { useTheme } from '@sanity/ui'
+import { Box, useTheme } from '@sanity/ui'
 
 const StudioHeader = (props: any) => {
 	const theme = useTheme()
-	console.log('Dark Theme: ', theme.sanity.v2?.color._dark)
-	
 	return (
-		<div>
-			{/* <div className="flex items-center justify-between p-5">
-				<Link href="/" target="_blank" className="text-oam-accent flex items-center">
-					<CgWebsite className="h-6 w-6 text-oam-accent mr-2" />
-					Main Site
-				</Link>
-				<Link href="/api/preview" target="_blank" className="text-oam-accent flex items-center">
-					Preview
-					<MdPreview className="h-6 w-6 text-oam-accent ml-2" />
-				</Link>
-			</div> */}
-			<ThemeButton />
+		<div className="flex flex-row w-screen">
+			<div className="w-full">
+				{props.renderDefault(props)}
+			</div>
 
-			<>{props.renderDefault(props)}</>
+			<Box className='h-full' style={{ borderBottom: `1px solid ${theme.sanity.v2?.color.border}` }}>
+				<ThemeButton className='pr-4 h-full items-center justify-center' />
+			</Box>
 
 		</div>
 	)

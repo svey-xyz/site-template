@@ -23,8 +23,9 @@ import { link } from '@/sanity/schemas/objects/link'
 import { basicDate } from '@/sanity/schemas/objects/basicDate'
 import { contact } from '@/sanity/schemas/objects/contact'
 import { markdownSchemaType } from '@/sanity/schemas/pages/blocks/Text'
+import { note } from '@/sanity/schemas/objects/note'
 
-const _objects = [social, link, basicDate, contact, markdownSchemaType]
+const _objects = [social, link, basicDate, contact, markdownSchemaType, note]
 
 /**
  * Documents
