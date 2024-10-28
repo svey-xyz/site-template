@@ -30,9 +30,9 @@ import {
 
 declare global {
 	namespace THEME {
-		type theme = _THEME.theme
-		type text = _THEME.text
-		type colours = _THEME.colours
+		type theme = _THEME._theme
+		type text = _THEME._text
+		type colours = _THEME._colours
 	};
 
 	// INHERENT
