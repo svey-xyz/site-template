@@ -1,4 +1,5 @@
 import Color from "colorjs.io";
+import Tailwind from "./theme.tailwind"
 
 export const base: THEME.theme = {
 	name: 'base',
@@ -7,6 +8,17 @@ export const base: THEME.theme = {
 			fg: {
 				primary: new Color('red')
 			}
+		},
+		dark: {
+			fg: {
+				primary: new Color('red')
+			}
+		},
+		light: {
+			fg: {
+				primary: new Color('#662344')
+			}
 		}
-	}
+	},
+	tailwindExt: Tailwind,
 }

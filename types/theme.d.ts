@@ -1,5 +1,5 @@
 import type Color from 'colorjs.io/types'
-import type { ThemeConfig } from 'tailwindcss/types/config'
+import type { Config } from 'tailwindcss/types/config'
 import type { Properties } from 'csstype';
 import type { NextFont, NextFontWithVariable } from 'next/dist/compiled/@next/font';
 
@@ -11,7 +11,7 @@ export namespace _THEME {
 		 * Override existing blocks or add custom
 		 */
 		blocks?: BLOCK_MAP,
-		tailwindExt?: ThemeConfig | undefined,
+		tailwindExt?: Config | undefined,
 		/**
 		 * @colours extendable themes.
 		 */
