@@ -3,7 +3,7 @@ import type { ThemeConfig } from 'tailwindcss/types/config'
 import type { Properties } from 'csstype';
 import type { NextFont, NextFontWithVariable } from 'next/dist/compiled/@next/font';
 
-export type Theme = {
+export type _THEME = {
 	name: string,
 	author?: {}, // TODO: define type
 	/**
@@ -12,10 +12,12 @@ export type Theme = {
 	blocks?: BLOCK_MAP,
 	tailwindExt?: ThemeConfig | undefined,
 	/**
-	 * @colours extendable themes. Defaults are 'light' | 'dark'
+	 * @colours extendable themes.
 	 */
 	colours?: {
-		[key: string]: themeColours
+		light?: themeColours,
+		dark?: themeColours,
+		[key: string]: themeColours | undefined
 	},
 	text?: themeText,
 	icon?: {

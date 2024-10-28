@@ -22,9 +22,15 @@ import {
 	_object_Contact, _object_Date, _object_Link, _object_NavigationItem, _object_Social,
 } from './objects'
 
+import {
+	_THEME
+} from './theme'
+
 
 
 declare global {
+	type THEME = _THEME;
+
 	// INHERENT
 	type inherentDocumentData = _inherentDocumentData;
 	type inherentObjectData = _inherentObjectData;
