@@ -15,11 +15,7 @@ export namespace _THEME {
 		/**
 		 * @colours extendable themes.
 		 */
-		colours?: {
-			light?: _colours,
-			dark?: _colours,
-			[key: string]: _colours | undefined
-		},
+		colours?: _ColorMapping,
 		text?: _text,
 		icon?: {
 
@@ -40,10 +36,15 @@ export namespace _THEME {
 			 */
 			scale?: number
 		},
-
 	}
 
-	export interface _text {
+	export type _ColorMapping = {
+		default?: _colours,
+		dark?: _colours,
+		[key: string]: _THEME._colours
+	}
+
+	export type _text = {
 		size?: {
 			base?: Properties["fontSize"],
 			/**
@@ -54,7 +55,7 @@ export namespace _THEME {
 		font?: NextFont | NextFontWithVariable
 	}
 
-	export interface _colours {
+	export type _colours = {
 		bg?: {
 			primary?: Color,
 			secondary?: Color,
