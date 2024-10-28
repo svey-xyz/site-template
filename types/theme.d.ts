@@ -1,7 +1,7 @@
 import type Color from 'colorjs.io/types'
 import type { Config } from 'tailwindcss/types/config'
 import type { Properties } from 'csstype';
-import type { NextFont, NextFontWithVariable } from 'next/dist/compiled/@next/font';
+import type { NextFontWithVariable } from 'next/dist/compiled/@next/font';
 
 export namespace _THEME {
 	export type _theme = {
@@ -52,7 +52,7 @@ export namespace _THEME {
 			 */
 			scale?: number
 		},
-		font?: NextFont | NextFontWithVariable
+		font?: NextFontWithVariable
 	}
 
 	export type _colours = {

@@ -9,12 +9,11 @@ import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
 import { loadSettings } from '@/sanity/queries/loadQuery';
 import ThemeHandler from '@/components/ThemeHandler';
+import { getActiveTheme } from '@/lib/getTheme'
 
 const inter = Inter({ subsets: ['latin'] })
-// const font = localFont({
-// 	src: "../../public/fonts/",
-// 	variable: "--custom-font",
-// });
+const theme = await getActiveTheme()
+const font = theme?.text?.font
 
 export async function generateMetadata(
 	{ params }: any,
@@ -43,7 +42,7 @@ export default async function RootLayout({
 	children: React.ReactNode
 }) {
 
-	const documentClasses = `${inter.className} relative` // ${font.variable}
+	const documentClasses = `${inter.className} ${font?.variable} relative` // 
 
 	return (
 		// suppress hydration required for theme handler

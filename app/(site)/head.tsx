@@ -1,16 +1,19 @@
+import { getActiveTheme } from "@/lib/getTheme";
 import { generateThemeCSS } from "@/lib/themeBuilder";
-import { base } from "@/theme/base";
 
-export default function Head() {
-	const themeCSS = generateThemeCSS(base);
+export const Head = async() => {
+	const theme = await getActiveTheme()
+	const themeCSS = theme ? generateThemeCSS(theme) : ''
 
 	return (
-		<>
+		<head>
 			{/* <title>{settings.title}</title> */}
-			<style>{themeCSS}</style>
+			<style rel="stylesheet">{themeCSS}</style>
 			<meta content="width=device-width, initial-scale=1"
 				name="viewport" />
 			<link rel="icon" href="./favicon.ico" />
-		</>
+		</head>
 	)
 }
+
+export default Head

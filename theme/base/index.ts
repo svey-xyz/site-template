@@ -1,7 +1,7 @@
 import Color from "colorjs.io";
 import Tailwind from "./theme.tailwind"
 
-export const base: THEME.theme = {
+const base: THEME.theme = {
 	name: 'base',
 	colours: {
 		default: {
@@ -22,3 +22,5 @@ export const base: THEME.theme = {
 	},
 	tailwindExt: Tailwind,
 }
+
+export default base;
