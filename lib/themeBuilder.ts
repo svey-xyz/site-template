@@ -1,10 +1,10 @@
 import Color from 'colorjs.io/types'
 
 const themeBuilder = (themeDefinition: THEME.theme) => {
-
+	generateThemeCSS(themeDefinition)
 }
 
-const generateThemeCSS = (theme: THEME.theme): string => {
+export const generateThemeCSS = (theme: THEME.theme): string => {
 	const toHSL = (color: Color | undefined) => color ? `${color.hsl.h}deg ${color.hsl.s}% ${color.hsl.l}%` : ''
 
 	const CSSColourVars: string[] = []
@@ -52,11 +52,9 @@ const generateThemeCSS = (theme: THEME.theme): string => {
 
 	// Combine base variables with color theme variables
 	return `
-	@layer base {
-		${CSSColourVars.join('\n')}
-		:root {
-			${CSSMiscVars.join('\n')}
-		}
+	${CSSColourVars.join('\n')}
+	:root {
+		${CSSMiscVars.join('\n')}
 	}
 	`
 }

@@ -14,7 +14,7 @@ module.exports = {
 	],
 	presets: [
 		require('./styles/site.tailwind.js'),
-		require('./theme/style/theme.tailwind.js')
+		// require('./theme/style/theme.tailwind.js')
 	],
 	theme: {
 		extend: {

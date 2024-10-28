@@ -9,6 +9,8 @@ import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
 import { loadSettings } from '@/sanity/queries/loadQuery';
 import ThemeHandler from '@/components/ThemeHandler';
+import { generateThemeCSS } from '@/lib/themeBuilder'
+import { base } from '@theme/base'
 
 const inter = Inter({ subsets: ['latin'] })
 // const font = localFont({
@@ -44,7 +46,7 @@ export default async function RootLayout({
 }) {
 
 	let documentClasses = `${inter.className} relative` // ${font.variable}
-	
+
 	return (
 		// suppress hydration required for theme handler
 		<html lang="en" className={documentClasses} suppressHydrationWarning> 
