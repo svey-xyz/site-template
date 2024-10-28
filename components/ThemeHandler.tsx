@@ -35,7 +35,6 @@ export default function ThemeHandler({
 			window.addEventListener("scroll", listener);
 		})()
 
-
 	}, [mounted])
 
 	const chevronClick = ((e: React.MouseEvent<SVGSVGElement, MouseEvent>) => {

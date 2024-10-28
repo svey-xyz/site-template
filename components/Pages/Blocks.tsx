@@ -2,7 +2,7 @@ import React from 'react';
 import dynamic from 'next/dynamic'
 import { loadSettings } from '@/sanity/queries/loadQuery';
 import { BlockList } from './blocks/'
-import { BlockList as ThemeBlockList } from '@theme/blocks'
+import { BlockList as ThemeBlockList } from '@/theme/base/blocks'
 
 export const Blocks = async ({ blocks, blockClasses }: { blocks: BLOCK_TYPES, blockClasses?: string }) => {
 	const settings = await loadSettings()

@@ -22,9 +22,20 @@ import {
 	_object_Contact, _object_Date, _object_Link, _object_NavigationItem, _object_Social,
 } from './objects'
 
+import {
+	_THEME
+} from './theme'
+
 
 
 declare global {
+	namespace THEME {
+		type theme = _THEME._theme
+		type text = _THEME._text
+		type colours = _THEME._colours
+		type ColorMapping = _THEME._ColorMapping
+	};
+
 	// INHERENT
 	type inherentDocumentData = _inherentDocumentData;
 	type inherentObjectData = _inherentObjectData;
