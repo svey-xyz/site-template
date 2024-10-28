@@ -29,7 +29,11 @@ import {
 
 
 declare global {
-	type THEME = _THEME;
+	namespace THEME {
+		type theme = _THEME.theme
+		type text = _THEME.text
+		type colours = _THEME.colours
+	};
 
 	// INHERENT
 	type inherentDocumentData = _inherentDocumentData;
