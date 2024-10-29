@@ -7,6 +7,17 @@ import { Squares2X2Icon } from '@heroicons/react/24/solid'
 
 const fields = [
 	defineField({
+		title: 'Style',
+		name: 'style',
+		type: 'string',
+		options: {
+			list: [
+				{ title: 'Swiper', value: 'swiper' },
+				{ title: 'Gallery', value: 'gallery' }
+			]
+		}
+	}),
+	defineField({
 		title: 'Images',
 		name: 'images',
 		type: 'array',

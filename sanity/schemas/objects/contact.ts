@@ -20,7 +20,7 @@ export const contact = defineType({
 		defineField({
 			title: 'Website',
 			name: 'website',
-			type: 'url',
+			type: 'link',
 		}),
 		defineField({
 			title: 'Socials',

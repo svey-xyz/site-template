@@ -20,6 +20,7 @@ export interface _block_Image extends block {
 }
 
 export interface _block_Gallery extends block {
+	style?: 'swiper' | 'gallery',
 	images: Array<sanityImage>,
 }
 
