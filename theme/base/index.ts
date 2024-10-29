@@ -1,5 +1,4 @@
 import Color from "colorjs.io";
-import Tailwind from "./theme.tailwind"
 
 const base: THEME.theme = {
 	name: 'base',
@@ -20,7 +19,6 @@ const base: THEME.theme = {
 			}
 		}
 	},
-	tailwindExt: Tailwind,
 }
 
 export default base;
