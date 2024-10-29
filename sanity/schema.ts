@@ -22,7 +22,7 @@ import { social } from '@/sanity/schemas/objects/social'
 import { link } from '@/sanity/schemas/objects/link'
 import { basicDate } from '@/sanity/schemas/objects/basicDate'
 import { contact } from '@/sanity/schemas/objects/contact'
-import { markdownSchemaType } from '@/sanity/schemas/pages/blocks/Text'
+import { markdownSchemaType } from '@/sanity/schemas/objects/mdx'
 import { note } from '@/sanity/schemas/objects/note'
 
 const _objects = [social, link, basicDate, contact, markdownSchemaType, note]

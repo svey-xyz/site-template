@@ -1,15 +1,21 @@
-import { MdxNodeType } from "@mdxeditor/editor"
-import { MDXRemote } from "next-mdx-remote"
-import { serialize } from "next-mdx-remote/serialize"
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import rehypeStarryNight from 'rehype-starry-night'
 
+const components = {
+}
 
-export const MDXText = async ({ text }: { text?: string | MdxNodeType }) => {
-	if (!text) return
-
-	const mdxSource = await serialize(text)
+export const MDXText = async ({ text }: { text: string }) => {
 	return (
 		<div className="">
-			<MDXRemote { ...mdxSource } />
+			<MDXRemote
+				source={text}
+				components={{ ...components }}
+				options={{
+					mdxOptions: {
+						rehypePlugins: [rehypeStarryNight]
+					}
+				}}
+			/>
 		</div>
 	)
 

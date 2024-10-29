@@ -35,7 +35,7 @@ const archivePages = (S: StructureBuilder) => ARTICLES.flatMap(article => {
 
 	return S.listItem().title(archiveName).child(
 		(S.document().title(archiveName).schemaType('archive').documentId(`${article.document.name}`))
-	)
+	).icon(_ArchiveBoxIcon)
 }).filter((item)=>{ return item !== undefined})
 
 const typesList = (S: StructureBuilder) => ARTICLES.flatMap(article => {
@@ -58,20 +58,13 @@ export const structure = (S: StructureBuilder, context: StructureResolverContext
 		S.listItem().title('Site Settings').icon(_Cog6ToothIcon).child(
 			S.document().title('Site Settings').schemaType('siteSettings').documentId('siteSettings')
 		),
-		S.listItem().title('Pages').icon(_DocumentTextIcon).child(
-			S.list().title('Pages').items([
-				S.listItem().title('Archives').icon(_ArchiveBoxIcon).child(
-					S.list().title('Archives').items([
-						...archivePages(S)
-					])
-				),
-
-				S.divider(),
-
-				S.documentTypeListItem('page').title('Pages'),
-
-			]),
+		S.listItem().title('Archives').icon(_ArchiveBoxIcon).child(
+			S.list().title('Archives').items([
+				...archivePages(S)
+			])
 		),
+		S.documentTypeListItem('page').title('Pages'),
+
 
 		S.divider(),
 		...typesList(S),

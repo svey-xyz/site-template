@@ -2,7 +2,7 @@
 import { _ARTICLE_TYPES } from './articles'
 
 export interface _block extends inherentObjectData {
-	hiddenOnMobile?: boolean
+
 }
 
 export interface _block_FeaturedTaxonomies extends block {

@@ -44,8 +44,7 @@ export const page = (args: { name: string, fields?: sanityFields }) => {
 		defineField({
 			title: 'Description',
 			name: 'description',
-			type: 'array',
-			of: [{ type: 'block' }],
+			type: 'mdx',
 		}),
 		defineField({
 			title: 'Hero Image',

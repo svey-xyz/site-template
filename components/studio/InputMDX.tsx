@@ -1,7 +1,7 @@
 "use client";
 
-import { forwardRef, useCallback, FC} from "react";
-import { BoldItalicUnderlineToggles, MDXEditor, MDXEditorMethods, UndoRedo, headingsPlugin, listsPlugin, markdownShortcutPlugin, quotePlugin, thematicBreakPlugin, toolbarPlugin } from "@mdxeditor/editor";
+import { useCallback, FC} from "react";
+import { diffSourcePlugin, codeBlockPlugin, BlockTypeSelect, BoldItalicUnderlineToggles, CreateLink, DiffSourceToggleWrapper, InsertTable, ListsToggle, MDXEditor, MDXEditorMethods, UndoRedo, headingsPlugin, linkDialogPlugin, linkPlugin, listsPlugin, markdownShortcutPlugin, quotePlugin, thematicBreakPlugin, toolbarPlugin, Separator, InsertCodeBlock, ChangeCodeMirrorLanguage, ConditionalContents, codeMirrorPlugin, ButtonOrDropdownButton} from "@mdxeditor/editor";
 import { PatchEvent, StringInputProps, set, unset } from "sanity";
 
 interface EditorProps extends StringInputProps {
@@ -21,7 +21,7 @@ export const InputMDX: FC<EditorProps> = (props) => {
 
 	return (
 		<MDXEditor
-			className="dark-editor"
+			className={`dark:dark-editor dark:dark-theme`}
 			plugins={[
 				// Example Plugin Usage
 				headingsPlugin(),
@@ -29,14 +29,43 @@ export const InputMDX: FC<EditorProps> = (props) => {
 				quotePlugin(),
 				thematicBreakPlugin(),
 				markdownShortcutPlugin(),
+				linkPlugin(),
+				linkDialogPlugin(),
+				diffSourcePlugin(),
+				codeBlockPlugin({ defaultCodeBlockLanguage: 'tsx' }),
+				codeMirrorPlugin({ codeBlockLanguages: { js: 'JavaScript', ts: 'TypeScript', tsx: 'TypeScript JSX', jsx: 'JavaScript JSX', css: 'CSS', properties: 'ENV' } }),
 				toolbarPlugin({
-					toolbarContents: () => (
-						<>
-							{' '}
-							<UndoRedo />
-							<BoldItalicUnderlineToggles />
-						</>
-					)
+					toolbarContents: () => (<>
+						<DiffSourceToggleWrapper>
+							<ConditionalContents
+								options={[
+									{ when: (editor) => editor?.editorType === 'codeblock', contents: () => <ChangeCodeMirrorLanguage /> },
+									{
+										fallback: () => (<>
+											<UndoRedo />
+
+											<Separator />
+											<BoldItalicUnderlineToggles />
+											<BlockTypeSelect />
+
+											<Separator />
+											<CreateLink />
+											<ListsToggle />
+										
+
+											<Separator />
+											<InsertTable />
+											<InsertCodeBlock />
+											<Separator />
+
+										</>)
+									}
+								]}
+							/>
+						</DiffSourceToggleWrapper>
+
+
+					</>)
 				})
 
 			]}

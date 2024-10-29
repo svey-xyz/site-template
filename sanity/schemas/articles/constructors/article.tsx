@@ -43,8 +43,7 @@ const _FIELDS = (type: string) => [
 	defineField({
 		title: 'Description',
 		name: 'description',
-		type: 'array',
-		of: [{ type: 'block' }],
+		type: 'mdx',
 		group: 'about',
 	}),
 	defineField({

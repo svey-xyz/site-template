@@ -5,12 +5,10 @@ const base: THEME.theme = {
 	colours: {
 		default: {
 			fg: {
-				primary: new Color('red')
 			}
 		},
 		dark: {
 			fg: {
-				primary: new Color('red')
 			}
 		},
 		light: {
