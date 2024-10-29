@@ -1,10 +1,21 @@
-import { MdxNodeType } from "@mdxeditor/editor"
-import ReactMarkdown from "react-markdown"
+import { MDXRemote } from 'next-mdx-remote/rsc'
+import rehypeStarryNight from 'rehype-starry-night'
 
-export const MDXText = async ({ text }: { text: string | MdxNodeType }) => {
+const components = {
+}
+
+export const MDXText = async ({ text }: { text: string }) => {
 	return (
 		<div className="">
-			<ReactMarkdown>{text}</ReactMarkdown>
+			<MDXRemote
+				source={text}
+				components={{ ...components }}
+				options={{
+					mdxOptions: {
+						rehypePlugins: [rehypeStarryNight]
+					}
+				}}
+			/>
 		</div>
 	)
 
