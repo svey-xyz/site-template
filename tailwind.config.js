@@ -7,7 +7,7 @@ let theme
 try {
 	theme = require(`./theme/${ACTIVE_THEME}/`)
 } catch(e) {
-	console.log('Unhandled error: ', error)
+	console.log('Unhandled error: ', e)
 }
 
 module.exports = {
@@ -24,7 +24,6 @@ module.exports = {
 	presets: [
 		require('./styles/site.tailwind.js'),
 		theme?.tailwindExt
-		// require('./theme/style/theme.tailwind.js')
 	].filter(Boolean),
 	theme: {
 		extend: {

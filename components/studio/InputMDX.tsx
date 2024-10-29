@@ -1,8 +1,9 @@
 "use client";
 
 import { forwardRef, useCallback, FC} from "react";
-import { diffSourcePlugin, codeBlockPlugin, BlockTypeSelect, BoldItalicUnderlineToggles, CreateLink, DiffSourceToggleWrapper, InsertTable, ListsToggle, MDXEditor, MDXEditorMethods, UndoRedo, headingsPlugin, linkDialogPlugin, linkPlugin, listsPlugin, markdownShortcutPlugin, quotePlugin, thematicBreakPlugin, toolbarPlugin, Separator, InsertCodeBlock, ChangeCodeMirrorLanguage, ConditionalContents, codeMirrorPlugin} from "@mdxeditor/editor";
+import { diffSourcePlugin, codeBlockPlugin, BlockTypeSelect, BoldItalicUnderlineToggles, CreateLink, DiffSourceToggleWrapper, InsertTable, ListsToggle, MDXEditor, MDXEditorMethods, UndoRedo, headingsPlugin, linkDialogPlugin, linkPlugin, listsPlugin, markdownShortcutPlugin, quotePlugin, thematicBreakPlugin, toolbarPlugin, Separator, InsertCodeBlock, ChangeCodeMirrorLanguage, ConditionalContents, codeMirrorPlugin, ButtonOrDropdownButton} from "@mdxeditor/editor";
 import { PatchEvent, StringInputProps, set, unset } from "sanity";
+import { Box, useTheme } from '@sanity/ui'
 
 interface EditorProps extends StringInputProps {
 	markdown?: string;
@@ -11,6 +12,8 @@ interface EditorProps extends StringInputProps {
 
 
 export const InputMDX: FC<EditorProps> = (props) => {
+	const theme = useTheme()
+
 	const { value, onChange, markdown, editorRef } = props;
 
 	const handleChange = useCallback(
@@ -22,7 +25,7 @@ export const InputMDX: FC<EditorProps> = (props) => {
 
 	return (
 		<MDXEditor
-			className="dark-editor"
+			className={`dark:dark-editor dark:dark-theme`}
 			plugins={[
 				// Example Plugin Usage
 				headingsPlugin(),
@@ -52,6 +55,7 @@ export const InputMDX: FC<EditorProps> = (props) => {
 											<Separator />
 											<CreateLink />
 											<ListsToggle />
+										
 
 											<Separator />
 											<InsertTable />
@@ -63,7 +67,7 @@ export const InputMDX: FC<EditorProps> = (props) => {
 								]}
 							/>
 						</DiffSourceToggleWrapper>
-							
+
 
 					</>)
 				})
