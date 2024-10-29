@@ -12,7 +12,6 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 	if (!data) return;
 
 	const BG_URL = data?.heroImage ? urlForImage(data?.heroImage).url() : ''
-	console.log('Blocks: ', data)
 
 	return (
 		<article className=''>

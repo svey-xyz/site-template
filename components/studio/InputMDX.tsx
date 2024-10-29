@@ -1,19 +1,15 @@
 "use client";
 
-import { forwardRef, useCallback, FC} from "react";
+import { useCallback, FC} from "react";
 import { diffSourcePlugin, codeBlockPlugin, BlockTypeSelect, BoldItalicUnderlineToggles, CreateLink, DiffSourceToggleWrapper, InsertTable, ListsToggle, MDXEditor, MDXEditorMethods, UndoRedo, headingsPlugin, linkDialogPlugin, linkPlugin, listsPlugin, markdownShortcutPlugin, quotePlugin, thematicBreakPlugin, toolbarPlugin, Separator, InsertCodeBlock, ChangeCodeMirrorLanguage, ConditionalContents, codeMirrorPlugin, ButtonOrDropdownButton} from "@mdxeditor/editor";
 import { PatchEvent, StringInputProps, set, unset } from "sanity";
-import { Box, useTheme } from '@sanity/ui'
 
 interface EditorProps extends StringInputProps {
 	markdown?: string;
 	editorRef?: React.MutableRefObject<MDXEditorMethods | null>;
 }
 
-
 export const InputMDX: FC<EditorProps> = (props) => {
-	const theme = useTheme()
-
 	const { value, onChange, markdown, editorRef } = props;
 
 	const handleChange = useCallback(

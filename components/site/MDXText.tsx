@@ -1,15 +1,10 @@
 import { MdxNodeType } from "@mdxeditor/editor"
-import { MDXRemote } from "next-mdx-remote"
-import { serialize } from "next-mdx-remote/serialize"
+import ReactMarkdown from "react-markdown"
 
-
-export const MDXText = async ({ text }: { text?: string | MdxNodeType }) => {
-	if (!text) return
-
-	const mdxSource = await serialize(text)
+export const MDXText = async ({ text }: { text: string | MdxNodeType }) => {
 	return (
 		<div className="">
-			<MDXRemote { ...mdxSource } />
+			<ReactMarkdown>{text}</ReactMarkdown>
 		</div>
 	)
 

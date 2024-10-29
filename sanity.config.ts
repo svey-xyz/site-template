@@ -13,10 +13,6 @@ import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 
-// const { theme } = (await import(
-// 	'https://themer.sanity.build/api/hues?default=8690a0;400'
-// )) as { theme: import('sanity').StudioTheme }
-
 const defaultDesk = structureTool({
 	structure,
 	defaultDocumentNode
@@ -31,7 +27,6 @@ const deskPlugins = [
 
 
 const config = defineConfig({
-	// theme,
   basePath: configStudioBasePath,
 	name: configStudioName,
 	title: configStudioTitle,
@@ -47,6 +42,5 @@ const config = defineConfig({
 		
 		}
 	},
-	// theme: studioTheme
 })
 export default config;
