@@ -3,13 +3,16 @@ import dynamic from 'next/dynamic'
 import { loadSettings } from '@/sanity/queries/loadQuery';
 import { BlockList } from './blocks/'
 import { BlockList as ThemeBlockList } from '@/theme/base/blocks'
+import { getActiveTheme } from '@/lib/getTheme';
 
 export const Blocks = async ({ blocks, blockClasses }: { blocks: BLOCK_TYPES, blockClasses?: string }) => {
 	const settings = await loadSettings()
+	const theme = await getActiveTheme()
+	const themeBlocks: BLOCK_MAP = theme?.blocks ?? {}
 
 	return blocks.map((block, i) => {
 		const BlockComponent = BlockList[block._type] ??
-			ThemeBlockList[block._type] ??
+			themeBlocks[block._type] ??
 			dynamic(() => import('@/components/Pages/blocks/Standard'))
 
 		return (
