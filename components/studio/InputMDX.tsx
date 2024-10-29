@@ -37,7 +37,7 @@ export const InputMDX: FC<EditorProps> = (props) => {
 				linkDialogPlugin(),
 				diffSourcePlugin(),
 				codeBlockPlugin({ defaultCodeBlockLanguage: 'tsx' }),
-				codeMirrorPlugin({ codeBlockLanguages: { js: 'JavaScript', ts: 'TypeScript', tsx: 'TypeScript JSX', jsx: 'JavaScript JSX', css: 'CSS' } }),
+				codeMirrorPlugin({ codeBlockLanguages: { js: 'JavaScript', ts: 'TypeScript', tsx: 'TypeScript JSX', jsx: 'JavaScript JSX', css: 'CSS', properties: 'ENV' } }),
 				toolbarPlugin({
 					toolbarContents: () => (<>
 						<DiffSourceToggleWrapper>

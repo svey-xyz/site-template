@@ -38,6 +38,11 @@
 
 .mdxeditor {
 	@apply flex flex-col gap-2;
+	h1, h2, h3, h4, h5, h6 { @apply font-heading font-bold text-accent-secondary mt-2 text-xl; }
+	h1, h2 { @apply text-accent text-2xl; }
+	p { @apply mt-2; }
+	a { @apply hover-text; }
+	em { @apply font-light; }
 }
 
 .mdxeditor .mdxeditor-toolbar {
