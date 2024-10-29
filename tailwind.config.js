@@ -1,5 +1,14 @@
 /** @type {import('tailwindcss').Config} */
 // Project specific theme customization
+const ACTIVE_THEME =
+	process.env.NEXT_PUBLIC_THEME || undefined
+
+let theme
+try {
+	theme = require(`./theme/${ACTIVE_THEME}/`)
+} catch(e) {
+	console.log('Unhandled error: ', error)
+}
 
 module.exports = {
 	darkMode: 'class',
@@ -14,8 +23,9 @@ module.exports = {
 	],
 	presets: [
 		require('./styles/site.tailwind.js'),
+		theme?.tailwindExt
 		// require('./theme/style/theme.tailwind.js')
-	],
+	].filter(Boolean),
 	theme: {
 		extend: {
 			fontFamily: {
