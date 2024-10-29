@@ -27,7 +27,7 @@ export interface _object_Link extends inherentObjectData {
 export interface _object_Contact extends inherentObjectData {
 	email?: string,
 	phone?: string,
-	website?: string,
+	website?: _object_Link,
 	socials?: Array<object_Social>
 }
 
