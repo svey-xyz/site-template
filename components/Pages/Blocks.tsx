@@ -10,6 +10,7 @@ export const Blocks = async ({ blocks, blockClasses }: { blocks: BLOCK_TYPES, bl
 	const themeBlocks: BLOCK_MAP = theme?.blocks ?? {}
 
 	return blocks.map((block, i) => {
+		console.log('Block: ', block)
 		const BlockComponent = BlockList[block._type] ??
 			themeBlocks[block._type] ??
 			dynamic(() => import('@/components/Pages/blocks/Standard'))

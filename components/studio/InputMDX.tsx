@@ -1,13 +1,14 @@
 "use client";
 
 import { forwardRef, useCallback, FC} from "react";
-import { BoldItalicUnderlineToggles, MDXEditor, MDXEditorMethods, UndoRedo, headingsPlugin, listsPlugin, markdownShortcutPlugin, quotePlugin, thematicBreakPlugin, toolbarPlugin } from "@mdxeditor/editor";
+import { diffSourcePlugin, codeBlockPlugin, BlockTypeSelect, BoldItalicUnderlineToggles, CreateLink, DiffSourceToggleWrapper, InsertTable, ListsToggle, MDXEditor, MDXEditorMethods, UndoRedo, headingsPlugin, linkDialogPlugin, linkPlugin, listsPlugin, markdownShortcutPlugin, quotePlugin, thematicBreakPlugin, toolbarPlugin, Separator, InsertCodeBlock, ChangeCodeMirrorLanguage, ConditionalContents, codeMirrorPlugin} from "@mdxeditor/editor";
 import { PatchEvent, StringInputProps, set, unset } from "sanity";
 
 interface EditorProps extends StringInputProps {
 	markdown?: string;
 	editorRef?: React.MutableRefObject<MDXEditorMethods | null>;
 }
+
 
 export const InputMDX: FC<EditorProps> = (props) => {
 	const { value, onChange, markdown, editorRef } = props;
@@ -29,14 +30,42 @@ export const InputMDX: FC<EditorProps> = (props) => {
 				quotePlugin(),
 				thematicBreakPlugin(),
 				markdownShortcutPlugin(),
+				linkPlugin(),
+				linkDialogPlugin(),
+				diffSourcePlugin(),
+				codeBlockPlugin({ defaultCodeBlockLanguage: 'tsx' }),
+				codeMirrorPlugin({ codeBlockLanguages: { js: 'JavaScript', ts: 'TypeScript', tsx: 'TypeScript JSX', jsx: 'JavaScript JSX', css: 'CSS' } }),
 				toolbarPlugin({
-					toolbarContents: () => (
-						<>
-							{' '}
-							<UndoRedo />
-							<BoldItalicUnderlineToggles />
-						</>
-					)
+					toolbarContents: () => (<>
+						<DiffSourceToggleWrapper>
+							<ConditionalContents
+								options={[
+									{ when: (editor) => editor?.editorType === 'codeblock', contents: () => <ChangeCodeMirrorLanguage /> },
+									{
+										fallback: () => (<>
+											<UndoRedo />
+
+											<Separator />
+											<BoldItalicUnderlineToggles />
+											<BlockTypeSelect />
+
+											<Separator />
+											<CreateLink />
+											<ListsToggle />
+
+											<Separator />
+											<InsertTable />
+											<InsertCodeBlock />
+											<Separator />
+
+										</>)
+									}
+								]}
+							/>
+						</DiffSourceToggleWrapper>
+							
+
+					</>)
 				})
 
 			]}
