@@ -1,5 +1,5 @@
 import React from 'react';
-import TextBlock from '@/components/site/TextBlock';
+import { MDXText } from '@/components/site/MDXText';
 
 export const Text = ({ data, className }: { data: block_Text | undefined, className?:string }) => {
 	if (!data) return;
@@ -7,7 +7,7 @@ export const Text = ({ data, className }: { data: block_Text | undefined, classN
 		<div className={`${className}`}>
 			<div className='relative flex flex-col max-w-prose-full'>
 				{ data.text &&
-					<TextBlock text={data.text} />
+					<MDXText text={data.text} />
 				}
 			</div>
 		</div>
