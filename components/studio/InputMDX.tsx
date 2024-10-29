@@ -21,7 +21,7 @@ export const InputMDX: FC<EditorProps> = (props) => {
 
 	return (
 		<MDXEditor
-			className=""
+			className="dark-editor"
 			plugins={[
 				// Example Plugin Usage
 				headingsPlugin(),
