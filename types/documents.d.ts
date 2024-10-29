@@ -1,4 +1,4 @@
-import { ImageAsset, Slug, PortableTextBlock, Image } from "sanity"
+import { ImageAsset, Slug, Image } from "sanity"
 import { DocumentContainers } from '@/sanity/schemas/articles'
 
 export interface _SettingsPayload extends inherentDocumentData {
@@ -6,7 +6,7 @@ export interface _SettingsPayload extends inherentDocumentData {
 	logo?: sanityImage,
 	blurb?: string,
 	contact?: object_Contact,
-	about?: PortableTextBlock,
+	about?: string,
 	homepage?: PagePayload,
 	navigation?: Array<object_NavigationItem>,
 }
@@ -14,7 +14,7 @@ export interface _SettingsPayload extends inherentDocumentData {
 export interface _PagePayload extends inherentDocumentData {
 	title: string,
 	slug: string,
-	description?: PortableTextBlock,
+	description?: string,
 	heroImage?: sanityImage,
 	blocks?: BLOCK_TYPES
 }
@@ -22,6 +22,6 @@ export interface _PagePayload extends inherentDocumentData {
 export interface _ArchivePayload extends inherentDocumentData {
 	title?: string,
 	blocks?: BLOCK_TYPES
-	description?: PortableTextBlock,
+	description?: string,
 	heroImage?: sanityImage,
 }

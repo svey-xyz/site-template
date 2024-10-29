@@ -10,7 +10,7 @@ export interface _block_FeaturedTaxonomies extends block {
 }
 
 export interface _block_Text extends block {
-	text?: PortableTextBlock,
+	text?: string,
 	link?: object_Link,
 }
 
@@ -48,7 +48,7 @@ export interface _block_Info extends block {
 }
 
 export interface _block_Archive extends block {
-	description?: PortableTextBlock,
+	description?: string,
 	archiveType: documentTypesWithArchives,
 	filterable?: boolean,
 	featuredTaxonomies?: Array<taxonomy>,
