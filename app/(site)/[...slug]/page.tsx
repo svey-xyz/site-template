@@ -17,16 +17,14 @@ export const generateStaticParams = async () => {
 }
 
 type Props = {
-	params: { slug: Array<string> }
+	params: Promise<{ slug: Array<string> }>
 }
 
-export const generateMetadata = async(
-	{ params }: Props,
-	parent: ResolvingMetadata,
-): Promise<Metadata> => {
-	const page = await loadPage(params.slug[0])
+export const generateMetadata = async (props: Props, parent: ResolvingMetadata): Promise<Metadata> => {
+    const params = await props.params;
+    const page = await loadPage(params.slug[0])
 
-	return {
+    return {
 		title: page?.title,
 		// description: page?.overview
 		// 	? toPlainText(page.overview)
@@ -34,8 +32,9 @@ export const generateMetadata = async(
 	}
 }
 
-const Page = ({ params }: Props) => {
-	return <Pages.PageRoute params={params} />
+const Page = async (props: Props) => {
+    const params = await props.params;
+    return <Pages.PageRoute params={params} />
 }
 
 export default Page
