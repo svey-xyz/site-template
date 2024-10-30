@@ -21,7 +21,11 @@ const deskPlugins = [
 	defaultDesk,
 	media(),
 	iconify({ showName: false, }),
-	vercelDeployTool()
+	vercelDeployTool(),
+	structureTool({
+		defaultDocumentNode,
+		structure
+	})
 
 ] as PluginOptions[]
 

@@ -25,7 +25,7 @@ export const resolveArchiveHrefFromTaxonomy = (taxonomy: taxonomy): string => {
 export const resolveContactHref = (contact: object_Contact | undefined): string => {
 	if (!contact) return ''
 	
-	if (contact.website) return contact.website
+	// if (contact.website) return contact.website // TODO
 	if (contact.socials) return contact.socials[0].url
 
 	return ''
