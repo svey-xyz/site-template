@@ -1,17 +1,20 @@
-'use client'
-
 import React from "react"
 
-type galleryType = ({ data, className }: { data: block_Gallery; className?: string; }) => React.JSX.Element
+import { SwiperGallery } from "@/components/site/Gallery";
+import { GridGallery } from "@/components/site/Gallery";
+
+
+type galleryType = ({ images, className }: { images: sanityImage[]; className?: string; }) => React.JSX.Element
 
 export const Gallery = async ({ data, className }: { data: block_Gallery, className?: string }) => {
+	
 	const GalleryStyle: galleryType | undefined =  data.style ?
-		data.style == 'swiper' ? (await import("@/components/site/Gallery")).SwiperGallery :
-		data.style == 'gallery' ? (await import("@/components/site/Gallery")).GridGallery :
-		undefined : undefined
+		data.style == 'swiper' ? SwiperGallery :
+			data.style == 'gallery' ? GridGallery :
+				GridGallery : GridGallery
 
-	if (!GalleryStyle) return []
-	return <GalleryStyle data={data} className={className} />
+	if (!GalleryStyle) return <></>
+	return <GalleryStyle images={data.images} className={className} />
 }
 
 export default Gallery

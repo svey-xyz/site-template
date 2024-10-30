@@ -1,5 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
+import { NextConfig } from 'next';
+
+
+const nextConfig: NextConfig = {
 	images: {
 		domains: ["cdn.sanity.io"]
 	},
@@ -13,4 +15,4 @@ const nextConfig = {
 	}
 }
 
-module.exports = nextConfig
+export default nextConfig

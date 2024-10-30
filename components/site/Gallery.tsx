@@ -6,11 +6,11 @@ import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 import { XMarkIcon } from '@heroicons/react/24/solid'
 
-import "swiper/css";
-import 'swiper/css/navigation';
-import 'swiper/css/pagination';
+// import "swiper/css";
+// import 'swiper/css/navigation';
+// import 'swiper/css/pagination';
 
-export const SwiperGallery = ({ data, className }: { data: block_Gallery, className?: string }) => {
+export const SwiperGallery = ({ images, className }: { images: sanityImage[], className?: string }) => {
 	const slide = 0
 
 	return (
@@ -27,7 +27,7 @@ export const SwiperGallery = ({ data, className }: { data: block_Gallery, classN
 					clickable: true,
 				}}
 				className="flex flex-row items-center justify-center" >
-				{data.images.map((image) => {
+				{images.map((image) => {
 					if (!image.imageAsset) return
 					return (
 						<SwiperSlide key={image.imageAsset._id} className=''>
@@ -46,13 +46,12 @@ export const SwiperGallery = ({ data, className }: { data: block_Gallery, classN
 
 /** Tiled gallery */
 
-export const GridGallery = ({ data, className }: { data: block_Gallery, className?: string }) => {
+export const GridGallery = ({ images, className }: { images: sanityImage[], className?: string }) => {
 	const [mounted, setMounted] = useState(false)
 	const refLightBox = useRef<HTMLDivElement>(null)
 	const [activeSlide, setActiveSlide] = useState<number>(0)
 	const [lightBoxState, setLightBoxState] = useState<boolean>(false)
 
-	const images = data.images
 	const _LIIGHTBOX = false // enable or disabled lightbox
 
 	const openLightBox = ((e: React.MouseEvent<HTMLDivElement, MouseEvent>, i: number) => {
@@ -101,9 +100,9 @@ export const GridGallery = ({ data, className }: { data: block_Gallery, classNam
 			</div>
 			{_LIIGHTBOX &&
 				<div className='fixed inset-0 bg-black/75 z-50 hidden' ref={refLightBox}>
-					<XMarkIcon className="z-10 fixed text-fg-primary h-10 w-10 duration-100 hover:scale-[1.1] right-[10px] top-[10px] cursor-pointer drop-shadow-lg"
+					<XMarkIcon className="z-10 fixed text-fg h-10 w-10 duration-100 hover:scale-[1.1] right-[10px] top-[10px] cursor-pointer drop-shadow-lg"
 						onClick={(e) => { if (mounted) closeLightBox() }} />
-					<SwiperGallery data={data} className='h-full' />
+					<SwiperGallery images={images} className='h-full' />
 				</div>
 			}
 		</div>

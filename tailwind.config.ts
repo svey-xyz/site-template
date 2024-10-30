@@ -1,7 +1,6 @@
-/** @type {import('tailwindcss').Config} */
-// Project specific theme customization
+import type { Config } from 'tailwindcss'
 
-module.exports = {
+const TailwindConfig = {
 	darkMode: 'class',
 	future: {
 		hoverOnlyWhenSupported: true,
@@ -10,10 +9,7 @@ module.exports = {
 		'./app/**/*.{js,ts,jsx,tsx,mdx}',
 		'./components/**/*.{js,ts,jsx,tsx,mdx}',
 		'./lib/**/*.{js,ts,jsx,tsx,mdx}',
-		'./styles/**/*.{js,ts,jsx,tsx,mdx}',
-	],
-	presets: [
-		require('./styles/site.tailwind.js')
+		'./styles/**/*.{js,ts,jsx,tsx,mdx,css}',
 	],
 	theme: {
 		screens: {
@@ -111,4 +107,6 @@ module.exports = {
 	plugins: [
 		require('@tailwindcss/typography')
 	],
-}
+} satisfies Config
+
+export default TailwindConfig
