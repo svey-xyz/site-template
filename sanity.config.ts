@@ -7,25 +7,23 @@ import { structureTool } from 'sanity/structure'
 import { apiVersion, configStudioBasePath, configStudioName, configStudioTitle, dataset, projectId } from '@sanity/lib/api'
 import StudioHeader from '@components/studio/StudioHeader'
 import StudioLogo from '@components/studio/StudioLogo'
-import { structure, schemaOptions, documentOptions, defaultDocumentNode } from '@/sanity/structure'
+import { structure, schemaOptions, documentOptions } from '@/sanity/structure'
 import { PluginOptions, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
+import { defaultDocumentNode } from '@/sanity/documentNode'
 
 const defaultDesk = structureTool({
 	structure,
-	defaultDocumentNode
+	defaultDocumentNode,
+
 })
 const deskPlugins = [
 	defaultDesk,
 	media(),
 	iconify({ showName: false, }),
 	vercelDeployTool(),
-	structureTool({
-		defaultDocumentNode,
-		structure
-	})
 
 ] as PluginOptions[]
 

@@ -1,12 +1,27 @@
+import { resolveHrefFromSlug, resolvePageHref } from "@/lib/resolveHref";
+import { loadDocument } from "@/sanity/queries/loadQuery";
+import { NextApiRequest, NextApiResponse } from "next";
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
-import { NextRequest } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export async function GET(req: NextRequest) {
-	const { searchParams } = new URL(req.url);
-	const param = searchParams.get("page");
-	
+type ResponseData = {
+	message: string
+}
+
+export async function GET(req: NextApiRequest) {
+
+	const { searchParams } = new URL(req.url ?? ` `);
+	const _slug = searchParams.get("slug");
+	const _type = searchParams.get("type");
+
+	if (!_slug || !_type) return new NextResponse(JSON.stringify({ answer: "No slug or type found!" }), {
+		status: 400,
+	});
+
+	const slug = resolveHrefFromSlug(_slug, _type)
+
 	const draft = await draftMode()
 	draft.enable();
-	redirect(`/${param ?? ''}`);
+	redirect(`${slug ?? '/'}`);
 }

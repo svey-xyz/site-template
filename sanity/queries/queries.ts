@@ -45,6 +45,13 @@ export const pageQuery: string = groq`
 	}
 `
 
+export const documentQuery: string = groq`
+	*[_id == $id][0] {
+  	...,
+		"slug":slug.current,
+	}
+`
+
 export const archiveQuery: string = groq`
 	*[_type=='archive' && _id == $archiveID][0] {
   	...,
