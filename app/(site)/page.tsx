@@ -1,8 +1,8 @@
-import { loadSettings } from '@/sanity/queries/loadQuery';
 import Pages from '@/components/Pages';
+import { load_Settings } from '@/sanity/queries/loader';
 
 const Page = async() => {
-	const settings = await loadSettings()
+	const settings = await load_Settings()
 
 	if (!settings || !settings.homepage) {
 		return (

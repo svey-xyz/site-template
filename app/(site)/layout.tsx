@@ -7,9 +7,9 @@ import { Inter } from 'next/font/google'
 import Head from './head'
 import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
-import { loadSettings } from '@/sanity/queries/loadQuery';
 import ThemeHandler from '@/components/ThemeHandler';
 import { getActiveTheme } from '@/lib/getTheme'
+import { load_Settings } from '@/sanity/queries/loader'
 
 const inter = Inter({ subsets: ['latin'] })
 const theme = await getActiveTheme()
@@ -19,7 +19,7 @@ export async function generateMetadata(
 	{ params }: any,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const data = await loadSettings()
+	const data = await load_Settings()
 	const settings = data
 	
 	const titleTemplate = `${settings.title} | %s`

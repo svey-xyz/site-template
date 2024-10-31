@@ -1,13 +1,8 @@
 import { resolveHrefFromSlug, resolvePageHref } from "@/lib/resolveHref";
-import { loadDocument } from "@/sanity/queries/loadQuery";
 import { NextApiRequest, NextApiResponse } from "next";
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 import { NextRequest, NextResponse } from "next/server";
-
-type ResponseData = {
-	message: string
-}
 
 export async function GET(req: NextApiRequest) {
 

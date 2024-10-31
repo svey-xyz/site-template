@@ -1,17 +1,15 @@
 import { notFound } from 'next/navigation'
 
 import { Page } from '@/components/Pages/Page'
-import { loadArticles, loadPage } from '@/sanity/queries/loadQuery'
-import { draftMode } from 'next/headers'
+import { loadSingle_Page } from '@/sanity/queries/loader'
 
 type Props = {
 	params: { slug: Array<string> }
 }
 
 export const PageRoute = async ({ params }: Props) => {
-	const draft = (await draftMode()).isEnabled
 
-	const data = await loadPage(params.slug[0], draft)
+	const data = await loadSingle_Page(params.slug[0])
 
 	if (!data) {
 		notFound()

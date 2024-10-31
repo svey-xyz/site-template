@@ -1,11 +1,10 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { loadPage, loadStaticPages } from '@/sanity/queries/loadQuery'
 import Pages from '@/components/Pages'
-import { draftMode } from 'next/headers';
+import { loadSingle_Page, loadBundle_Pages } from '@/sanity/queries/loader';
 
 export const generateStaticParams = async () => {
 	try {
-		const pages = await loadStaticPages();
+		const pages = await loadBundle_Pages();
 		if (!pages) return []
 
 		return pages.map((page) => ({
@@ -23,9 +22,7 @@ type Props = {
 
 export const generateMetadata = async (props: Props, parent: ResolvingMetadata): Promise<Metadata> => {
     const params = await props.params;
-		const draft = (await draftMode()).isEnabled
-		
-    const page = await loadPage(params.slug[0], draft)
+    const page = await loadSingle_Page(params.slug[0])
 
     return {
 		title: page?.title,

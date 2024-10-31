@@ -1,10 +1,10 @@
 import React from 'react';
 import Socials from '@components/site/Socials'
-import { loadSettings } from '@/sanity/queries/loadQuery';
 import ThemeButton from '@/components/ui/ThemeButton';
+import { load_Settings } from '@/sanity/queries/loader';
 
 const Footer = async ({}:{}) => {
-	const settings = await loadSettings()
+	const settings = await load_Settings()
 	if (!settings) return
 
 	return (

@@ -1,10 +1,10 @@
-import { loadSettings } from '@/sanity/queries/loadQuery'
 import Image from '@components/site/Image'
 import Link from 'next/link'
 import { Navigation } from '@/components/site/Navigation'
+import { load_Settings } from '@/sanity/queries/loader'
 
 const Header = async() => {
-	const settings = await loadSettings()
+	const settings = await load_Settings()
 	if (!settings) return;
 	
 	return (
