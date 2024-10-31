@@ -19,7 +19,7 @@ export const loadSingle_Page = async (slug: string) => {
 
 	const initial = await queryClient<PagePayload | null>(
 		pageQuery,
-		{ slug },
+		{ pathname: `/${slug}` },
 		{ next: { tags: [`page:${slug}`, 'home'] } },
 	)
 

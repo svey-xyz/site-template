@@ -38,9 +38,10 @@ export const staticArchivesQuery: string = groq`
 `
 
 export const pageQuery: string = groq`
-	*[_type=='page' && slug.current == $slug][0] {
+	*[_type=='page' && pathname.current == $pathname][0] {
   	...,
-		"slug":slug.current,
+		// "slug":slug.current,
+
 		${partial_Sections}
 	}
 `

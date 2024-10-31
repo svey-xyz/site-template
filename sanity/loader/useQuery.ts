@@ -1,6 +1,7 @@
 import { pageQuery } from '@/sanity/queries/queries'
-import { queryStore } from '@/sanity/loader/queryStore'
+import * as queryStore from '@sanity/react-loader'
 import {
+	useLiveMode,
 	type QueryParams,
 	type QueryResponseInitial,
 	type UseQueryOptionsDefinedInitial,
@@ -17,6 +18,7 @@ export const useQuery = <
 	params?: QueryParams,
 	options?: UseQueryOptionsDefinedInitial<QueryResponseResult>,
 ) => {
+
 	const snapshot = queryStore.useQuery<QueryResponseResult, QueryResponseError>(
 		query,
 		params,
@@ -35,5 +37,6 @@ export const useQuery = <
  * Loaders that are used in more than one place are declared here, otherwise they're colocated with the component
  */
 export function useSingle_Page(initial: QueryResponseInitial<PagePayload | null>) {
-	return useQuery<PagePayload | null>(pageQuery, {}, { initial })
+	const pathname = `${initial?.data?.pathname?.current}`
+	return useQuery<PagePayload | null>(pageQuery, { pathname }, { initial })
 }

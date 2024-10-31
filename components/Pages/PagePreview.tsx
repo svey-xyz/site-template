@@ -1,8 +1,7 @@
 'use client'
 
 import { Page } from '@/components/Pages/Page'
-import { pageQuery } from '@/sanity/queries/queries'
-import { useQuery } from '@/sanity/loader/useQuery'
+import { useSingle_Page } from '@/sanity/loader/useQuery'
 import { type QueryResponseInitial } from '@sanity/react-loader'
 
 type Props = {
@@ -11,11 +10,7 @@ type Props = {
 
 const PagePreview = (props: Props) => {
 	const { initial } = props
-	const { data, encodeDataAttribute } = useQuery<PagePayload | null>(
-		pageQuery,
-		{},
-		{ initial },
-	)
+	const { data, encodeDataAttribute } = useSingle_Page(initial)
 
 	if (!data) {
 		return (

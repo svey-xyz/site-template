@@ -48,7 +48,6 @@ export default async function RootLayout({
 	children: React.ReactNode
 }) {
 	const draft = await draftMode()
-	const isDraftMode = draft.isEnabled;
 
 	const documentClasses = `${inter.className} ${font?.variable} relative` // 
 
@@ -62,10 +61,11 @@ export default async function RootLayout({
 					<main className='min-h-full flex-grow'>
 						{ children }
 					</main>
+					{draft.isEnabled && <LiveVisualEditing />}
+
 					<Footer />
 				</ThemeHandler>
 			</body>
-			{draft.isEnabled && <LiveVisualEditing />}
 		</html>
 	) 
 }
