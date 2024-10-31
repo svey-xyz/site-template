@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 
 import { Page } from '@/components/Pages/Page'
-import { loadSingle_Page } from '@/sanity/queries/loader'
+import { loadSingle_Page } from '@/sanity/loader/loader'
 import { draftMode } from 'next/headers'
 import dynamic from 'next/dynamic'
 

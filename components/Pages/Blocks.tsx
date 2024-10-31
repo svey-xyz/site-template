@@ -2,7 +2,7 @@ import React from 'react';
 import dynamic from 'next/dynamic'
 import { BlockList } from './blocks/'
 
-export const Blocks = async ({ blocks, blockClasses }: { blocks: BLOCK_TYPES, blockClasses?: string }) => {
+export const Blocks = ({ blocks, blockClasses }: { blocks: BLOCK_TYPES, blockClasses?: string }) => {
 
 	return blocks.map((block, i) => {
 		const BlockComponent = BlockList[block._type] ??

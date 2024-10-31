@@ -9,7 +9,7 @@ import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
 import ThemeHandler from '@/components/ThemeHandler';
 import { getActiveTheme } from '@/lib/getTheme'
-import { load_Settings } from '@/sanity/queries/loader'
+import { load_Settings } from '@/sanity/loader/loader'
 import { draftMode } from 'next/headers'
 import dynamic from 'next/dynamic'
 

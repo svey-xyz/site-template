@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import Pages from '@/components/Pages'
 import { _ARTICLE_TYPES } from '@/sanity/schemas/articles/types';
-import { loadSingle_Article, loadBundle_Articles } from '@/sanity/queries/loader';
+import { loadSingle_Article, loadBundle_Articles } from '@/sanity/loader/loader';
 
 type Params = {
 	slug: string[];

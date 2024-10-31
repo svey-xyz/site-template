@@ -1,6 +1,6 @@
 import type { Metadata, ResolvingMetadata } from 'next'
 import Pages from '@/components/Pages'
-import { loadSingle_Page, loadBundle_Pages } from '@/sanity/queries/loader';
+import { loadSingle_Page, loadBundle_Pages } from '@/sanity/loader/loader';
 import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs';
 
 export async function generateMetadata(

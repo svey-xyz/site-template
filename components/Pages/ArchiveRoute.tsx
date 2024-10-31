@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation'
 
 import { Page } from '@/components/Pages/Page'
-import { loadSingle_Archive } from '@/sanity/queries/loader'
+import { loadSingle_Archive } from '@/sanity/loader/loader'
 
 type Props = {
 	params: { slug: string }

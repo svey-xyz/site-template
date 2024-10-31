@@ -1,10 +1,10 @@
 import { pageQuery } from '@/sanity/queries/queries'
+import { queryStore } from '@/sanity/loader/queryStore'
 import {
 	type QueryParams,
 	type QueryResponseInitial,
 	type UseQueryOptionsDefinedInitial,
 } from '@sanity/react-loader'
-import * as queryStore from '@sanity/react-loader'
 
 /**
  * Exports to be used in client-only or components that render both server and client

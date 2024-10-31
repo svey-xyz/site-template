@@ -1,7 +1,7 @@
 import Image from '@components/site/Image'
 import Link from 'next/link'
 import { Navigation } from '@/components/site/Navigation'
-import { load_Settings } from '@/sanity/queries/loader'
+import { load_Settings } from '@/sanity/loader/loader'
 
 const Header = async() => {
 	const settings = await load_Settings()

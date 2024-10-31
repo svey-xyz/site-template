@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import dynamic from 'next/dynamic'
-import { loadSingle_Article } from '@/sanity/queries/loader'
+import { loadSingle_Article } from '@/sanity/loader/loader'
 
 type ArticleRouteProps = {
 	type: string,

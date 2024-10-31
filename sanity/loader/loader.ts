@@ -1,4 +1,4 @@
-import { queryClient } from "@/sanity/queries/loadQuery"
+import { queryClient } from "@/sanity/loader/loadQuery"
 import { SanityDocument } from "next-sanity"
 import pluralize from "pluralize"
 

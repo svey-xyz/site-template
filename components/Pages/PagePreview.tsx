@@ -2,7 +2,7 @@
 
 import { Page } from '@/components/Pages/Page'
 import { pageQuery } from '@/sanity/queries/queries'
-import { useQuery } from '@/sanity/queries/useQuery'
+import { useQuery } from '@/sanity/loader/useQuery'
 import { type QueryResponseInitial } from '@sanity/react-loader'
 
 type Props = {
