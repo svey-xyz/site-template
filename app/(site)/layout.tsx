@@ -10,6 +10,8 @@ import localFont from "next/font/local";
 import ThemeHandler from '@/components/ThemeHandler';
 import { getActiveTheme } from '@/lib/getTheme'
 import { load_Settings } from '@/sanity/queries/loader'
+import { draftMode } from 'next/headers'
+import dynamic from 'next/dynamic'
 
 const inter = Inter({ subsets: ['latin'] })
 const theme = await getActiveTheme()
@@ -36,11 +38,17 @@ export async function generateMetadata(
 	}
 }
 
+const LiveVisualEditing = dynamic(
+	() => import('@/sanity/loader/LiveVisualEditing'),
+)
+
 export default async function RootLayout({
 	children
 }: {
 	children: React.ReactNode
 }) {
+	const draft = await draftMode()
+	const isDraftMode = draft.isEnabled;
 
 	const documentClasses = `${inter.className} ${font?.variable} relative` // 
 
@@ -57,6 +65,7 @@ export default async function RootLayout({
 					<Footer />
 				</ThemeHandler>
 			</body>
+			{draft.isEnabled && <LiveVisualEditing />}
 		</html>
 	) 
 }

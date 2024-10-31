@@ -1,6 +1,5 @@
-import { queryClient } from "@/sanity/queries/queryClient"
+import { queryClient } from "@/sanity/queries/loadQuery"
 import { SanityDocument } from "next-sanity"
-import { draftMode } from "next/headers"
 import pluralize from "pluralize"
 
 import * as _PARTIAL_ARTICLE_QUERIES from '@/sanity/queries/partials'
@@ -17,17 +16,15 @@ import { single_Article, bundle_Articles } from "@/sanity/queries/buildArticleQu
 
 
 export const loadSingle_Page = async (slug: string) => {
-	const draft = (await draftMode()).isEnabled
 
 	const initial = await queryClient<PagePayload | null>(
 		pageQuery,
 		{ slug },
 		{ next: { tags: [`page:${slug}`, 'home'] } },
-		draft
 	)
 
 	const data = initial.data
-	return data
+	return initial
 }
 
 export const load_Settings = async () => {
@@ -43,7 +40,6 @@ export const load_Settings = async () => {
 }
 
 export const loadSingle_Article = async <T>(type: string, slug: string) => {
-	const draft = (await draftMode()).isEnabled
 
 	const partial =
 		(Object.keys(_PARTIAL_ARTICLE_QUERIES).includes(type)) ?
@@ -54,7 +50,6 @@ export const loadSingle_Article = async <T>(type: string, slug: string) => {
 		single_Article(partial),
 		{ type, slug, partial },
 		{ next: { tags: [type, pluralize(type), 'article', 'articles'] } },
-		draft
 
 	)
 
@@ -83,13 +78,11 @@ export const loadBundle_Articles = async <T>(type: string, taxonomies?: Array<ta
 
 
 export const loadSingle_Document = async (id: string) => {
-	const draft = (await draftMode()).isEnabled
 
 	const initial = await queryClient<SanityDocument | null>(
 		documentQuery,
 		{ id },
 		{},
-		draft
 	)
 
 	const data = initial.data
@@ -97,13 +90,11 @@ export const loadSingle_Document = async (id: string) => {
 }
 
 export const loadSingle_Archive = async (archiveID: string) => {
-	const draft = (await draftMode()).isEnabled
 
 	const initial = await queryClient<ArchivePayload | null>(
 		archiveQuery,
 		{ archiveID },
 		{ next: { tags: [`archive:${archiveID}`, 'archive'] } },
-		draft
 
 	)
 

@@ -1,6 +1,7 @@
 import { type DefaultDocumentNodeResolver } from 'sanity/structure'
 import { Iframe } from 'sanity-plugin-iframe-pane'
 import { type SanityDocument } from 'sanity'
+import { resolveHrefFromSlug } from '@/lib/resolveHref'
 
 // Customise this function to show the correct URL based on the current document
 function getPreviewUrl(doc: SanityDocument) {
@@ -25,10 +26,20 @@ export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, { schemaType
 				S.view
 					.component(Iframe)
 					.options({
-						url: (doc: SanityDocument) => {
-							const previewURL = getPreviewUrl(doc)
-							console.log('preview url: ', previewURL)
-							return previewURL
+						// url: (doc: SanityDocument) => {
+						// 	const previewURL = getPreviewUrl(doc)
+						// 	console.log('preview url: ', previewURL)
+						// 	return previewURL
+						// },
+						url: {
+							origin: 'same-origin', // or 'same-origin' if the app and studio are on the same origin
+							preview: (doc: SanityDocument) => {
+								const slug = (doc?.slug as any)?.current
+								const href = resolveHrefFromSlug(slug ?? ``, doc._type)
+
+								return slug ? href : new Error('Missing slug')
+							},
+							draftMode: '/api/preview' // the route you enable draft mode, see: https://github.com/sanity-io/visual-editing/tree/main/packages/preview-url-secret#sanitypreview-url-secret
 						},
 						showDisplayUrl: true,
 						defaultSize: `desktop`,

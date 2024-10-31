@@ -1,12 +1,12 @@
 import 'server-only'
 
+import { draftMode } from 'next/headers'
 import * as queryStore from '@sanity/react-loader'
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient, SanityDocument } from "@sanity/client";
 import { client } from "@/sanity/lib/client";
+import { token } from '@/sanity/lib/token';
 
-export const token = process.env.SANITY_API_READ_TOKEN;
-
-const serverClient: SanityClient = client.withConfig({
+export const serverClient: SanityClient = client.withConfig({
 	token,
 	// Enable stega if it's a Vercel preview deployment, as the Vercel Toolbar has controls that shows overlays
 	stega: process.env.VERCEL_ENV === 'preview',
@@ -22,9 +22,10 @@ queryStore.setServerClient(serverClient)
 
 const usingCdn = serverClient.config().useCdn
 
-export const queryClient =  (async <T>(query: string, params: QueryParams = {}, options: QueryOptions = {}, draft?: boolean) => {
+export const queryClient =  (async <T>(query: string, params: QueryParams = {}, options: QueryOptions = {}) => {
+	const draft = await draftMode()
 	const {
-		perspective = draft ? 'previewDrafts' : 'published',
+		perspective = draft.isEnabled ? 'previewDrafts' : 'published',
 	} = options
 	// Don't cache by default
 	let revalidate: NextFetchRequestConfig['revalidate'] = 0
