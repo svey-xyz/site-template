@@ -4,7 +4,7 @@ import { draftMode } from 'next/headers'
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient, SanityDocument } from "@sanity/client";
 import { client } from "@/sanity/lib/client";
 import { token } from '@/sanity/lib/token';
-import * as queryStore from '@sanity/react-loader'
+import { queryStore } from '@/sanity/loader/queryStore';
 
 export const serverClient: SanityClient = client.withConfig({
 	token,

@@ -1,11 +1,14 @@
+import { queryStore } from '@/sanity/loader/queryStore'
 import { pageQuery } from '@/sanity/queries/queries'
-import * as queryStore from '@sanity/react-loader'
 import {
 	useLiveMode,
 	type QueryParams,
 	type QueryResponseInitial,
 	type UseQueryOptionsDefinedInitial,
 } from '@sanity/react-loader'
+
+import { client } from '@/sanity/lib/client'
+const stegaClient = client.withConfig({ stega: true })
 
 /**
  * Exports to be used in client-only or components that render both server and client
@@ -18,6 +21,7 @@ export const useQuery = <
 	params?: QueryParams,
 	options?: UseQueryOptionsDefinedInitial<QueryResponseResult>,
 ) => {
+	queryStore.useLiveMode({ client: stegaClient })
 
 	const snapshot = queryStore.useQuery<QueryResponseResult, QueryResponseError>(
 		query,

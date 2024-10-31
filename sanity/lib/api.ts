@@ -23,6 +23,8 @@ export const configStudioBasePath =
 export const configStudioName =
 	process.env.SANITY_CONFIG_STUDIO_NAME || 'studio'
 
+export const revalidateSecret = process.env.SANITY_REVALIDATE_SECRET
+
 export const configStudioTitle =
 	process.env.SANITY_CONFIG_STUDIO_TITLE || 'studio'
 
