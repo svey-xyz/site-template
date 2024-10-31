@@ -3,10 +3,8 @@ import remarkGfm from 'remark-gfm'
 import { compile, run } from '@mdx-js/mdx'
 import * as runtime from 'react/jsx-runtime'
 
-const components = {
-}
+export const MDX = async ({ text }: { text: string }) => {
 
-export const MDXText = async ({ text }: { text: string }) => {
 	const code = String(
 		await compile(text, {
 			outputFormat: 'function-body',
@@ -19,23 +17,8 @@ export const MDXText = async ({ text }: { text: string }) => {
 		...runtime,
 		baseUrl: import.meta.url,
 	})
-	// return <></>
-	return (
-		<MDXContent />
-		// <div className="">
-		// 	<MDXRemote
-		// 		source={text}
-		// 		components={{ ...components }}
-		// 		options={{
-		// 			mdxOptions: {
-		// 				remarkPlugins: [remarkGfm],
-		// 				rehypePlugins: [rehypeStarryNight]
-		// 			}
-		// 		}}
-		// 	/>
-		// </div>
-	)
 
+	return <MDXContent />
 }
 
-export default MDXText
+export default MDX

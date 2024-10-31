@@ -22,7 +22,7 @@ export const ThemeButton = ({className}:{className?:string}) => {
 	try {
 		setSanityTheme = useColorSchemeSetValue()
 	} catch(e) {
-		console.log('Not in studio environment')
+		// console.log('Not in studio environment')
 	}
 
 	const changeTheme = ((e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {

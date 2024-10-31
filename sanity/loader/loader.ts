@@ -24,6 +24,19 @@ export const loadSingle_Page = async (slug: string) => {
 	)
 
 	const data = initial.data
+	// const blocks = data?.blocks?.flatMap((block) => {
+	// 	switch (block._type) {
+	// 		case('Text'):
+	// 			const populateText = async () => {
+	// 				const Text = (block as block_Text)
+	// 				return Text
+	// 			}
+	// 			return populateText()
+	// 		default:
+	// 			return block
+	// 	}
+	// })
+
 	return initial
 }
 

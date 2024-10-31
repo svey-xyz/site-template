@@ -22,5 +22,5 @@ export const PageRoute = async ({ params }: Props) => {
 
 	if (!initial.data) notFound()
 
-	return <Page data={initial.data} />
+	return <Page data={initial.data} draft={false} />
 }

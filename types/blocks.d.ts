@@ -58,7 +58,7 @@ export interface _block_Contact extends block {
 	buttonText: string
 }
 
-export type _BLOCK_TYPES = Array<block_FeaturedTaxonomies | block_Text | block_Newsletter | block_FeaturedArticles | block_Archive | block_Columns>
+export type _BLOCK_TYPES = Array<_block_FeaturedTaxonomies | _block_Text | _block_Newsletter | _block_FeaturedArticles | _block_Archive>
 
 export type _BLOCK_MAP = {
 	[key: string]: React.ComponentType<{ data: any, className?: string, siteData?: SettingsPayload | undefined }>

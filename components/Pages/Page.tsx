@@ -6,9 +6,10 @@ import { Blocks } from '@/components/Pages/Blocks';
 export interface PageProps {
 	data: PagePayload | ArchivePayload | null
 	encodeDataAttribute?: EncodeDataAttributeCallback
+	draft?: boolean
 }
 
-export const Page = ({ data, encodeDataAttribute }: PageProps) => {
+export const Page = ({ data, encodeDataAttribute, draft }: PageProps) => {
 	if (!data) return;
 
 	const BG_URL = data?.heroImage ? urlForImage(data?.heroImage).url() : ''
@@ -31,7 +32,7 @@ export const Page = ({ data, encodeDataAttribute }: PageProps) => {
 			}
 
 			{ data.blocks &&
-				<Blocks blocks={data.blocks} blockClasses={`section-block`} />
+				<Blocks blocks={data.blocks} blockClasses={`section-block`} draft={draft} />
 			}
 		</article>
 	);

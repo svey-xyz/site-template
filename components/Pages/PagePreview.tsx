@@ -25,7 +25,7 @@ const PagePreview = (props: Props) => {
 		)
 	}
 
-	return <Page data={data} />
+	return <Page data={data} draft={true} />
 }
 
 export default PagePreview

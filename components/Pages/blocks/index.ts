@@ -1,7 +1,7 @@
 import dynamic from 'next/dynamic'
 
 interface BlockMap {
-	[key: string]: React.ComponentType<{ data: any, className?: string, siteData?: SettingsPayload | undefined }>
+	[key: string]: React.ComponentType<{ data: any, className?: string, siteData?: SettingsPayload, draft?: boolean }>
 }
 
 export const BlockList: BlockMap = {
