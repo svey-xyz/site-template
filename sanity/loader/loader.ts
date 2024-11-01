@@ -4,7 +4,6 @@ import pluralize from "pluralize"
 
 import * as _PARTIAL_ARTICLE_QUERIES from '@/sanity/queries/partials'
 import {
-	pageQuery,
 	settingsQuery,
 	archiveQuery,
 	staticPagesQuery,
@@ -12,33 +11,6 @@ import {
 	documentQuery,
 } from '@/sanity/queries/queries'
 import { single_Article, bundle_Articles } from "@/sanity/queries/buildArticleQuery"
-
-
-
-export const loadSingle_Page = async (slug: string) => {
-
-	const initial = await queryClient<PagePayload | null>(
-		pageQuery,
-		{ pathname: `/${slug}` },
-		{ next: { tags: [`page:${slug}`, 'home'] } },
-	)
-
-	const data = initial.data
-	// const blocks = data?.blocks?.flatMap((block) => {
-	// 	switch (block._type) {
-	// 		case('Text'):
-	// 			const populateText = async () => {
-	// 				const Text = (block as block_Text)
-	// 				return Text
-	// 			}
-	// 			return populateText()
-	// 		default:
-	// 			return block
-	// 	}
-	// })
-
-	return initial
-}
 
 export const load_Settings = async () => {
 

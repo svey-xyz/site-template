@@ -10,6 +10,7 @@ export const Blocks = ({ blocks, blockClasses, draft }: { blocks: BLOCK_TYPES, b
 
 		return (
 			<BlockComponent
+				key={block._key}
 				data={block}
 				draft={draft}
 				className={`${blockClasses} main-padding`}

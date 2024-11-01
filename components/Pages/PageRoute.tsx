@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation'
 
 import { Page } from '@/components/Pages/Page'
-import { loadSingle_Page } from '@/sanity/loader/loader'
 import { draftMode } from 'next/headers'
 import dynamic from 'next/dynamic'
+import { queryClient } from '@/sanity/loader/loadQuery'
+import { pageQuery } from '@/sanity/queries/queries'
 
 type Props = {
 	params: { slug: Array<string> }
@@ -12,6 +13,15 @@ type Props = {
 const PagePreview = dynamic(
 	() => import('@/components/Pages/PagePreview'),
 )
+
+const loadSingle_Page = async (slug: string) => {
+	const initial = await queryClient<PagePayload | null>(
+		pageQuery,
+		{ pathname: `${slug}` },
+		{ next: { tags: [`page:${slug}`, 'home'] } },
+	)
+	return initial
+}
 
 export const PageRoute = async ({ params }: Props) => {
 

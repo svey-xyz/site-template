@@ -1,5 +1,5 @@
 import { queryStore } from '@/sanity/loader/queryStore'
-import { pageQuery } from '@/sanity/queries/queries'
+
 import {
 	useLiveMode,
 	type QueryParams,
@@ -40,7 +40,3 @@ export const useQuery = <
 /**
  * Loaders that are used in more than one place are declared here, otherwise they're colocated with the component
  */
-export function useSingle_Page(initial: QueryResponseInitial<PagePayload | null>) {
-	const pathname = `${initial?.data?.pathname?.current}`
-	return useQuery<PagePayload | null>(pageQuery, { pathname }, { initial })
-}
