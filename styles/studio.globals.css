@@ -45,6 +45,7 @@
 	em { @apply font-light; }
 }
 
+/* Matches sanity colours */
 .mdxeditor .mdxeditor-toolbar {
 	@apply border border-solid !border-[var(--card-border-color)];
 

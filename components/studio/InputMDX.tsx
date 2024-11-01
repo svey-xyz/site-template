@@ -2,7 +2,7 @@
 
 import { useCallback, FC} from "react";
 import { diffSourcePlugin, codeBlockPlugin, BlockTypeSelect, BoldItalicUnderlineToggles, CreateLink, DiffSourceToggleWrapper, InsertTable, ListsToggle, MDXEditor, MDXEditorMethods, UndoRedo, headingsPlugin, linkDialogPlugin, linkPlugin, listsPlugin, markdownShortcutPlugin, quotePlugin, thematicBreakPlugin, toolbarPlugin, Separator, InsertCodeBlock, ChangeCodeMirrorLanguage, ConditionalContents, codeMirrorPlugin, ButtonOrDropdownButton} from "@mdxeditor/editor";
-import { PatchEvent, StringInputProps, set, unset } from "sanity";
+import { PatchEvent, StringInputProps, set, unset, useColorSchemeValue } from "sanity";
 
 interface EditorProps extends StringInputProps {
 	markdown?: string;
@@ -11,6 +11,8 @@ interface EditorProps extends StringInputProps {
 
 export const InputMDX: FC<EditorProps> = (props) => {
 	const { value, onChange, markdown, editorRef } = props;
+	const sanityTheme = useColorSchemeValue()
+
 
 	const handleChange = useCallback(
 		(newValue: string) => {
@@ -21,7 +23,7 @@ export const InputMDX: FC<EditorProps> = (props) => {
 
 	return (
 		<MDXEditor
-			className={`dark:dark-editor dark:dark-theme`}
+			className={`${sanityTheme == 'dark' && 'dark dark-editor dark-theme'}`}
 			plugins={[
 				// Example Plugin Usage
 				headingsPlugin(),

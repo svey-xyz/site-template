@@ -9,7 +9,7 @@ const Footer = async ({}:{}) => {
 
 	return (
 		<section className='relative w-full'>
-			<div className='main-padding py-8 flex flex-col md:flex-row gap-x-8 gap-y-2 md:items-center'>
+			<div className='main-padding py-8 flex flex-row justify-between'>
 				{ settings.contact?.socials &&
 					<Socials socials={settings.contact.socials} className='' />
 				}
