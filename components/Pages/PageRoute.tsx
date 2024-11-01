@@ -5,6 +5,7 @@ import { draftMode } from 'next/headers'
 import dynamic from 'next/dynamic'
 import { queryClient } from '@/sanity/loader/loadQuery'
 import { pageQuery } from '@/sanity/queries/queries'
+import { ResolvingMetadata, Metadata } from 'next'
 
 type Props = {
 	params: { slug: Array<string> }
@@ -21,6 +22,20 @@ const loadSingle_Page = async (slug: string) => {
 		{ next: { tags: [`page:${slug}`, 'home'] } },
 	)
 	return initial
+}
+
+export async function generateMetadata(
+	{ params }: Props,
+	parent: ResolvingMetadata,
+): Promise<Metadata> {
+	const { data: page } = await loadSingle_Page(params.slug.join(`/`))
+
+	return {
+		title: page?.title,
+		description: page?.description
+			? (page.description)
+			: (await parent).description,
+	}
 }
 
 export const PageRoute = async ({ params }: Props) => {
