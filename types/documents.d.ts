@@ -13,7 +13,9 @@ export interface _SettingsPayload extends inherentDocumentData {
 
 export interface _PagePayload extends inherentDocumentData {
 	title: string,
-	slug: string,
+	pathname?: {
+		current?: string
+	},
 	description?: string,
 	heroImage?: sanityImage,
 	blocks?: BLOCK_TYPES

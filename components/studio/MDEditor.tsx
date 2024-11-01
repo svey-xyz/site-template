@@ -5,7 +5,7 @@ import { StringInputProps } from 'sanity'
 const EditorComp = dynamic(() => import('@/components/studio/InputMDX'), { ssr: false })
 export const MDEditor = (props: StringInputProps) => {
 	return (
-		<Suspense fallback={null}>
+		<Suspense fallback={<>Loading...</>}>
 			<EditorComp {...props} />
 		</Suspense>
 	)

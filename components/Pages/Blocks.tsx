@@ -1,10 +1,8 @@
 import React from 'react';
 import dynamic from 'next/dynamic'
-import { loadSettings } from '@/sanity/queries/loadQuery';
 import { BlockList } from './blocks/'
 
-export const Blocks = async ({ blocks, blockClasses }: { blocks: BLOCK_TYPES, blockClasses?: string }) => {
-	const settings = await loadSettings()
+export const Blocks = ({ blocks, blockClasses, draft }: { blocks: BLOCK_TYPES, blockClasses?: string, draft?: boolean }) => {
 
 	return blocks.map((block, i) => {
 		const BlockComponent = BlockList[block._type] ??
@@ -12,8 +10,9 @@ export const Blocks = async ({ blocks, blockClasses }: { blocks: BLOCK_TYPES, bl
 
 		return (
 			<BlockComponent
+				key={block._key}
 				data={block}
-				siteData={settings}
+				draft={draft}
 				className={`${blockClasses} main-padding`}
 			/>
 		)

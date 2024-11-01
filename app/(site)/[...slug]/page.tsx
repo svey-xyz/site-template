@@ -1,35 +1,31 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { loadPage, loadStaticPages } from '@/sanity/queries/loadQuery'
 import Pages from '@/components/Pages'
+import { loadSingle_Page, loadBundle_Pages } from '@/sanity/loader/loader';
+import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs';
 
-export const generateStaticParams = async () => {
-	try {
-		const pages = await loadStaticPages();
-		if (!pages) return []
+export async function generateMetadata(
+	props: Props,
+	parent: ResolvingMetadata,
+): Promise<Metadata> {
+	const params = await props.params;
+	const { data: page } = await loadSingle_Page(params.slug[0])
 
-		return pages.map((page) => ({
-			slug: page.slug.split('/'),
-		}));
-	} catch (error) {
-		console.error("Error fetching pages:", error);
-		throw new Error("Failed to fetch pages");
+	return {
+		title: page?.title,
+		description: page?.description
+			? page?.description
+			: (await parent).description,
 	}
+}
+
+export async function generateStaticParams() {
+	const staticSlugs = await generateStaticSlugs('page')
+
+	return staticSlugs
 }
 
 type Props = {
 	params: Promise<{ slug: Array<string> }>
-}
-
-export const generateMetadata = async (props: Props, parent: ResolvingMetadata): Promise<Metadata> => {
-    const params = await props.params;
-    const page = await loadPage(params.slug[0])
-
-    return {
-		title: page?.title,
-		// description: page?.overview
-		// 	? toPlainText(page.overview)
-		// 	: (await parent).description,
-	}
 }
 
 const Page = async (props: Props) => {

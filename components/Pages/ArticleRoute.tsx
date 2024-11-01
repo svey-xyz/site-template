@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import dynamic from 'next/dynamic'
-import { load_singleArticle } from '@/sanity/queries/loadQuery'
+import { loadSingle_Article } from '@/sanity/loader/loader'
 
 type ArticleRouteProps = {
 	type: string,
@@ -19,7 +19,7 @@ const ArticleList: ArticleMap = {
 
 export const ArticleRoute = async ({ type, slug }: ArticleRouteProps) => {
 
-	const data = await load_singleArticle<article>(type, slug)
+	const data = await loadSingle_Article<article>(type, slug)
 	const article = data
 	if (!article) return notFound()
 

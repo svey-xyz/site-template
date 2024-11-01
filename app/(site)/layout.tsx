@@ -7,9 +7,11 @@ import { Inter } from 'next/font/google'
 import Head from './head'
 import { Metadata, ResolvingMetadata } from 'next';
 import localFont from "next/font/local";
-import { loadSettings } from '@/sanity/queries/loadQuery';
 import ThemeHandler from '@/components/ThemeHandler';
 import { getActiveTheme } from '@/lib/getTheme'
+import { load_Settings } from '@/sanity/loader/loader'
+import { draftMode } from 'next/headers'
+import dynamic from 'next/dynamic'
 
 const inter = Inter({ subsets: ['latin'] })
 const theme = await getActiveTheme()
@@ -19,7 +21,7 @@ export async function generateMetadata(
 	{ params }: any,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const data = await loadSettings()
+	const data = await load_Settings()
 	const settings = data
 	
 	const titleTemplate = `${settings.title} | %s`
@@ -36,11 +38,16 @@ export async function generateMetadata(
 	}
 }
 
+const LiveVisualEditing = dynamic(
+	() => import('@/sanity/loader/LiveVisualEditing'),
+)
+
 export default async function RootLayout({
 	children
 }: {
 	children: React.ReactNode
 }) {
+	const draft = await draftMode()
 
 	const documentClasses = `${inter.className} ${font?.variable} relative` // 
 
@@ -54,6 +61,8 @@ export default async function RootLayout({
 					<main className='min-h-full flex-grow'>
 						{ children }
 					</main>
+					{draft.isEnabled && <LiveVisualEditing />}
+
 					<Footer />
 				</ThemeHandler>
 			</body>

@@ -8,7 +8,7 @@ export const settingsQuery: string = groq`
 			${partial_ImageObject}
 		},
 		homepage->{
-			"slug":slug.current,
+			pathname
 		},
 		navigation[]{
 			// ...,
@@ -19,6 +19,13 @@ export const settingsQuery: string = groq`
 				${partial_Sections}
 			}
 		}
+	}
+`
+
+export const pageQuery: string = groq`
+	*[_type=='page' && pathname.current == $pathname][0] {
+  	...,
+		${partial_Sections}
 	}
 `
 
@@ -37,11 +44,10 @@ export const staticArchivesQuery: string = groq`
 	}
 `
 
-export const pageQuery: string = groq`
-	*[_type=='page' && slug.current == $slug][0] {
+export const documentQuery: string = groq`
+	*[_id == $id][0] {
   	...,
 		"slug":slug.current,
-		${partial_Sections}
 	}
 `
 

@@ -1,7 +1,7 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { load_singleArticle, loadArticles } from '@/sanity/queries/loadQuery'
 import Pages from '@/components/Pages'
 import { _ARTICLE_TYPES } from '@/sanity/schemas/articles/types';
+import { loadSingle_Article, loadBundle_Articles } from '@/sanity/loader/loader';
 
 type Params = {
 	slug: string[];
@@ -13,7 +13,7 @@ export const generateStaticParams = async () => {
 		let articlePaths: Array<Params> = []
 
 		TypeArray.map(async (ArticleType) => {
-			const articles = await loadArticles<article>(ArticleType)
+			const articles = await loadBundle_Articles<article>(ArticleType)
 			if (!articles) return []
 
 			articles.map((article) => {
@@ -38,7 +38,7 @@ type Props = {
 export const generateMetadata = async (props: Props, parent: ResolvingMetadata): Promise<Metadata> => {
     const params = await props.params;
     const { slug } = params
-    const article = await load_singleArticle<article>(slug[0], slug[1])
+    const article = await loadSingle_Article<article>(slug[0], slug[1])
 
     return {
 		title: article?.title

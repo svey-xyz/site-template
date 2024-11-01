@@ -1,10 +1,10 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import { loadArchive, loadStaticArchives } from '@/sanity/queries/loadQuery'
 import Pages from '@/components/Pages'
+import { loadBundle_Archives, loadSingle_Archive } from '@/sanity/loader/loader';
 
 export const generateStaticParams = async () => {
 	try {
-		const archives = await loadStaticArchives();
+		const archives = await loadBundle_Archives();
 		if (!archives) return []
 
 		return archives.map((archive) => ({
@@ -22,7 +22,7 @@ type Props = {
 
 export const generateMetadata = async (props: Props, parent: ResolvingMetadata): Promise<Metadata> => {
     const params = await props.params;
-    const archive = await loadArchive(params.slug)
+    const archive = await loadSingle_Archive(params.slug)
 
     return {
 		title: archive?.title,

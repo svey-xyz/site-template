@@ -16,14 +16,6 @@ const _Cog6ToothIcon = () => <Cog6ToothIcon />;
 const _TagIcon = () => <TagIcon />;
 
 
-export const defaultDocumentNode: DefaultDocumentNodeResolver = (S, options) => {
-
-	return S.document().views([
-		S.view.form(),
-		S.view.component(ReferenceList).title('Referenced In'), // Custom view
-	]);
-};
-
 // Define the actions that should be available for singleton documents
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
 
