@@ -22,13 +22,13 @@ const singletonActions = new Set(["publish", "discardChanges", "restore"])
 // Define the singleton document types
 const singletonTypes = new Set(["siteSettings", "navigation", "theme", "about", "archive"])
 
-const archivePages = (S: StructureBuilder) => ARTICLES.flatMap(article => {
-	const archiveName = `${pluralize(camelCaseToWords(article.type))} Archive`
+// const archivePages = (S: StructureBuilder) => ARTICLES.flatMap(article => {
+// 	const archiveName = `${pluralize(camelCaseToWords(article.type))} Archive`
 
-	return S.listItem().title(archiveName).child(
-		(S.document().title(archiveName).schemaType('archive').documentId(`${article.document.name}`))
-	).icon(_ArchiveBoxIcon)
-}).filter((item)=>{ return item !== undefined})
+// 	return S.listItem().title(archiveName).child(
+// 		(S.document().title(archiveName).schemaType('archive').documentId(`${article.document.name}`))
+// 	).icon(_ArchiveBoxIcon)
+// }).filter((item)=>{ return item !== undefined})
 
 const typesList = (S: StructureBuilder) => ARTICLES.flatMap(article => {
 	const Title = camelCaseToWords(article.type)
@@ -50,12 +50,12 @@ export const structure = (S: StructureBuilder, context: StructureResolverContext
 		S.listItem().title('Site Settings').icon(_Cog6ToothIcon).child(
 			S.document().title('Site Settings').schemaType('siteSettings').documentId('siteSettings')
 		),
-		S.listItem().title('Archives').icon(_ArchiveBoxIcon).child(
-			S.list().title('Archives').items([
-				...archivePages(S)
-			])
-		),
-		S.documentTypeListItem('page').title('Pages'),
+		// S.listItem().title('Archives').icon(_ArchiveBoxIcon).child(
+		// 	S.list().title('Archives').items([
+		// 		...archivePages(S)
+		// 	])
+		// ),
+		// S.documentTypeListItem('page').title('Pages'),
 
 
 		S.divider(),

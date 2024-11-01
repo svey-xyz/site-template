@@ -23,7 +23,7 @@ export const settingsQuery: string = groq`
 `
 
 export const pageQuery: string = groq`
-	*[_type=='page' && pathname.current == $pathname][0] {
+	*[_type=='page' && pathname.current match $pathname][0] {
   	...,
 		${partial_Sections}
 	}

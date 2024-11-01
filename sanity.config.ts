@@ -13,6 +13,7 @@ import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import { pages } from "@tinloof/sanity-studio";
+import { NewspaperIcon, DocumentTextIcon, ArchiveBoxIcon } from '@heroicons/react/24/solid'
 
 const defaultDesk = structureTool({
 	structure,
@@ -27,6 +28,17 @@ const deskPlugins = [
 		previewUrl: {
 			previewMode: {
 				enable: "/api/preview",
+			},
+		},
+		creatablePages: ["page"],
+		folders: {
+			"/archives": {
+				title: "Archives",
+				icon: ArchiveBoxIcon,
+			},
+			"": {
+				title: "Pages",
+				icon: DocumentTextIcon,
 			},
 		},
 	}),

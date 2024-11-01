@@ -21,7 +21,7 @@ const PagePreview = (props: Props) => {
 	if (!data) {
 		return (
 			<div className="text-center">
-				Please start editing your Home document to see the preview!
+				Please start editing your document to see the preview!
 			</div>
 		)
 	}

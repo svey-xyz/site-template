@@ -47,6 +47,9 @@ export const page = (args: { name: string, fields?: sanityFields }) => {
 			name: "pathname",
 			options: {
 				source: "title",
+				folder: {
+					canUnlock: false,
+				},
 			},
 			validation: (Rule) => Rule.required()
 		}),
