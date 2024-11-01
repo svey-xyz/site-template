@@ -4,7 +4,6 @@ import '@styles/studio.globals.css'
 import "@mdxeditor/editor/style.css";
 
 import { Metadata, ResolvingMetadata } from 'next';
-import ThemeHandler from '@/components/ThemeHandler';
 
 export async function generateMetadata(
 	{ params }: any,
@@ -27,9 +26,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="m-0 h-0">
-				<ThemeHandler>
-					{children}
-				</ThemeHandler>
+				{ children }
 			</body>
     </html>
   )

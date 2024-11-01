@@ -1,4 +1,4 @@
-import ThemeButton from "@/components/ui/ThemeButton"
+import {ThemeButton} from "./ThemeButton"
 import { Box, useTheme } from '@sanity/ui'
 
 const StudioHeader = (props: any) => {
