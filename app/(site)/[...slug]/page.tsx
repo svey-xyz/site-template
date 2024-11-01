@@ -20,10 +20,8 @@ export async function generateMetadata(
 
 export async function generateStaticParams() {
 	const staticSlugs = await generateStaticSlugs('page')
-	const params = (staticSlugs.map((slug) => {
-		return [slug]
-	}))
-	return params
+
+	return staticSlugs
 }
 
 type Props = {

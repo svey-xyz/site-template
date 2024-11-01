@@ -12,13 +12,10 @@ import { PluginOptions, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
-import { defaultDocumentNode } from '@/sanity/documentNode'
 import { pages } from "@tinloof/sanity-studio";
 
 const defaultDesk = structureTool({
 	structure,
-	defaultDocumentNode,
-
 })
 const deskPlugins = [
 	defaultDesk,

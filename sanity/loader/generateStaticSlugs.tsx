@@ -6,17 +6,17 @@ import { client } from '@/sanity/lib/client'
 import { token } from '@/sanity/lib/token'
 
 // Used in `generateStaticParams`
-export const generateStaticSlugs = (type: string) => {
+export const generateStaticSlugs = async (type: string) => {
 	// Not using loadQuery as it's optimized for fetching in the RSC lifecycle
-	return client
+	const pathnames = await client
 		.withConfig({
 			token,
 			perspective: 'published',
 			useCdn: false,
 			stega: false,
 		})
-		.fetch<string[]>(
-			groq`*[_type == $type && defined(slug.current)]{"slug": slug.current}`,
+		.fetch<{ pathname?: {current?:string}}[]>(
+			groq`*[_type == $type && defined(pathname.current)]{pathname}`,
 			{ type },
 			{
 				next: {
@@ -24,4 +24,8 @@ export const generateStaticSlugs = (type: string) => {
 				},
 			},
 		)
+
+	return pathnames.flatMap((path) => {
+		return { slug: [path.pathname?.current] }
+	})
 }
