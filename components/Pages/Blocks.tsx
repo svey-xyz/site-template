@@ -18,3 +18,5 @@ export const Blocks = ({ blocks, blockClasses, draft }: { blocks: BLOCK_TYPES, b
 		)
 	})
 };
+
+// Simulate a delay
