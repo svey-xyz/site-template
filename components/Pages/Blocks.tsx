@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 import dynamic from 'next/dynamic'
 import { BlockList } from './blocks/'
 
@@ -18,5 +18,3 @@ export const Blocks = ({ blocks, blockClasses, draft }: { blocks: BLOCK_TYPES, b
 		)
 	})
 };
-
-// Simulate a delay
