@@ -9,7 +9,7 @@ const _Cog6ToothIcon = () => <Cog6ToothIcon />;
 
 export const settings = defineType({
 	title: 'Settings',
-	name: 'siteSettings',
+	name: 'settings',
 	type: 'document',
 	icon: _Cog6ToothIcon,
 	fields: [
@@ -72,41 +72,7 @@ export const settings = defineType({
 			name: 'navigation',
 			title: 'Navigation',
 			type: 'array',
-			of: [
-				{
-					name: 'Navigation Item',
-					title: 'item',
-					type: 'object',
-					fields: [
-						{
-							title: 'Title',
-							name: 'title',
-							type: 'string',
-							validation: Rule => Rule.required(),
-						},
-						{
-							title: 'Pages',
-							name: 'pages',
-							type: 'array',
-							description: 'A list of pages for the navigation item. If more than 1 page is added the navigation item will appear as a dropdown list.',
-							of: [
-								{
-									title: 'Page',
-									name: 'page',
-									type: 'reference',
-									to: [
-										{ type: 'page' },
-										{ type: 'archive' },
-									],
-									options: {
-										disableNew: true,
-									},
-								},
-							]
-						}
-					],
-				},
-			]
+			of: [{ type: 'navGroup'}]
 		}),
 	],
 	preview: {

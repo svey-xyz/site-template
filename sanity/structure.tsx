@@ -20,7 +20,7 @@ const _TagIcon = () => <TagIcon />;
 const singletonActions = new Set(["publish", "discardChanges", "restore"])
 
 // Define the singleton document types
-const singletonTypes = new Set(["siteSettings", "navigation", "theme", "about", "archive"])
+const singletonTypes = new Set(["settings"])
 
 // const archivePages = (S: StructureBuilder) => ARTICLES.flatMap(article => {
 // 	const archiveName = `${pluralize(camelCaseToWords(article.type))} Archive`
@@ -48,7 +48,7 @@ export const structure = (S: StructureBuilder, context: StructureResolverContext
 	S.list().title('Content').items([
 		/** ABOUT */
 		S.listItem().title('Site Settings').icon(_Cog6ToothIcon).child(
-			S.document().title('Site Settings').schemaType('siteSettings').documentId('siteSettings')
+			S.document().title('Site Settings').schemaType('settings').documentId('settings')
 		),
 		// S.listItem().title('Archives').icon(_ArchiveBoxIcon).child(
 		// 	S.list().title('Archives').items([
