@@ -36,6 +36,7 @@ export const navGroup = defineType({
 							options: {
 								disableNew: true,
 							},
+							validation: Rule => Rule.required()
 						}),
 						
 					]

@@ -1,6 +1,7 @@
 import {
 	_inherentDocumentData,
-	_inherentObjectData
+	_inherentObjectData,
+	_referenceData
 } from './inherent'
 
 import {
@@ -39,6 +40,7 @@ declare global {
 	// INHERENT
 	type inherentDocumentData = _inherentDocumentData;
 	type inherentObjectData = _inherentObjectData;
+	type referenceData = _referenceData;
 
 	// ARTICLES
 	type ARTICLE_TYPES = _ARTICLE_TYPES;

@@ -37,6 +37,9 @@ export interface _icon {
 }
 
 export interface _object_NavigationItem extends inherentObjectData {
-	title: string,
-	pages?: Array<PagePayload | ArchivePayload>,
+	title?: string,
+	items?: Array<{
+		title?: string,
+		page: PagePayload | ArchivePayload,
+	}>
 }

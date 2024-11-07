@@ -10,3 +10,9 @@ export interface _inherentDocumentData {
 	_type: string,
 	_id: string
 }
+
+export interface _referenceData {
+	_type: "reference",
+	_ref: string,
+	_weak?: boolean
+}
