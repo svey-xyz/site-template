@@ -75,7 +75,7 @@ declare global {
 	type object_Contact = _object_Contact;
 	type object_Date = _object_Date;
 	type object_Link = _object_Link;
-	type object_NavigationItem = _object_NavigationItem;
+	type object_NavigationGroup = _object_NavigationItem;
 	type object_Social = _object_Social;
 
 	type sanityFields = FieldDefinition<"string" | "number" | "boolean" | "object" | "array" | "block" | "date" | "datetime" | "document" | "file" | "geopoint" | "image" | "reference" | "crossDatasetReference" | "slug" | "text" | "url" | "email" | "color", undefined>[]

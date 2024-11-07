@@ -6,22 +6,24 @@ import Link from 'next/link'
 import { resolvePageHref } from '@/lib/resolveHref';
 
 type NavigationItemParams = {
-	item: object_NavigationItem,
+	group: object_NavigationGroup,
 }
 
-export const NavigationItem = ({ item }: NavigationItemParams) => {
-	const title = item.title
+export const NavigationItem = ({ group }: NavigationItemParams) => {
 
-	if (!item.pages) return []
-	if (item.pages.length > 1) return PopoverNavigation({title, pages: item.pages})
-	return StaticNavigation({title, page: item.pages[0]})
+	if (!group.items) return []
+
+	const title = group.title ?? group.items[0].title ?? group.items[0].page.title
+
+	if (group.items.length > 1) return PopoverNavigation({title, items: group.items})
+	return StaticNavigation({ title, page: group.items[0].page })
 
 };
 
 export default NavigationItem;
 
 type NavigationTitleParams = {
-	title: string,
+	title?: string,
 	className?: string,
 	chevron?: boolean
 }
@@ -35,7 +37,7 @@ const NavigationTitle = ({ title, className, chevron }: NavigationTitleParams) =
 }
 
 type StaticNavigationParams = {
-	title: string,
+	title?: string,
 	page: PagePayload | ArchivePayload,
 }
 
@@ -48,11 +50,14 @@ const StaticNavigation = ({ title, page }: StaticNavigationParams) => {
 }
 
 type PopoverParams = {
-	title: string,
-	pages: ArchivePayload[] | PagePayload[],
+	title?: string,
+	items: Array<{
+		title?: string,
+		page: ArchivePayload | PagePayload
+	}>,
 }
 
-const PopoverNavigation = ({ title, pages }: PopoverParams) => {
+const PopoverNavigation = ({ title, items }: PopoverParams) => {
 
 	return (
 	<Popover className="group relative z-10">
@@ -62,16 +67,17 @@ const PopoverNavigation = ({ title, pages }: PopoverParams) => {
 		</PopoverButton>
 		<PopoverPanel>
 			{({ close }) => {
-				const items = pages.flatMap((page) => {
+				const navLinks = items.flatMap((item) => {
+					const linkTitle = title ?? item.title ?? item.page.title
 					return (
-						<Link href={resolvePageHref(page)} key={page._id} className='relative z-10 px-4 py-2' onClick={() => { close() }}>
-							{page.title}
+						<Link href={resolvePageHref(item.page)} key={item.page._id} className='relative z-10 px-4 py-2' onClick={() => { close() }}>
+							{ linkTitle }
 						</Link>
 					)
 				})
 				return (
 					<div className="absolute flex flex-col z-50 w-full gap-1 py-4 h-fit mt-1">
-						{ items }
+						{ navLinks }
 					</div>
 				)
 			}}

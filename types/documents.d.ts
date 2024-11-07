@@ -8,7 +8,7 @@ export interface _SettingsPayload extends inherentDocumentData {
 	contact?: object_Contact,
 	about?: string,
 	homepage?: PagePayload,
-	navigation?: Array<object_NavigationItem>,
+	navigation?: Array<object_NavigationGroup>,
 }
 
 export interface _PagePayload extends inherentDocumentData {

@@ -6,7 +6,7 @@ import { Button, Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
 import { Bars2Icon } from '@heroicons/react/24/solid';
 import { usePathname } from 'next/navigation'
 
-export const Navigation = ({ navItems, className }: { navItems: Array<object_NavigationItem>, className?:string }) => {
+export const Navigation = ({ navGroups, className }: { navGroups: Array<object_NavigationGroup>, className?:string }) => {
 	const navContainer = useRef<HTMLDivElement>(null)
 	const [gapWidth, setGapWidth] = useState<number>(0); // default width, detect on server.
 	const _BREAK_POINT = 50 // the value in pixels when nav should break to menu
@@ -30,7 +30,7 @@ export const Navigation = ({ navItems, className }: { navItems: Array<object_Nav
 		}
 	}, [handleResize, pathname]);
 
-	const MenuPopover = ({ navItems, className }: { navItems: Array<object_NavigationItem>, className?: string }) => {
+	const MenuPopover = ({ navItems, className }: { navItems: Array<object_NavigationGroup>, className?: string }) => {
 		return (
 			<Popover className="absolute right-0 top-0 h-full flex flex-col items-center justify-center">
 				<PopoverButton>
@@ -38,8 +38,8 @@ export const Navigation = ({ navItems, className }: { navItems: Array<object_Nav
 				</PopoverButton>
 				<PopoverPanel modal={true} focus={true} className="fixed inset-0" >
 					<div className='relative flex flex-col main-padding gap-4'>
-						{navItems.flatMap((item) => {
-							return <NavigationItem key={item.title} item={item} />
+						{navGroups.flatMap((item) => {
+							return <NavigationItem key={item.title} group={item} />
 						})}
 					</div>
 				</PopoverPanel>
@@ -53,13 +53,13 @@ export const Navigation = ({ navItems, className }: { navItems: Array<object_Nav
 				className={`relative flex flex-row min-h-full items-center w-fit max-w-full ml-auto ${(gapWidth > _BREAK_POINT) ? 'visible' : 'invisible'}`}
 				ref={navContainer}
 			>
-				{ navItems.flatMap((item) => {
-					return <NavigationItem key={item.title} item={item} />
+				{navGroups.flatMap((group) => {
+					return <NavigationItem key={group.title} group={group} />
 				})}
 			</div>
 
 			{(gapWidth <= _BREAK_POINT) &&
-				<MenuPopover navItems={navItems} />
+				<MenuPopover navItems={navGroups} />
 			}
 		</div>
 	);

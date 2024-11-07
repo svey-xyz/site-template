@@ -36,7 +36,7 @@ export interface _icon {
 	name: string,
 }
 
-export interface _object_NavigationItem extends inherentObjectData {
+export interface _object_NavigationGroup extends inherentObjectData {
 	title?: string,
 	items?: Array<{
 		title?: string,
