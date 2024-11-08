@@ -26,7 +26,7 @@ export default async function RootLayout({
 }) {
 	const draft = await draftMode()
 
-	const documentClasses = `${inter.className} ${font?.variable} relative` // 
+	const documentClasses = `${inter.className} ${font?.variable} relative`
 
 	return (
 		// suppress hydration required for theme handler
@@ -35,10 +35,11 @@ export default async function RootLayout({
 			<body className='min-h-screen h-full overflow-x-hidden flex flex-col'>
 				<ThemeHandler>
 					<Header />
+
 					<main className='relative flex flex-grow'>
-						{ children }
+							{children}
 					</main>
-					{ draft.isEnabled && <LiveVisualEditing /> }
+					{draft.isEnabled && <LiveVisualEditing />}
 
 					<Footer />
 				</ThemeHandler>

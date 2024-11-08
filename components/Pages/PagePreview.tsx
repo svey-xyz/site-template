@@ -20,7 +20,7 @@ const PagePreview = (props: Props) => {
 
 	if (!data) {
 		return (
-			<div className="text-center">
+			<div className="main-padding text-center">
 				Please start editing your document to see the preview!
 			</div>
 		)

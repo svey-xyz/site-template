@@ -1,8 +1,8 @@
 import React from 'react';
 
-export const Skeleton = ({}:{}) => {
+export const Skeleton = ({className}:{className?:string}) => {
 	return (
-		<div className="main-padding">
+		<div className={`${className}`}>
 			<div className="flex flex-col gap-4 max-w-prose-full">
 				<div className="h-2 bg-fg/90 rounded max-w-prose-short animate-pulse" />
 				<div className="flex flex-row flex-wrap gap-4">
