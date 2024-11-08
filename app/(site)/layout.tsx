@@ -35,7 +35,7 @@ export default async function RootLayout({
 			<body className='min-h-screen h-full overflow-x-hidden flex flex-col'>
 				<ThemeHandler>
 					<Header />
-					<main className='min-h-full flex-grow'>
+					<main className='relative flex flex-grow'>
 						{ children }
 					</main>
 					{ draft.isEnabled && <LiveVisualEditing /> }

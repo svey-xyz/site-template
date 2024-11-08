@@ -3,20 +3,37 @@ import React from 'react';
 export const Skeleton = ({}:{}) => {
 	return (
 		<div className="main-padding">
-			<div className="animate-pulse flex space-x-4 max-w-prose-full">
-				<div className="flex-1 space-y-6 py-1">
-					<div className="h-2 bg-fg/80 rounded max-w-prose"></div>
-					<div className="space-y-3">
-						<div className="grid grid-cols-3 gap-4">
-							<div className="h-2 bg-fg/80 rounded col-span-2"></div>
-							<div className="h-2 bg-fg/80 rounded col-span-1"></div>
-						</div>
-						<div className="h-2 bg-fg/80 rounded"></div>
-					</div>
+			<div className="flex flex-col gap-4 max-w-prose-full">
+				<div className="h-2 bg-fg/90 rounded max-w-prose-short animate-pulse" />
+				<div className="flex flex-row flex-wrap gap-4">
+					<TextBar w={20} a={0.8} />
+					<TextBar w={50} a={0.7} />
+					<TextBar w={40} a={0.7} />
+					<TextBar w={80} a={0.7} />
+					<TextBar w={90} a={0.2} />
 				</div>
 			</div>
 		</div>
 	);
 };
+
+const TextBar = ({ w, a = 1 }:{ w:number, a?: number}) => {
+	return (
+		<div
+			className={`animate-pulse`}
+			style={{
+				width: `${w}%`
+			}}
+		>
+			<div
+				className={`h-2 bg-fg rounded`}
+				style={{
+					opacity: `${a}`
+				}}
+			/>
+
+		</div>
+	)
+}
 
 // export default TextSkeleton;
