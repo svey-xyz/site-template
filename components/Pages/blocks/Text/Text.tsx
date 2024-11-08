@@ -1,9 +1,8 @@
 import React, { Suspense } from 'react';
 import {MDXText} from '@/components/site/MDX/';
 
-export const Text = async ({ data, className, draft }: { data: block_Text | undefined, className?:string, draft?:boolean }) => {
+export const Text = ({ data, className, draft }: { data: block_Text | undefined, className?:string, draft?:boolean }) => {
 	if (!data) return;
-	// await new Promise((resolve) => setTimeout(resolve, 300000));
 
 	return (
 		<div className={`${className}`}>
