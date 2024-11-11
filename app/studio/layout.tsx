@@ -1,6 +1,6 @@
 import { configStudioTitle } from '@/sanity/lib/api';
 
-import '@styles/studio.globals.css'
+import '@styles/studio/studio.css'
 import "@mdxeditor/editor/style.css";
 
 import { Metadata, ResolvingMetadata } from 'next';

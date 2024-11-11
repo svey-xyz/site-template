@@ -1,12 +1,5 @@
-/* tailwindcss recomends \@import over \@tailwind when using other \@import statements */
-@import "tailwindcss/base"; 
-@import "./site.base.css";
+@import '../global.css';
 
-@import "tailwindcss/utilities"; 
-@import "./global.utilities.css";
-
-@import "tailwindcss/components"; 
-@import "./site.components.css";
-
-@import "./global.variables.css";
+@import "./base.css";
+@import "./components.css";
 @import './highlighting.css';

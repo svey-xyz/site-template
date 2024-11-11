@@ -1,4 +1,4 @@
-import '@styles/site.globals.css'
+import '@styles/site/site.css'
 
 import Header from '@components/site/Header'
 import Footer from '@components/site/Footer'
