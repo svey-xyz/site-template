@@ -15,9 +15,10 @@ export namespace _THEME {
 
 		},
 		shadow?: {
-			spread?: number,
-			darkness?: number,
-			scale?: number
+			spread: number,
+			darkness: number,
+			// scale: number,
+			darkModeMultiplier: number
 		},
 		radius?: {
 			size?: Properties["borderRadius"],

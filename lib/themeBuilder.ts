@@ -66,22 +66,25 @@ export const generateThemeCSS = (theme: THEME.theme): string => {
 }
 
 const generateShadowUtils = (shadow: THEME.theme['shadow']) => {
+	if (!shadow) return ``
+
 	return (`
-		.shadow-extrude-tester {
-			box-shadow:
-				4px 4px calc(var(--shadow-spread))px -calc(var(--shadow-spread) / 2)px rgb(0 0 0 / calc(var(--shadow-darkness))),
-				-4px -4px calc(var(--shadow-spread))px -calc(var(--shadow-spread) / 2)px rgb(200 200 200 / calc(var(--shadow-darkness)));
-		}
 		.shadow-extrude {
 			box-shadow:
-				4px 4px ${shadow?.spread}px -${(shadow?.spread ?? 0) / 2}px rgb(0 0 0 / ${ shadow?.darkness }),
-				-4px -4px ${shadow?.spread}px -${(shadow?.spread ?? 0) / 2}px rgb(200 200 200 / ${ shadow?.darkness });
+				4px 4px ${shadow.spread}px -${shadow.spread / 2}px rgb(0 0 0 / ${ shadow.darkness }),
+				-4px -4px ${shadow.spread}px -${shadow.spread / 2}px rgb(200 200 200 / ${ shadow.darkness });
+		}
+		.shadow-inner {
+			box-shadow: inset 0 0 ${shadow.spread}px 0px rgb(0 0 0 / ${ shadow.darkness });
 		}
 		.dark {
 			.shadow-extrude {
 				box-shadow:
-					4px 4px ${shadow?.spread}px -${(shadow?.spread ?? 0) / 2}px rgb(0 0 0 / ${(shadow?.darkness ?? 0) * 2}),
-					-4px -4px ${shadow?.spread}px -${(shadow?.spread ?? 0) / 2}px rgb(200 200 200 / ${(shadow?.darkness ?? 0) / 2 });
+					4px 4px ${shadow.spread}px -${shadow.spread / 2}px rgb(0 0 0 / ${shadow.darkness * 1.5}),
+					-4px -4px ${shadow.spread}px -${shadow.spread / 2}px rgb(200 200 200 / ${shadow.darkness / 1.5 });
+			}
+			.shadow-inner {
+				box-shadow: inset 0 0 ${shadow.spread * 1.5}px 0px rgb(0 0 0 / ${shadow.darkness * 1.5});
 			}
 		}
 	`)
