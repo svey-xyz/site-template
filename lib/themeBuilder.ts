@@ -49,10 +49,6 @@ export const generateThemeCSS = (theme: THEME.theme): string => {
 	if (theme.text?.size?.scale) CSSMiscVars.push(`--text-scale: ${theme.text.size.scale};`)
 	if (theme.radius?.size) CSSMiscVars.push(`--rounded-size: ${theme.radius.size};`)
 	if (theme.radius?.scale) CSSMiscVars.push(`--rounded-scale: ${theme.radius.scale};`)
-	if (theme.shadow?.spread) CSSMiscVars.push(`--shadow-spread: ${theme.shadow.spread};`)
-	if (theme.shadow?.darkness) CSSMiscVars.push(`--shadow-darkness: ${theme.shadow.darkness};`)
-
-
 
 	// Combine base variables with color theme variables
 	return `

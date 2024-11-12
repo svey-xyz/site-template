@@ -17,8 +17,8 @@ export namespace _THEME {
 		shadow?: {
 			spread: number,
 			darkness: number,
-			// scale: number,
-			darkModeMultiplier: number
+			darkModeMultiplier: number,
+			// colours: 
 		},
 		radius?: {
 			size?: Properties["borderRadius"],
