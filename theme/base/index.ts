@@ -18,9 +18,9 @@ const base: THEME.theme = {
 		}
 	},
 	shadow: {
-		darkness: 0.5,
-		spread: 4,
-		darkModeMultiplier: 1.5
+		darkness: 0.4,
+		spread: 2,
+		darkModeMultiplier: 1.8
 	}
 }
 
