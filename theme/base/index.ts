@@ -20,7 +20,11 @@ const base: THEME.theme = {
 	shadow: {
 		darkness: 0.4,
 		spread: 2,
-		darkModeMultiplier: 1.8
+		darkModeMultiplier: 1.8,
+		colours: {
+			shadow: new Color('#000000'),
+			inverse: new Color('#CCCCCC')
+		}
 	}
 }
 

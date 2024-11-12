@@ -18,7 +18,15 @@ export namespace _THEME {
 			spread: number,
 			darkness: number,
 			darkModeMultiplier: number,
-			// colours: 
+			colours: {
+				shadow: Color,
+				/**
+				 *
+				 *
+				 * @type {Color} Used for extrude shadow
+				 */
+				inverse: Color
+			}
 		},
 		radius?: {
 			size?: Properties["borderRadius"],

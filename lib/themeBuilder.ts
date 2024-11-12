@@ -52,35 +52,36 @@ export const generateThemeCSS = (theme: THEME.theme): string => {
 
 	// Combine base variables with color theme variables
 	return `
-		${generateShadowUtils(theme.shadow)}
-
 		${CSSColourVars.join('\n')}
 		:root {
 			${CSSMiscVars.join('\n')}
 		}
+
+		${generateShadowUtils(theme.shadow)}
 	`
 }
 
 const generateShadowUtils = (shadow: THEME.theme['shadow']) => {
 	if (!shadow) return ``
+	const toRGB = (color: Color) => `${color.srgb.r * 255} ${color.srgb.g * 255} ${color.srgb.b * 255}`
 
 	return (`
 		.shadow-extrude {
 			box-shadow:
-				${shadow.spread}px ${shadow.spread}px ${shadow.spread}px -${shadow.spread / 2}px rgb(0 0 0 / ${ shadow.darkness }),
-				-${shadow.spread}px -${shadow.spread}px ${shadow.spread}px -${shadow.spread / 2}px rgb(200 200 200 / ${ shadow.darkness });
+				${shadow.spread}px ${shadow.spread}px ${shadow.spread}px -${shadow.spread / 2}px rgb(${toRGB(shadow.colours.shadow)} / ${ shadow.darkness }),
+				-${shadow.spread}px -${shadow.spread}px ${shadow.spread}px -${shadow.spread / 2}px rgb(${toRGB(shadow.colours.inverse)} / ${ shadow.darkness });
 		}
 		.shadow-inner {
-			box-shadow: inset 0 0 ${shadow.spread}px 0px rgb(0 0 0 / ${ shadow.darkness });
+			box-shadow: inset 0 0 ${shadow.spread}px 0px rgb(${toRGB(shadow.colours.shadow)} / ${ shadow.darkness });
 		}
 		.dark {
 			.shadow-extrude {
 				box-shadow:
-					${shadow.spread}px ${shadow.spread}px ${shadow.spread}px -${shadow.spread / 2}px rgb(0 0 0 / ${shadow.darkness * shadow.darkModeMultiplier}),
-					-${shadow.spread}px -${shadow.spread}px ${shadow.spread}px -${shadow.spread / 2}px rgb(200 200 200 / ${shadow.darkness / shadow.darkModeMultiplier });
+					${shadow.spread}px ${shadow.spread}px ${shadow.spread}px -${shadow.spread / 2}px rgb(${toRGB(shadow.colours.shadow)} / ${shadow.darkness * shadow.darkModeMultiplier}),
+					-${shadow.spread}px -${shadow.spread}px ${shadow.spread}px -${shadow.spread / 2}px rgb(${toRGB(shadow.colours.inverse)} / ${shadow.darkness / shadow.darkModeMultiplier });
 			}
 			.shadow-inner {
-				box-shadow: inset 0 0 ${shadow.spread * shadow.darkModeMultiplier}px 0px rgb(0 0 0 / ${shadow.darkness * shadow.darkModeMultiplier});
+				box-shadow: inset 0 0 ${shadow.spread * shadow.darkModeMultiplier}px 0px rgb${toRGB(shadow.colours.shadow)} / ${shadow.darkness * shadow.darkModeMultiplier});
 			}
 		}
 	`)
