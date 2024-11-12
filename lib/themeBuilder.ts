@@ -1,4 +1,4 @@
-import Color from 'colorjs.io/types'
+import Color from 'colorjs.io'
 
 const themeBuilder = (themeDefinition: THEME.theme) => {
 	generateThemeCSS(themeDefinition)
@@ -49,12 +49,40 @@ export const generateThemeCSS = (theme: THEME.theme): string => {
 	if (theme.text?.size?.scale) CSSMiscVars.push(`--text-scale: ${theme.text.size.scale};`)
 	if (theme.radius?.size) CSSMiscVars.push(`--rounded-size: ${theme.radius.size};`)
 	if (theme.radius?.scale) CSSMiscVars.push(`--rounded-scale: ${theme.radius.scale};`)
+	if (theme.shadow?.spread) CSSMiscVars.push(`--shadow-spread: ${theme.shadow.spread};`)
+	if (theme.shadow?.darkness) CSSMiscVars.push(`--shadow-darkness: ${theme.shadow.darkness};`)
+
+
 
 	// Combine base variables with color theme variables
 	return `
-	${CSSColourVars.join('\n')}
-	:root {
-		${CSSMiscVars.join('\n')}
-	}
+		${generateShadowUtils(theme.shadow)}
+
+		${CSSColourVars.join('\n')}
+		:root {
+			${CSSMiscVars.join('\n')}
+		}
 	`
+}
+
+const generateShadowUtils = (shadow: THEME.theme['shadow']) => {
+	return (`
+		.shadow-extrude-tester {
+			box-shadow:
+				4px 4px calc(var(--shadow-spread))px -calc(var(--shadow-spread) / 2)px rgb(0 0 0 / calc(var(--shadow-darkness))),
+				-4px -4px calc(var(--shadow-spread))px -calc(var(--shadow-spread) / 2)px rgb(200 200 200 / calc(var(--shadow-darkness)));
+		}
+		.shadow-extrude {
+			box-shadow:
+				4px 4px ${shadow?.spread}px -${(shadow?.spread ?? 0) / 2}px rgb(0 0 0 / ${ shadow?.darkness }),
+				-4px -4px ${shadow?.spread}px -${(shadow?.spread ?? 0) / 2}px rgb(200 200 200 / ${ shadow?.darkness });
+		}
+		.dark {
+			.shadow-extrude {
+				box-shadow:
+					4px 4px ${shadow?.spread}px -${(shadow?.spread ?? 0) / 2}px rgb(0 0 0 / ${(shadow?.darkness ?? 0) * 2}),
+					-4px -4px ${shadow?.spread}px -${(shadow?.spread ?? 0) / 2}px rgb(200 200 200 / ${(shadow?.darkness ?? 0) / 2 });
+			}
+		}
+	`)
 }

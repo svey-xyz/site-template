@@ -17,6 +17,10 @@ const base: THEME.theme = {
 			}
 		}
 	},
+	shadow: {
+		darkness: 0.5,
+		spread: 4
+	}
 }
 
 export default base;

@@ -15,11 +15,7 @@ export namespace _THEME {
 
 		},
 		shadow?: {
-			offset?: {
-				x?: Properties["offset"],
-				y?: Properties["offset"],
-			},
-			spread?: Properties["fontSize"],
+			spread?: number,
 			darkness?: number,
 			scale?: number
 		},

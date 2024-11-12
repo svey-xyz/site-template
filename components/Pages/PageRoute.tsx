@@ -6,6 +6,7 @@ import dynamic from 'next/dynamic'
 import { queryClient } from '@/sanity/loader/loadQuery'
 import { pageQuery } from '@/sanity/queries/queries'
 import { ResolvingMetadata, Metadata } from 'next'
+import PageLoader from '@/app/(site)/loading'
 
 type Props = {
 	params: { slug: Array<string> }
@@ -39,6 +40,8 @@ export async function generateMetadata(
 }
 
 export const PageRoute = async ({ params }: Props) => {
+
+	return <PageLoader />
 
 	const initial = await loadSingle_Page(params.slug[0]);
 
