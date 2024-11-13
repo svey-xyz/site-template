@@ -8,7 +8,6 @@ import { Utils } from './utils'
  */
 export class advancedBase {
 	private _container: HTMLElement
-	private _parentContainer: HTMLElement
 
 	sectionSize: { width: number, height: number } = { width: 0, height: 0 }
 
@@ -22,7 +21,6 @@ export class advancedBase {
 
 	constructor(container: HTMLElement, args?: {}) {
 		this._container = container
-		this._parentContainer = this.container.parentElement ? this.container.parentElement : this.container;
 
 		// initialize listeners
 		this.inputHandler = this.handleInput.bind(this);
@@ -100,10 +98,6 @@ export class advancedBase {
 
 	public get container(): HTMLElement {
 		return this._container
-	}
-
-	public get parentContainer(): HTMLElement {
-		return this._parentContainer
 	}
 }
 

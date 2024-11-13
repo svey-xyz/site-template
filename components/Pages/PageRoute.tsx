@@ -7,6 +7,7 @@ import { queryClient } from '@/sanity/loader/loadQuery'
 import { pageQuery } from '@/sanity/queries/queries'
 import { ResolvingMetadata, Metadata } from 'next'
 import PageLoader from '@/app/(site)/loading'
+import { ShaderContainer } from '@/components/site/Shaders'
 
 type Props = {
 	params: { slug: Array<string> }
@@ -41,7 +42,8 @@ export async function generateMetadata(
 
 export const PageRoute = async ({ params }: Props) => {
 
-	return <PageLoader />
+	// return <PageLoader />
+	return <ShaderContainer args={{}} />
 
 	const initial = await loadSingle_Page(params.slug[0]);
 

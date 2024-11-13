@@ -71,6 +71,10 @@ export class shader extends advancedBase {
 		this.renderer.render(this.scene, this.camera);
 	}
 
+	setUniform(uniform: string, value: any): void {
+		this.uniforms[uniform].value = value
+	}
+
 	resize(e: Event) {
 		super.resize(e)
 		this.renderer.setSize(this.sectionSize.width, this.sectionSize.height);
