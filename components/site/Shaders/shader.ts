@@ -1,4 +1,4 @@
-import { advancedBase } from "./base";
+import { domHandler } from "./base";
 import * as THREE from 'three';
 
 /**
@@ -8,19 +8,28 @@ import * as THREE from 'three';
  * @class shader
  * @extends {Section}
  */
-export class shader extends advancedBase {
-	renderer: THREE.WebGLRenderer;
-	scene: THREE.Scene;
-	camera: THREE.OrthographicCamera;
-	clock: THREE.Clock;
+export class shader extends domHandler {
+	renderer?: THREE.WebGLRenderer;
+	scene?: THREE.Scene;
+	camera?: THREE.OrthographicCamera;
+	clock?: THREE.Clock;
 	uniforms?: { [uniform: string]: THREE.IUniform } | undefined = {};
+	logic: LogicFns = {}
 
 	vertShader: string = '';
 	fragShader: string = '';
 
 	// Initializes the sketch
-	constructor(container: HTMLElement) {
+	constructor(container: HTMLDivElement | null, args: shaderArgs) {
+		if (!container) return
 		super(container);
+
+		if (args.logic) Object.entries(args.logic).forEach((l) => {
+			const logicFn = new Function(`return ${l[1]}`)() as ((shader: shader) => void)
+			this.logic[l[0] as LogicProcesses] = (logicFn)
+		})
+
+		this.uniforms = args.uniforms
 
 		// Initialize the WebGL renderer
 		this.renderer = new THREE.WebGLRenderer({ alpha: true });
@@ -37,6 +46,9 @@ export class shader extends advancedBase {
 
 		// Initialize the clock
 		this.clock = new THREE.Clock(true);
+
+		// Initialize the renderer
+		this.initializeShader(this.uniforms, { vert: args.vertShader, frag: args.fragShader });
 	}
 
 	initializeShader(uniforms: any, shaders: any) {
@@ -57,18 +69,21 @@ export class shader extends advancedBase {
 
 		// Create the mesh and add it to the scene
 		var mesh = new THREE.Mesh(geometry, material);
-		this.scene.add(mesh);
+		this.scene?.add(mesh);
+		if (this.logic.init) this.logic.init(this)
+
 		this.startLoop();
 	}
 
 	loop(): void {
 		super.loop();
+		if (this.logic.loop) this.logic.loop(this)
 		this.render();
 	};
 
 	// Renders the sketch
 	render() {
-		this.renderer.render(this.scene, this.camera);
+		if (this.scene && this.camera) this.renderer?.render(this.scene, this.camera);
 	}
 
 	setUniform(uniform: string, value: any): void {
@@ -77,12 +92,18 @@ export class shader extends advancedBase {
 
 	resize(e: Event) {
 		super.resize(e)
-		this.renderer.setSize(this.sectionSize.width, this.sectionSize.height);
+		this.renderer?.setSize(this.sectionSize.width, this.sectionSize.height);
 		// Render on resize instead of waiting for animation frame to avoid jitter
 		this.render();
 	}
 
 	handleInput(e: Event) {
 		super.handleInput(e);
+		// if (this.logic.touch) this.logic.touch(this)
+	}
+
+	touchStart(e: Event): void {
+		super.touchStart(e);
+		if (this.logic.touch) this.logic.touch(this)
 	}
 }

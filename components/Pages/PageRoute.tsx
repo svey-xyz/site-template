@@ -7,8 +7,9 @@ import { queryClient } from '@/sanity/loader/loadQuery'
 import { pageQuery } from '@/sanity/queries/queries'
 import { ResolvingMetadata, Metadata } from 'next'
 import PageLoader from '@/app/(site)/loading'
-import { blobShader, LogicProcesses, ShaderContainer } from '@/components/site/Shaders'
+import { ShaderContainer } from '@/components/site/Shaders'
 import { Vector2, Vector3 } from "three";
+import { shader } from '@/components/site/Shaders/shader'
 
 
 type Props = {
@@ -167,13 +168,13 @@ const uniforms = {
 };
 
 export const PageRoute = async ({ params }: Props) => {
-	const myLogic = (shader: blobShader) => {
-		shader.setUniform(`u_time`, (shader.clock.getElapsedTime() / 8) * 2)
-		// shader()
+	const loopLogic = (shader: shader) => {
+		if (shader.clock)
+			shader.setUniform(`u_time`, (shader.clock.getElapsedTime() / 8) * 2)
 	}
 
 	// return <PageLoader />
-	return <ShaderContainer args={{ logic: { 'loop': myLogic.toString() }, uniforms, fragShader: frag, vertShader: vert }} />
+	return <ShaderContainer args={{ logic: { 'loop': loopLogic.toString() }, uniforms, fragShader: frag, vertShader: vert }} />
 
 	const initial = await loadSingle_Page(params.slug[0]);
 

@@ -6,7 +6,7 @@ import { Utils } from './utils'
  * @export
  * @class Section
  */
-export class advancedBase {
+export class domHandler {
 	private _container: HTMLElement
 
 	sectionSize: { width: number, height: number } = { width: 0, height: 0 }
@@ -101,7 +101,7 @@ export class advancedBase {
 	}
 }
 
-advancedBase.prototype.handleInput = function (e: Event) {
+domHandler.prototype.handleInput = function (e: Event) {
 	let touches: TouchList
 
 	switch (e.type) {
@@ -162,6 +162,6 @@ advancedBase.prototype.handleInput = function (e: Event) {
 
 };
 
-advancedBase.prototype.resize = function (e: Event) {
+domHandler.prototype.resize = function (e: Event) {
 	this.setSize();
 };
