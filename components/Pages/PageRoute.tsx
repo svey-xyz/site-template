@@ -7,7 +7,9 @@ import { queryClient } from '@/sanity/loader/loadQuery'
 import { pageQuery } from '@/sanity/queries/queries'
 import { ResolvingMetadata, Metadata } from 'next'
 import PageLoader from '@/app/(site)/loading'
-import { ShaderContainer } from '@/components/site/Shaders'
+import { blobShader, LogicProcesses, ShaderContainer } from '@/components/site/Shaders'
+import { Vector2, Vector3 } from "three";
+
 
 type Props = {
 	params: { slug: Array<string> }
@@ -40,10 +42,138 @@ export async function generateMetadata(
 	}
 }
 
+const frag = `
+#define GLSLIFY 4
+// Common uniforms
+uniform float u_time;
+uniform vec2 u_posSeed;
+uniform vec3 u_bgColour;
+
+/*
+ * GLSL textureless classic 2D noise "cnoise",
+ * with an RSL-style periodic variant "pnoise".
+ * Author:  Stefan Gustavson (stefan.gustavson@liu.se)
+ * Version: 2011-08-22
+ *
+ * Many thanks to Ian McEwan of Ashima Arts for the
+ * ideas for permutation and gradient selection.
+ *
+ * Copyright (c) 2011 Stefan Gustavson. All rights reserved.
+ * Distributed under the MIT license. See LICENSE file.
+ * https://github.com/stegu/webgl-noise
+ *
+ * Stefan's work is used for the base noise function
+ */
+
+vec4 mod289(vec4 x) {
+    return x - floor(x * (1.0 / 289.0)) * 289.0;
+}
+
+vec4 permute(vec4 x) {
+    return mod289(((x * 34.0) + 1.0) * x);
+}
+
+vec4 taylorInvSqrt(vec4 r) {
+    return 1.79284291400159 - 0.85373472095314 * r;
+}
+
+vec2 fade(vec2 t) {
+    return t * t * t * (t * (t * 6.0 - 15.0) + 10.0);
+}
+
+float cnoise(vec2 P) {
+    vec4 Pi = floor(P.xyxy) + vec4(0.0, 0.0, 1.0, 1.0);
+    vec4 Pf = fract(P.xyxy) - vec4(0.0, 0.0, 1.0, 1.0);
+    Pi = mod289(Pi);
+    vec4 ix = Pi.xzxz;
+    vec4 iy = Pi.yyww;
+    vec4 fx = Pf.xzxz;
+    vec4 fy = Pf.yyww;
+
+    vec4 i = permute(permute(ix) + iy);
+
+    vec4 gx = fract(i * (1.0 / 41.0)) * 2.0 - 1.0;
+    vec4 gy = abs(gx) - 0.5;
+    vec4 tx = floor(gx + 0.5);
+    gx = gx - tx;
+
+    vec2 g00 = vec2(gx.x, gy.x);
+    vec2 g10 = vec2(gx.y, gy.y);
+    vec2 g01 = vec2(gx.z, gy.z);
+    vec2 g11 = vec2(gx.w, gy.w);
+
+    vec4 norm = taylorInvSqrt(vec4(dot(g00, g00), dot(g01, g01), dot(g10, g10), dot(g11, g11)));
+    g00 *= norm.x;
+    g01 *= norm.y;
+    g10 *= norm.z;
+    g11 *= norm.w;
+
+    float n00 = dot(g00, vec2(fx.x, fy.x));
+    float n10 = dot(g10, vec2(fx.y, fy.y));
+    float n01 = dot(g01, vec2(fx.z, fy.z));
+    float n11 = dot(g11, vec2(fx.w, fy.w));
+
+    vec2 fade_xy = fade(Pf.xy);
+    vec2 n_x = mix(vec2(n00, n01), vec2(n10, n11), fade_xy.x);
+    float n_xy = mix(n_x.x, n_x.y, fade_xy.y);
+    return 2.2 * n_xy; // bigger number = layers closer together
+}
+
+// Mix noise val with time
+float mixNoiseVals(float m, vec2 p, vec2 t) {
+    return m * cnoise(15.0 * t) + cnoise(15.0 * p);
+}
+
+// The main stuff
+void main() {
+	float t = u_time * 0.0012;
+	float scale = 0.000125;
+	float m = 1.8; // amount of movement between phases
+
+	float noise = mixNoiseVals(m, vec2((gl_FragCoord.xy + u_posSeed.xy) * scale), vec2(t));
+
+	float steps = 3.0; // how many layers
+	float brightness = 2.2; // controls how much of the canvas is white
+
+	float layer = floor(noise * steps + brightness) / steps;
+
+	gl_FragColor = vec4(u_bgColour, layer); // return layers of white with opacity
+}
+`
+
+const vert = `
+// Common varyings - not used currently
+// varying vec3 v_position;
+// varying vec3 v_normal;
+
+void main() {
+	gl_Position = vec4(position, 1.0);
+}
+`
+
+const uniforms = {
+	u_time: {
+		// type: "f",
+		value: 0.0
+	},
+	u_posSeed: {
+		// type: "v2",
+		value: new Vector2(1000, 1000)
+	},
+	u_bgColour: {
+		// type: "v3",
+		value: new Vector3(200 / 255, 120 / 255, 169 / 255)
+	}
+};
+
 export const PageRoute = async ({ params }: Props) => {
+	const myLogic = (shader: blobShader) => {
+		shader.setUniform(`u_time`, (shader.clock.getElapsedTime() / 8) * 2)
+		// shader()
+	}
 
 	// return <PageLoader />
-	return <ShaderContainer args={{}} />
+	return <ShaderContainer args={{ logic: { 'loop': myLogic.toString() }, uniforms, fragShader: frag, vertShader: vert }} />
 
 	const initial = await loadSingle_Page(params.slug[0]);
 

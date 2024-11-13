@@ -13,7 +13,7 @@ export class shader extends advancedBase {
 	scene: THREE.Scene;
 	camera: THREE.OrthographicCamera;
 	clock: THREE.Clock;
-	uniforms: any;
+	uniforms?: { [uniform: string]: THREE.IUniform } | undefined = {};
 
 	vertShader: string = '';
 	fragShader: string = '';
@@ -72,7 +72,7 @@ export class shader extends advancedBase {
 	}
 
 	setUniform(uniform: string, value: any): void {
-		this.uniforms[uniform].value = value
+		if (this.uniforms) this.uniforms[uniform].value = value
 	}
 
 	resize(e: Event) {
