@@ -1,17 +1,18 @@
 'use client'
 
 import { useRef, useEffect } from "react";
-import { shader } from "./shader";
+import { Shader } from "./shader";
 
 export const ShaderContainer = ({ args, className}: { args: shaderArgs, className?: string }) => {
 
-	const ref = useRef<HTMLDivElement>(null);
+	const ref = useRef<HTMLCanvasElement>(null);
 	useEffect(() => {
-		const myClassInstance = new shader(ref.current, args);
+		if (!ref.current) return
+		const myClassInstance = new Shader(ref.current, args);
 	}, []);
 	
 	return (
-		<div ref={ref} className={className} />
+		<canvas ref={ref} className={`${className} w-full`} />
 	)
 }
 

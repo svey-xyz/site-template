@@ -2,108 +2,142 @@ import { domHandler } from "./base";
 import * as THREE from 'three';
 
 /**
- * Shader Base Class for interactive shader sections
+ * Shader Base Class for interactive shader sections.
  *
  * @export
- * @class shader
- * @extends {Section}
+ * @class Shader
+ * @extends {domHandler}
  */
-export class shader extends domHandler {
-	renderer?: THREE.WebGLRenderer;
-	scene?: THREE.Scene;
-	camera?: THREE.OrthographicCamera;
-	clock?: THREE.Clock;
-	uniforms?: { [uniform: string]: THREE.IUniform } | undefined = {};
-	logic: LogicFns = {}
+export class Shader extends domHandler {
+	uniforms: { [uniform: string]: THREE.IUniform } = {};
+	logic: LogicFns = {};
+	gl: WebGLRenderingContext;
+	shaderProgram: WebGLProgram;
+	vertexBuffer: WebGLBuffer;
 
-	vertShader: string = '';
-	fragShader: string = '';
+	vertShader?: string = '';
+	fragShader?: string = '';
 
-	// Initializes the sketch
-	constructor(container: HTMLDivElement | null, args: shaderArgs) {
-		if (!container) return
+	constructor(container: HTMLCanvasElement, args: shaderArgs) {
 		super(container);
+		this.gl = container.getContext('webgl') as WebGLRenderingContext;
+		this.shaderProgram = this.initializeShader(args.vertShader, args.fragShader);
+		this.vertexBuffer = this.initBuffers();
 
-		if (args.logic) Object.entries(args.logic).forEach((l) => {
-			const logicFn = new Function(`return ${l[1]}`)() as ((shader: shader) => void)
-			this.logic[l[0] as LogicProcesses] = (logicFn)
-		})
+		// Initialize custom logic if provided
+		if (args.logic) this.initializeLogic(args.logic);
 
-		this.uniforms = args.uniforms
-
-		// Initialize the WebGL renderer
-		this.renderer = new THREE.WebGLRenderer({ alpha: true });
-		this.renderer.setPixelRatio(window.devicePixelRatio);
-		this.renderer.setSize(this.sectionSize.width, this.sectionSize.height);
-
-		this.container.appendChild(this.renderer.domElement);
-
-		// Initialize the scene
-		this.scene = new THREE.Scene();
-
-		// Initialize the camera
-		this.camera = new THREE.OrthographicCamera(-1, 1, 1, -1, 0, 1);
-
-		// Initialize the clock
-		this.clock = new THREE.Clock(true);
-
-		// Initialize the renderer
-		this.initializeShader(this.uniforms, { vert: args.vertShader, frag: args.fragShader });
+		super.init();
+		this.resize()
+		this.startLoop(60);
 	}
 
-	initializeShader(uniforms: any, shaders: any) {
-		this.uniforms = uniforms;
-		this.vertShader = shaders.vert;
-		this.fragShader = shaders.frag;
-
-		// Create the plane geometry
-		var geometry = new THREE.PlaneGeometry(2, 2);
-
-		// Create the shader material
-		var material = new THREE.ShaderMaterial({
-			uniforms: this.uniforms,
-			transparent: true,
-			vertexShader: this.vertShader,
-			fragmentShader: this.fragShader,
+	// Initializes custom logic from provided args
+	private initializeLogic(logic: { [key in LogicProcesses]?: string }): void {
+		Object.entries(logic).forEach(([key, logicFunction]) => {
+			const logicFn = new Function(`return ${logicFunction}`)() as (shader: Shader) => void;
+			this.logic[key as LogicProcesses] = logicFn;
 		});
-
-		// Create the mesh and add it to the scene
-		var mesh = new THREE.Mesh(geometry, material);
-		this.scene?.add(mesh);
-		if (this.logic.init) this.logic.init(this)
-
-		this.startLoop();
 	}
 
+	private loadShader(gl: WebGLRenderingContext, type: GLenum, source: string = ''): WebGLShader | null {
+		const shader = gl.createShader(type);
+		if (!shader) return null;
+
+		gl.shaderSource(shader, source);
+		gl.compileShader(shader);
+
+		if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+			console.error('Shader compilation error:', gl.getShaderInfoLog(shader));
+			gl.deleteShader(shader);
+			return null;
+		}
+
+		return shader;
+	}
+
+	private initBuffers(): WebGLBuffer {
+		const vertices = new Float32Array([
+			1.0, 1.0,  // Top-right
+			-1.0, 1.0,  // Top-left
+			1.0, -1.0,  // Bottom-right corner
+			-1.0, -1.0,  // Bottom-left corner
+		]);
+
+		const vertexBuffer = this.gl.createBuffer();
+		if (!vertexBuffer) throw new Error('Failed to create vertex buffer');
+
+		this.gl.bindBuffer(this.gl.ARRAY_BUFFER, vertexBuffer);
+		this.gl.bufferData(this.gl.ARRAY_BUFFER, vertices, this.gl.STATIC_DRAW);
+
+		return vertexBuffer;
+	}
+
+	private initializeShader(vertShader?: string, fragShader?: string): WebGLProgram {
+		const vertexShader = this.loadShader(this.gl, this.gl.VERTEX_SHADER, vertShader);
+		const fragmentShader = this.loadShader(this.gl, this.gl.FRAGMENT_SHADER, fragShader);
+		if (!vertexShader || !fragmentShader) throw new Error('Shader compilation failed');
+
+		const shaderProgram = this.gl.createProgram();
+		if (!shaderProgram) throw new Error('Failed to create shader program');
+
+		this.gl.attachShader(shaderProgram, vertexShader);
+		this.gl.attachShader(shaderProgram, fragmentShader);
+		this.gl.linkProgram(shaderProgram);
+
+		if (!this.gl.getProgramParameter(shaderProgram, this.gl.LINK_STATUS)) {
+			console.error('Shader program link error:', this.gl.getProgramInfoLog(shaderProgram));
+			throw new Error('Unable to initialize the shader program');
+		}
+		return shaderProgram;
+	}
+
+	// Main render loop
 	loop(): void {
 		super.loop();
-		if (this.logic.loop) this.logic.loop(this)
+		this.logic.loop?.(this);
 		this.render();
-	};
-
-	// Renders the sketch
-	render() {
-		if (this.scene && this.camera) this.renderer?.render(this.scene, this.camera);
 	}
 
+	render(): void {
+		const gl = this.gl;
+		gl.clear(gl.COLOR_BUFFER_BIT);
+
+		const vertexPosition = gl.getAttribLocation(this.shaderProgram, 'aVertexPosition');
+		gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexBuffer);
+		gl.vertexAttribPointer(vertexPosition, 2, gl.FLOAT, false, 0, 0);
+		gl.enableVertexAttribArray(vertexPosition);
+
+		gl.useProgram(this.shaderProgram);
+		gl.drawArrays(gl.TRIANGLES, 0, 3);
+	}
+
+	// Sets a uniform value for the shader
 	setUniform(uniform: string, value: any): void {
-		if (this.uniforms) this.uniforms[uniform].value = value
+		if (this.uniforms[uniform]) this.uniforms[uniform].value = value;
+		const uLoc = this.gl.getUniformLocation(this.shaderProgram, uniform);
+		this.gl.uniform1f(uLoc, value)
 	}
 
-	resize(e: Event) {
-		super.resize(e)
-		this.renderer?.setSize(this.sectionSize.width, this.sectionSize.height);
-		// Render on resize instead of waiting for animation frame to avoid jitter
-		this.render();
+	// Resize handler
+	resize(e?: Event): void {
+		super.resize(e);
+		const { width, height } = this.container.getBoundingClientRect();
+		this.container.width = width;
+		this.container.height = height;
+		this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight);
+
+		this.render(); // Render immediately on resize to avoid jitter waiting for render call
 	}
 
-	handleInput(e: Event) {
+	// Handles input events
+	handleInput(e: Event): void {
 		super.handleInput(e);
-		// if (this.logic.touch) this.logic.touch(this)
 	}
 
+	// Handles touch start events
 	touchStart(e: Event): void {
 		super.touchStart(e);
-		if (this.logic.touch) this.logic.touch(this)
+		this.logic.touch?.(this);
 	}
 }

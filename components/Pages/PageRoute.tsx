@@ -9,7 +9,7 @@ import { ResolvingMetadata, Metadata } from 'next'
 import PageLoader from '@/app/(site)/loading'
 import { ShaderContainer } from '@/components/site/Shaders'
 import { Vector2, Vector3 } from "three";
-import { shader } from '@/components/site/Shaders/shader'
+import { Shader } from '@/components/site/Shaders/shader'
 
 
 type Props = {
@@ -44,11 +44,14 @@ export async function generateMetadata(
 }
 
 const frag = `
+precision mediump float;
+
 #define GLSLIFY 4
 // Common uniforms
 uniform float u_time;
 uniform vec2 u_posSeed;
 uniform vec3 u_bgColour;
+
 
 /*
  * GLSL textureless classic 2D noise "cnoise",
@@ -143,13 +146,11 @@ void main() {
 `
 
 const vert = `
-// Common varyings - not used currently
-// varying vec3 v_position;
-// varying vec3 v_normal;
+ attribute vec4 aVertexPosition;
 
-void main() {
-	gl_Position = vec4(position, 1.0);
-}
+    void main(void) {
+        gl_Position = aVertexPosition;
+    }
 `
 
 const uniforms = {
@@ -168,13 +169,12 @@ const uniforms = {
 };
 
 export const PageRoute = async ({ params }: Props) => {
-	const loopLogic = (shader: shader) => {
-		if (shader.clock)
-			shader.setUniform(`u_time`, (shader.clock.getElapsedTime() / 8) * 2)
+	const loopLogic = (shader: Shader) => {
+		shader.setUniform(`u_time`, (shader.getElapsedTime() / 8) * 2)
 	}
 
 	// return <PageLoader />
-	return <ShaderContainer args={{ logic: { 'loop': loopLogic.toString() }, uniforms, fragShader: frag, vertShader: vert }} />
+	return <ShaderContainer args={{ uniforms, fragShader: frag, vertShader: vert, logic: { 'loop': loopLogic.toString() } }} />
 
 	const initial = await loadSingle_Page(params.slug[0]);
 
