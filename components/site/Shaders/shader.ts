@@ -12,7 +12,6 @@ export class Shader extends domHandler {
 	gl: WebGLRenderingContext;
 	shaderProgram: WebGLProgram;
 	vertexBuffer: WebGLBuffer;
-	uniforms?: Array<UniformValue>
 
 	vertShader?: string = '';
 	fragShader?: string = '';
@@ -22,17 +21,17 @@ export class Shader extends domHandler {
 		this.gl = container.getContext('webgl') as WebGLRenderingContext;
 		this.shaderProgram = this.initializeShader(args.vertShader, args.fragShader);
 		this.vertexBuffer = this.initBuffers();
-		this.uniforms = args.uniforms
 
 		// Initialize custom logic if provided
 		if (args.logic) this.initializeLogic(args.logic);
-		this.uniforms?.forEach((uniform) => {
-			this.setUniform(uniform)
-		})
 
 		super.init();
 		this.resize()
 		this.startLoop(60);
+
+		args.uniforms?.forEach((uniform) => {
+			this.setUniform(uniform)
+		})
 	}
 
 	// Initializes custom logic from provided args
@@ -61,10 +60,13 @@ export class Shader extends domHandler {
 
 	private initBuffers(): WebGLBuffer {
 		const vertices = new Float32Array([
-			1.0, 1.0,  // Top-right
 			-1.0, 1.0,  // Top-left
-			1.0, -1.0,  // Bottom-right corner
-			-1.0, -1.0,  // Bottom-left corner
+			-1.0, -1.0,  // Bottom-left
+			1.0, -1.0,  // Bottom-right
+
+			-1.0, 1.0,  // Top-left
+			1.0, -1.0,  // Bottom-right
+			1.0, 1.0   // Top-right
 		]);
 
 		const vertexBuffer = this.gl.createBuffer();
@@ -105,28 +107,33 @@ export class Shader extends domHandler {
 	render(): void {
 		const gl = this.gl;
 		gl.clear(gl.COLOR_BUFFER_BIT);
+		gl.clear(gl.DEPTH_BUFFER_BIT);
+		gl.clear(gl.STENCIL_BUFFER_BIT);
 
-		const vertexPosition = gl.getAttribLocation(this.shaderProgram, 'aVertexPosition');
+		const vertexPosition = gl.getAttribLocation(this.shaderProgram, 'a_position');
 		gl.bindBuffer(gl.ARRAY_BUFFER, this.vertexBuffer);
 		gl.vertexAttribPointer(vertexPosition, 2, gl.FLOAT, false, 0, 0);
 		gl.enableVertexAttribArray(vertexPosition);
 
 		gl.useProgram(this.shaderProgram);
-		gl.drawArrays(gl.TRIANGLES, 0, 3);
+		gl.drawArrays(gl.TRIANGLES, 0, 6);
 	}
 
-	// Sets a uniform value for the shader
+	/**  Gets a uniform value from the shader */
 	getUniform(name: string): UniformValue | undefined {
-		const uniformIndex = this.uniforms?.findIndex((u) => u.name == name)
-		if (this.uniforms && uniformIndex) return this.uniforms[uniformIndex]
+		const uLoc = this.gl.getUniformLocation(this.shaderProgram, name);
+		if (!uLoc) {
+			console.error(`Uniform ${name} not found.`);
+			return;
+		}
+
+		return this.gl.getUniform(this.shaderProgram, uLoc)
 	}
 
+	/**  Sets a uniform value for the shader */
 	setUniform(uniform: UniformValue): void {
 		const { name, type, value } = uniform
 		const uLoc = this.gl.getUniformLocation(this.shaderProgram, name);
-		
-		const uniformIndex = this.uniforms?.findIndex((u) => u.name == name)
-		if (this.uniforms && uniformIndex) this.uniforms[uniformIndex].value = uniform.value
 
 		if (!uLoc) {
 			console.error(`Uniform ${name} not found.`);
@@ -170,7 +177,6 @@ export class Shader extends domHandler {
 			default:
 				console.error(`Unsupported uniform type: ${type}`);
 		}
-
 	}
 
 	// Resize handler
@@ -179,7 +185,7 @@ export class Shader extends domHandler {
 		const { width, height } = this.container.getBoundingClientRect();
 		this.container.width = width;
 		this.container.height = height;
-		this.gl.viewport(0, 0, this.gl.drawingBufferWidth, this.gl.drawingBufferHeight);
+		this.gl.viewport(0, 0, width, height);
 
 		this.render(); // Render immediately on resize to avoid jitter waiting for render call
 	}

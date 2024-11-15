@@ -145,11 +145,10 @@ void main() {
 `
 
 const vert = `
- attribute vec4 aVertexPosition;
-
-    void main(void) {
-        gl_Position = aVertexPosition;
-    }
+ 	attribute vec2 a_position;
+	void main() {	
+			gl_Position = vec4(a_position, 0.0, 1.0);
+	}
 `
 
 const uniforms: Array<UniformValue> = [
@@ -161,12 +160,12 @@ const uniforms: Array<UniformValue> = [
 	{
 		name: 'u_posSeed',
 		type: "vec2",
-		value: [1, 1]
+		value: new Float32Array([1, 1])
 	},
 	{
 		name: 'u_bgColour',
 		type: "vec3",
-		value: [200 / 255, 120 / 255, 169 / 255]
+		value: new Float32Array([200 / 255, 120 / 255, 169 / 255])
 	}
 ]
 
