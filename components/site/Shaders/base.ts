@@ -1,13 +1,13 @@
 import { Utils } from './utils'
 export class domHandler {
 	private _container: HTMLCanvasElement;
-	sectionSize: { width: number, height: number } = { width: 0, height: 0 };
-	loopActive: boolean = false;
-	timer: any;
-	touch: boolean = false;
-	ongoingTouches: Array<Touch> = [];
-	inputHandler: (e: Event) => void;
-	resizeHandler: (e: Event) => void;
+	private sectionSize: { width: number, height: number } = { width: 0, height: 0 };
+	private loopActive: boolean = false;
+	private timer: any;
+	private touch: boolean = false;
+	private ongoingTouches: Array<Touch> = [];
+	private inputHandler: (e: Event) => void;
+	private resizeHandler: (e: Event) => void;
 
 	// Clock properties
 	private startTime: number = 0; // Time when the clock starts
@@ -31,59 +31,58 @@ export class domHandler {
 		this.resizeHandler = this.resize.bind(this);
 		window.addEventListener('resize', Utils.domUtils.debounce(this.resizeHandler), { passive: true });
 
-		this.container.classList.add('loaded');
 		this.setSize();
 	}
 
 	// Start the clock
-	startClock() {
+	protected startClock() {
 		this.startTime = performance.now(); // Use performance.now() for high-precision time
 	}
 
 	// Get the elapsed time in seconds
-	getElapsedTime(): number {
+	public getElapsedTime(): number {
 		this.elapsedTime = (performance.now() - this.startTime) / 1000; // Convert to seconds
 		return this.elapsedTime;
 	}
 
-	init(): void { }
+	protected init(): void { }
 
-	handleInput(e: Event): void { };
-	click(e: Event): void { };
-	holdTouch(e: Event): void { };
-	touchMove(e: Event): void { };
-	touchStart(e: Event): void {
+	protected handleInput(e: Event): void { };
+	protected click(e: Event): void { };
+	protected holdTouch(e: Event): void { };
+	protected touchMove(e: Event): void { };
+	protected touchStart(e: Event): void {
 		this.timer = setInterval(() => {
 			this.holdTouch(e)
 		}, 100);
 		this.touch = true;
 	}
 
-	touchEnd(e: Event) {
+	protected touchEnd(e: Event) {
 		if (this.timer) clearInterval(this.timer);
 		this.touch = false;
 	}
 
-	resize(e?: Event): void { };
+	protected resize(e?: Event): void { };
 
-	setSize(): void {
+	protected setSize(): void {
 		this.sectionSize.height = this.container.offsetHeight;
 		this.sectionSize.width = document.documentElement.clientWidth || document.body.clientWidth;
 	}
 
-	startLoop = (refreshRate: number = 0) => {
+	protected startLoop = (refreshRate: number = 0) => {
 		this.loopActive = true;
 		this.mainLoop(refreshRate);
 	}
 
-	mainLoop = (refreshRate: number = 0) => {
+	protected mainLoop = (refreshRate: number = 0) => {
 		if (this.loopActive) {
 			Utils.scriptUtils.requestTimeout(() => this.mainLoop(refreshRate), refreshRate);
 			this.loop();
 		}
 	}
 
-	loop(): void {
+	protected loop(): void {
 	}
 
 	public get container(): HTMLCanvasElement {

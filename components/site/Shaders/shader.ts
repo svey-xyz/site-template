@@ -1,20 +1,19 @@
 import { domHandler } from "./base";
 
-/**
- * Shader Base Class for interactive shader sections.
- *
+/** Shader Class
  * @export
  * @class Shader
  * @extends {domHandler}
+ * @param {LogicFns} logic 
  */
 export class Shader extends domHandler {
-	logic: LogicFns = {};
-	gl: WebGLRenderingContext;
-	shaderProgram: WebGLProgram;
-	vertexBuffer: WebGLBuffer;
+	private logic: LogicFns = {};
+	private gl: WebGLRenderingContext;
+	private shaderProgram: WebGLProgram;
+	private vertexBuffer: WebGLBuffer;
 
-	vertShader?: string = '';
-	fragShader?: string = '';
+	private vertShader?: string = '';
+	private fragShader?: string = '';
 
 	constructor(container: HTMLCanvasElement, args: shaderArgs) {
 		super(container);
@@ -98,13 +97,13 @@ export class Shader extends domHandler {
 	}
 
 	// Main render loop
-	loop(): void {
+	protected loop(): void {
 		super.loop();
 		this.logic.loop?.(this);
 		this.render();
 	}
 
-	render(): void {
+	protected render(): void {
 		const gl = this.gl;
 		gl.clear(gl.COLOR_BUFFER_BIT);
 		gl.clear(gl.DEPTH_BUFFER_BIT);
@@ -120,7 +119,7 @@ export class Shader extends domHandler {
 	}
 
 	/**  Gets a uniform value from the shader */
-	getUniform(name: string): UniformValue | undefined {
+	public getUniform(name: string): UniformValue | undefined {
 		const uLoc = this.gl.getUniformLocation(this.shaderProgram, name);
 		if (!uLoc) {
 			console.error(`Uniform ${name} not found.`);
@@ -131,7 +130,7 @@ export class Shader extends domHandler {
 	}
 
 	/**  Sets a uniform value for the shader */
-	setUniform(uniform: UniformValue): void {
+	public setUniform(uniform: UniformValue): void {
 		const { name, type, value } = uniform
 		const uLoc = this.gl.getUniformLocation(this.shaderProgram, name);
 
@@ -180,7 +179,7 @@ export class Shader extends domHandler {
 	}
 
 	// Resize handler
-	resize(e?: Event): void {
+	protected resize(e?: Event): void {
 		super.resize(e);
 		const { width, height } = this.container.getBoundingClientRect();
 		this.container.width = width;
@@ -191,12 +190,12 @@ export class Shader extends domHandler {
 	}
 
 	// Handles input events
-	handleInput(e: Event): void {
+	protected handleInput(e: Event): void {
 		super.handleInput(e);
 	}
 
 	// Handles touch start events
-	touchStart(e: Event): void {
+	protected touchStart(e: Event): void {
 		super.touchStart(e);
 		this.logic.touch?.(this);
 	}

@@ -178,6 +178,7 @@ export const PageRoute = async ({ params }: Props) => {
 		} 
 
 		shader.setUniform(uTime)
+
 	}
 
 	// return <PageLoader />
