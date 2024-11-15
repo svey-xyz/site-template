@@ -1,5 +1,4 @@
 import { domHandler } from "./base";
-import * as THREE from 'three';
 
 /**
  * Shader Base Class for interactive shader sections.
@@ -9,11 +8,11 @@ import * as THREE from 'three';
  * @extends {domHandler}
  */
 export class Shader extends domHandler {
-	uniforms: { [uniform: string]: THREE.IUniform } = {};
 	logic: LogicFns = {};
 	gl: WebGLRenderingContext;
 	shaderProgram: WebGLProgram;
 	vertexBuffer: WebGLBuffer;
+	uniforms?: Array<UniformValue>
 
 	vertShader?: string = '';
 	fragShader?: string = '';
@@ -23,9 +22,13 @@ export class Shader extends domHandler {
 		this.gl = container.getContext('webgl') as WebGLRenderingContext;
 		this.shaderProgram = this.initializeShader(args.vertShader, args.fragShader);
 		this.vertexBuffer = this.initBuffers();
+		this.uniforms = args.uniforms
 
 		// Initialize custom logic if provided
 		if (args.logic) this.initializeLogic(args.logic);
+		this.uniforms?.forEach((uniform) => {
+			this.setUniform(uniform)
+		})
 
 		super.init();
 		this.resize()
@@ -113,10 +116,61 @@ export class Shader extends domHandler {
 	}
 
 	// Sets a uniform value for the shader
-	setUniform(uniform: string, value: any): void {
-		if (this.uniforms[uniform]) this.uniforms[uniform].value = value;
-		const uLoc = this.gl.getUniformLocation(this.shaderProgram, uniform);
-		this.gl.uniform1f(uLoc, value)
+	getUniform(name: string): UniformValue | undefined {
+		const uniformIndex = this.uniforms?.findIndex((u) => u.name == name)
+		if (this.uniforms && uniformIndex) return this.uniforms[uniformIndex]
+	}
+
+	setUniform(uniform: UniformValue): void {
+		const { name, type, value } = uniform
+		const uLoc = this.gl.getUniformLocation(this.shaderProgram, name);
+		
+		const uniformIndex = this.uniforms?.findIndex((u) => u.name == name)
+		if (this.uniforms && uniformIndex) this.uniforms[uniformIndex].value = uniform.value
+
+		if (!uLoc) {
+			console.error(`Uniform ${name} not found.`);
+			return;
+		}
+
+		switch (type) {
+			case "float":
+				this.gl.uniform1f(uLoc, value as number);
+				break;
+			case "vec2":
+				this.gl.uniform2fv(uLoc, value as Float32Array);
+				break;
+			case "vec3":
+				this.gl.uniform3fv(uLoc, value as Float32Array);
+				break;
+			case "vec4":
+				this.gl.uniform4fv(uLoc, value as Float32Array);
+				break;
+			case "int":
+				this.gl.uniform1i(uLoc, value as number);
+				break;
+			case "ivec2":
+				this.gl.uniform2iv(uLoc, value as Int32Array);
+				break;
+			case "ivec3":
+				this.gl.uniform3iv(uLoc, value as Int32Array);
+				break;
+			case "ivec4":
+				this.gl.uniform4iv(uLoc, value as Int32Array);
+				break;
+			case "mat2":
+				this.gl.uniformMatrix2fv(uLoc, false, value as Float32Array);
+				break;
+			case "mat3":
+				this.gl.uniformMatrix3fv(uLoc, false, value as Float32Array);
+				break;
+			case "mat4":
+				this.gl.uniformMatrix4fv(uLoc, false, value as Float32Array);
+				break;
+			default:
+				console.error(`Unsupported uniform type: ${type}`);
+		}
+
 	}
 
 	// Resize handler

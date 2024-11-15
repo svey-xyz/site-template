@@ -17,9 +17,28 @@ declare global {
 	type shaderArgs = {
 		vertShader?: string,
 		fragShader?: string,
-		uniforms?: { [uniform: string]: THREE.IUniform },
+		uniforms?: Array<UniformValue>,
 		logic?: LogicStrings
 	}
+
+	type UniformValue = {
+		name: string,
+		type: UniformType,
+		value: any
+	}
+
+	type UniformType =
+		| "float"
+		| "vec2"
+		| "vec3"
+		| "vec4"
+		| "int"
+		| "ivec2"
+		| "ivec3"
+		| "ivec4"
+		| "mat2"
+		| "mat3"
+		| "mat4";
 }
 
 

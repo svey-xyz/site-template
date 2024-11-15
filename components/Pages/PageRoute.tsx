@@ -8,7 +8,6 @@ import { pageQuery } from '@/sanity/queries/queries'
 import { ResolvingMetadata, Metadata } from 'next'
 import PageLoader from '@/app/(site)/loading'
 import { ShaderContainer } from '@/components/site/Shaders'
-import { Vector2, Vector3 } from "three";
 import { Shader } from '@/components/site/Shaders/shader'
 
 
@@ -153,24 +152,33 @@ const vert = `
     }
 `
 
-const uniforms = {
-	u_time: {
-		// type: "f",
+const uniforms: Array<UniformValue> = [
+	{
+		name: 'u_time',
+		type: "float",
 		value: 0.0
 	},
-	u_posSeed: {
-		// type: "v2",
-		value: new Vector2(1000, 1000)
+	{
+		name: 'u_posSeed',
+		type: "vec2",
+		value: [1, 1]
 	},
-	u_bgColour: {
-		// type: "v3",
-		value: new Vector3(200 / 255, 120 / 255, 169 / 255)
+	{
+		name: 'u_bgColour',
+		type: "vec3",
+		value: [200 / 255, 120 / 255, 169 / 255]
 	}
-};
+]
 
 export const PageRoute = async ({ params }: Props) => {
 	const loopLogic = (shader: Shader) => {
-		shader.setUniform(`u_time`, (shader.getElapsedTime() / 8) * 2)
+		const uTime: UniformValue = {
+			name: 'u_time',
+			type: 'float',
+			value: (shader.getElapsedTime() / 8) * 2
+		} 
+
+		shader.setUniform(uTime)
 	}
 
 	// return <PageLoader />
