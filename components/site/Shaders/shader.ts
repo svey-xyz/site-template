@@ -12,9 +12,6 @@ export class Shader extends domHandler {
 	private shaderProgram: WebGLProgram;
 	private vertexBuffer: WebGLBuffer;
 
-	private vertShader?: string = '';
-	private fragShader?: string = '';
-
 	constructor(container: HTMLCanvasElement, args: shaderArgs) {
 		super(container);
 		this.gl = container.getContext('webgl') as WebGLRenderingContext;

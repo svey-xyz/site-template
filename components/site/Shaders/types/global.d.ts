@@ -5,6 +5,7 @@ declare global {
 		LOOP = 'loop',
 	}
 
+	/** Logic should be functions passed as strings that take the form (shader: Shader) => void */
 	type LogicStrings = {
 		[key in LogicProcesses]?: string; // Note string is later converted to Fn
 	}
@@ -14,6 +15,9 @@ declare global {
 	}
 
 
+	/** 
+	 * @param logic Logic should be functions passed as strings that take the form (shader: Shader) => void
+	 * */
 	type shaderArgs = {
 		vertShader?: string,
 		fragShader?: string,
