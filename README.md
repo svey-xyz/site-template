@@ -22,18 +22,18 @@ Similarly to old-school CMSs like *Wordpress* or *Drupal*, this template is buil
 
 ### Archives
 
-Archives are pages that have schemas automatically generated for them for each article.
+~~Archives are pages that have schemas automatically generated for them for each article.~~ Archives are pages that are linked to an article. If an article doesn't have a custom archive the default archive page will be used. This change is recent, check the status of issue [#25](issues/25).
 
 ### Taxonomies
 
-Each article will generate a matching taxonomy definition.
+~~Each article will generate a matching taxonomy definition.~~ Previously, each article had a unique taxonomy, that lead to a lot of developer overhead and limited the types of connections that could be made with taxonomies. Now a single taxonomy type is used across all documents and articles, allowing for more unique connections.
 
 ### Themes
 
-Even though this tempalte makes heavy use of *Tailwindcss* for utility based classes it attempts to seperate many of the styling options from the layout to allow for quick initial styling when starting a new project. Core files implement *Tailwind* layout classes. [Read more](theme/README.md).
+Even though this template makes heavy use of *Tailwindcss* for utility based classes it attempts to separate many of the styling options from the layout to allow for quick initial styling when starting a new project. Core files implement *Tailwind* layout classes. [Read more](theme/README.md).
 
 ## Getting Started
-Head to [Sanity.io](https://sanity.io) and create a new project from scratch; making sure to add the rrequired api tokens and cors origin.
+Head to [Sanity.io](https://sanity.io) and create a new project from scratch; making sure to add the required api tokens and cors origin.
 
 After cloning the repo the first step is to create a .env file with the following variables set:
 
@@ -47,8 +47,8 @@ NEXT_PUBLIC_SANITY_PROJECT_ID=''
 # optional - defaults set in sanity/lib/api
 NEXT_PUBLIC_SANITY_DATASET='production'
 NEXT_PUBLIC_SANITY_API_VERSION='2024-10-14'
-SANITY_CONFIG_STUDIO_NAME='studio'
-SANITY_CONFIG_STUDIO_TITLE='studio'
+NEXT_PUBLIC_SANITY_CONFIG_STUDIO_NAME='studio'
+NEXT_PUBLIC_SANITY_CONFIG_STUDIO_TITLE='studio'
 ```
 Then run a dev environment and navigate to the studio to add all the required fields.
 
@@ -56,9 +56,9 @@ Then run a dev environment and navigate to the studio to add all the required fi
 
 ### Creating an article
 
-Article schemas are kept in `sanity/schemas/articles/`. Once you have created your article be sure to add it to the imports and export of `sanity/schemas/articles/index.ts`.
+Article schemas are kept in `sanity/schemas/articles/`. Once you have created your article be sure to add it to the imports and export of `sanity/schemas/articles/index.ts`. To enforce consistent naming and maintain strong typing when importing to the frontend the article types must be defined in `sanity/schemas/articles/types.ts`, and imported where needed.
 
-On the frontend articles share a default singleton page but new singletons can be added for each article type. `components/Pages/articles/` is the directory for creating new article pages; ensure that you add your page to `components/Pages/ArticleRoute.tsx`
+On the frontend articles share a default singleton page but new singletons can be added for each article type. `components/Pages/articles/` is the directory for creating new article pages; ensure that you add your page to `components/Pages/ArticleRoute.tsx`.
 
 ### Creating a block
 
@@ -70,7 +70,14 @@ On the frontend blocks each have their own components located in `components/Pag
 
 Since this template makes use of Nextjs server functionality the most straightforward deployment option is with [Vercel](https://vercel.com). For more information on integrating Vercel deployments with your GitHub repo read [here](https://vercel.com/docs/deployments/git#deploying-a-git-repository).
 
-To enable deployment status previews in your GitHub repo ensure that the Vercel project is setup to integrate with your repo. Also ensure that you add all the necessary env variables to the Vercel project. 
+To enable deployment status previews in your GitHub repo ensure that the Vercel project is setup to integrate with your repo. Also ensure that you add all the necessary env variables to the Vercel project.
+
+## Client Usage
+
+*More info coming to this section*
+
+### Making and editing pages
+This template makes heavy use of Sanity's [presentation, and live editing features](https://www.sanity.io/docs/visual-editing-with-next-js-app-router-and-sanity-studio). This approach makes editing a breeze with an intuitive, and likely familiar looking, block builder.
 
 ## Roadmap
 
