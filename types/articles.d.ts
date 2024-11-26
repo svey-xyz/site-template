@@ -7,7 +7,7 @@ export interface _article extends inherentDocumentData {
 	slug: string,
 	description?: string,
 	image?: sanityImage,
-	taxonomies?: Array<taxonomy>,
+	taxonomies?: Array<_taxonomy>,
 }
 
 export interface _article_Article extends article {
@@ -20,7 +20,4 @@ export interface _taxonomy extends inherentDocumentData {
 	related?: Array<taxonomy>,
 	broader?: Array<taxonomy>,
 	narrower?: Array<taxonomy>,
-}
-
-export interface _taxonomy_Article extends taxonomy {
 }
