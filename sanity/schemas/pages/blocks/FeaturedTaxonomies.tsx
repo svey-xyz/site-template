@@ -1,15 +1,7 @@
-import ARTICLES from '@/sanity/schemas/articles';
-import { taxonomyTitle } from '@/sanity/schemas/articles/constructors/taxonomy';
 import constructors from '@/sanity/schemas/pages/constructors';
 import { defineField } from 'sanity';
 
 import { SwatchIcon } from '@heroicons/react/24/solid'
-
-
-const taxonomyTypes = ARTICLES.flatMap((article) => {
-	return { type: taxonomyTitle(article.type) }
-})
-
 
 const fields = [
 	defineField({
@@ -18,7 +10,7 @@ const fields = [
 		type: 'array',
 		of: [{
 			type: 'reference',
-			to: taxonomyTypes,
+			to: [{ type: 'taxonomy' }],
 			options: {
 				disableNew: true
 			}

@@ -6,7 +6,7 @@ import {
 
 import {
 	_ARTICLE_TYPES, _article, _taxonomy,
-	_article_Article, _taxonomy_Article
+	_article_Article
 } from './articles'
 
 import {
@@ -47,7 +47,6 @@ declare global {
 	type article = _article;
 	type taxonomy = _taxonomy;
 	type article_Article = _article_Article;
-	type taxonomy_Article = _taxonomy_Article;
 
 	// DOCUMENTS
 	type SettingsPayload = _SettingsPayload;

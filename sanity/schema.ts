@@ -9,7 +9,6 @@ const ARTICLE_TYPES = (() => {
 
 	ARTICLES.forEach((article) => {
 		types.push(article.document)
-		types.push(article.taxonomy)
 	})
 
 	return types
@@ -33,7 +32,9 @@ const _objects = [social, link, basicDate, contact, markdownSchemaType, note, na
  * Documents
  */
 import { settings } from '@/sanity/schemas/documents/settings'
+import { taxonomy } from '@/sanity/schemas/documents/taxonomies'
 
-const _documents = [settings]
+
+const _documents = [settings, taxonomy]
 
 export const types = [..._objects, ..._documents, ...PAGES, ...ARTICLE_TYPES];

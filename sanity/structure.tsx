@@ -1,17 +1,14 @@
-import { StructureBuilder, ListItem, ListItemBuilder, Divider, DefaultDocumentNodeResolver, StructureResolverContext } from "sanity/structure";
+import { StructureBuilder, StructureResolverContext } from "sanity/structure";
 import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
 
 import { types } from "@/sanity/schema";
 import ARTICLES from "@/sanity/schemas/articles";
 import { camelCaseToWords, pluralize } from "@/lib/stringFunctions";
-import { ReferenceList } from "@/components/studio/ReferenceList";
 
-import { DocumentTextIcon, ArchiveBoxIcon, Cog6ToothIcon, TagIcon } from "@heroicons/react/24/solid";
+import { Cog6ToothIcon, TagIcon } from "@heroicons/react/24/solid";
 import { ComponentType } from "react";
 
 // abstraction required for sanity typescript check
-const _DocumentTextIcon = () => <DocumentTextIcon />;
-const _ArchiveBoxIcon = () => <ArchiveBoxIcon />;
 const _Cog6ToothIcon = () => <Cog6ToothIcon />;
 const _TagIcon = () => <TagIcon />;
 
@@ -22,26 +19,10 @@ const singletonActions = new Set(["publish", "discardChanges", "restore"])
 // Define the singleton document types
 const singletonTypes = new Set(["settings"])
 
-// const archivePages = (S: StructureBuilder) => ARTICLES.flatMap(article => {
-// 	const archiveName = `${pluralize(camelCaseToWords(article.type))} Archive`
-
-// 	return S.listItem().title(archiveName).child(
-// 		(S.document().title(archiveName).schemaType('archive').documentId(`${article.document.name}`))
-// 	).icon(_ArchiveBoxIcon)
-// }).filter((item)=>{ return item !== undefined})
-
 const typesList = (S: StructureBuilder) => ARTICLES.flatMap(article => {
 	const Title = camelCaseToWords(article.type)
 
-	let listItems: (ListItemBuilder | ListItem | Divider )[] = [
-		S.documentTypeListItem(article.taxonomy.name).title(`${Title} Taxonomies`).icon(_TagIcon),
-		S.divider(),
-		S.documentTypeListItem(article.document.name).title(pluralize(Title)).icon(article.document.icon as ComponentType)
-	]
-
-	return S.listItem().title(pluralize(Title)).icon(article.document.icon as ComponentType).child(
-		S.list().title(pluralize(Title)).items(listItems),
-	)
+	return S.documentTypeListItem(article.document.name).title(pluralize(Title)).icon(article.document.icon as ComponentType)
 })
 
 export const structure = (S: StructureBuilder, context: StructureResolverContext) =>
@@ -50,15 +31,9 @@ export const structure = (S: StructureBuilder, context: StructureResolverContext
 		S.listItem().title('Site Settings').icon(_Cog6ToothIcon).child(
 			S.document().title('Site Settings').schemaType('settings').documentId('settings')
 		),
-		// S.listItem().title('Archives').icon(_ArchiveBoxIcon).child(
-		// 	S.list().title('Archives').items([
-		// 		...archivePages(S)
-		// 	])
-		// ),
-		// S.documentTypeListItem('page').title('Pages'),
-
-
+		S.documentTypeListItem('taxonomy').title('Taxonomies').icon(_TagIcon),
 		S.divider(),
+		
 		...typesList(S),
 	])
 	

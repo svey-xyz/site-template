@@ -2,17 +2,12 @@ import { defineField, defineArrayMember } from 'sanity';
 import constructors from '@/sanity/schemas/pages/constructors';
 import ARTICLES from '@/sanity/schemas/articles'
 import { camelCaseToWords } from '@/lib/stringFunctions';
-import { taxonomyTitle } from "@/sanity/schemas/articles/constructors/taxonomy";
 
 import { ArchiveBoxIcon } from '@heroicons/react/24/solid'
 
 const archiveTypes = ARTICLES.flatMap((article) => {
 	return { title: camelCaseToWords(article.type), value: article.type }
 })
-
-const taxonomyTypes = ARTICLES.flatMap((article) => {
-	return { type: taxonomyTitle(article.type) }
-}) 
 
 
 const fields = [
@@ -43,7 +38,7 @@ const fields = [
 		description: 'Only articles with the selected taxonomies will appear. If no taxonomies are selected then all articles of the type will be included.',
 		of: [{
 			type: 'reference',
-			to: taxonomyTypes,
+			to: [{ type: 'taxonomy' }],
 			options: {
 				disableNew: true
 			}
