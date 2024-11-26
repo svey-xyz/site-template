@@ -18,15 +18,15 @@ export const apiVersion =
 	process.env.NEXT_PUBLIC_SANITY_API_VERSION || '2024-10-14'
 
 export const configStudioBasePath =
-	process.env.SANITY_CONFIG_STUDIO_BASE_PATH || '/studio'
+	process.env.NEXT_PUBLIC_SANITY_CONFIG_STUDIO_BASE_PATH || '/studio'
 
 export const configStudioName =
-	process.env.SANITY_CONFIG_STUDIO_NAME || 'studio'
+	process.env.NEXT_PUBLIC_SANITY_CONFIG_STUDIO_NAME || 'studio'
 
 export const revalidateSecret = process.env.SANITY_REVALIDATE_SECRET
 
 export const configStudioTitle =
-	process.env.SANITY_CONFIG_STUDIO_TITLE || 'studio'
+	process.env.NEXT_PUBLIC_SANITY_CONFIG_STUDIO_TITLE || 'studio'
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {
 	if (v === undefined) {

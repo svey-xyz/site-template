@@ -5,15 +5,13 @@ import { structureTool } from 'sanity/structure'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, configStudioBasePath, configStudioName, configStudioTitle, dataset, projectId } from '@sanity/lib/api'
-import StudioHeader from '@components/studio/StudioHeader'
-import StudioLogo from '@components/studio/StudioLogo'
 import { structure, schemaOptions, documentOptions } from '@/sanity/structure'
-import { PluginOptions, defineConfig } from 'sanity'
+import { PluginOptions, StudioToolMenu, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import { pages } from "@tinloof/sanity-studio";
-import { NewspaperIcon, DocumentTextIcon, ArchiveBoxIcon } from '@heroicons/react/24/solid'
+import { AdjustmentsHorizontalIcon, DocumentTextIcon, ArchiveBoxIcon, TableCellsIcon } from '@heroicons/react/24/solid'
 
 const deskPlugins = [
 	pages({
@@ -23,7 +21,7 @@ const deskPlugins = [
 				enable: "/api/preview",
 			},
 		},
-		creatablePages: ["page"],
+		creatablePages: ["page", "archive"],
 		folders: {
 			"/archives": {
 				title: "Archives",
@@ -36,6 +34,9 @@ const deskPlugins = [
 		},
 	}),
 	structureTool({
+		name: 'data',
+		title: 'Data',
+		icon: TableCellsIcon,
 		structure,
 	}),
 	media(),
@@ -45,6 +46,7 @@ const deskPlugins = [
 
 
 const config = defineConfig({
+	icon: AdjustmentsHorizontalIcon,
   basePath: configStudioBasePath,
 	name: configStudioName,
 	title: configStudioTitle,
@@ -53,12 +55,12 @@ const config = defineConfig({
 	schema: schemaOptions,
 	plugins: deskPlugins,
 	document: documentOptions,
-	studio: {
-		components: {
-			logo: StudioLogo,
-			navbar: StudioHeader,
-		
-		}
+	scheduledPublishing: {
+		enabled: false,
 	},
+	tasks: {
+		enabled: false
+	},
+
 })
 export default config;
