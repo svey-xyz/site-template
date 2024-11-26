@@ -6,7 +6,7 @@ export interface _block extends inherentObjectData {
 }
 
 export interface _block_FeaturedTaxonomies extends block {
-	taxonomies: Array<taxonomy_Business>,
+	taxonomies: Array<taxonomy>,
 }
 
 export interface _block_Text extends block {
