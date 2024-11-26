@@ -15,7 +15,7 @@ export const Page = ({ data, encodeDataAttribute, draft }: PageProps) => {
 	const BG_URL = data?.heroImage ? urlForImage(data?.heroImage).url() : ''
 
 	return (
-		<article className='relative flex flex-grow'>
+		<article className='relative flex flex-grow max-w-full'>
 			{	BG_URL &&
 				<div
 					className={`relative max-w-full bg-fixed bg-no-repeat bg-cover bg-center`}

@@ -15,14 +15,7 @@ import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import { pages } from "@tinloof/sanity-studio";
 import { NewspaperIcon, DocumentTextIcon, ArchiveBoxIcon } from '@heroicons/react/24/solid'
 
-const defaultDesk = structureTool({
-	structure,
-})
 const deskPlugins = [
-	defaultDesk,
-	media(),
-	iconify({ showName: false, }),
-	vercelDeployTool(),
 	pages({
 		// Presentation's configuration
 		previewUrl: {
@@ -42,6 +35,12 @@ const deskPlugins = [
 			},
 		},
 	}),
+	structureTool({
+		structure,
+	}),
+	media(),
+	iconify({ showName: false, }),
+	vercelDeployTool(),
 ] as PluginOptions[]
 
 
