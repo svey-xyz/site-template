@@ -1,6 +1,5 @@
 import { camelCaseToWords } from "@lib/stringFunctions";
-import { defineArrayMember, defineField, defineType, FieldGroupDefinition, FieldDefinition, PreviewConfig, DocumentDefinition } from "sanity";
-import { taxonomy, taxonomyTitle } from "@/sanity/schemas/articles/constructors/taxonomy";
+import { defineArrayMember, defineField, defineType, FieldGroupDefinition, PreviewConfig, DocumentDefinition } from "sanity";
 import { customMediaAssetSource } from "@/sanity/lib/assetSource";
 import { ComponentType } from "react";
 
@@ -53,7 +52,7 @@ const _FIELDS = (type: string) => [
 		of: [
 			defineArrayMember({
 				type: 'reference',
-				to: [{type: taxonomyTitle(type)}]
+				to: [{type: 'taxonomy'}]
 			})
 		],
 		group: 'about',
@@ -103,12 +102,10 @@ const _PREVIEW = (icon?: ComponentType) => {
 export class ARTICLE {
 	type: string
 	document: DocumentDefinition
-	taxonomy: DocumentDefinition
 
 	constructor(args: args) {
 		this.type = args.type
 		this.document = article(args)
-		this.taxonomy = taxonomy(args.type)
 	}
 }
 
