@@ -40,7 +40,11 @@ const deskPlugins = [
 		structure,
 	}),
 	media(),
-	iconify({ showName: false, }),
+	iconify({
+		showName: false,
+		collections: ['heroicons']
+
+	}),
 	vercelDeployTool(),
 ] as PluginOptions[]
 
