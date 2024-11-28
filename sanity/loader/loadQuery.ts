@@ -1,6 +1,5 @@
 import 'server-only'
 
-import { draftMode } from 'next/headers'
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient, SanityDocument } from "@sanity/client";
 import { client } from "@/sanity/lib/client";
 import { token } from '@/sanity/lib/token';
@@ -22,10 +21,9 @@ queryStore.setServerClient(serverClient)
 
 const usingCdn = serverClient.config().useCdn
 
-export const queryClient =  (async <T>(query: string, params: QueryParams = {}, options: QueryOptions = {}) => {
-	const draft = await draftMode()
+export const queryClient = (async <T>(query: string, params: QueryParams = {}, options: QueryOptions = {}, draft?: boolean) => {
 	const {
-		perspective = draft.isEnabled ? 'previewDrafts' : 'published',
+		perspective = draft ? 'previewDrafts' : 'published',
 	} = options
 	// Don't cache by default
 	let revalidate: NextFetchRequestConfig['revalidate'] = 0
