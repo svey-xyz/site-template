@@ -12,7 +12,7 @@ export const resolveHrefFromSlug = (slug: string, type: string): string => {
 }
 
 export const resolvePageHref = (page: ArchivePayload | PagePayload): string => {
-	const slug = page._type == 'page' ? `/${(page as PagePayload).slug}` : `/archives/${(page as ArchivePayload)._id}`
+	const slug = page._type == 'page' ? `/${(page as PagePayload).pathname?.current}` : `/archives/${(page as ArchivePayload)._id}`
 
 	return slug
 }
@@ -31,7 +31,7 @@ export const resolveArchiveHrefFromTaxonomy = (taxonomy: taxonomy): string => {
 export const resolveContactHref = (contact: object_Contact | undefined): string => {
 	if (!contact) return ''
 	
-	// if (contact.website) return contact.website // TODO
+	if (contact.website?.link) return contact.website.link
 	if (contact.socials) return contact.socials[0].url
 
 	return ''

@@ -25,7 +25,7 @@ const Header = async() => {
 						}
 					</Link>
 					{ settings.navigation &&
-						<Navigation navItems={settings.navigation} className='flex-shrink' />
+						<Navigation navGroups={settings.navigation} className='flex-shrink' />
 					}
 				</div>
 			</div>
