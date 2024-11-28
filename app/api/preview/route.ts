@@ -1,12 +1,10 @@
-import { resolveHrefFromSlug, resolvePageHref } from "@/lib/resolveHref";
-import { NextApiRequest, NextApiResponse } from "next";
 import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
-import { NextRequest, NextResponse } from "next/server";
+import { NextRequest } from "next/server";
 import { validatePreviewUrl } from '@sanity/preview-url-secret'
 import { serverClient } from "@/sanity/loader/loadQuery";
 
-export async function GET(req: NextApiRequest) {
+export async function GET(req: NextRequest) {
 	const { isValid, redirectTo = '/' } = await validatePreviewUrl(serverClient, req.url ?? ``)
 	if (!isValid) {
 		return new Response('Invalid secret', { status: 401 })
