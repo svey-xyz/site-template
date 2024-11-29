@@ -26,7 +26,10 @@ const PagePreview = (props: Props) => {
 		)
 	}
 
-	return <Page data={data} draft={true} />
+	return <>
+	Preview
+		<Page data={data} draft={true} />
+	</>
 }
 
 export default PagePreview
