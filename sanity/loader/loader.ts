@@ -60,20 +60,6 @@ export const loadBundle_Articles = async <T>(type: string, taxonomies?: Array<ta
 	return data
 }
 
-
-
-export const loadSingle_Document = async (id: string) => {
-
-	const initial = await queryClient<SanityDocument | null>(
-		documentQuery,
-		{ id },
-		{},
-	)
-
-	const data = initial.data
-	return data
-}
-
 export const loadSingle_Archive = async (archiveID: string) => {
 
 	const initial = await queryClient<ArchivePayload | null>(

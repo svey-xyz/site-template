@@ -15,10 +15,6 @@ const inter = Inter({ subsets: ['latin'] })
 const theme = await getActiveTheme()
 const font = theme?.text?.font
 
-const LiveVisualEditing = dynamic(
-	() => import('@/sanity/loader/LiveVisualEditing'),
-)
-
 export default async function RootLayout({
 	children
 }: {
@@ -39,7 +35,6 @@ export default async function RootLayout({
 					<main className='relative flex flex-grow'>
 							{children}
 					</main>
-					{draft.isEnabled && <LiveVisualEditing />}
 
 					<Footer />
 				</ThemeHandler>
