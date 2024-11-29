@@ -5,12 +5,14 @@ import { types } from "@/sanity/schema";
 import ARTICLES from "@/sanity/schemas/articles";
 import { camelCaseToWords, pluralize } from "@/lib/stringFunctions";
 
-import { Cog6ToothIcon, TagIcon } from "@heroicons/react/24/solid";
+import { Cog6ToothIcon, TagIcon, DocumentTextIcon} from "@heroicons/react/24/solid";
 import { ComponentType } from "react";
 
 // abstraction required for sanity typescript check
 const _Cog6ToothIcon = () => <Cog6ToothIcon />;
 const _TagIcon = () => <TagIcon />;
+const _DocumentTextIcon = () => <DocumentTextIcon />;
+
 
 
 // Define the actions that should be available for singleton documents
@@ -31,9 +33,11 @@ export const structure = (S: StructureBuilder, context: StructureResolverContext
 		S.listItem().title('Site Settings').icon(_Cog6ToothIcon).child(
 			S.document().title('Site Settings').schemaType('settings').documentId('settings')
 		),
-		S.documentTypeListItem('taxonomy').title('Taxonomies').icon(_TagIcon),
+		S.documentTypeListItem('page').title('Pages').icon(_DocumentTextIcon),
+
 		S.divider(),
-		
+		S.documentTypeListItem('taxonomy').title('Taxonomies').icon(_TagIcon),
+
 		...typesList(S),
 	])
 	
