@@ -6,17 +6,10 @@ import { token } from '@/sanity/lib/token';
 import { queryStore } from '@/sanity/loader/queryStore';
 
 export const serverClient: SanityClient = client.withConfig({
-	token,
-	// Enable stega if it's a Vercel preview deployment, as the Vercel Toolbar has controls that shows overlays
-	stega: process.env.VERCEL_ENV === 'preview',
+	token
 })
 
-/**
- * Sets the server client for the query store, doing it here ensures that all data fetching in production
- * happens on the server and not on the client.
- * Live mode in `sanity/presentation` still works, as it uses the `useLiveMode` hook to update `useQuery` instances with
- * live draft content using `postMessage`.
- */
+
 queryStore.setServerClient(serverClient)
 
 const usingCdn = serverClient.config().useCdn
@@ -40,6 +33,5 @@ export const queryClient = (async <T>(query: string, params: QueryParams = {}, o
 			...(options.next || {}),
 		},
 		perspective
-		// Enable stega if in Draft Mode, to enable overlays when outside Sanity Studio
 	}) as Promise<{ data: T, sourceMap: ContentSourceMap }>
 }) satisfies typeof queryStore.loadQuery
