@@ -14,7 +14,7 @@ This repo is a template for the sites I build, it is designed to be highly flexi
 ## Core concepts
 ### Block Builder
 
-My sites are built to be managed by my clients. A core part of that is being able to easily update and maintain content. This template includes a block style content management system I designed for Sanity to allow for easy control of page content and layout. In combination with Sanity's live preview functionality it puts the clients in full control, while ensuring proper standards and a design consistency are met.
+My sites are built to be managed by my clients. An important part of that is being able to easily update and maintain content. This template includes a block style padr editor I designed for Sanity to allow for easy control of page content and layout. In combination with Sanity's live preview functionality, and bespoke content dadhboards, it puts the clients in full control. Empowering the client to manage their own content without having to worry about ensuring proper standards and design consistency leads to improved workflows and more efficient content handling.
 
 ### Articles
 
