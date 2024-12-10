@@ -3,8 +3,6 @@ import { defineField, defineType } from "sanity";
 import { DocumentTextIcon } from '@heroicons/react/24/solid'
 import { customMediaAssetSource } from "@/sanity/lib/assetSource";
 import { blockTypes } from "@/sanity/schemas/pages/blocks";
-import { definePathname } from "@tinloof/sanity-studio";
-import { SectionAddHandler } from "@tinloof/sanity-studio";
 
 const _DocumentTextIcon = () => <DocumentTextIcon />;
 
@@ -43,13 +41,13 @@ export const page = (args: { name: string, fields?: sanityFields }) => {
 			type: 'string',
 			validation: Rule => Rule.required()
 		}),
-		definePathname({
-			name: "pathname",
-			options: {
-				source: "title",
-			},
-			validation: (Rule) => Rule.required()
-		}),
+		// definePathname({
+		// 	name: "pathname",
+		// 	options: {
+		// 		source: "title",
+		// 	},
+		// 	validation: (Rule) => Rule.required()
+		// }),
 		defineField({
 			title: 'Description',
 			name: 'description',
