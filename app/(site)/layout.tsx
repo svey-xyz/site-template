@@ -10,6 +10,7 @@ import ThemeHandler from '@/components/ThemeHandler';
 import { getActiveTheme } from '@/lib/getTheme'
 import { draftMode } from 'next/headers'
 import dynamic from 'next/dynamic'
+import { SanityLive } from '@/sanity/lib/live'
 
 const inter = Inter({ subsets: ['latin'] })
 const theme = await getActiveTheme()
@@ -38,8 +39,10 @@ export default async function RootLayout({
 
 					<main className='relative flex flex-grow'>
 							{children}
+							<SanityLive />
+						{draft.isEnabled && <LiveVisualEditing />}
+
 					</main>
-					{draft.isEnabled && <LiveVisualEditing />}
 
 					<Footer />
 				</ThemeHandler>

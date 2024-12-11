@@ -12,27 +12,38 @@ import { iconify } from 'sanity-plugin-iconify';
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 import { pages } from "@tinloof/sanity-studio";
 import { AdjustmentsHorizontalIcon, DocumentTextIcon, ArchiveBoxIcon, TableCellsIcon } from '@heroicons/react/24/solid'
+import { presentationTool } from 'sanity/presentation'
+import { resolve } from '@/sanity/lib/resolve'
 
 const deskPlugins = [
-	pages({
-		// Presentation's configuration
+	presentationTool({
+		resolve,
 		previewUrl: {
 			previewMode: {
-				enable: "/api/preview",
-			},
-		},
-		creatablePages: ["page", "archive"],
-		folders: {
-			"/archives": {
-				title: "Archives",
-				icon: ArchiveBoxIcon,
-			},
-			"": {
-				title: "Pages",
-				icon: DocumentTextIcon,
+				enable: '/api/preview',
 			},
 		},
 	}),
+
+	// pages({
+	// 	// Presentation's configuration
+	// 	previewUrl: {
+	// 		previewMode: {
+	// 			enable: "/api/preview",
+	// 		},
+	// 	},
+	// 	creatablePages: ["page", "archive"],
+	// 	folders: {
+	// 		"/archives": {
+	// 			title: "Archives",
+	// 			icon: ArchiveBoxIcon,
+	// 		},
+	// 		"": {
+	// 			title: "Pages",
+	// 			icon: DocumentTextIcon,
+	// 		},
+	// 	},
+	// }),
 	structureTool({
 		name: 'data',
 		title: 'Data',
