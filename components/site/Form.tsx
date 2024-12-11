@@ -5,7 +5,7 @@ import { Button, Field, Fieldset, Input, Label, Legend } from '@headlessui/react
 
 export type fieldArgs = {
 	label: string
-	ref: React.RefObject<HTMLInputElement>
+	ref: React.RefObject<HTMLInputElement | null>
 	required?: boolean
 }
 
