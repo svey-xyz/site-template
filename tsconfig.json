@@ -23,7 +23,7 @@
       "@/*": ["./*"],
 			"@styles/*": ["./styles/*"],
 			"@public/*": ["./public/*"],
-			"@lib/*": ["./lib/*"],
+			"@lib/*": ["next-app/lib/*"],
 			"@theme/*": ["./theme/*"],
 			"@components/*": ["./components/*"],
 			"@sanity/*": ["./sanity/*"],
