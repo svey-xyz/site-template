@@ -2,7 +2,7 @@
 import { Suspense } from 'react'
 import { StringInputProps } from 'sanity'
 import EditorComp from './InputMDX'
-// const EditorComp = dynamic(() => import('@/components/studio/InputMDX'), { ssr: false })
+
 export const MDEditor = (props: StringInputProps) => {
 	return (
 		<Suspense fallback={<>Loading...</>}>

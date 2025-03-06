@@ -1,56 +1,18 @@
 {
   "name": "site-template",
   "version": "2024.10.13",
-  "private": false,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "@headlessui/react": "^2.1.10",
-    "@heroicons/react": "^2.1.3",
-    "@iconify/react": "^5.1.0",
-    "@mdx-js/mdx": "^3.1.0",
-    "@mdxeditor/editor": "^3.14.0",
-    "@sanity/client": "^6.21.3",
-    "@sanity/image-url": "^1.0.2",
-    "@sanity/react-loader": "^1.9.6",
-    "@svgr/webpack": "^8.1.0",
-    "@tinloof/sanity-studio": "^1.4.0",
-    "@types/lodash": "^4.17.13",
-    "colorjs.io": "^0.5.2",
-    "next": "^15.0.2",
-    "next-sanity": "^9.8.8",
-    "next-sanity-image": "^6.1.1",
-    "next-themes": "^0.4.4",
-    "react": "^19.0.0-rc-603e6108-20241029",
-    "react-dom": "^19.0.0-rc-603e6108-20241029",
-    "rehype-highlight": "^7.0.1",
-    "rehype-starry-night": "^2.2.0",
-    "remark-gfm": "^4.0.0",
-    "rxjs": "^7.8.1",
-    "sanity": "^3.60.0",
-    "sanity-plugin-iconify": "^2.0.1",
-    "sanity-plugin-iframe-pane": "^3.1.6",
-    "sanity-plugin-media": "^2.3.2",
-    "sanity-plugin-vercel-deploy": "^3.3.4",
-    "server-only": "^0.0.1",
-    "slugify": "^1.6.6",
-    "swiper": "^11.1.14",
-    "tailwindcss": "^3.4.14"
-  },
-  "devDependencies": {
-    "typescript": "^5.6.3",
-    "@tailwindcss/typography": "^0.5.12",
-    "autoprefixer": "^10.4.19",
-    "postcss": "^8.4.38",
-    "@types/node": "^22.10.1",
-    "@types/pluralize": "^0.0.33",
-    "@types/react": "^19.0.1",
-    "@types/react-dom": "^19.0.0",
-    "eslint": "^9.12.0",
-    "eslint-config-next": "^15.0.2"
-  }
+  "private": true,
+	"scripts": {
+		"dev": "npm-run-all --parallel dev:*",
+		"dev:next": "npm run dev --workspace=nextjs-app",
+		"dev:studio": "npm run dev --workspace=studio",
+		"import-sample-data": "cd studio && sanity dataset import sample-data.tar.gz --replace"
+	},
+	"workspaces": [
+		"studio",
+		"next-app"
+	],
+	"devDependencies": {
+		"npm-run-all": "^4.1.5"
+	}
 }
