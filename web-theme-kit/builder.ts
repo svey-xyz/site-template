@@ -1,15 +1,16 @@
 import Color from 'colorjs.io'
+import type { WEB_THEME_KIT } from './types/theme'
 
-const themeBuilder = (themeDefinition: THEME.theme) => {
+export const themeBuilder = (themeDefinition: WEB_THEME_KIT.theme) => {
 	generateThemeCSS(themeDefinition)
 }
 
-export const generateThemeCSS = (theme: THEME.theme): string => {
+const generateThemeCSS = (theme: WEB_THEME_KIT.theme): string => {
 	const toHSL = (color: Color | undefined) => color ? `${color.hsl.h}deg ${color.hsl.s}% ${color.hsl.l}%` : ''
 
 	const CSSColourVars: string[] = []
 
-	const addColorVars = (colors?: THEME.colours, prefix?: string) => {
+	const addColorVars = (colors?: WEB_THEME_KIT.colours, prefix?: string) => {
 		if (!colors) return
 
 		const { fg, bg, accent } = colors
@@ -61,7 +62,7 @@ export const generateThemeCSS = (theme: THEME.theme): string => {
 	`
 }
 
-const generateShadowUtils = (shadow: THEME.theme['shadow']) => {
+const generateShadowUtils = (shadow: WEB_THEME_KIT.theme['shadow']) => {
 	if (!shadow) return ``
 	const toRGB = (color: Color) => `${color.srgb.r * 255} ${color.srgb.g * 255} ${color.srgb.b * 255}`
 

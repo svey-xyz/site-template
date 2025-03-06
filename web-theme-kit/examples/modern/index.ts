@@ -1,6 +1,7 @@
 import Color from "colorjs.io";
+import type { WEB_THEME_KIT } from "../../types/theme";
 
-const base: THEME.theme = {
+export const modern: WEB_THEME_KIT.theme = {
 	name: 'base',
 	colours: {
 		default: {
@@ -27,5 +28,3 @@ const base: THEME.theme = {
 		}
 	}
 }
-
-export default base;
