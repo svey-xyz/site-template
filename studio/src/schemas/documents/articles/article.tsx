@@ -1,5 +1,5 @@
-import { ARTICLE } from "../articles/constructors/article";
-import { _ARTICLE_TYPES } from "../articles/types";
+import { ARTICLE } from "./constructors/article";
+import { _ARTICLE_TYPES } from "./types";
 import { NewspaperIcon } from "@heroicons/react/24/solid";
 
 const _NewspaperIcon = () => <NewspaperIcon />;

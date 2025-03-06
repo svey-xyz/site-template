@@ -4,8 +4,8 @@
 import { structureTool } from 'sanity/structure'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, configStudioBasePath, configStudioName, configStudioTitle, dataset, projectId } from './lib/api'
-import { structure, schemaOptions, documentOptions } from './structure'
+import { apiVersion, configStudioBasePath, configStudioName, configStudioTitle, dataset, projectId } from './src/lib/api'
+import { structure, schemaOptions, documentOptions } from './src/structure'
 import { PluginOptions, StudioToolMenu, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
@@ -13,7 +13,7 @@ import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 // import { pages } from "@tinloof/sanity-studio";
 import { AdjustmentsHorizontalIcon, DocumentTextIcon, ArchiveBoxIcon, TableCellsIcon } from '@heroicons/react/24/solid'
 import { presentationTool } from 'sanity/presentation'
-import { resolve } from './lib/resolve'
+import { resolve } from './src/lib/resolve'
 
 const deskPlugins = [
 	presentationTool({

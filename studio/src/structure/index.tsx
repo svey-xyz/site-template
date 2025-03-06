@@ -1,9 +1,9 @@
 import { StructureBuilder, StructureResolverContext } from "sanity/structure";
 import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
 
-import { types } from "./schema";
-import ARTICLES from "./schemas/documents/articles";
-import { camelCaseToWords, pluralize } from "./lib/stringFunctions";
+import { types } from "../schemas";
+import ARTICLES from "../schemas/documents/articles";
+import { camelCaseToWords, pluralize } from "../lib/stringFunctions";
 
 import { Cog6ToothIcon, TagIcon } from "@heroicons/react/24/solid";
 import { ComponentType } from "react";

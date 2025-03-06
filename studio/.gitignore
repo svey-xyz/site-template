@@ -27,3 +27,7 @@
 
 # Dotenv and similar local-only files
 *.local
+
+# ignore generated files
+sanity.types.ts
+schema.json

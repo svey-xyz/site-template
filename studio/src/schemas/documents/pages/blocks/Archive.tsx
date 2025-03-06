@@ -1,5 +1,5 @@
 import { defineField, defineArrayMember } from 'sanity';
-import constructors from '../../pages/constructors';
+import constructors from '../constructors';
 import ARTICLES from '../../articles'
 import { camelCaseToWords } from '../../../../lib/stringFunctions';
 
