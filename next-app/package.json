@@ -32,7 +32,8 @@
 		"sanity": "^3.74.0",
 		"sonner": "^1.7.0",
 		"styled-components": "^6.1.13",
-		"swiper": "^11.2.5"
+		"swiper": "^11.2.5",
+		"WEB_THEME_KIT": "workspace:*"
 	},
 	"devDependencies": {
 		"typescript": "5.6.3",

@@ -1,5 +1,5 @@
-export { EXAMPLES } from "./examples";
+export { EXAMPLES } from "@examples.web-theme-kit";
 
-export { themeBuilder } from "./builder";
+export { themeBuilder } from "@lib.web-theme-kit";
 
-export type { WEB_THEME_KIT } from './types/theme.d.ts'
+export type { WEB_THEME_KIT } from '@types.web-theme-kit/theme';
