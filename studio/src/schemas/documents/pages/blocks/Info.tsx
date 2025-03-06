@@ -86,4 +86,4 @@ const fields = [
 	}),
 ]
 
-export const Info = constructors.block({ name: 'Info', fields, Icon: IdentificationIcon })
+export const Info = constructors.block({ name: 'Info', fields, Icon: () => <IdentificationIcon /> })

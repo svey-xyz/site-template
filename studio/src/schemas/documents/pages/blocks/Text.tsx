@@ -11,4 +11,4 @@ const fields = [
 	}),
 ]
 
-export const Text = constructors.block({ name: 'Text', fields, Icon: Bars3BottomLeftIcon })
+export const Text = constructors.block({ name: 'Text', fields, Icon: () => <Bars3BottomLeftIcon /> })

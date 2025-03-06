@@ -9,8 +9,8 @@
 		"import-sample-data": "cd studio && sanity dataset import sample-data.tar.gz --replace"
 	},
 	"workspaces": [
-		"studio",
-		"next-app"
+		"next-app",
+		"studio"
 	],
 	"devDependencies": {
 		"npm-run-all": "^4.1.5"
