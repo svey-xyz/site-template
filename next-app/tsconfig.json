@@ -17,9 +17,14 @@
       }
     ],
     "paths": {
-      "@/*": ["./*"]
+      "@components.next-app/*": ["./app/components/*"],
+			"@sanity.next-app/*": ["./sanity/*"],
+			"@lib.next-app/*": ["./lib/*"],
+			"@styles.next-app/*": ["./styles/*"],
+			"@theme.next-app/*": ["../theme/*"],
+			"@public.next-app/*": ["./public/*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "../theme/theme.d., "../theme/themeBuilder.ts"ts"],
   "exclude": ["node_modules"]
 }

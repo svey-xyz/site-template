@@ -1,10 +1,10 @@
 import React from 'react';
-import Image from '@/components/Image'
+import Image from '@components.next-app/Image'
 
-import { resolveArticleHref } from '@/next-app/lib/resolveHref';
+import { resolveArticleHref } from '@lib.next-app/resolveHref';
 
 type args = {
-	article: article,
+	article: any,
 	filtered?: boolean,
 }
 

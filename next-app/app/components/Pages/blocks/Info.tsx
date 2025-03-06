@@ -3,7 +3,9 @@
 import { Icon } from '@iconify/react';
 import React from 'react';
 
-export const Info = ({ data, className }: { data: block_Info, className?: string }) => {
+export const Info = ({ data, className }: any
+	// { data: block_Info, className?: string }
+) => {
 	return (
 		<div className={`${className} w-full`}>
 			{ data.title &&
@@ -13,7 +15,7 @@ export const Info = ({ data, className }: { data: block_Info, className?: string
 			}
 
 			<div className='relative grid grid-flow-row grid-cols-[repeat(auto-fit,minmax(200px,1fr))] auto-rows-auto gap-8 max-w-full w-full'>
-				{ data.items?.map((item) => {
+				{ data.items?.map((item: any) => {
 					return (
 						<div key={item.title} className='flex flex-col items-start text-left'>
 							{ item.icon &&

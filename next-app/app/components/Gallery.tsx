@@ -1,7 +1,7 @@
 'use client'
 
 import { Swiper, SwiperSlide } from "swiper/react";
-import Image from "@/components/Image";
+import Image from "@components.next-app/Image";
 import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { Navigation, Pagination, Keyboard } from 'swiper/modules';
 import { XMarkIcon } from '@heroicons/react/24/solid'
@@ -10,7 +10,7 @@ import { XMarkIcon } from '@heroicons/react/24/solid'
 // import 'swiper/css/navigation';
 // import 'swiper/css/pagination';
 
-export const SwiperGallery = ({ images, className }: { images: sanityImage[], className?: string }) => {
+export const SwiperGallery = ({ images, className }: { images: any[], className?: string }) => {
 	const slide = 0
 
 	return (
@@ -46,7 +46,7 @@ export const SwiperGallery = ({ images, className }: { images: sanityImage[], cl
 
 /** Tiled gallery */
 
-export const GridGallery = ({ images, className }: { images: sanityImage[], className?: string }) => {
+export const GridGallery = ({ images, className }: { images: any[], className?: string }) => {
 	const [mounted, setMounted] = useState(false)
 	const refLightBox = useRef<HTMLDivElement>(null)
 	const [activeSlide, setActiveSlide] = useState<number>(0)

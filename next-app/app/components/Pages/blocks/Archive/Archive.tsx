@@ -1,8 +1,8 @@
 import React from 'react';
-import { Filter } from '@/components/Pages/blocks/Archive/Filter';
+import { Filter } from '@components.next-app/Pages/blocks/Archive/Filter';
 // import { loadBundle_Articles } from '@/sanity/queries/loader';
 
-export const Archive = async ({ data, className }: { data: block_Archive, className?:string }) => {
+export const Archive = async ({ data, className }: { data: any, className?:string }) => {
 	if (!data) return
 
 	// const articles = await loadBundle_Articles<article>(data.archiveType, data.featuredTaxonomies)

@@ -1,3 +1,5 @@
+import { THEME } from "@theme.next-app/theme"
+
 const ACTIVE_THEME =
 	process.env.NEXT_PUBLIC_THEME || undefined
 

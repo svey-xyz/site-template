@@ -1,12 +1,12 @@
 'use client'
 
-import NavigationItem from '@/components/NavigationItem';
+import NavigationItem from '@components.next-app/NavigationItem';
 import React, { useEffect, useRef, useState } from 'react';
 import { Button, Popover, PopoverButton, PopoverPanel } from '@headlessui/react'
 import { Bars2Icon } from '@heroicons/react/24/solid';
 import { usePathname } from 'next/navigation'
 
-export const Navigation = ({ navGroups, className }: { navGroups: Array<object_NavigationGroup>, className?:string }) => {
+export const Navigation = ({ navGroups, className }: { navGroups: Array<any>, className?:string }) => {
 	const navContainer = useRef<HTMLDivElement>(null)
 	const [gapWidth, setGapWidth] = useState<number>(0); // default width, detect on server.
 	const _BREAK_POINT = 50 // the value in pixels when nav should break to menu
@@ -30,7 +30,7 @@ export const Navigation = ({ navGroups, className }: { navGroups: Array<object_N
 		}
 	}, [handleResize, pathname]);
 
-	const MenuPopover = ({ navItems, className }: { navItems: Array<object_NavigationGroup>, className?: string }) => {
+	const MenuPopover = ({ navItems, className }: { navItems: Array<any>, className?: string }) => {
 		return (
 			<Popover className="absolute right-0 top-0 h-full flex flex-col items-center justify-center">
 				<PopoverButton>

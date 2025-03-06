@@ -1,7 +1,7 @@
 import React, { Suspense } from 'react';
-import {MDXText} from '@/components/MDX';
+import {MDXText} from '@components.next-app/MDX';
 
-export const Text = ({ data, className, draft }: { data: block_Text | undefined, className?:string, draft?:boolean }) => {
+export const Text = ({ data, className, draft }: { data: any | undefined, className?:string, draft?:boolean }) => {
 	if (!data) return;
 
 	return (

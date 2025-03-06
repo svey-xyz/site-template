@@ -2,7 +2,7 @@ import { draftMode } from "next/headers";
 import { redirect } from "next/navigation";
 import { NextRequest } from "next/server";
 import { validatePreviewUrl } from '@sanity/preview-url-secret'
-import { serverClient } from "@/sanity/loader/loadQuery";
+import { serverClient } from "@sanity.next-app/loader/loadQuery";
 
 export async function GET(req: NextRequest) {
 	const { isValid, redirectTo = '/' } = await validatePreviewUrl(serverClient, req.url ?? ``)

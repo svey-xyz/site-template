@@ -3,7 +3,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import { MoonIcon, SunIcon } from '@heroicons/react/24/solid';
 import { Button } from '@headlessui/react';
-import { themes } from "@/components/ThemeHandler";
+import { themes } from "@components.next-app/ThemeHandler";
 import { useTheme } from "next-themes";
 import { StudioThemeColorSchemeKey, useColorSchemeSetValue, useColorSchemeValue } from "sanity";
 

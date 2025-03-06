@@ -2,15 +2,15 @@ import type Color from 'colorjs.io/types'
 import type { Properties } from 'csstype';
 import type { NextFontWithVariable } from 'next/dist/compiled/@next/font';
 
-export namespace _THEME {
-	export type _theme = {
+export namespace THEME {
+	export type theme = {
 		name: string,
 		author?: {}, // TODO: define type
 		/**
 		 * @colours extendable themes.
 		 */
-		colours?: _ColorMapping,
-		text?: _text,
+		colours?: ColorMapping,
+		text?: text,
 		icon?: {
 
 		},
@@ -37,13 +37,13 @@ export namespace _THEME {
 		},
 	}
 
-	export type _ColorMapping = {
-		default?: _colours,
-		dark?: _colours,
-		[key: string]: _THEME._colours
+	export type ColorMapping = {
+		default?: colours,
+		dark?: colours,
+		[key: string]: THEME.colours
 	}
 
-	export type _text = {
+	export type text = {
 		size?: {
 			base?: Properties["fontSize"],
 			/**
@@ -54,7 +54,7 @@ export namespace _THEME {
 		font?: NextFontWithVariable
 	}
 
-	export type _colours = {
+	export type colours = {
 		bg?: {
 			primary?: Color,
 			secondary?: Color,

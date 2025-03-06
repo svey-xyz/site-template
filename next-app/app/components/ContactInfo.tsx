@@ -1,8 +1,8 @@
-import Socials from '@/components/Socials';
-import { resolveContactHref } from '@/next-app/lib/resolveHref';
+import Socials from '@components.next-app/Socials';
+import { resolveContactHref } from '@lib.next-app/resolveHref';
 import React from 'react';
 
-export const ContactInfo = ({contact}:{contact: object_Contact}) => {
+export const ContactInfo = ({contact}:{contact: any}) => {
 	
 	return (
 		<div className='flex flex-col gap-2'>

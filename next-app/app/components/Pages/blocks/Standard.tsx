@@ -1,6 +1,8 @@
 import React from 'react';
 
-export const Standard = ({data, className}:{data: block, className?:string}) => {
+export const Standard = ({data, className}: any
+	// {data: block, className?:string}
+) => {
 	return (
 		<div className={`${className}`}>
 			Block not found: { data._type }

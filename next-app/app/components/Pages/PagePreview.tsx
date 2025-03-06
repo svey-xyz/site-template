@@ -1,17 +1,17 @@
 'use client'
 
-import { Page } from '@/components/Pages/Page'
-import { useQuery } from '@/sanity/loader/useQuery'
-import { pageQuery } from '@/sanity/queries/queries'
+import { Page } from '@components.next-app/Pages/Page'
+import { useQuery } from '@sanity.next-app/loader/useQuery'
+import { pageQuery } from '@sanity.next-app/queries/queries'
 import { type QueryResponseInitial } from '@sanity/react-loader'
 
 type Props = {
-	initial: QueryResponseInitial<PagePayload | null>
+	initial: QueryResponseInitial<any | null>
 }
 
-export function useSingle_Page(initial: QueryResponseInitial<PagePayload | null>) {
+export function useSingle_Page(initial: QueryResponseInitial<any | null>) {
 	const pathname = `${initial?.data?.pathname?.current}`
-	return useQuery<PagePayload | null>(pageQuery, { pathname }, { initial })
+	return useQuery<any | null>(pageQuery, { pathname }, { initial })
 }
 
 const PagePreview = (props: Props) => {

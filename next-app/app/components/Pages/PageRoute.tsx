@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation'
 
-import { Page } from '@/components/Pages/Page'
+import { Page } from '@components.next-app/Pages/Page'
 import { draftMode } from 'next/headers'
 import dynamic from 'next/dynamic'
-import { queryClient } from '@/sanity/loader/loadQuery'
-import { pageQuery } from '@/sanity/queries/queries'
+import { queryClient } from '@sanity.next-app/loader/loadQuery'
+import { pageQuery } from '@sanity.next-app/queries/queries'
 import { ResolvingMetadata, Metadata } from 'next'
 
 type Props = {
@@ -12,11 +12,11 @@ type Props = {
 }
 
 const PagePreview = dynamic(
-	() => import('@/components/Pages/PagePreview'),
+	() => import('@components.next-app/Pages/PagePreview'),
 )
 
 const loadSingle_Page = async (slug: string, draft?: boolean) => {
-	const initial = await queryClient<PagePayload | null>(
+	const initial = await queryClient<any | null>(
 		pageQuery,
 		{ pathname: `${slug}` },
 		{ next: { tags: [`page:${slug}`, 'home'] } },

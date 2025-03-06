@@ -2,7 +2,7 @@ import React from 'react';
 import { notFound } from 'next/navigation'
 
 export interface GenericArticlePageProps {
-	data: article
+	data: any
 }
 
 export const Generic = async ({ data }: GenericArticlePageProps) => {

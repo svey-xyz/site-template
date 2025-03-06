@@ -1,7 +1,9 @@
 import React from 'react';
-import ImageBuilder from '@/components/Image'
+import ImageBuilder from '@components.next-app/Image'
 
-const Image = ({ data, className }: { data: block_Image | undefined, className?: string }) => {
+const Image = ({ data, className }: any
+	// { data: block_Image | undefined, className?: string }
+) => {
 	if (!data) return;
 
 	return (

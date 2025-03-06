@@ -1,5 +1,5 @@
-import { getActiveTheme } from "@/next-app/lib/getTheme";
-import { generateThemeCSS } from "@/next-app/lib/themeBuilder";
+import { getActiveTheme } from "@lib.next-app/getTheme";
+import { generateThemeCSS } from "@lib.next-app/themeBuilder";
 
 export const Head = async() => {
 	const theme = await getActiveTheme()

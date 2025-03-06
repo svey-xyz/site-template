@@ -1,7 +1,7 @@
 import React from 'react';
-import Socials from '@/components/Socials'
-import ThemeButton from '@/components/ThemeButton';
-import { load_Settings } from '@/sanity/loader/loader';
+import Socials from '@components.next-app/Socials'
+import ThemeButton from '@components.next-app/ThemeButton';
+import { load_Settings } from '@sanity.next-app/loader/loader';
 
 const Footer = async ({}:{}) => {
 	const settings = await load_Settings()

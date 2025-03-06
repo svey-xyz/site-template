@@ -1,13 +1,15 @@
 'use client';
 
 import React from 'react';
-import { resolveArchiveHrefFromTaxonomy } from '@/next-app/lib/resolveHref';
+import { resolveArchiveHrefFromTaxonomy } from '@lib.next-app/resolveHref';
 
-export const FeaturedTaxonomies = ({ data, className } : { data: block_FeaturedTaxonomies | undefined, className?: string } ) => {
+export const FeaturedTaxonomies = ({ data, className } : any
+	// { data: block_FeaturedTaxonomies | undefined, className?: string }
+) => {
 	if (!data) return;
 	return (
 		<div className="flex flex-row flex-wrap justify-center w-full h-4/6 gap-y-4">
-			{data.taxonomies?.map((tax, i, arr) => {
+			{/* {data.taxonomies?.map((tax, i, arr) => {
 				const brightness = 100 - (i * 10)
 
 				return (
@@ -25,7 +27,7 @@ export const FeaturedTaxonomies = ({ data, className } : { data: block_FeaturedT
 						</span>
 					</a>
 				)
-			})}
+			})} */}
 		</div>
 	);
 };

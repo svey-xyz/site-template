@@ -1,10 +1,10 @@
 import { EncodeDataAttributeCallback } from '@sanity/react-loader';
 import React from 'react';
-import { urlForImage } from '@/sanity/lib/image';
-import { Blocks } from '@/components/Pages/Blocks';
+import { urlForImage } from '@sanity.next-app/lib/image';
+import { Blocks } from '@components.next-app/Pages/Blocks';
 
 export interface PageProps {
-	data: PagePayload | ArchivePayload | null
+	data: any // PagePayload | ArchivePayload | null
 	encodeDataAttribute?: EncodeDataAttributeCallback
 	draft?: boolean
 }

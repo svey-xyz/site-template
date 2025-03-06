@@ -1,7 +1,9 @@
-import NewsletterForm from '@/components/NewsletterForm';
+import NewsletterForm from '@components.next-app/NewsletterForm';
 import React from 'react';
 
-export const Standard = ({ data, className }: { data: block_Newsletter, className?: string }) => {
+export const Standard = ({ data, className }: any
+	// { data: block_Newsletter, className?: string }
+) => {
 	return (
 		<div className={`${className}`}>
 			<h3>

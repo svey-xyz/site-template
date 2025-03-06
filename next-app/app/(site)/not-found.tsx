@@ -1,4 +1,4 @@
-import { load_Settings } from '@/sanity/loader/loader';
+import { load_Settings } from '@sanity.next-app/loader/loader';
 
 const Page =  () => {
 	// const settings = await load_Settings()

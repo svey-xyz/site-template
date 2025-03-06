@@ -1,12 +1,15 @@
 import React from "react"
 
-import { SwiperGallery } from "@/components/Gallery";
-import { GridGallery } from "@/components/Gallery";
+import { SwiperGallery, GridGallery } from "@components.next-app/Gallery";
 
 
-type galleryType = ({ images, className }: { images: sanityImage[]; className?: string; }) => React.JSX.Element
+type galleryType = ({ images, className }: any
+	// { images: sanityImage[]; className?: string; }
+) => React.JSX.Element
 
-export const Gallery = async ({ data, className }: { data: block_Gallery, className?: string }) => {
+export const Gallery = async ({ data, className }: any
+	// { data: block_Gallery, className?: string }
+) => {
 	
 	const GalleryStyle: galleryType | undefined =  data.style ?
 		data.style == 'swiper' ? SwiperGallery :

@@ -1,5 +1,5 @@
-import Pages from '@/components/Pages'
-import { generateStaticSlugs } from '@/sanity/loader/generateStaticSlugs';
+import Pages from '@components.next-app/Pages'
+import { generateStaticSlugs } from '@sanity.next-app/loader/generateStaticSlugs';
 
 export async function generateStaticParams() {
 	const staticSlugs = await generateStaticSlugs('page')

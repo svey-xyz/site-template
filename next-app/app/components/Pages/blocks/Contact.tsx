@@ -1,10 +1,12 @@
 'use client'
 
 import React, { useState, useRef } from 'react';
-import Form, { fieldArgs } from '@/components/Form';
-import { ContactInfo } from '@/components/ContactInfo';
+import Form, { fieldArgs } from '@components.next-app/Form';
+import { ContactInfo } from '@components.next-app/ContactInfo';
 
-export const Contact = ({ data, className, siteData }: { data: block_Contact | undefined, className?: string, siteData?: SettingsPayload }) => {
+export const Contact = ({ data, className, siteData }: any
+	// { data: block_Contact | undefined, className?: string, siteData?: SettingsPayload }
+) => {
 	const nameRef = useRef<HTMLInputElement>(null);
 	const emailRef = useRef<HTMLInputElement>(null);
 	const messageRef = useRef<HTMLInputElement>(null);

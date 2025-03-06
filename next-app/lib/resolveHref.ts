@@ -1,5 +1,5 @@
 export const resolveArticleHref = (
-	article: article,
+	article: any,
 ): string | undefined => {
 
 	return `/article/${article._type}/${article.slug}`
@@ -11,8 +11,8 @@ export const resolveHrefFromSlug = (slug: string, type: string): string => {
 	return href
 }
 
-export const resolvePageHref = (page: ArchivePayload | PagePayload): string => {
-	const slug = page._type == 'page' ? `/${(page as PagePayload).pathname?.current}` : `/archives/${(page as ArchivePayload)._id}`
+export const resolvePageHref = (page: any): string => {
+	const slug = page._type == 'page' ? `/${(page).pathname?.current}` : `/archives/${(page)._id}`
 
 	return slug
 }
@@ -23,12 +23,12 @@ export const resolveArchiveHrefFromArticle = (articleType: string): string => {
 	return slug
 }
 
-export const resolveArchiveHrefFromTaxonomy = (taxonomy: taxonomy): string => {
+export const resolveArchiveHrefFromTaxonomy = (taxonomy: any): string => {
 	const typeParts = taxonomy._type.split('Taxonomy')
 	return resolveArchiveHrefFromArticle(typeParts[0])
 }
 
-export const resolveContactHref = (contact: object_Contact | undefined): string => {
+export const resolveContactHref = (contact: any | undefined): string => {
 	if (!contact) return ''
 	
 	if (contact.website?.link) return contact.website.link

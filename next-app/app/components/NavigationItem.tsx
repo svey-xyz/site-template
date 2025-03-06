@@ -3,10 +3,10 @@
 import { Popover, PopoverButton, PopoverPanel, CloseButton } from '@headlessui/react';
 import React from 'react';
 import Link from 'next/link'
-import { resolvePageHref } from '@/next-app/lib/resolveHref';
+import { resolvePageHref } from '@lib.next-app/resolveHref';
 
 type NavigationItemParams = {
-	group: object_NavigationGroup,
+	group: any,
 }
 
 export const NavigationItem = ({ group }: NavigationItemParams) => {
@@ -38,7 +38,7 @@ const NavigationTitle = ({ title, className, chevron }: NavigationTitleParams) =
 
 type StaticNavigationParams = {
 	title?: string,
-	page: PagePayload | ArchivePayload,
+	page: any,
 }
 
 const StaticNavigation = ({ title, page }: StaticNavigationParams) => {
@@ -53,7 +53,7 @@ type PopoverParams = {
 	title?: string,
 	items: Array<{
 		title?: string,
-		page: ArchivePayload | PagePayload
+		page: any
 	}>,
 }
 

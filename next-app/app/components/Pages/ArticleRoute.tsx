@@ -1,6 +1,6 @@
 import { notFound } from 'next/navigation'
 import dynamic from 'next/dynamic'
-import { loadSingle_Article } from '@/sanity/loader/loader'
+import { loadSingle_Article } from '@sanity.next-app/loader/loader'
 
 type ArticleRouteProps = {
 	type: string,
@@ -9,17 +9,17 @@ type ArticleRouteProps = {
 
 interface ArticleMap {
 	[key: string]: React.ComponentType<{
-		data: article
+		data:  any //article
 	}>
 }
 
 const ArticleList: ArticleMap = {
-	Default: dynamic(() => import('@/components/Pages/articles/Default')),
+	Default: dynamic(() => import('@components.next-app/Pages/articles/Default')),
 }
 
 export const ArticleRoute = async ({ type, slug }: ArticleRouteProps) => {
 
-	const data = await loadSingle_Article<article>(type, slug)
+	const data = await loadSingle_Article<any/**article*/>(type, slug)
 	const article = data
 	if (!article) return notFound()
 

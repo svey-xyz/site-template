@@ -1,23 +1,23 @@
-import '@styles/site/site.css'
+import '@styles.next-app/site/site.css'
 
-import Header from '@/components/Header'
-import Footer from '@/components/Footer'
+import Header from '@components.next-app/Header'
+import Footer from '@components.next-app/Footer'
 
 import { Inter } from 'next/font/google'
 import Head from './head'
 import localFont from "next/font/local";
-import ThemeHandler from '@/components/ThemeHandler';
-import { getActiveTheme } from '@/next-app/lib/getTheme'
+import ThemeHandler from '@components.next-app/ThemeHandler';
+import { getActiveTheme } from '@lib.next-app/getTheme'
 import { draftMode } from 'next/headers'
 import dynamic from 'next/dynamic'
-import { SanityLive } from '@/sanity/lib/live'
+import { SanityLive } from '@sanity.next-app/lib/live'
 
 const inter = Inter({ subsets: ['latin'] })
 const theme = await getActiveTheme()
 const font = theme?.text?.font
 
 const LiveVisualEditing = dynamic(
-	() => import('@/sanity/loader/LiveVisualEditing'),
+	() => import('@sanity.next-app//loader/LiveVisualEditing'),
 )
 
 export default async function RootLayout({

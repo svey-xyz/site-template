@@ -1,5 +1,5 @@
-import Pages from '@/components/Pages';
-import { load_Settings } from '@/sanity/loader/loader';
+import Pages from '@components.next-app/Pages';
+import { load_Settings } from '@sanity.next-app/loader/loader';
 
 const Page = async() => {
 	const settings = await load_Settings()

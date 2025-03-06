@@ -1,9 +1,9 @@
 import Link from 'next/link';
 import React from 'react';
 
-import { socialIcon } from '@/next-app/lib/SocialIcon';
+import { socialIcon } from '@lib.next-app/SocialIcon';
 
-const Socials = ({ socials, className }: { socials: Array<object_Social>, className?:string}) => {
+const Socials = ({ socials, className }: { socials: Array<any>, className?:string}) => {
 	
 	return (
 		<div className={`${className} flex flex-row gap-4`}>
