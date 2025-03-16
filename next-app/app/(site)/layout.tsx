@@ -7,7 +7,7 @@ import { Inter } from 'next/font/google'
 import Head from './head'
 import localFont from "next/font/local";
 import ThemeHandler from '@components.next-app/ThemeHandler';
-import { getActiveTheme } from '@lib.next-app/getTheme'
+import { getActiveTheme } from 'web-theme-kit'
 import { draftMode } from 'next/headers'
 import dynamic from 'next/dynamic'
 import { SanityLive } from '@sanity.next-app/lib/live'
