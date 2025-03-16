@@ -1,9 +1,9 @@
 import 'server-only'
 
 import type { ContentSourceMap, QueryOptions, QueryParams, SanityClient, SanityDocument } from "@sanity/client";
-import { client } from "@/sanity/lib/client";
-import { token } from '@/sanity/lib/token';
-import { queryStore } from '@/sanity/loader/queryStore';
+import { client } from "@sanity.next-app/lib/client";
+import { token } from '@sanity.next-app/lib/token';
+import { queryStore } from '@sanity.next-app/loader/queryStore';
 
 export const serverClient: SanityClient = client.withConfig({
 	token,

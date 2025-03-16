@@ -492,10 +492,659 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 // Query: sections[] {		...,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}	}
 export type Partial_SectionsResult = never;
 
+// Source: ./sanity/queries/queries.ts
+// Variable: settingsQuery
+// Query: *[_id == "siteSettings"][0] {		...,		logo {				...,	"imageAsset":asset->		},		homepage->{			pathname		},		navigation[]{			// ...,			title,			pages[]->{				...,				"slug":slug.current,					sections[] {		...,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}	}			}		}	}
+export type SettingsQueryResult = {
+  _id: string;
+  _type: "archive";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  description?: Mdx;
+  heroImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  blocks?: Array<{
+    _key: string;
+  } & Archive | {
+    _key: string;
+  } & Contact | {
+    _key: string;
+  } & FeaturedArticles | {
+    _key: string;
+  } & FeaturedTaxonomies | {
+    _key: string;
+  } & Gallery | {
+    _key: string;
+  } & Image | {
+    _key: string;
+  } & Info | {
+    _key: string;
+  } & Newsletter | {
+    _key: string;
+  } & Text>;
+  logo: null;
+  homepage: null;
+  navigation: null;
+} | {
+  _id: string;
+  _type: "article";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  slug: Slug;
+  description?: string;
+  taxonomies?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "taxonomy";
+  }>;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  logo: null;
+  homepage: null;
+  navigation: null;
+} | {
+  _id: string;
+  _type: "media.tag";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: Slug;
+  logo: null;
+  homepage: null;
+  navigation: null;
+} | {
+  _id: string;
+  _type: "page";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  description?: Mdx;
+  heroImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  blocks?: Array<{
+    _key: string;
+  } & Archive | {
+    _key: string;
+  } & Contact | {
+    _key: string;
+  } & FeaturedArticles | {
+    _key: string;
+  } & FeaturedTaxonomies | {
+    _key: string;
+  } & Gallery | {
+    _key: string;
+  } & Image | {
+    _key: string;
+  } & Info | {
+    _key: string;
+  } & Newsletter | {
+    _key: string;
+  } & Text>;
+  logo: null;
+  homepage: null;
+  navigation: null;
+} | {
+  _id: string;
+  _type: "sanity.fileAsset";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  source?: SanityAssetSourceData;
+  logo: null;
+  homepage: null;
+  navigation: null;
+} | {
+  _id: string;
+  _type: "sanity.imageAsset";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  metadata?: SanityImageMetadata;
+  source?: SanityAssetSourceData;
+  logo: null;
+  homepage: null;
+  navigation: null;
+} | {
+  _id: string;
+  _type: "settings";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  logo: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+    imageAsset: {
+      _id: string;
+      _type: "sanity.imageAsset";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      originalFilename?: string;
+      label?: string;
+      title?: string;
+      description?: string;
+      altText?: string;
+      sha1hash?: string;
+      extension?: string;
+      mimeType?: string;
+      size?: number;
+      assetId?: string;
+      uploadId?: string;
+      path?: string;
+      url?: string;
+      metadata?: SanityImageMetadata;
+      source?: SanityAssetSourceData;
+    } | null;
+  } | null;
+  blurb?: string;
+  contact?: Contact;
+  about?: string;
+  homepage: {
+    pathname: null;
+  } | null;
+  navigation: Array<{
+    title: string | null;
+    pages: null;
+  }> | null;
+} | {
+  _id: string;
+  _type: "taxonomy";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  descriptiveNote?: string;
+  icon?: Icon;
+  prefLabel: string;
+  definition?: string;
+  related?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "taxonomy";
+  };
+  broader?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "taxonomy";
+  };
+  narrower?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "taxonomy";
+  };
+  logo: null;
+  homepage: null;
+  navigation: null;
+} | null;
+// Variable: pageQuery
+// Query: *[_type=='page' && pathname.current match $pathname][0] {  	...,			sections[] {		...,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}	}	}
+export type PageQueryResult = {
+  _id: string;
+  _type: "page";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  description?: Mdx;
+  heroImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  blocks?: Array<{
+    _key: string;
+  } & Archive | {
+    _key: string;
+  } & Contact | {
+    _key: string;
+  } & FeaturedArticles | {
+    _key: string;
+  } & FeaturedTaxonomies | {
+    _key: string;
+  } & Gallery | {
+    _key: string;
+  } & Image | {
+    _key: string;
+  } & Info | {
+    _key: string;
+  } & Newsletter | {
+    _key: string;
+  } & Text>;
+  sections: null;
+} | null;
+// Variable: staticPagesQuery
+// Query: *[_type == 'page'] {		...,		"slug":slug.current,			sections[] {		...,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}	}	}
+export type StaticPagesQueryResult = Array<{
+  _id: string;
+  _type: "page";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  description?: Mdx;
+  heroImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  blocks?: Array<{
+    _key: string;
+  } & Archive | {
+    _key: string;
+  } & Contact | {
+    _key: string;
+  } & FeaturedArticles | {
+    _key: string;
+  } & FeaturedTaxonomies | {
+    _key: string;
+  } & Gallery | {
+    _key: string;
+  } & Image | {
+    _key: string;
+  } & Info | {
+    _key: string;
+  } & Newsletter | {
+    _key: string;
+  } & Text>;
+  slug: null;
+  sections: null;
+}>;
+// Variable: staticArchivesQuery
+// Query: *[_type == 'archive'] {		...,			sections[] {		...,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}	}	}
+export type StaticArchivesQueryResult = Array<{
+  _id: string;
+  _type: "archive";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  description?: Mdx;
+  heroImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  blocks?: Array<{
+    _key: string;
+  } & Archive | {
+    _key: string;
+  } & Contact | {
+    _key: string;
+  } & FeaturedArticles | {
+    _key: string;
+  } & FeaturedTaxonomies | {
+    _key: string;
+  } & Gallery | {
+    _key: string;
+  } & Image | {
+    _key: string;
+  } & Info | {
+    _key: string;
+  } & Newsletter | {
+    _key: string;
+  } & Text>;
+  sections: null;
+}>;
+// Variable: documentQuery
+// Query: *[_id == $id][0] {  	...,		"slug":slug.current,	}
+export type DocumentQueryResult = {
+  _id: string;
+  _type: "archive";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  description?: Mdx;
+  heroImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  blocks?: Array<{
+    _key: string;
+  } & Archive | {
+    _key: string;
+  } & Contact | {
+    _key: string;
+  } & FeaturedArticles | {
+    _key: string;
+  } & FeaturedTaxonomies | {
+    _key: string;
+  } & Gallery | {
+    _key: string;
+  } & Image | {
+    _key: string;
+  } & Info | {
+    _key: string;
+  } & Newsletter | {
+    _key: string;
+  } & Text>;
+  slug: null;
+} | {
+  _id: string;
+  _type: "article";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  slug: string;
+  description?: string;
+  taxonomies?: Array<{
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    _key: string;
+    [internalGroqTypeReferenceTo]?: "taxonomy";
+  }>;
+  image?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+} | {
+  _id: string;
+  _type: "media.tag";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  name?: Slug;
+  slug: null;
+} | {
+  _id: string;
+  _type: "page";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  description?: Mdx;
+  heroImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  blocks?: Array<{
+    _key: string;
+  } & Archive | {
+    _key: string;
+  } & Contact | {
+    _key: string;
+  } & FeaturedArticles | {
+    _key: string;
+  } & FeaturedTaxonomies | {
+    _key: string;
+  } & Gallery | {
+    _key: string;
+  } & Image | {
+    _key: string;
+  } & Info | {
+    _key: string;
+  } & Newsletter | {
+    _key: string;
+  } & Text>;
+  slug: null;
+} | {
+  _id: string;
+  _type: "sanity.fileAsset";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  source?: SanityAssetSourceData;
+  slug: null;
+} | {
+  _id: string;
+  _type: "sanity.imageAsset";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  originalFilename?: string;
+  label?: string;
+  title?: string;
+  description?: string;
+  altText?: string;
+  sha1hash?: string;
+  extension?: string;
+  mimeType?: string;
+  size?: number;
+  assetId?: string;
+  uploadId?: string;
+  path?: string;
+  url?: string;
+  metadata?: SanityImageMetadata;
+  source?: SanityAssetSourceData;
+  slug: null;
+} | {
+  _id: string;
+  _type: "settings";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  logo?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  blurb?: string;
+  contact?: Contact;
+  about?: string;
+  homepage?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "page";
+  };
+  navigation?: Array<{
+    _key: string;
+  } & NavGroup>;
+  slug: null;
+} | {
+  _id: string;
+  _type: "taxonomy";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  descriptiveNote?: string;
+  icon?: Icon;
+  prefLabel: string;
+  definition?: string;
+  related?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "taxonomy";
+  };
+  broader?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "taxonomy";
+  };
+  narrower?: {
+    _ref: string;
+    _type: "reference";
+    _weak?: boolean;
+    [internalGroqTypeReferenceTo]?: "taxonomy";
+  };
+  slug: null;
+} | null;
+// Variable: archiveQuery
+// Query: *[_type=='archive' && _id == $archiveID][0] {  	...,			sections[] {		...,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}	}	}
+export type ArchiveQueryResult = {
+  _id: string;
+  _type: "archive";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title: string;
+  description?: Mdx;
+  heroImage?: {
+    asset?: {
+      _ref: string;
+      _type: "reference";
+      _weak?: boolean;
+      [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+    };
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  blocks?: Array<{
+    _key: string;
+  } & Archive | {
+    _key: string;
+  } & Contact | {
+    _key: string;
+  } & FeaturedArticles | {
+    _key: string;
+  } & FeaturedTaxonomies | {
+    _key: string;
+  } & Gallery | {
+    _key: string;
+  } & Image | {
+    _key: string;
+  } & Info | {
+    _key: string;
+  } & Newsletter | {
+    _key: string;
+  } & Text>;
+  sections: null;
+} | null;
+
 // Query TypeMap
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n": Partial_SectionsResult;
+    "\n\t*[_id == \"siteSettings\"][0] {\n\t\t...,\n\t\tlogo {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t},\n\t\thomepage->{\n\t\t\tpathname\n\t\t},\n\t\tnavigation[]{\n\t\t\t// ...,\n\t\t\ttitle,\n\t\t\tpages[]->{\n\t\t\t\t...,\n\t\t\t\t\"slug\":slug.current,\n\t\t\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t\t\t}\n\t\t}\n\t}\n": SettingsQueryResult;
+    "\n\t*[_type=='page' && pathname.current match $pathname][0] {\n  \t...,\n\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t}\n": PageQueryResult;
+    "\n\t*[_type == 'page'] {\n\t\t...,\n\t\t\"slug\":slug.current,\n\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t}\n": StaticPagesQueryResult;
+    "\n\t*[_type == 'archive'] {\n\t\t...,\n\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t}\n": StaticArchivesQueryResult;
+    "\n\t*[_id == $id][0] {\n  \t...,\n\t\t\"slug\":slug.current,\n\t}\n": DocumentQueryResult;
+    "\n\t*[_type=='archive' && _id == $archiveID][0] {\n  \t...,\n\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t}\n": ArchiveQueryResult;
   }
 }

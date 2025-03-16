@@ -1,4 +1,4 @@
-import { partial_Article } from "@/sanity/queries/partials"
+import { partial_Article } from "@sanity.next-app/queries/partials"
 import { groq } from "next-sanity"
 
 export const single_Article = (partial: string = '') => {
@@ -10,7 +10,7 @@ export const single_Article = (partial: string = '') => {
 	`
 }
 
-export const bundle_Articles = (partial: string = '', taxonomies?: Array<taxonomy>) => {
+export const bundle_Articles = (partial: string = '', taxonomies?: Array<any>) => {
 	const taxonomyIDs = (taxonomies?.flatMap((tax) => {
 		return `"${tax._id}"`
 	}))

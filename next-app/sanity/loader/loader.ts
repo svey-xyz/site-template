@@ -1,20 +1,20 @@
-import { queryClient } from "@/sanity/loader/loadQuery"
+import { queryClient } from "@sanity.next-app/loader/loadQuery"
 import { SanityDocument } from "next-sanity"
 import pluralize from "pluralize"
 
-import * as _PARTIAL_ARTICLE_QUERIES from '@/sanity/queries/partials'
+import * as _PARTIAL_ARTICLE_QUERIES from '@sanity.next-app/queries/partials'
 import {
 	settingsQuery,
 	archiveQuery,
 	staticPagesQuery,
 	staticArchivesQuery,
 	documentQuery,
-} from '@/sanity/queries/queries'
-import { single_Article, bundle_Articles } from "@/sanity/queries/buildArticleQuery"
+} from '@sanity.next-app/queries/queries'
+import { single_Article, bundle_Articles } from "@sanity.next-app/queries/buildArticleQuery"
 
 export const load_Settings = async () => {
 
-	const initial = await queryClient<SettingsPayload>(
+	const initial = await queryClient<any>(
 		settingsQuery,
 		{},
 		{ next: { tags: ['settings', 'home', 'page'] } },
@@ -42,7 +42,7 @@ export const loadSingle_Article = async <T>(type: string, slug: string) => {
 	return data
 }
 
-export const loadBundle_Articles = async <T>(type: string, taxonomies?: Array<taxonomy>) => {
+export const loadBundle_Articles = async <T>(type: string, taxonomies?: Array<any>) => {
 
 	const partial =
 		(Object.keys(_PARTIAL_ARTICLE_QUERIES).includes(type)) ?
@@ -76,7 +76,7 @@ export const loadSingle_Document = async (id: string) => {
 
 export const loadSingle_Archive = async (archiveID: string) => {
 
-	const initial = await queryClient<ArchivePayload | null>(
+	const initial = await queryClient<any | null>(
 		archiveQuery,
 		{ archiveID },
 		{ next: { tags: [`archive:${archiveID}`, 'archive'] } },
@@ -89,7 +89,7 @@ export const loadSingle_Archive = async (archiveID: string) => {
 
 export const loadBundle_Pages = async () => {
 
-	const initial = await queryClient<Array<PagePayload> | null>(
+	const initial = await queryClient<Array<any> | null>(
 		staticPagesQuery,
 		{},
 		{ next: { tags: [`pages`, 'page'] } },
@@ -102,7 +102,7 @@ export const loadBundle_Pages = async () => {
 
 export const loadBundle_Archives = async () => {
 
-	const initial = await queryClient<Array<ArchivePayload> | null>(
+	const initial = await queryClient<Array<any> | null>(
 		staticArchivesQuery,
 		{},
 		{ next: { tags: ['archive', 'archives'] } },

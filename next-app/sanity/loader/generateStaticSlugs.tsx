@@ -2,8 +2,8 @@ import 'server-only'
 
 import { groq } from 'next-sanity'
 
-import { client } from '@/sanity/lib/client'
-import { token } from '@/sanity/lib/token'
+import { client } from '@sanity.next-app/lib/client'
+import { token } from '@sanity.next-app/lib/token'
 
 // Used in `generateStaticParams`
 export const generateStaticSlugs = async (type: string) => {

@@ -1,4 +1,4 @@
-import { queryStore } from '@/sanity/loader/queryStore'
+import { queryStore } from '@sanity.next-app/loader/queryStore'
 
 import {
 	useLiveMode,
@@ -7,7 +7,7 @@ import {
 	type UseQueryOptionsDefinedInitial,
 } from '@sanity/react-loader'
 
-import { client } from '@/sanity/lib/client'
+import { client } from '@sanity.next-app/lib/client'
 const stegaClient = client.withConfig({ stega: true })
 
 /**
