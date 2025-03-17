@@ -4,7 +4,7 @@ import { client } from "./client";
 import { token } from "@sanity.next-app/lib/token";
 
 export const { sanityFetch, SanityLive } = defineLive({
-	client: client.withConfig({ apiVersion: "vX" }),
+	client: client,
 	browserToken: token,
 	serverToken: token,
 });

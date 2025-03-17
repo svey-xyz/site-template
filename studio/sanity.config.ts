@@ -12,13 +12,19 @@ import { iconify } from 'sanity-plugin-iconify';
 import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 // import { pages } from "@tinloof/sanity-studio";
 import { AdjustmentsHorizontalIcon, DocumentTextIcon, ArchiveBoxIcon, TableCellsIcon } from '@heroicons/react/24/solid'
-import { presentationTool } from 'sanity/presentation'
+import {
+	presentationTool,
+	defineDocuments,
+	defineLocations,
+	type DocumentLocation,
+} from 'sanity/presentation'
 import { resolve } from './src/lib/resolve'
 
 const deskPlugins = [
 	presentationTool({
 		resolve,
 		previewUrl: {
+			origin: 'http://localhost:3000',
 			previewMode: {
 				enable: '/api/preview',
 			},

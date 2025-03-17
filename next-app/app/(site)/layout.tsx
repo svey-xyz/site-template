@@ -11,14 +11,16 @@ import { getActiveTheme } from 'web-theme-kit'
 import { draftMode } from 'next/headers'
 import dynamic from 'next/dynamic'
 import { SanityLive } from '@sanity.next-app/lib/live'
+import { VisualEditing, toPlainText } from "next-sanity";
+import { handleError } from "./client-utils";
 
 const inter = Inter({ subsets: ['latin'] })
 const theme = await getActiveTheme()
 const font = theme?.text?.font
 
-const LiveVisualEditing = dynamic(
-	() => import('@sanity.next-app//loader/LiveVisualEditing'),
-)
+// const LiveVisualEditing = dynamic(
+// 	() => import('@sanity.next-app//loader/LiveVisualEditing'),
+// )
 
 export default async function RootLayout({
 	children
@@ -34,16 +36,15 @@ export default async function RootLayout({
 		<html lang="en" className={documentClasses} suppressHydrationWarning> 
 			<Head />
 			<body className='min-h-screen h-full overflow-x-hidden flex flex-col'>
+				
+				{ draft.isEnabled && <VisualEditing /> }
+				<SanityLive onError={handleError} />
+
 				<ThemeHandler>
 					<Header />
-
 					<main className='relative flex flex-grow'>
-							{children}
-							<SanityLive />
-						{draft.isEnabled && <LiveVisualEditing />}
-
+						{children}
 					</main>
-
 					<Footer />
 				</ThemeHandler>
 			</body>

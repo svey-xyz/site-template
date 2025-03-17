@@ -1,4 +1,4 @@
-import client from '@/sanity/lib/client';
+import { client } from '../lib/client';
 import groq from 'groq';
 import React, { useEffect, useState } from 'react';
 
