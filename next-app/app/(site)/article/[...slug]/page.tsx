@@ -6,28 +6,28 @@ type Params = {
 	slug: string[];
 }
 
-export const generateStaticParams = async () => {
-	try {
-		// const TypeArray = Object.keys(_ARTICLE_TYPES)
-		// let articlePaths: Array<Params> = []
+// export const generateStaticParams = async () => {
+// 	try {
+// 		// const TypeArray = Object.keys(_ARTICLE_TYPES)
+// 		// let articlePaths: Array<Params> = []
 
-		// TypeArray.map(async (ArticleType) => {
-		// 	const articles = await loadBundle_Articles<article>(ArticleType)
-		// 	if (!articles) return []
+// 		// TypeArray.map(async (ArticleType) => {
+// 		// 	const articles = await loadBundle_Articles<article>(ArticleType)
+// 		// 	if (!articles) return []
 
-		// 	articles.map((article) => {
-		// 		articlePaths.push({
-		// 			slug: [article._type, article.slug]
-		// 		})
-		// 	});
-		// });
+// 		// 	articles.map((article) => {
+// 		// 		articlePaths.push({
+// 		// 			slug: [article._type, article.slug]
+// 		// 		})
+// 		// 	});
+// 		// });
 
-		// return articlePaths
-	} catch (error) {
-		console.error("Error fetching archives:", error);
-		throw new Error("Failed to fetch archives");
-	}
-}
+// 		// return articlePaths
+// 	} catch (error) {
+// 		console.error("Error fetching archives:", error);
+// 		throw new Error("Failed to fetch archives");
+// 	}
+// }
 
 
 type Props = {

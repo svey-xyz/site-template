@@ -19,10 +19,12 @@ import {
 	type DocumentLocation,
 } from 'sanity/presentation'
 import { resolve } from './src/lib/resolve'
+import { locate } from './src/lib/locate'
 
 const deskPlugins = [
 	presentationTool({
 		resolve,
+		// locate,
 		previewUrl: {
 			origin: 'http://localhost:3000',
 			previewMode: {

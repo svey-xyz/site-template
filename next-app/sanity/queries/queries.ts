@@ -2,8 +2,9 @@ import { partial_ImageObject, partial_Sections } from "@sanity.next-app/queries/
 import { defineQuery, groq } from "next-sanity";
 
 export const pagesSlugs = defineQuery(`
-  *[_type == "page" && defined(slug.current)]
-  {"slug": slug.current}
+  *[_type == "page" && defined(slug.current)] {
+		"slug": slug.current
+	}
 `);
 
 export const getPageQuery = defineQuery(`

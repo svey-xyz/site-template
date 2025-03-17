@@ -493,8 +493,20 @@ export declare const internalGroqTypeReferenceTo: unique symbol;
 export type Partial_SectionsResult = never;
 
 // Source: ./sanity/queries/queries.ts
+// Variable: pagesSlugs
+// Query: *[_type == "page" && defined(slug.current)]  {"slug": slug.current}
+export type PagesSlugsResult = Array<never>;
+// Variable: getPageQuery
+// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    _type,    title,    slug,			sections[] {		...,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}	}  }
+export type GetPageQueryResult = {
+  _id: string;
+  _type: "page";
+  title: string;
+  slug: null;
+  sections: null;
+} | null;
 // Variable: settingsQuery
-// Query: *[_id == "siteSettings"][0] {		...,		logo {				...,	"imageAsset":asset->		},		homepage->{			pathname		},		navigation[]{			// ...,			title,			pages[]->{				...,				"slug":slug.current,					sections[] {		...,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}	}			}		}	}
+// Query: *[_id == "siteSettings"][0] {		...,		logo {				...,	"imageAsset":asset->		},		homepage->{			slug		},		navigation[]{			// ...,			title,			pages[]->{				...,				"slug":slug.current,					sections[] {		...,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}	}			}		}	}
 export type SettingsQueryResult = {
   _id: string;
   _type: "archive";
@@ -708,7 +720,7 @@ export type SettingsQueryResult = {
   contact?: Contact;
   about?: string;
   homepage: {
-    pathname: null;
+    slug: null;
   } | null;
   navigation: Array<{
     title: string | null;
@@ -747,7 +759,7 @@ export type SettingsQueryResult = {
   navigation: null;
 } | null;
 // Variable: pageQuery
-// Query: *[_type=='page' && pathname.current match $pathname][0] {  	...,			sections[] {		...,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}	}	}
+// Query: *[_type=='page' && slug.current match $slug][0] {  	...,			sections[] {		...,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}	}	}
 export type PageQueryResult = {
   _id: string;
   _type: "page";
@@ -1140,8 +1152,10 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n": Partial_SectionsResult;
-    "\n\t*[_id == \"siteSettings\"][0] {\n\t\t...,\n\t\tlogo {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t},\n\t\thomepage->{\n\t\t\tpathname\n\t\t},\n\t\tnavigation[]{\n\t\t\t// ...,\n\t\t\ttitle,\n\t\t\tpages[]->{\n\t\t\t\t...,\n\t\t\t\t\"slug\":slug.current,\n\t\t\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t\t\t}\n\t\t}\n\t}\n": SettingsQueryResult;
-    "\n\t*[_type=='page' && pathname.current match $pathname][0] {\n  \t...,\n\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t}\n": PageQueryResult;
+    "\n  *[_type == \"page\" && defined(slug.current)]\n  {\"slug\": slug.current}\n": PagesSlugsResult;
+    "\n  *[_type == 'page' && slug.current == $slug][0]{\n    _id,\n    _type,\n    title,\n    slug,\n\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n  }\n": GetPageQueryResult;
+    "\n\t*[_id == \"siteSettings\"][0] {\n\t\t...,\n\t\tlogo {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t},\n\t\thomepage->{\n\t\t\tslug\n\t\t},\n\t\tnavigation[]{\n\t\t\t// ...,\n\t\t\ttitle,\n\t\t\tpages[]->{\n\t\t\t\t...,\n\t\t\t\t\"slug\":slug.current,\n\t\t\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t\t\t}\n\t\t}\n\t}\n": SettingsQueryResult;
+    "\n\t*[_type=='page' && slug.current match $slug][0] {\n  \t...,\n\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t}\n": PageQueryResult;
     "\n\t*[_type == 'page'] {\n\t\t...,\n\t\t\"slug\":slug.current,\n\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t}\n": StaticPagesQueryResult;
     "\n\t*[_type == 'archive'] {\n\t\t...,\n\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t}\n": StaticArchivesQueryResult;
     "\n\t*[_id == $id][0] {\n  \t...,\n\t\t\"slug\":slug.current,\n\t}\n": DocumentQueryResult;

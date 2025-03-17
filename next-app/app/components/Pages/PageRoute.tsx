@@ -12,38 +12,38 @@ type Props = {
 	params: { slug: Array<string> }
 }
 
-const PagePreview = dynamic(
-	() => import('@components.next-app/Pages/PagePreview'),
-)
+// const PagePreview = dynamic(
+// 	() => import('@components.next-app/Pages/PagePreview'),
+// )
 
-const loadSingle_Page = async (slug: string, draft?: boolean) => {
-	const initial = await queryClient<any | null>(
-		pageQuery,
-		{ slug: `${slug}` },
-		{ next: { tags: [`page:${slug}`, 'home'] } },
-		draft
-	)
-	return initial
-}
+// const loadSingle_Page = async (slug: string, draft?: boolean) => {
+// 	const initial = await queryClient<any | null>(
+// 		pageQuery,
+// 		{ slug: `${slug}` },
+// 		{ next: { tags: [`page:${slug}`, 'home'] } },
+// 		draft
+// 	)
+// 	return initial
+// }
 
-export async function generateMetadata(
-	{ params }: Props,
-	parent: ResolvingMetadata,
-): Promise<Metadata> {
-	const { data: page } = await loadSingle_Page(params.slug.join(`/`))
+// export async function generateMetadata(
+// 	{ params }: Props,
+// 	parent: ResolvingMetadata,
+// ): Promise<Metadata> {
+// 	const { data: page } = await loadSingle_Page(params.slug.join(`/`))
 
-	return {
-		title: page?.title,
-		description: page?.description
-			? (page.description)
-			: (await parent).description,
-	}
-}
+// 	return {
+// 		title: page?.title,
+// 		description: page?.description
+// 			? (page.description)
+// 			: (await parent).description,
+// 	}
+// }
 
 export const PageRoute = async ({ params }: Props) => {
 	// const initial = await loadSingle_Page(params.slug[0]);
 
-	console.log('PageRoute: ', params)
+	// console.log('PageRoute: ', params)
 
 	const [{ data: page }] = await Promise.all([
 		sanityFetch({ query: getPageQuery, params: { slug: params?.slug[0] } }),
