@@ -10,8 +10,8 @@ type Props = {
 }
 
 export function useSingle_Page(initial: QueryResponseInitial<any | null>) {
-	const pathname = `${initial?.data?.pathname?.current}`
-	return useQuery<any | null>(pageQuery, { pathname }, { initial })
+	const slug = `${initial?.data?.slug?.current}`
+	return useQuery<any | null>(pageQuery, { slug }, { initial })
 }
 
 const PagePreview = (props: Props) => {

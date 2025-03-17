@@ -1,5 +1,21 @@
 import { partial_ImageObject, partial_Sections } from "@sanity.next-app/queries/partials";
-import { groq } from "next-sanity";
+import { defineQuery, groq } from "next-sanity";
+
+export const pagesSlugs = defineQuery(`
+  *[_type == "page" && defined(slug.current)]
+  {"slug": slug.current}
+`);
+
+export const getPageQuery = defineQuery(`
+  *[_type == 'page' && slug.current == $slug][0]{
+    _id,
+    _type,
+    title,
+    slug,
+		${partial_Sections}
+  }
+`);
+
 
 export const settingsQuery: string = groq`
 	*[_id == "siteSettings"][0] {
@@ -8,7 +24,7 @@ export const settingsQuery: string = groq`
 			${partial_ImageObject}
 		},
 		homepage->{
-			pathname
+			slug
 		},
 		navigation[]{
 			// ...,
@@ -23,7 +39,7 @@ export const settingsQuery: string = groq`
 `
 
 export const pageQuery: string = groq`
-	*[_type=='page' && pathname.current match $pathname][0] {
+	*[_type=='page' && slug.current match $slug][0] {
   	...,
 		${partial_Sections}
 	}

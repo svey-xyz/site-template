@@ -4,8 +4,9 @@ import { Page } from '@components.next-app/Pages/Page'
 import { draftMode } from 'next/headers'
 import dynamic from 'next/dynamic'
 import { queryClient } from '@sanity.next-app/loader/loadQuery'
-import { pageQuery } from '@sanity.next-app/queries/queries'
+import { getPageQuery, pageQuery } from '@sanity.next-app/queries/queries'
 import { ResolvingMetadata, Metadata } from 'next'
+import { sanityFetch } from '@sanity.next-app/lib/live'
 
 type Props = {
 	params: { slug: Array<string> }
@@ -18,7 +19,7 @@ const PagePreview = dynamic(
 const loadSingle_Page = async (slug: string, draft?: boolean) => {
 	const initial = await queryClient<any | null>(
 		pageQuery,
-		{ pathname: `${slug}` },
+		{ slug: `${slug}` },
 		{ next: { tags: [`page:${slug}`, 'home'] } },
 		draft
 	)
@@ -40,11 +41,16 @@ export async function generateMetadata(
 }
 
 export const PageRoute = async ({ params }: Props) => {
-	const draft = await draftMode()
-	const initial = await loadSingle_Page(params.slug[0], draft.isEnabled);
+	// const initial = await loadSingle_Page(params.slug[0]);
 
-	if (draft.isEnabled) return <PagePreview initial={initial} />
-	if (!initial.data) notFound()
+	console.log('PageRoute: ', params)
 
-	return <Page data={initial.data} draft={false} />
+	const [{ data: page }] = await Promise.all([
+		sanityFetch({ query: getPageQuery, params: { slug: params?.slug[0] } }),
+	]);
+
+	// if (draft.isEnabled) return <PagePreview initial={initial} />
+	if (!page) notFound()
+
+	return <Page data={page} draft={false} />
 }

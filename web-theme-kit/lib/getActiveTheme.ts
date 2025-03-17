@@ -10,8 +10,8 @@ export const getActiveTheme = async (themePath: string): Promise<WEB_THEME_KIT.t
 
 	try {
 		const FULL_PATH = path.join(themePath, ACTIVE_THEME)
-		const theme = (await import(FULL_PATH)).default as WEB_THEME_KIT.theme
-		return theme
+		// const theme = (await import(FULL_PATH)).default as WEB_THEME_KIT.theme
+		// return theme
 	} catch (e) {
 		console.log(`Theme not found: `, ACTIVE_THEME)
 		return undefined

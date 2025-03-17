@@ -23,7 +23,7 @@ const usingCdn = serverClient.config().useCdn
 
 export const queryClient = (async <T>(query: string, params: QueryParams = {}, options: QueryOptions = {}, draft?: boolean) => {
 	const {
-		perspective = 'previewDrafts',
+		perspective = 'drafts',
 	} = options
 	// Don't cache by default
 	let revalidate: NextFetchRequestConfig['revalidate'] = 0

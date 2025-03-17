@@ -22,7 +22,7 @@ const singletonTypes = new Set(["settings"])
 const typesList = (S: StructureBuilder) => ARTICLES.flatMap(article => {
 	const Title = camelCaseToWords(article.type)
 
-	return S.documentTypeListItem(article.document.name).title(pluralize(Title)).icon(article.document.icon as ComponentType)
+	return S.documentTypeListItem(article.document.name).title(pluralize(Title)).icon(article.document.icon)
 })
 
 export const structure = (S: StructureBuilder, context: StructureResolverContext) =>
@@ -33,6 +33,8 @@ export const structure = (S: StructureBuilder, context: StructureResolverContext
 		),
 		S.documentTypeListItem('taxonomy').title('Taxonomies').icon(_TagIcon),
 		S.divider(),
+
+		S.documentTypeListItem('page').title('Pages').icon(_TagIcon),
 		
 		...typesList(S),
 	])

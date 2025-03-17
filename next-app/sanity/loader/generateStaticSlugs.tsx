@@ -8,15 +8,15 @@ import { token } from '@sanity.next-app/lib/token'
 // Used in `generateStaticParams`
 export const generateStaticSlugs = async (type: string) => {
 	// Not using loadQuery as it's optimized for fetching in the RSC lifecycle
-	const pathnames = await client
+	const slugs = await client
 		.withConfig({
 			token,
 			perspective: 'published',
 			useCdn: false,
 			stega: false,
 		})
-		.fetch<{ pathname?: {current?:string}}[]>(
-			groq`*[_type == $type && defined(pathname.current)]{pathname}`,
+		.fetch<{ slug?: {current?:string}}[]>(
+			groq`*[_type == $type && defined(slug.current)]{slug}`,
 			{ type },
 			{
 				next: {
@@ -25,7 +25,7 @@ export const generateStaticSlugs = async (type: string) => {
 			},
 		)
 
-	return pathnames.flatMap((path) => {
-		return { slug: [path.pathname?.current] }
+	return slugs.flatMap((path) => {
+		return { slug: [path.slug?.current] }
 	})
 }

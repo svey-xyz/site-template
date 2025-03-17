@@ -52,6 +52,16 @@ export const page = (args: { name: string, fields?: sanityFields }) => {
 		// 	validation: (Rule) => Rule.required()
 		// }),
 		defineField({
+			name: 'slug',
+			title: 'Slug',
+			type: 'slug',
+			validation: (Rule) => Rule.required(),
+			options: {
+				source: 'title',
+				maxLength: 96,
+			},
+		}),
+		defineField({
 			title: 'Description',
 			name: 'description',
 			type: 'mdx',
