@@ -11,7 +11,7 @@ export async function generateStaticParams() {
 	}) as {
 		data: Array<{ slug: string }>
 	};
-	console.log('Data: ', data)
+
 	const slugs = data.flatMap((page) => {
 		return { slug: page.slug.split('/') }
 	})

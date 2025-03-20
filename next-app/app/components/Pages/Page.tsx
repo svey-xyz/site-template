@@ -13,7 +13,6 @@ export const Page = ({ data, encodeDataAttribute, draft }: PageProps) => {
 	if (!data) return;
 
 	const BG_URL = data.heroImage ? urlForImage(data.heroImage).url() : ''
-
 	return (
 		<article className='relative flex flex-grow max-w-full'>
 			{	BG_URL &&

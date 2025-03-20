@@ -494,16 +494,239 @@ export type Partial_SectionsResult = never;
 
 // Source: ./sanity/queries/queries.ts
 // Variable: pagesSlugs
-// Query: *[_type == "page" && defined(slug.current)]  {"slug": slug.current}
+// Query: *[_type == "page" && defined(slug.current)] {		"slug": slug.current	}
 export type PagesSlugsResult = Array<never>;
 // Variable: getPageQuery
-// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    _type,    title,    slug,			sections[] {		...,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}	}  }
+// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    _type,    title,    slug,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}  }
 export type GetPageQueryResult = {
   _id: string;
   _type: "page";
   title: string;
   slug: null;
-  sections: null;
+  blocks: Array<{
+    _key: string;
+    _type: "Archive";
+    archiveType?: "article";
+    description?: string;
+    filterable?: boolean;
+    featuredTaxonomies: Array<{
+      _id: string;
+      _type: "taxonomy";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      descriptiveNote?: string;
+      icon?: Icon;
+      prefLabel: string;
+      definition?: string;
+      related?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "taxonomy";
+      };
+      broader?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "taxonomy";
+      };
+      narrower?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "taxonomy";
+      };
+    }> | null;
+  } | {
+    _key: string;
+    _type: "Contact";
+    buttonText?: string;
+  } | {
+    _key: string;
+    _type: "FeaturedArticles";
+    title: string;
+    articles: Array<{
+      _id: string;
+      _type: "article";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      title: string;
+      slug: Slug;
+      description?: string;
+      taxonomies?: Array<{
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        _key: string;
+        [internalGroqTypeReferenceTo]?: "taxonomy";
+      }>;
+      image: {
+        asset?: {
+          _ref: string;
+          _type: "reference";
+          _weak?: boolean;
+          [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+        };
+        hotspot?: SanityImageHotspot;
+        crop?: SanityImageCrop;
+        _type: "image";
+        imageAsset: {
+          _id: string;
+          _type: "sanity.imageAsset";
+          _createdAt: string;
+          _updatedAt: string;
+          _rev: string;
+          originalFilename?: string;
+          label?: string;
+          title?: string;
+          description?: string;
+          altText?: string;
+          sha1hash?: string;
+          extension?: string;
+          mimeType?: string;
+          size?: number;
+          assetId?: string;
+          uploadId?: string;
+          path?: string;
+          url?: string;
+          metadata?: SanityImageMetadata;
+          source?: SanityAssetSourceData;
+        } | null;
+      } | null;
+    }> | null;
+  } | {
+    _key: string;
+    _type: "FeaturedTaxonomies";
+    taxonomies: Array<{
+      _id: string;
+      _type: "taxonomy";
+      _createdAt: string;
+      _updatedAt: string;
+      _rev: string;
+      descriptiveNote?: string;
+      icon?: Icon;
+      prefLabel: string;
+      definition?: string;
+      related?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "taxonomy";
+      };
+      broader?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "taxonomy";
+      };
+      narrower?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "taxonomy";
+      };
+    }> | null;
+  } | {
+    _key: string;
+    _type: "Gallery";
+    style?: "gallery" | "swiper";
+    images: Array<{
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+      _key: string;
+      imageAsset: {
+        _id: string;
+        _type: "sanity.imageAsset";
+        _createdAt: string;
+        _updatedAt: string;
+        _rev: string;
+        originalFilename?: string;
+        label?: string;
+        title?: string;
+        description?: string;
+        altText?: string;
+        sha1hash?: string;
+        extension?: string;
+        mimeType?: string;
+        size?: number;
+        assetId?: string;
+        uploadId?: string;
+        path?: string;
+        url?: string;
+        metadata?: SanityImageMetadata;
+        source?: SanityAssetSourceData;
+      } | null;
+    }> | null;
+  } | {
+    _key: string;
+    _type: "Image";
+    image: {
+      asset?: {
+        _ref: string;
+        _type: "reference";
+        _weak?: boolean;
+        [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
+      };
+      hotspot?: SanityImageHotspot;
+      crop?: SanityImageCrop;
+      _type: "image";
+      imageAsset: {
+        _id: string;
+        _type: "sanity.imageAsset";
+        _createdAt: string;
+        _updatedAt: string;
+        _rev: string;
+        originalFilename?: string;
+        label?: string;
+        title?: string;
+        description?: string;
+        altText?: string;
+        sha1hash?: string;
+        extension?: string;
+        mimeType?: string;
+        size?: number;
+        assetId?: string;
+        uploadId?: string;
+        path?: string;
+        url?: string;
+        metadata?: SanityImageMetadata;
+        source?: SanityAssetSourceData;
+      } | null;
+    } | null;
+    accented?: boolean;
+  } | {
+    _key: string;
+    _type: "Info";
+    title: string;
+    items?: Array<{
+      title?: string;
+      subTitle?: string;
+      infoType: "icon" | "number";
+      icon?: Icon;
+      number?: number;
+      _type: "item";
+      _key: string;
+    }>;
+  } | {
+    _key: string;
+    _type: "Newsletter";
+    note?: string;
+    callToAction?: string;
+    text?: string;
+  } | {
+    _key: string;
+    _type: "Text";
+    text?: string;
+  }> | null;
 } | null;
 // Variable: settingsQuery
 // Query: *[_id == "siteSettings"][0] {		...,		logo {				...,	"imageAsset":asset->		},		homepage->{			slug		},		navigation[]{			// ...,			title,			pages[]->{				...,				"slug":slug.current,					sections[] {		...,		blocks[] {				...,	_type == "Archive" => {		...,		featuredTaxonomies[]-> {			...,		} 	},	_type == "FeaturedTaxonomies" => {		...,		taxonomies[]->,	},	_type == "FeaturedArticles" => {		...,		articles[]-> {			...,			image {					...,	"imageAsset":asset->			}		},	},	_type == "Image" => {		...,		image {				...,	"imageAsset":asset->		}	},	_type == "Gallery" => {		...,		images[] {				...,	"imageAsset":asset->		}	},		}	}			}		}	}
@@ -1152,8 +1375,8 @@ import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
     "\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n": Partial_SectionsResult;
-    "\n  *[_type == \"page\" && defined(slug.current)]\n  {\"slug\": slug.current}\n": PagesSlugsResult;
-    "\n  *[_type == 'page' && slug.current == $slug][0]{\n    _id,\n    _type,\n    title,\n    slug,\n\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n  }\n": GetPageQueryResult;
+    "\n  *[_type == \"page\" && defined(slug.current)] {\n\t\t\"slug\": slug.current\n\t}\n": PagesSlugsResult;
+    "\n  *[_type == 'page' && slug.current == $slug][0]{\n    _id,\n    _type,\n    title,\n    slug,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n  }\n": GetPageQueryResult;
     "\n\t*[_id == \"siteSettings\"][0] {\n\t\t...,\n\t\tlogo {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t},\n\t\thomepage->{\n\t\t\tslug\n\t\t},\n\t\tnavigation[]{\n\t\t\t// ...,\n\t\t\ttitle,\n\t\t\tpages[]->{\n\t\t\t\t...,\n\t\t\t\t\"slug\":slug.current,\n\t\t\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t\t\t}\n\t\t}\n\t}\n": SettingsQueryResult;
     "\n\t*[_type=='page' && slug.current match $slug][0] {\n  \t...,\n\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t}\n": PageQueryResult;
     "\n\t*[_type == 'page'] {\n\t\t...,\n\t\t\"slug\":slug.current,\n\t\t\n\tsections[] {\n\t\t...,\n\t\tblocks[] {\n\t\t\t\n\t...,\n\t_type == \"Archive\" => {\n\t\t...,\n\t\tfeaturedTaxonomies[]-> {\n\t\t\t...,\n\t\t} \n\t},\n\t_type == \"FeaturedTaxonomies\" => {\n\t\t...,\n\t\ttaxonomies[]->,\n\t},\n\t_type == \"FeaturedArticles\" => {\n\t\t...,\n\t\tarticles[]-> {\n\t\t\t...,\n\t\t\timage {\n\t\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t\t}\n\t\t},\n\t},\n\t_type == \"Image\" => {\n\t\t...,\n\t\timage {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t},\n\t_type == \"Gallery\" => {\n\t\t...,\n\t\timages[] {\n\t\t\t\n\t...,\n\t\"imageAsset\":asset->\n\n\t\t}\n\t}\n,\n\t\t}\n\t}\n\n\t}\n": StaticPagesQueryResult;

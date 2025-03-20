@@ -16,7 +16,7 @@ export const partial_Article: string = groq`
 	}
 `
 
-const partial_Blocks: string = groq`
+export const partial_Blocks: string = groq`
 	...,
 	_type == "Archive" => {
 		...,

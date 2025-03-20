@@ -1,4 +1,4 @@
-import { partial_ImageObject, partial_Sections } from "@sanity.next-app/queries/partials";
+import { partial_ImageObject, partial_Sections, partial_Blocks } from "@sanity.next-app/queries/partials";
 import { defineQuery, groq } from "next-sanity";
 
 export const pagesSlugs = defineQuery(`
@@ -13,7 +13,9 @@ export const getPageQuery = defineQuery(`
     _type,
     title,
     slug,
-		${partial_Sections}
+		blocks[] {
+			${partial_Blocks},
+		}
   }
 `);
 
