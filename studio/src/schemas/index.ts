@@ -1,18 +1,7 @@
-import { DocumentDefinition } from 'sanity'
-
 import PAGES from './documents/pages'
-
 import ARTICLES from './documents/articles'
+import { _BASE_ARTICLE } from '@schemas.studio/documents/articles/utils/baseArticle'
 
-const ARTICLE_TYPES = (() => {
-	let types: DocumentDefinition[] = []
-
-	ARTICLES.forEach((article) => {
-		types.push(article.document)
-	})
-
-	return types
-})()
 
 /**
  * Objects
@@ -37,4 +26,4 @@ import { taxonomy } from './documents/taxonomies'
 
 const _documents = [settings, taxonomy]
 
-export const types = [..._objects, ..._documents, ...PAGES, ...ARTICLE_TYPES];
+export const types = [..._objects, ..._documents, ...PAGES, ...ARTICLES, _BASE_ARTICLE];

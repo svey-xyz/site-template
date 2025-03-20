@@ -1,4 +1,4 @@
-import constructors from '../constructors';
+import constructors from '../utils';
 import { defineField } from 'sanity';
 
 import { EnvelopeOpenIcon } from '@heroicons/react/24/solid'

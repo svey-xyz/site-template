@@ -1,5 +1,5 @@
 import { defineField } from 'sanity';
-import constructors from '../constructors';
+import constructors from '../utils';
 import ARTICLES from '../../articles';
 
 import { SparklesIcon } from '@heroicons/react/24/solid'

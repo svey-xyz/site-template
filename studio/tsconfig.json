@@ -20,6 +20,7 @@
 			"@structure.studio/*": ["./src/structure/*"],
 			"@style.studio/*": ["./src/style/*"],
 			"@src.studio/*": ["./src/*"],
+			"@root.site-template/*": ["../*"],
 			},
   },
   "include": ["**/*.ts", "**/*.tsx"],

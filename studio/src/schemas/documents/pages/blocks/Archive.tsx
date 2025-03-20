@@ -1,9 +1,9 @@
-import { defineField, defineArrayMember } from 'sanity';
-import constructors from '../constructors';
-import ARTICLES from '../../articles'
-import { camelCaseToWords } from '../../../../lib/stringFunctions';
+import { defineField, defineType } from 'sanity';
+import ARTICLES from '@schemas.studio/documents/articles'
+import { camelCaseToWords } from '@lib.studio/stringFunctions';
 
 import { ArchiveBoxIcon } from '@heroicons/react/24/solid'
+import { _BLOCK_PREVIEW } from '@schemas.studio/documents/pages/utils/preview';
 
 const archiveTypes = ARTICLES.flatMap((article) => {
 	return { title: camelCaseToWords(article.type), value: article.type }
@@ -46,4 +46,11 @@ const fields = [
 	})
 ]
 
-export const Archive = constructors.block({ name: 'Archive', fields, Icon: ArchiveBoxIcon })
+export const Archive = defineType({
+	title: 'Archive',
+	name: 'Archive',
+	type: 'object',
+	icon: () => <ArchiveBoxIcon />,
+	fields,
+	preview: _BLOCK_PREVIEW
+})

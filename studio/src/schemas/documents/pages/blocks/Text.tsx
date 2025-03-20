@@ -1,6 +1,6 @@
 import { defineField } from 'sanity';
 
-import constructors from '../constructors';
+import constructors from '../utils';
 import { Bars3BottomLeftIcon } from '@heroicons/react/24/solid';
 
 const fields = [

@@ -1,4 +1,4 @@
-import { page as constructor } from './constructors/page';
+import { page as constructor } from './utils/page';
 
 import { defineField } from 'sanity';
 

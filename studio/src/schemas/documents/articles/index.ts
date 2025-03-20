@@ -1,7 +1,6 @@
-import { article } from './article';
-import { ARTICLE } from './constructors/article';
+import { article } from "@schemas.studio/documents/articles/article";
 
-export const ARTICLES: ARTICLE[] = [
+export const ARTICLES = [
 	article
 ]
 

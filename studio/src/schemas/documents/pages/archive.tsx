@@ -1,4 +1,4 @@
-import { page } from './constructors/page';
+import { page } from './utils/page';
 
 const fields = [
 ]

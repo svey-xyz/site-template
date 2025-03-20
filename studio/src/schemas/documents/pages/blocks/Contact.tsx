@@ -1,5 +1,5 @@
 import { defineField } from 'sanity';
-import constructors from '../constructors';
+import constructors from '../utils';
 
 import { InboxArrowDownIcon } from '@heroicons/react/24/solid'
 

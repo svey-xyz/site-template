@@ -1,5 +1,5 @@
 import { defineField } from 'sanity';
-import constructors from '../constructors';
+import constructors from '../utils';
 import { customMediaAssetSource } from '../../../../lib/assetSource';
 import { camelCaseToWords } from '../../../../lib/stringFunctions';
 
