@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
-		"target": "ES2023",
-		"lib": [
-			"dom",
-			"dom.iterable",
-			"esnext"
-		],
+		"target": "esnext",
+		"lib": [ "dom", "dom.iterable", "esnext"],
 		"allowJs": true,
 		"skipLibCheck": true,
 		"strict": true,
@@ -16,17 +12,17 @@
     "moduleDetection": "force",
     "isolatedModules": true,
     "jsx": "preserve",
-    "incremental": true
-  },
-  "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"],
-	"paths": {
-      "@components.studio/*": ["./src/components/*"],
+    "incremental": true,
+		"paths": {
+			"@components.studio/*": ["./src/components/*"],
 			"@lib.studio/*": ["./src/lib/*"],
 			"@schemas.studio/*": ["./src/schemas/*"],
 			"@structure.studio/*": ["./src/structure/*"],
 			"@style.studio/*": ["./src/style/*"],
 			"@src.studio/*": ["./src/*"],
-
-    }
+			},
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
+	
 }
