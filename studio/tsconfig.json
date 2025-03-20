@@ -19,5 +19,14 @@
     "incremental": true
   },
   "include": ["**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+	"paths": {
+      "@components.studio/*": ["./src/components/*"],
+			"@lib.studio/*": ["./src/lib/*"],
+			"@schemas.studio/*": ["./src/schemas/*"],
+			"@structure.studio/*": ["./src/structure/*"],
+			"@style.studio/*": ["./src/style/*"],
+			"@src.studio/*": ["./src/*"],
+
+    }
 }
