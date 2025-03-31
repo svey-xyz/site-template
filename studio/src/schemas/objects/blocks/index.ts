@@ -10,8 +10,8 @@ import { Gallery } from './Gallery'
 
 export const Blocks = [FeaturedTaxonomies, Text, FeaturedArticles, Newsletter, Info, Archive, Image, Contact, Gallery];
 
-export const blockTypes = Blocks.map((block) => {
-	return { type: block.name }
-})
+// export const blockTypes = Blocks.map((block) => {
+// 	return { type: block.name }
+// })
 
-export default Blocks;
+// export default Blocks;

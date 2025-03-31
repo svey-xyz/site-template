@@ -1,11 +1,13 @@
-import { defineField } from 'sanity';
-import constructors from '../utils';
+import { defineField, defineType } from 'sanity';
+// import constructors from '../../documents/pages/utils';
 import { Icon } from '@iconify/react';
 
 import { IdentificationIcon } from '@heroicons/react/24/solid'
+import { _BLOCK_FIELDS } from '@schemas.studio/objects/blocks/utils/fields';
+import { _BLOCK_PREVIEW } from '@schemas.studio/objects/blocks/utils/preview';
 
 
-const fields = [
+const _FIELDS = [
 	defineField({
 		title: 'Title',
 		name: 'title',
@@ -86,4 +88,13 @@ const fields = [
 	}),
 ]
 
-export const Info = constructors.block({ name: 'Info', fields, Icon: () => <IdentificationIcon /> })
+export const Info = defineType({
+	name: 'info',
+	type: 'object',
+	icon: () => <IdentificationIcon />,
+	fields: [
+		..._BLOCK_FIELDS,
+		..._FIELDS
+	],
+	preview: _BLOCK_PREVIEW
+})

@@ -1,15 +1,23 @@
+import { DocumentTextIcon } from "@heroicons/react/24/solid"
 import { camelCaseToWords } from "@lib.studio/stringFunctions"
 
-export const _BLOCK_PREVIEW = {
+export const _PAGE_PREVIEW = {
 		select: {
-			type: '_type',
 			title: 'title',
-			// logo: 'logo',
+			image: 'image',
+			blocks: 'blocks'
 		},
 		prepare(value: any) {
-			const { type, title } = value
+			const { image, blocks, title } = value
+			const subtitle = blocks ?
+				`Blocks: ${blocks?.map((block: block, i: number, arr: Array<block>) => {
+					return ` ${camelCaseToWords(block._type)}`
+				})}` :
+				`No blocks configured!`
 			return {
-				title: type ? camelCaseToWords(type) : 'Unknown Block Type',
+				title: `${title}`,
+				subtitle,
+				media: image ? image : DocumentTextIcon
 			}
 		},
 	}

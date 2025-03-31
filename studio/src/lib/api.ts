@@ -22,10 +22,10 @@ export const revalidateSecret = process.env.SANITY_REVALIDATE_SECRET
 export const configStudioTitle =
 	process.env.SANITY_STUDIO_TITLE || 'studio'
 
-function assertValue<T>(v: T | undefined, errorMessage: string): T | undefined {
-	// if (v === undefined) {
-	// 	throw new Error(errorMessage)
-	// }
+function assertValue<T>(v: T | undefined, errorMessage: string): T {
+	if (v === undefined) {
+		throw new Error(errorMessage)
+	}
 
 	return v
 }

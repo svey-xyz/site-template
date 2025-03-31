@@ -1,12 +1,11 @@
 import { StructureBuilder, StructureResolverContext } from "sanity/structure";
 import { DocumentActionComponent, DocumentActionsContext, Template } from "sanity";
 
-import { types } from "../schemas";
-import ARTICLES from "../schemas/documents/articles";
-import { camelCaseToWords, pluralize } from "../lib/stringFunctions";
+import { types } from "@schemas.studio/index";
+import ARTICLES from "@schemas.studio/documents/articles";
+import { camelCaseToWords, pluralize } from "@lib.studio/stringFunctions";
 
 import { Cog6ToothIcon, TagIcon } from "@heroicons/react/24/solid";
-import { ComponentType } from "react";
 
 // abstraction required for sanity typescript check
 const _Cog6ToothIcon = () => <Cog6ToothIcon />;
@@ -22,7 +21,7 @@ const singletonTypes = new Set(["settings"])
 const typesList = (S: StructureBuilder) => ARTICLES.flatMap(article => {
 	const Title = camelCaseToWords(article.type)
 
-	return S.documentTypeListItem(article.document.name).title(pluralize(Title)).icon(article.document.icon)
+	return S.documentTypeListItem(article.name).title(pluralize(Title)).icon(article.icon)
 })
 
 export const structure = (S: StructureBuilder, context: StructureResolverContext) =>

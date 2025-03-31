@@ -6,6 +6,7 @@ import { _BASE_ARTICLE } from '@schemas.studio/documents/articles/utils/baseArti
 /**
  * Objects
  */
+import { Blocks } from './objects/blocks'
 import { social } from './objects/social'
 import { link } from './objects/link'
 import { basicDate } from './objects/basicDate'
@@ -15,7 +16,7 @@ import { note } from './objects/note'
 import { navGroup } from './objects/navGroup'
 
 
-const _objects = [social, link, basicDate, contact, markdownSchemaType, note, navGroup]
+const _objects = [social, link, basicDate, contact, markdownSchemaType, note, navGroup, ...Blocks]
 
 /**
  * Documents

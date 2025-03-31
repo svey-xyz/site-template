@@ -40,7 +40,9 @@ export const _ARTICLE_FIELDS = [
 			group: 'about',
 		}),
 		defineField({
-			..._CUSTOM_IMAGE_FIELD_VALUES,
+			title: 'Image',
+			name: 'image',
 			group: 'about',
+			..._CUSTOM_IMAGE_FIELD_VALUES,
 		}),
 ]

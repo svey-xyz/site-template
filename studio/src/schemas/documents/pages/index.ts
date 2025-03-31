@@ -1,8 +1,6 @@
 import { page } from './page';
 import { archive } from './archive'
-import BLOCKS from './blocks';
 
-
-const Pages = [page, archive, ...BLOCKS];
+const Pages = [page, archive];
 
 export default Pages;

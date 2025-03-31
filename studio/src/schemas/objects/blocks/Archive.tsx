@@ -1,16 +1,17 @@
 import { defineField, defineType } from 'sanity';
-import ARTICLES from '@schemas.studio/documents/articles'
 import { camelCaseToWords } from '@lib.studio/stringFunctions';
 
 import { ArchiveBoxIcon } from '@heroicons/react/24/solid'
-import { _BLOCK_PREVIEW } from '@schemas.studio/documents/pages/utils/preview';
+import { _BLOCK_PREVIEW } from '@schemas.studio/objects/blocks/utils/preview';
+import { _ARTICLE_TYPES } from '@root.site-template/DocumentTypes';
+import { _BLOCK_FIELDS } from '@schemas.studio/objects/blocks/utils/fields';
 
-const archiveTypes = ARTICLES.flatMap((article) => {
-	return { title: camelCaseToWords(article.type), value: article.type }
+const archiveTypes = Object.entries(_ARTICLE_TYPES).flatMap((article) => {
+	return { title: camelCaseToWords(article[1]), value: article[1] }
 })
 
 
-const fields = [
+const _FIELDS = [
 	defineField({
 		title: 'Archive Type',
 		name: 'archiveType',
@@ -47,10 +48,12 @@ const fields = [
 ]
 
 export const Archive = defineType({
-	title: 'Archive',
-	name: 'Archive',
+	name: 'archive',
 	type: 'object',
 	icon: () => <ArchiveBoxIcon />,
-	fields,
+	fields: [
+		..._BLOCK_FIELDS,
+		..._FIELDS
+	],
 	preview: _BLOCK_PREVIEW
 })

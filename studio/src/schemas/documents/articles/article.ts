@@ -2,7 +2,7 @@ import { camelCaseToWords } from "@lib.studio/stringFunctions";
 import { _ARTICLE_FIELDS } from "@schemas.studio/documents/articles/utils/fields";
 import { _ARTICLE_PREVIEW } from "@schemas.studio/documents/articles/utils/preview";
 import { defineType } from "sanity";
-import { _ARTICLE_TYPES } from "@root.site-template/ArticleTypes";
+import { _ARTICLE_TYPES } from "@root.site-template/DocumentTypes";
 
 const articleType = _ARTICLE_TYPES.ARTICLE
 
