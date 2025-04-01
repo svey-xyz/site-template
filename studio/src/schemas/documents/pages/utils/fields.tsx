@@ -9,16 +9,16 @@ export const _PAGE_FIELDS = [
 		type: 'string',
 		validation: Rule => Rule.required()
 	}),
-	defineField({
-		name: 'slug',
-		title: 'Slug',
-		type: 'slug',
-		validation: (Rule) => Rule.required(),
-		options: {
-			source: 'title',
-			maxLength: 96,
-		},
-	}),
+	// defineField({
+	// 	name: 'slug',
+	// 	title: 'Slug',
+	// 	type: 'slug',
+	// 	validation: (Rule) => Rule.required(),
+	// 	options: {
+	// 		source: 'title',
+	// 		maxLength: 96,
+	// 	},
+	// }),
 	defineField({
 		title: 'Description',
 		name: 'description',
@@ -35,7 +35,7 @@ export const _PAGE_FIELDS = [
 		name: 'blocks',
 		type: 'array',
 		of: (() => {
-			return Object.entries(_BLOCK_TYPES).map((blockType) => { return { type: blockType[1] as string }})
+			return Object.values(_BLOCK_TYPES).map((blockType) => { return { type: blockType }})
 		})(),
 	}),
 ]

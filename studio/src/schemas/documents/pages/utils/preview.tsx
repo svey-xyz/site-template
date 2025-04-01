@@ -10,7 +10,7 @@ export const _PAGE_PREVIEW = {
 		prepare(value: any) {
 			const { image, blocks, title } = value
 			const subtitle = blocks ?
-				`Blocks: ${blocks?.map((block: block, i: number, arr: Array<block>) => {
+				`Blocks: ${blocks?.map((block: any, i: number, arr: Array<any>) => {
 					return ` ${camelCaseToWords(block._type)}`
 				})}` :
 				`No blocks configured!`
