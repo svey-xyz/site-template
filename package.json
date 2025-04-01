@@ -5,8 +5,7 @@
 	"scripts": {
 		"dev": "npm-run-all --parallel dev:*",
 		"dev:next": "npm run dev --workspace=next-app",
-		"dev:studio": "npm run dev --workspace=studio",
-		"import-sample-data": "cd studio && sanity dataset import sample-data.tar.gz --replace"
+		"dev:studio": "npm run dev --workspace=studio"
 	},
 	"workspaces": [
 		"next-app",

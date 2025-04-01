@@ -21,7 +21,6 @@
 			"@sanity.next-app/*": ["./sanity/*"],
 			"@lib.next-app/*": ["./lib/*"],
 			"@styles.next-app/*": ["./styles/*"],
-			"@theme.next-app/*": ["../web-theme-kit/*"],
 			"@public.next-app/*": ["./public/*"],
     }
   },

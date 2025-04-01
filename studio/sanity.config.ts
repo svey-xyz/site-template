@@ -9,7 +9,6 @@ import { structure, schemaOptions, documentOptions } from './src/structure'
 import { PluginOptions, StudioToolMenu, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
-import { vercelDeployTool } from 'sanity-plugin-vercel-deploy'
 // import { pages } from "@tinloof/sanity-studio";
 import { AdjustmentsHorizontalIcon, DocumentTextIcon, ArchiveBoxIcon, TableCellsIcon } from '@heroicons/react/24/solid'
 import {
@@ -64,7 +63,6 @@ const deskPlugins = [
 		collections: ['heroicons']
 
 	}),
-	vercelDeployTool(),
 ] as PluginOptions[]
 
 
