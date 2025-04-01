@@ -21,7 +21,7 @@ const _FIELDS = [
 ]
 
 export const FeaturedTaxonomies = defineType({
-	name: 'featuredTaxonomies',
+	name: 'featuredTaxonomies_block',
 	type: 'object',
 	icon: () => <SwatchIcon />,
 	fields: [

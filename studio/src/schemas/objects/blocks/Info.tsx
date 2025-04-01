@@ -89,7 +89,7 @@ const _FIELDS = [
 ]
 
 export const Info = defineType({
-	name: 'info',
+	name: 'info_block',
 	type: 'object',
 	icon: () => <IdentificationIcon />,
 	fields: [

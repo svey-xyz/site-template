@@ -33,7 +33,7 @@ const _FIELDS = [
 ]
 
 export const Gallery = defineType({
-	name: 'gallery',
+	name: 'gallery_block',
 	type: 'object',
 	icon: () => <Squares2X2Icon />,
 	fields: [

@@ -48,7 +48,7 @@ const _FIELDS = [
 ]
 
 export const Archive = defineType({
-	name: 'archive',
+	name: 'archive_block',
 	type: 'object',
 	icon: () => <ArchiveBoxIcon />,
 	fields: [

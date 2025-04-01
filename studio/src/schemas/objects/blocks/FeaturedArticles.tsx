@@ -34,7 +34,7 @@ const _FIELDS = [
 ]
 
 export const FeaturedArticles = defineType({
-	name: 'featuredArticles',
+	name: 'featuredArticles_block',
 	type: 'object',
 	icon: () => <SparklesIcon />,
 	fields: [

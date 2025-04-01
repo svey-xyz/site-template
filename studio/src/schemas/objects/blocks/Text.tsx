@@ -13,7 +13,7 @@ const _FIELDS = [
 ]
 
 export const Text = defineType({
-	name: 'text',
+	name: 'text_block',
 	type: 'object',
 	icon: () => <Bars3BottomLeftIcon />,
 	fields: [

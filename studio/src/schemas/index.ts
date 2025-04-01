@@ -17,6 +17,7 @@ import { navGroup } from './objects/navGroup'
 
 
 const _objects = [social, link, basicDate, contact, markdownSchemaType, note, navGroup, ...Blocks]
+console.log('Blocks:', Blocks)
 
 /**
  * Documents

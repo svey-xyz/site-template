@@ -13,7 +13,7 @@ const _FIELDS = [
 ]
 
 export const Contact = defineType({
-	name: 'contact',
+	name: 'contact_block',
 	type: 'object',
 	icon: () => <InboxArrowDownIcon />,
 	fields: [

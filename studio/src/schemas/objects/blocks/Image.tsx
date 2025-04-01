@@ -36,7 +36,7 @@ const _PREVIEW = {
 }
 
 export const Image = defineType({
-	name: 'gallery',
+	name: 'image_block',
 	type: 'object',
 	icon: () => <PhotoIcon />,
 	fields: [

@@ -24,7 +24,7 @@ const _FIELDS = [
 ]
 
 export const Newsletter = defineType({
-	name: 'newsletter',
+	name: 'newsletter_block',
 	type: 'object',
 	icon: () => <EnvelopeOpenIcon />,
 	fields: [
