@@ -7,8 +7,25 @@ import { Archive } from './Archive'
 import { Image } from './Image'
 import { Contact } from './Contact'
 import { Gallery } from './Gallery'
+import { defineField, defineType } from 'sanity';
+import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 
-export const Blocks = [FeaturedTaxonomies, Text, FeaturedArticles, Newsletter, Info, Archive, Image, Contact, Gallery];
+export const Blocks = defineType({
+	name: 'blocks',
+	type: 'object',
+	fields: [
+		defineField({
+			title: 'Blocks',
+			name: 'blocks',
+			type: 'array',
+			of: (() => {
+				return Object.values(_BLOCK_TYPES).map((blockType) => { return { type: blockType }})
+			})(),
+		}),
+	]
+})
+
+export const BlockTypes = [FeaturedTaxonomies, Text, FeaturedArticles, Newsletter, Info, Archive, Image, Contact, Gallery];
 
 // export const blockTypes = Blocks.map((block) => {
 // 	return { type: block.name }

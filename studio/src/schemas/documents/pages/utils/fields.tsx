@@ -1,5 +1,6 @@
 import { _BLOCK_TYPES } from "@root.site-template/DocumentTypes"
 import { _CUSTOM_IMAGE_FIELD_VALUES } from "@schemas.studio/fields/CustomImage"
+import { Blocks } from "@schemas.studio/objects/blocks"
 import { defineField } from "sanity"
 
 export const _PAGE_FIELDS = [
@@ -30,12 +31,5 @@ export const _PAGE_FIELDS = [
 		description: 'When a hero image is set, a hero will appear with the page title and image.',
 		..._CUSTOM_IMAGE_FIELD_VALUES,
 	}),
-	defineField({
-		title: 'Blocks',
-		name: 'blocks',
-		type: 'array',
-		of: (() => {
-			return Object.values(_BLOCK_TYPES).map((blockType) => { return { type: blockType }})
-		})(),
-	}),
+	Blocks
 ]

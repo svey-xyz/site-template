@@ -10,7 +10,8 @@
 		"prebuild": "npm run extract-types",
 		"build": "sanity build",
 		"deploy": "sanity deploy",
-		"extract-types": "sanity schema extract --enforce-required-fields"
+		"extract-types": "sanity schema extract --enforce-required-fields",
+		"generate-types": "sanity typegen generate"
 	},
 	"keywords": [
 		"sanity",
