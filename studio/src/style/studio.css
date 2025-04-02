@@ -1,6 +1,3 @@
-@import url('@radix-ui/colors/tomato-dark.css');
-@import url('@radix-ui/colors/mauve-dark.css');
-
 :root {
 	--studio-icon-size: 25px;
 }
@@ -23,12 +20,75 @@ body {
 }
 
 .mdxeditor {
+	/* --baseText: var(--card-fg-color) !important;
 	--baseBase: #00000000 !important;
 	--basePageBg: #00000000 !important;
-	background-color: #00000000 !important;
+  --baseBg: var(--card-muted-bg-color) !important;
+	--baseBgSubtle: var(--card-muted-bg-color) !important;
+  --baseBgActive: var(--card-muted-fg-color) !important;
+
+	background-color: #00000000 !important; */
 	display: flex;
 	flex-direction: column;
 	gap: 12px;
+
+	--accentBase: var(--card-accent-fg-color) !important; /* e.g. #b28af7 */
+  --accentBgSubtle: var(--card-bg2-color) !important;      /* e.g. #191a24 */
+  --accentBg: var(--card-bg-color) !important;             /* e.g. #13141b */
+  --accentBgHover: var(--card-focus-ring-color) !important; /* e.g. #596ffc */
+  --accentBgActive: var(--card-focus-ring-color) !important;
+  --accentLine: var(--card-border-color) !important;       /* e.g. #2a2d3f */
+  --accentBorder: var(--card-border-color) !important;
+  --accentBorderHover: var(--card-border-color) !important;
+  --accentSolid: var(--card-link-fg-color) !important;       /* e.g. #aac1ff */
+  --accentSolidHover: var(--card-link-fg-color) !important;
+  --accentText: var(--card-fg-color) !important;             /* e.g. #e4e5e9 */
+  --accentTextContrast: var(--card-bg-color) !important;
+
+  /* Base Colors */
+  --baseBase: var(--card-bg-color) !important;        /* e.g. #979cb0 */
+  --baseBgSubtle: var(--card-bg2-color) !important;
+  --baseBg: var(--card-bg-color) !important;
+	--basePageBg: var(--card-bg-color) !important;
+  --baseBgHover: var(--card-bg-color) !important;
+  --baseBgActive: var(--card-bg-color) !important;
+  --baseLine: var(--card-border-color) !important;
+  --baseBorder: var(--card-border-color) !important;
+  --baseBorderHover: var(--card-border-color) !important;
+  --baseSolid: var(--card-bg-color) !important;
+  --baseSolidHover: var(--card-bg-color) !important;
+  --baseText: var(--card-fg-color) !important;
+  --baseTextContrast: var(--card-fg-color) !important;
+
+  /* Admonition Colors */
+  /* For Tip, we use one of the cyan avatar colors */
+  --admonitionTipBg: var(--card-avatar-cyan-bg-color) !important;
+  --admonitionTipBorder: var(--card-border-color) !important;
+  
+  /* For Info, we use the primary badge background */
+  --admonitionInfoBg: var(--card-badge-primary-bg-color) !important;
+  --admonitionInfoBorder: var(--card-border-color) !important;
+
+  /* For Caution, we map to the caution badge colors */
+  --admonitionCautionBg: var(--card-badge-caution-bg-color) !important;
+  --admonitionCautionBorder: var(--card-badge-caution-fg-color) !important;
+
+  /* For Danger, we map to the critical badge colors */
+  --admonitionDangerBg: var(--card-badge-critical-bg-color) !important;
+  --admonitionDangerBorder: var(--card-badge-critical-dot-color) !important;
+
+  /* For Note, we reuse the subtle background */
+  --admonitionNoteBg: var(--card-bg2-color) !important;
+  --admonitionNoteBorder: var(--card-border-color) !important;
+
+  /* Global typography and backgrounds */
+  /* font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,
+    Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+    "Liberation Mono", "Courier New", monospace; */
+
+  color: var(--baseText) !important;
+  background: var(--card-bg-color) !important;
 }
 
 .ͼo {
@@ -41,17 +101,37 @@ body {
 }
 
 .mdxeditor-toolbar {
+	position: relative;
 	width: 100%;
+	max-width: 100% !important;
 	display: flex;
+	flex-direction: row !important;
 	gap: 4px;
 	border: 1px solid var(--card-border-color);
-	flex-wrap: wrap !important;
-	overflow: visible !important;
+	align-items: start !important;
+	/* flex-wrap: wrap !important; */
+	/* overflow: visible !important; */
 	
 }
 
-.mdxeditor-toolbar div {
-	margin-left: var(--spacing-1) !important;
+.mdxeditor-toolbar div:first-child {
+	/* margin-left: var(--spacing-1) !important; */
+	display: flex;
+	position: relative !important;
+	flex-wrap: wrap !important;
+}
+
+.mdxeditor-toolbar div:nth-of-type(2) {
+	position: relative !important;
+	display: flex !important;
+	flex-direction: row !important;
+}
+
+.mdxeditor-toolbar div:nth-of-type(2) div div {
+	position: relative !important;
+	display: flex !important;
+	flex-direction: row !important;
+	flex-wrap: nowrap !important;
 }
 
 .mdxeditor-root-contenteditable {
