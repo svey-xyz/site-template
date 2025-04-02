@@ -1,80 +1,60 @@
-@import '../global.css';
-
 @import url('@radix-ui/colors/tomato-dark.css');
 @import url('@radix-ui/colors/mauve-dark.css');
 
+:root {
+	--studio-icon-size: 25px;
+}
 
-@layer base {
-	:root {
-		--studio-icon-size: 25px;
-	}
+span[data-testid="Media"] svg,
+div[data-ui="Text"] svg {
+	max-width: var(--studio-icon-size);
+	min-width: var(--studio-icon-size);
+	width: var(--studio-icon-size);
+}
 
-	span[data-testid="Media"] {
-		svg {
-			max-width: var(--studio-icon-size);
-			min-width: var(--studio-icon-size);
-			width: var(--studio-icon-size);
-		}
-	}
-	div[data-ui="Text"] {
-		svg {
-			max-width: var(--studio-icon-size);
-			min-width: var(--studio-icon-size);
-			width: var(--studio-icon-size);
-		}
-	}
+body {
+	margin: 0;
+}
 
-	body {
-		@apply m-0;
-	}
+.dark-editor {
 
-	.main-padding { @apply max-w-[1600px] w-full mx-auto px-6 sm:px-12 md:px-20 lg:px-32; }
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
 }
 
 .mdxeditor {
-	@apply flex flex-col gap-2;
-	h1, h2, h3, h4, h5, h6 { @apply font-heading font-bold text-accent-secondary mt-2 text-xl; }
-	h1, h2 { @apply text-accent text-2xl; }
-	p { @apply mt-2; }
-	a { @apply hover-text; }
-	em { @apply font-light; }
+	--baseBase: #00000000 !important;
+	--basePageBg: #00000000 !important;
+	background-color: #00000000 !important;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
 }
 
-/* Matches sanity colours */
-.mdxeditor .mdxeditor-toolbar {
-	@apply border border-solid !border-[var(--card-border-color)];
+.ͼo {
+	background-color: #00000000 !important;
 
-  flex-wrap: wrap !important;
-  overflow: visible !important;
+}
+
+.ͼo .cm-gutterElement {
+	background-color: #00000000 !important;
+}
+
+.mdxeditor-toolbar {
+	width: 100%;
+	display: flex;
+	gap: 4px;
+	border: 1px solid var(--card-border-color);
+	flex-wrap: wrap !important;
+	overflow: visible !important;
 	
-	--baseBgActive: var(--card-focus-ring-color);
-	--baseTextActive: var(--card-bg-color);
-	--baseBg: var(--card-bg2-color);
-	--baseText: var(--card-muted-fg-color);
-  --baseTextContrast: var(--card-muted-fg-color);
 }
 
-.mdxeditor .mdxeditor-toolbar [data-state='on'] {
-	--baseText: var(--card-bg-color);
-  --baseTextContrast: var(--card-bg-color);
+.mdxeditor-toolbar div {
+	margin-left: var(--spacing-1) !important;
 }
 
-.mdxeditor .mdxeditor-toolbar div {
-	@apply !ml-0 flex flex-row flex-wrap;
-}
-
-.mdxeditor .mdxeditor-rich-text-editor, .mdxeditor .mdxeditor-source-editor, .mdxeditor .mdxeditor-diff-editor {
-	--baseBg: var(--card-bg-color)
-	--baseText: var(--card-muted-fg-color);
-  --baseTextContrast: var(--card-muted-fg-color);
-
-	@apply border border-solid !border-[var(--card-border-color)] rounded !bg-[var(--baseBg)];
-}
-
-.mdxeditor .cm-gutterElement, .mdxeditor .cm-editor {
-	--baseBg: var(--card-bg-color);
-	--baseText: var(--card-border-color);
-	--baseText: var(--card-muted-fg-color);
-
-	@apply !bg-[var(--baseBg)];
+.mdxeditor-root-contenteditable {
+	border: 1px solid var(--card-border-color);
+	border-radius: 4px;
 }

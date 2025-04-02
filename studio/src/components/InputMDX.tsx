@@ -1,12 +1,11 @@
-"use client";
-
 import { useCallback, FC} from "react";
 import { diffSourcePlugin, codeBlockPlugin, BlockTypeSelect, BoldItalicUnderlineToggles, CreateLink, DiffSourceToggleWrapper, InsertTable, ListsToggle, MDXEditor, MDXEditorMethods, UndoRedo, headingsPlugin, linkDialogPlugin, linkPlugin, listsPlugin, markdownShortcutPlugin, quotePlugin, thematicBreakPlugin, toolbarPlugin, Separator, InsertCodeBlock, ChangeCodeMirrorLanguage, ConditionalContents, codeMirrorPlugin, ButtonOrDropdownButton} from "@mdxeditor/editor";
 import { PatchEvent, StringInputProps, set, unset, useColorSchemeValue } from "sanity";
+import '@mdxeditor/editor/style.css'
 
 interface EditorProps extends StringInputProps {
 	markdown?: string;
-	editorRef?: React.MutableRefObject<MDXEditorMethods | null>;
+	editorRef?: React.RefObject<MDXEditorMethods | null>;
 }
 
 export const InputMDX: FC<EditorProps> = (props) => {

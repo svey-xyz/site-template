@@ -1,11 +1,14 @@
 /**
  * This configuration is used to for the Sanity Studio that’s mounted on the `/app/studio/[[...index]]/page.tsx` route
  */
+
+import './src/style/studio.css'
+
 import { structureTool } from 'sanity/structure'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import { apiVersion, configStudioBasePath, configStudioName, configStudioTitle, dataset, projectId } from '@lib.studio/api'
-import { structure, schemaOptions, documentOptions } from './src/structure'
+import { structure, schemaOptions, documentOptions } from '@src.studio/structure'
 import { PluginOptions, StudioToolMenu, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';

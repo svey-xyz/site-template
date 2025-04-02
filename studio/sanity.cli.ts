@@ -6,7 +6,6 @@ import { dataset, projectId } from './src/lib/api'
 import { defineCliConfig } from 'sanity/cli'
 import tsconfigPaths from 'vite-tsconfig-paths'
 
-
 export default defineCliConfig({
 	api: { projectId, dataset },
 	reactStrictMode: true,

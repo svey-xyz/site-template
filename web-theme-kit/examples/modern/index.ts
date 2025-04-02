@@ -1,5 +1,5 @@
+import type { WEB_THEME_KIT } from "@types.web-theme-kit/theme";
 import Color from "colorjs.io";
-import type { WEB_THEME_KIT } from "../../types/theme";
 
 export const modern: WEB_THEME_KIT.theme = {
 	name: 'base',
