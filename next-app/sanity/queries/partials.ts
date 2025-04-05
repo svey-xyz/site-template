@@ -18,17 +18,17 @@ export const partial_Article: string = groq`
 
 export const partial_Blocks: string = groq`
 	...,
-	_type == "Archive" => {
+	_type == "archive_block" => {
 		...,
 		featuredTaxonomies[]-> {
 			...,
 		} 
 	},
-	_type == "FeaturedTaxonomies" => {
+	_type == "featuredTaxonomies_block" => {
 		...,
 		taxonomies[]->,
 	},
-	_type == "FeaturedArticles" => {
+	_type == "featuredArticles_block" => {
 		...,
 		articles[]-> {
 			...,
@@ -37,13 +37,13 @@ export const partial_Blocks: string = groq`
 			}
 		},
 	},
-	_type == "Image" => {
+	_type == "image_block" => {
 		...,
 		image {
 			${partial_ImageObject}
 		}
 	},
-	_type == "Gallery" => {
+	_type == "gallery_block" => {
 		...,
 		images[] {
 			${partial_ImageObject}

@@ -3,6 +3,7 @@ export enum _ARTICLE_TYPES {
 }
 
 export enum _BLOCK_TYPES {
+	STANDARD = 'standard_block',
 	ARCHIVE = 'archive_block',
 	CONTACT = 'contact_block',
 	FEATURED_ARTICLES = 'featuredArticles_block',

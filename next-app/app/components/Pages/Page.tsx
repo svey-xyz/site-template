@@ -12,6 +12,8 @@ export interface PageProps {
 export const Page = ({ data, encodeDataAttribute, draft }: PageProps) => {
 	if (!data) return;
 
+	console.log('Page: ', data)
+
 	const BG_URL = data.heroImage ? urlForImage(data.heroImage).url() : ''
 	return (
 		<article className='relative flex flex-grow max-w-full'>

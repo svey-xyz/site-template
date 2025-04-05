@@ -13,8 +13,10 @@ export const getPageQuery = defineQuery(`
     _type,
     title,
     slug,
-		blocks[] {
-			${partial_Blocks},
+		blocks{
+			blocks[] {
+				${partial_Blocks},
+			}
 		}
   }
 `);
