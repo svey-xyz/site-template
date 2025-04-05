@@ -7,21 +7,16 @@ import './src/style/studio.css'
 import { structureTool } from 'sanity/structure'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { apiVersion, configStudioBasePath, configStudioName, configStudioTitle, dataset, projectId } from '@lib.studio/api'
+import { configStudioBasePath, configStudioName, configStudioTitle, dataset, projectId } from '@lib.studio/api'
 import { structure, schemaOptions, documentOptions } from '@src.studio/structure'
-import { PluginOptions, StudioToolMenu, defineConfig } from 'sanity'
+import { PluginOptions, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
-// import { pages } from "@tinloof/sanity-studio";
 import { AdjustmentsHorizontalIcon, DocumentTextIcon, ArchiveBoxIcon, TableCellsIcon } from '@heroicons/react/24/solid'
 import {
 	presentationTool,
-	defineDocuments,
-	defineLocations,
-	type DocumentLocation,
 } from 'sanity/presentation'
 import { resolve } from './src/lib/resolve'
-import { locate } from './src/lib/locate'
 
 const deskPlugins = [
 	presentationTool({
@@ -34,26 +29,6 @@ const deskPlugins = [
 			},
 		},
 	}),
-
-	// pages({
-	// 	// Presentation's configuration
-	// 	previewUrl: {
-	// 		previewMode: {
-	// 			enable: "/api/preview",
-	// 		},
-	// 	},
-	// 	creatablePages: ["page", "archive"],
-	// 	folders: {
-	// 		"/archives": {
-	// 			title: "Archives",
-	// 			icon: ArchiveBoxIcon,
-	// 		},
-	// 		"": {
-	// 			title: "Pages",
-	// 			icon: DocumentTextIcon,
-	// 		},
-	// 	},
-	// }),
 	structureTool({
 		name: 'data',
 		title: 'Data',
@@ -85,6 +60,10 @@ const config = defineConfig({
 	tasks: {
 		enabled: false
 	},
-
+	beta: {
+		create: {
+			startInCreateEnabled: false,
+		}
+	}
 })
 export default config;
