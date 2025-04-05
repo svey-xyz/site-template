@@ -10,7 +10,7 @@ export const _PAGE_PREVIEW = {
 		},
 		prepare(value: any) {
 			const { image, blocks, title } = value
-			const blockNames = blocks ? (blocks as Blocks['blocks'])?.map((block) => {
+			const blockNames = blocks ? ((blocks.blocks) as Blocks['blocks'])?.map((block) => {
 				return ` ${camelCaseToWords(block?._type)}`
 			}) : []
 			const subtitle = blocks ?
