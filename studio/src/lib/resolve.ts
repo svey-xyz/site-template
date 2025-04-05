@@ -20,6 +20,7 @@ export const resolve: PresentationPluginOptions["resolve"] = {
 	// 	},
 	// ]),
 	locations: (params, context) => {
+		params.version = params.version || 'drafts'
 		console.log('PARAMS: ', params)
 
 		if (params.type === 'siteSettings') {
