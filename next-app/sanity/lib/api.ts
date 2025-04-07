@@ -28,6 +28,13 @@ export const configStudioName =
 export const configStudioTitle =
 	process.env.NEXT_PUBLIC_SANITY_STUDIO_TITLE || 'studio'
 
+
+export const config = {
+	projectId,
+	dataset,
+	baseUrl: 'http://localhost:3333',
+}
+
 function assertValue<T>(v: T | undefined, errorMessage: string): T | undefined {
 	// if (v === undefined) {
 	// 	throw new Error(errorMessage)

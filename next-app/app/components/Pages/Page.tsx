@@ -1,7 +1,11 @@
+
 import { EncodeDataAttributeCallback } from '@sanity/react-loader';
+import { createDataAttribute } from '@sanity/visual-editing'
 import React from 'react';
 import { urlForImage } from '@sanity.next-app/lib/image';
-import { Blocks } from '@components.next-app/Pages/Blocks';
+import { BlockRenderer } from '@components.next-app/Pages/BlockRenderer';
+import { config } from '@sanity.next-app/lib/api';
+import PageBuilder from '@components.next-app/Pages/PageBuilder';
 
 export interface PageProps {
 	data: any // PagePayload | ArchivePayload | null
@@ -16,7 +20,15 @@ export const Page = ({ data, encodeDataAttribute, draft }: PageProps) => {
 
 	const BG_URL = data.heroImage ? urlForImage(data.heroImage).url() : ''
 	return (
-		<article className='relative flex flex-grow max-w-full'>
+		<article
+			className='relative flex flex-grow max-w-full main-padding'
+			data-sanity={createDataAttribute({
+				...config,
+				id: data._id,
+				type: data._type,
+				path: 'blocks.blocks',
+			}).toString()}
+		>
 			{	BG_URL &&
 				<div
 					className={`relative max-w-full bg-fixed bg-no-repeat bg-cover bg-center`}
@@ -32,9 +44,20 @@ export const Page = ({ data, encodeDataAttribute, draft }: PageProps) => {
 				</div>
 			}
 
-			{ data.blocks &&
-				<Blocks blocks={data.blocks} blockClasses={`section-block`} draft={draft} />
-			}
+			<PageBuilder page={data} />
+
+			{/* { data.blocks &&
+				<BlockRenderer
+					blocks={data.blocks}
+					blockClasses={`section-block`}
+					documentAttributes={{
+						documentId: data._id,
+						documentType: data._type,
+					}}
+					draft={draft}
+					
+				/>
+			} */}
 		</article>
 	);
 };

@@ -3,11 +3,10 @@ import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes'
 import { ComponentType } from 'react'
 
 type BlockMap = {
-	[key in _BLOCK_TYPES]?: ComponentType<any>
+	[key in _BLOCK_TYPES]: ComponentType<any>
 }
 
 export const BlockList: BlockMap = {
-	standard_block: dynamic(() => import('@components.next-app/Pages/blocks/Standard')),
 	featuredTaxonomies_block: dynamic(() => import('@components.next-app/Pages/blocks/FeaturedTaxonomies')),
 	text_block: dynamic(() => import('@components.next-app/Pages/blocks/Text')),
 	newsletter_block: dynamic(() => import('@components.next-app/Pages/blocks/Newsletter')),
