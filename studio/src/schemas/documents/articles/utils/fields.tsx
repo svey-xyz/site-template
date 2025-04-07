@@ -24,7 +24,8 @@ export const _ARTICLE_FIELDS = [
 		defineField({
 			title: 'Description',
 			name: 'description',
-			type: 'mdx',
+			type: 'array',
+			of: [{ type: 'block' }],
 			group: 'about',
 		}),
 		defineField({

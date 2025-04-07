@@ -4,7 +4,6 @@ import { SanityDocument } from "next-sanity";
 import { useOptimistic } from "next-sanity/hooks";
 import Link from "next/link";
 
-// import { BlockRenderer } from "@components.next-app/Pages/BlockRenderer";
 import { _BLOCK_TYPES } from "@root.site-template/DocumentTypes";
 import BlockList from "@components.next-app/Pages/blocks";
 import { dataAttr } from "@sanity.next-app/lib/utils";
@@ -20,14 +19,13 @@ type PageBuilderSection = {
 type PageData = {
 	_id: string;
 	_type: string;
-	pageBuilder?: PageBuilderSection[];
+	blocks?: PageBuilderSection[];
 };
 
 
 function renderEmptyState(page: any) {
-	if (!page) {
-		return null;
-	}
+	if (!page) return null;
+
 	return (
 		<div className="container">
 			<h1 className="text-4xl font-extrabold text-gray-900 tracking-tight sm:text-5xl">
@@ -50,23 +48,13 @@ function renderEmptyState(page: any) {
 	);
 }
 
-export default function PageBuilder({ page }: { page: any }) {
-	const pageBuilderSections = useOptimistic<
+export default function BlockBuilder({ page }: { page: any }) {
+	const blocksObject = useOptimistic<
 		any,
 		SanityDocument<any>
 	>(page?.blocks || [], (currentBlocks, action) => {
-		console.log("Action: ", action);
-		console.log("currentBlocks: ", currentBlocks);
+		if (action.id !== page?._id) return currentBlocks;
 
-		// The action contains updated document data from Sanity
-		// when someone makes an edit in the Studio
-
-		// If the edit was to a different document, ignore it
-		if (action.id !== page?._id) {
-			return currentBlocks;
-		}
-
-		// If there are sections in the updated document, use them
 		if (action.document.blocks) {
 			// Reconcile References. https://www.sanity.io/docs/enabling-drag-and-drop#ffe728eea8c1
 			return { blocks: action.document.blocks.blocks.map(
@@ -75,23 +63,15 @@ export default function PageBuilder({ page }: { page: any }) {
 			)
 		} }
 
-		// Otherwise keep the current sections
 		return currentBlocks;
 	});
 
-	if (!page) {
-		return renderEmptyState(page);
-	}
+	if (!page) return renderEmptyState(page);
 
-	console.log("blocks: ", pageBuilderSections);
+	const StandardBlock = dynamic(() => import('@components.next-app/Pages/blocks/Standard'));
 
-		const StandardBlock = dynamic(() => import('@components.next-app/Pages/blocks/Standard'));
-		
-	
-
-
-	return pageBuilderSections ?
-		pageBuilderSections.blocks.map((block: any) => {
+	return blocksObject ?
+		blocksObject.blocks.map((block: any) => {
 			const BlockComponent =
 				!isBlockType(block._type) ?
 					StandardBlock :
@@ -99,7 +79,9 @@ export default function PageBuilder({ page }: { page: any }) {
 					
 			return (
 					<div
-						className="h-fit"
+						key={block._key}
+						className="h-fit my-4"
+						aria-label="block"
 						data-sanity={dataAttr({
 							...config,
 							id: page._id,

@@ -24,7 +24,8 @@ const _FIELDS = [
 	defineField({
 		title: 'Description',
 		name: 'description',
-		type: 'mdx',
+		type: 'array',
+		of: [{ type: 'block' }],
 	}),
 	defineField({
 		title: 'Filterable',

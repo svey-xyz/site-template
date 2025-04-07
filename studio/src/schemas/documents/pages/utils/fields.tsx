@@ -23,7 +23,8 @@ export const _PAGE_FIELDS = [
 	defineField({
 		title: 'Description',
 		name: 'description',
-		type: 'mdx',
+		type: 'array',
+		of: [{ type: 'block' }],
 	}),
 	defineField({
 		title: 'Hero Image',

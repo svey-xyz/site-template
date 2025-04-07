@@ -8,7 +8,8 @@ const _FIELDS = [
 	defineField({
 		title: 'Text',
 		name: 'text',
-		type: 'mdx',
+		type: 'array',
+		of: [{ type: 'block'}]
 	}),
 ]
 

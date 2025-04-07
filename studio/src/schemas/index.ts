@@ -11,11 +11,10 @@ import { social } from './objects/social'
 import { link } from './objects/link'
 import { basicDate } from './objects/basicDate'
 import { contact } from './objects/contact'
-import { markdownSchemaType } from './objects/mdx'
 import { note } from './objects/note'
 import { navGroup } from './objects/navGroup'
 
-const _objects = [social, link, basicDate, contact, markdownSchemaType, note, navGroup, Blocks, ...BlockTypes]
+const _objects = [social, link, basicDate, contact, note, navGroup, Blocks, ...BlockTypes]
 
 /**
  * Documents
