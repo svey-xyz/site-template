@@ -1,4 +1,6 @@
-import type { WEB_THEME_KIT } from "@types.web-theme-kit/theme";
+// import type { WEB_THEME_KIT } from "@types.web-theme-kit/theme";
+import type { WEB_THEME_KIT } from "../../types/theme";
+
 import Color from "colorjs.io";
 
 export const modern: WEB_THEME_KIT.theme = {
