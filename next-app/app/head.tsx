@@ -2,7 +2,7 @@ import { getActiveTheme } from "web-theme-kit";
 import { themeBuilder } from "web-theme-kit";
 
 export const Head = async() => {
-	const theme = await getActiveTheme()
+	const theme = await getActiveTheme(``)
 	const themeCSS = theme ? themeBuilder(theme) : ''
 
 	return (

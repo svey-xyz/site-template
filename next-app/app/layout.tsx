@@ -15,7 +15,7 @@ import { VisualEditing, toPlainText } from "next-sanity";
 import { handleError } from "./client-utils";
 
 const inter = Inter({ subsets: ['latin'] })
-const theme = await getActiveTheme()
+const theme = await getActiveTheme(``)
 const font = theme?.text?.font
 
 // const LiveVisualEditing = dynamic(

@@ -2,7 +2,7 @@ import Color from 'colorjs.io'
 import type { WEB_THEME_KIT } from '../types/theme'
 
 export const themeBuilder = (themeDefinition: WEB_THEME_KIT.theme) => {
-	generateThemeCSS(themeDefinition)
+	return generateThemeCSS(themeDefinition)
 }
 
 const generateThemeCSS = (theme: WEB_THEME_KIT.theme): string => {
