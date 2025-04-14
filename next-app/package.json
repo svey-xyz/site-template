@@ -2,12 +2,12 @@
 	"name": "nextjs-app-template",
 	"private": true,
 	"scripts": {
-		"predev": "npm run typegen",
-		"dev": "next --turbo",
-		"prebuild": "npm run typegen",
-		"build": "next build",
-		"start": "next start",
-		"lint": "next lint",
+		"predev": "bun run typegen",
+		"dev": "next --turbopack",
+		"prebuild": "bun run typegen",
+		"build": "next build --turbopack",
+		"start": "next start --turbopack",
+		"lint": "next lint --turbopack",
 		"typegen": "sanity typegen generate"
 	},
 	"dependencies": {

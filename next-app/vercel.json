@@ -1,8 +1,8 @@
 {
 	"framework": "nextjs",
 	"installCommand": "bun i",
-	"devCommand": "bun run dev",
-	"buildCommand": "bun run build",
+	"devCommand": "bun run --bun dev",
+	"buildCommand": "bun run --bun build",
 	"cleanUrls": true,
 	"trailingSlash": false
 }

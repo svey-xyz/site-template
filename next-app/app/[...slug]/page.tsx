@@ -12,7 +12,7 @@ export async function generateStaticParams() {
 		data: Array<{ slug: string }>
 	};
 
-	const slugs = data.flatMap((page) => {
+	const slugs = data?.flatMap((page) => {
 		return { slug: page.slug.split('/') }
 	})
 	return slugs;
