@@ -57,7 +57,7 @@ export default function BlockBuilder({ page }: { page: any }) {
 
 		if (action.document.blocks) {
 			// Reconcile References. https://www.sanity.io/docs/enabling-drag-and-drop#ffe728eea8c1
-			return { blocks: action.document.blocks.blocks.map(
+			return { blocks: action.document.blocks.blocks?.map(
 				(block: any) =>
 					currentBlocks?.blocks?.find((b: any) => b._key === block?._key) || block,
 			)
@@ -71,7 +71,7 @@ export default function BlockBuilder({ page }: { page: any }) {
 	const StandardBlock = dynamic(() => import('@components.next-app/Pages/blocks/Standard'));
 
 	return blocksObject ?
-		blocksObject.blocks.map((block: any) => {
+		blocksObject.blocks?.map((block: any) => {
 			const BlockComponent =
 				!isBlockType(block._type) ?
 					StandardBlock :
