@@ -7,7 +7,7 @@ import './src/style/studio.css'
 import { structureTool } from 'sanity/structure'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { configStudioBasePath, configStudioName, configStudioTitle, dataset, projectId } from '@lib.studio/api'
+import { configStudioBasePath, configStudioName, configStudioTitle, dataset, projectId, sanityStudioPreviewURL } from '@lib.studio/api'
 import { structure, schemaOptions, documentOptions } from '@src.studio/structure'
 import { PluginOptions, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
@@ -23,7 +23,7 @@ const deskPlugins = [
 		resolve,
 		// locate,
 		previewUrl: {
-			origin: 'http://localhost:3000',
+			origin: sanityStudioPreviewURL,
 			previewMode: {
 				enable: '/api/preview',
 			},

@@ -17,6 +17,12 @@ export const configStudioBasePath =
 export const configStudioName =
 	process.env.SANITY_STUDIO_NAME || 'studio'
 
+export const sanityStudioPreviewURL =
+	process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000'
+
+export const sanityStudioHost =
+	process.env.SANITY_STUDIO_HOST || 'localhost'
+
 export const revalidateSecret = process.env.SANITY_REVALIDATE_SECRET
 
 export const configStudioTitle =

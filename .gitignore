@@ -29,8 +29,10 @@ yarn-error.log*
 
 # local env files
 .env*.local
+.env.*
 sanity.json
 .env
+.env.production
 .sanity
 
 # vercel

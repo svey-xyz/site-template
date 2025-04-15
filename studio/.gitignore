@@ -27,6 +27,8 @@
 
 # Dotenv and similar local-only files
 *.local
+*.production
+*.env.*
 
 # ignore generated files
 sanity.types.ts
