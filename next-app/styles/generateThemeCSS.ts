@@ -1,5 +1,5 @@
 import Color from 'colorjs.io'
-import type { _preGeneratedTheme, WEB_THEME_KIT } from '../types/theme'
+import type { _preGeneratedTheme, WEB_THEME_KIT } from 'web-theme-kit/types/theme'
 
 export const generateThemeCSS = (theme: _preGeneratedTheme): string => {
 	const toHSL = (color: Color | undefined) => color ? `${color.hsl.h}deg ${color.hsl.s}% ${color.hsl.l}%` : ''
