@@ -2,12 +2,12 @@
   "name": "site-template",
   "version": "2025.04.05",
   "private": true,
-	"scripts": {
-		"dev": "bun run --filter '*' dev"
-	},
-	"workspaces": [
-		"next-app",
-		"studio",
-		"web-theme-kit"
-	]
+  "scripts": {
+    "dev": "bun run --filter '*' dev"
+  },
+  "workspaces": [
+    "next-app",
+    "studio",
+    "web-theme-kit"
+  ]
 }

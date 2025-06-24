@@ -4,6 +4,6 @@ import { generateThemeCSS } from "./generateThemeCSS";
 export const createTheme = (theme: _preGeneratedTheme): WEB_THEME_KIT.theme => {
 	return {
 		...theme,
-		CSS: generateThemeCSS(theme),
+		CSS: generateThemeCSS(theme)
 	}
 }

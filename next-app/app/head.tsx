@@ -1,7 +1,6 @@
 import { WEB_THEME_KIT } from "web-theme-kit";
 
 export const Head = async({ theme }:{ theme?: WEB_THEME_KIT.theme }) => {
-	
 	return (
 		<head>
 			{/* <title>{settings.title}</title> */}

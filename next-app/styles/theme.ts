@@ -1,11 +1,11 @@
-import { getActiveTheme, themeBuilder } from "web-theme-kit/lib";
+// import { getExampleTheme } from "web-theme-kit/lib";
 
-export const ThemeStyle = async () => {
-	const theme = await getActiveTheme(``)
-	const CSS = theme ? themeBuilder(theme) : ''
+import { WEB_THEME_EXAMPLES } from "@root.site-template/web-theme-kit";
 
-	return {
-		CSS
-	}
+// export const Theme = async () => {
+// 	const theme = await getExampleTheme('modern');
 
-}
+// 	return theme
+// }
+
+export const ACTIVE_THEME = WEB_THEME_EXAMPLES.modern

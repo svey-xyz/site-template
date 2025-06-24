@@ -1,5 +1,5 @@
 import { modern } from './modern'
 
-export const EXAMPLES = {
+export const WEB_THEME_EXAMPLES = {
 	modern
 }

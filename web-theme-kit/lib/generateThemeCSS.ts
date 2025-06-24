@@ -44,6 +44,8 @@ export const generateThemeCSS = (theme: _preGeneratedTheme): string => {
 	const CSSMiscVars: string[] = []
 	if (theme.text?.size?.base) CSSMiscVars.push(`--text-base-size: ${theme.text.size.base};`)
 	if (theme.text?.size?.scale) CSSMiscVars.push(`--text-scale: ${theme.text.size.scale};`)
+	if (theme.icon?.size?.base) CSSMiscVars.push(`--icon-base-size: ${theme.icon.size.base};`)
+	if (theme.icon?.size?.scale) CSSMiscVars.push(`--icon-scale: ${theme.icon.size.scale};`)
 	if (theme.radius?.size) CSSMiscVars.push(`--rounded-size: ${theme.radius.size};`)
 	if (theme.radius?.scale) CSSMiscVars.push(`--rounded-scale: ${theme.radius.scale};`)
 

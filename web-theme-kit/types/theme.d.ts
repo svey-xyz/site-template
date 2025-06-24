@@ -1,8 +1,7 @@
 import type Color from 'colorjs.io/types'
 import type { Properties } from 'csstype';
-import type { _ColorMap } from './colourMap';
 import type { _text } from './text';
-import type { _colours } from './colours';
+import type { _colours, _ColorMap } from './colours';
 
 export namespace WEB_THEME_KIT {
 	type theme = _theme
@@ -12,7 +11,7 @@ export namespace WEB_THEME_KIT {
 }
 
 type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
-type _preGeneratedTheme = Optional<WEB_THEME_KIT.theme, 'CSS'>;
+export type _preGeneratedTheme = Optional<WEB_THEME_KIT.theme, 'CSS' | 'tailwindConf'>;
 
 type _theme = {
 	name: string,
@@ -24,7 +23,13 @@ type _theme = {
 	colours?: _ColorMap,
 	text?: _text,
 	icon?: {
-
+		size?: {
+			base?: Properties["fontSize"],
+			/**
+			 * Modifier for size change from base.
+			 */
+			scale?: number
+		},
 	},
 	shadow?: {
 		spread: number,

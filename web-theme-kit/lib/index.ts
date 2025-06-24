@@ -1,2 +1,3 @@
 // export { themeBuilder } from './themeBuilder'
-export { getActiveTheme } from './getActiveTheme'
+export { createTheme } from './createTheme'
+export { DefaultTailwindConf } from './default.tailwind.conf'
