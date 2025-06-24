@@ -1,0 +1,17 @@
+@theme {
+	 /* BG - FG colours */
+	--color-primary-bg: #0070f3;
+	--color-secondary-bg: #f0f0f0;
+	--color-primary-fg: #ffffff;
+	--color-secondary-fg: #333333;
+
+	/* Accent colours */
+	--color-accent-primary: #ff4081;
+	--color-accent-secondary: #6200ea;
+	--color-accent-warning: #ff9800;
+	--color-accent-success: #4caf50;
+	--color-accent-error: #f44336;
+
+
+	--animate-breathing: 'bounceScale 2s linear infinite';
+}
