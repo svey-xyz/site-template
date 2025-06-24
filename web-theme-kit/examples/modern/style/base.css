@@ -1,0 +1,11 @@
+@layer base {
+	body {
+		@apply font-body text-left text-base text-fg-primary bg-bg-primary transition-colors duration-300;
+	}
+
+	h1, h2, h3, h4, h5, h6 { @apply font-heading font-bold text-accent mt-2 text-xl; }
+	h1, h2 { @apply text-accent-secondary text-2xl; }
+	p { @apply mt-2; }
+	a { @apply hover-text; }
+	em { @apply font-light; }
+}
