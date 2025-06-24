@@ -1,10 +1,11 @@
 // import type { WEB_THEME_KIT } from "@types.web-theme-kit/theme";
+import { createTheme } from "../../lib/createTheme";
 import type { WEB_THEME_KIT } from "../../types/theme";
 
 import Color from "colorjs.io";
 
-export const modern: WEB_THEME_KIT.theme = {
-	name: 'base',
+const modernTheme = {
+	name: 'modern',
 	colours: {
 		default: {
 			fg: {
@@ -30,3 +31,5 @@ export const modern: WEB_THEME_KIT.theme = {
 		}
 	}
 }
+
+export const modern = createTheme(modernTheme);

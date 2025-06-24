@@ -1,5 +1,3 @@
-import '@styles.next-app/site/site.css'
-
 import Header from '@components.next-app/Header'
 import Footer from '@components.next-app/Footer'
 

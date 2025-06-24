@@ -11,8 +11,12 @@ export namespace WEB_THEME_KIT {
 	type ColorMap = _ColorMap
 }
 
+type Optional<T, K extends keyof T> = Omit<T, K> & Partial<Pick<T, K>>;
+type _preGeneratedTheme = Optional<WEB_THEME_KIT.theme, 'CSS'>;
+
 type _theme = {
 	name: string,
+	CSS: string,
 	author?: {}, // TODO: define type
 	/**
 	 * @colours extendable themes.
