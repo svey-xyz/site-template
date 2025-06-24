@@ -15,3 +15,14 @@
 
 	--animate-breathing: 'bounceScale 2s linear infinite';
 }
+
+:root {
+	--text-base-size: 14px;
+	--text-scale: 1.2;
+
+	--icon-base-size: 24px;
+	--icon-scale: 1.5;
+
+	--rounded-size: 8px;
+	--rounded-scale: 1.2;
+}
