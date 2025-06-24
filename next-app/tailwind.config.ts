@@ -11,7 +11,7 @@ const TailwindConfig = {
 		'./styles/**/*.{js,ts,jsx,tsx,mdx,css}',
 	],
 	...DefaultTailwindConf
-
+// asd
 } satisfies Config
 
 export default TailwindConfig
