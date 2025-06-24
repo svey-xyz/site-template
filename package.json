@@ -7,7 +7,6 @@
   },
   "workspaces": [
     "next-app",
-    "studio",
-    "web-theme-kit"
+    "studio"
   ]
 }
