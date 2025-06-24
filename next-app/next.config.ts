@@ -13,7 +13,6 @@ const nextConfig: NextConfig = {
 	images: {
 		domains: ["cdn.sanity.io"]
 	},
-	transpilePackages: ['web-theme-kit'],
 }
 
 export default nextConfig
