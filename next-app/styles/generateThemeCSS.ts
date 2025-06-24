@@ -1,46 +1,57 @@
 import Color from 'colorjs.io'
-import type { _preGeneratedTheme, WEB_THEME_KIT } from 'web-theme-kit/types/theme'
+import type { Properties } from 'csstype';
 
-export const generateThemeCSS = (theme: _preGeneratedTheme): string => {
-	const toHSL = (color: Color | undefined) => color ? `${color.hsl.h}deg ${color.hsl.s}% ${color.hsl.l}%` : ''
+type theme = {
+	text?: {
+		size?: {
+			base?: Properties["fontSize"],
+			/**
+			 * Modifier for size change from base.
+			 */
+			scale?: number
+		},
+		font?: {
+			className: string;
+			style: {
+				fontFamily: string;
+				fontWeight?: number;
+				fontStyle?: string;
+			};
+			variable?: string;
+		};
+	},
+	icon?: {
+		size?: {
+			base?: Properties["fontSize"],
 
-	const CSSColourVars: string[] = []
-
-	const addColorVars = (colors?: WEB_THEME_KIT.colours, prefix?: string) => {
-		if (!colors) return
-
-		const { fg, bg, accent } = colors
-		const stateVars: string[] = []
-
-		if (fg?.primary) stateVars.push(`--primary-fg: ${toHSL(fg.primary)};`)
-		if (bg?.primary) stateVars.push(`--primary-bg: ${toHSL(bg.primary)};`)
-		if (bg?.secondary) stateVars.push(`--secondary-bg: ${toHSL(bg.secondary)};`)
-
-		if (accent) {
-			if (accent.primary) stateVars.push(`--primary-accent: ${toHSL(accent.primary)};`)
-			if (accent.secondary) stateVars.push(`--secondary-accent: ${toHSL(accent.secondary)};`)
-			if (accent.failure) stateVars.push(`--failure-accent: ${toHSL(accent.failure)};`)
-			if (accent.warning) stateVars.push(`--warning-accent: ${toHSL(accent.warning)};`)
-			if (accent.success) stateVars.push(`--success-accent: ${toHSL(accent.success)};`)
+			scale?: number
+		},
+	},
+	shadow?: {
+		spread: number,
+		darkness: number,
+		darkModeMultiplier: number,
+		colours: {
+			shadow: Color,
+			/**
+			 *
+			 *
+			 * @type {Color} Used for extrude shadow
+			 */
+			inverse: Color
 		}
+	},
+	radius?: {
+		size?: Properties["borderRadius"],
+		/**
+		 * Modifier for radius change from base size.
+		 */
+		scale?: number
+	},
+}
 
-		if (prefix) {
-			// Add theme variables under a class for non-default themes
-			CSSColourVars.push(`.${prefix} { ${stateVars.join(' ')} }`)
-		} else {
-			// Default theme variables in :root
-			CSSColourVars.push(`:root { ${stateVars.join(' ')} }`)
-		}
-	}
+export const generateThemeCSS = (theme: theme): string => {
 
-	// Iterate through all themes in colours
-	if (theme.colours) {
-		Object.entries(theme.colours).forEach(([key, value]) => {
-			addColorVars(value, key === 'default' ? undefined : key) // No prefix for default theme
-		})
-	}
-
-	// Additional variables for text, shadow, etc.
 	const CSSMiscVars: string[] = []
 	if (theme.text?.size?.base) CSSMiscVars.push(`--text-base-size: ${theme.text.size.base};`)
 	if (theme.text?.size?.scale) CSSMiscVars.push(`--text-scale: ${theme.text.size.scale};`)
@@ -49,9 +60,8 @@ export const generateThemeCSS = (theme: _preGeneratedTheme): string => {
 	if (theme.radius?.size) CSSMiscVars.push(`--rounded-size: ${theme.radius.size};`)
 	if (theme.radius?.scale) CSSMiscVars.push(`--rounded-scale: ${theme.radius.scale};`)
 
-	// Combine base variables with color theme variables
+	// Combine theme variables
 	return `
-		${CSSColourVars.join('\n')}
 		:root {
 			${CSSMiscVars.join('\n')}
 		}
@@ -60,7 +70,7 @@ export const generateThemeCSS = (theme: _preGeneratedTheme): string => {
 	`
 }
 
-const generateShadowUtils = (shadow: WEB_THEME_KIT.theme['shadow']) => {
+const generateShadowUtils = (shadow: theme['shadow']) => {
 	if (!shadow) return ``
 	const toRGB = (color: Color) => `${color.srgb.r * 255} ${color.srgb.g * 255} ${color.srgb.b * 255}`
 

@@ -1,7 +1,4 @@
-import { DefaultTailwindConf } from '@root.site-template/web-theme-kit'
 import type { Config } from 'tailwindcss'
-
-// const DefaultTailwindConf = require('@root.site-template/web-theme-kit').DefaultTailwindConf
 
 const TailwindConfig = {
 	content: [
