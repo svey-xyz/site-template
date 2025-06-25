@@ -20,11 +20,11 @@
 	}
 
 	.hover-button {
-		@apply cursor-pointer transform motion-safe:hover:scale-105 will-change-transform
+		@apply cursor-pointer transform motion-safe:hover:scale-105
 			motion-safe:transition motion-safe:duration-150 motion-reduce:duration-0 will-change-auto;
 	}
 	.hover-text {
-		@apply cursor-pointer motion-safe:hover:opacity-85 motion-safe:hover:brightness-105 will-change-transform
+		@apply cursor-pointer motion-safe:hover:opacity-85 motion-safe:hover:brightness-105
 			motion-safe:transition motion-safe:duration-150 motion-reduce:duration-0 will-change-auto;
 	}
 }

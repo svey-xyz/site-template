@@ -10,6 +10,8 @@
 }
 
 @theme {
+	--spacing: 1px; 
+
 	 /* BG - FG colours */
 	--color-primary-bg: #0070f3;
 	--color-secondary-bg: #f0f0f0;
@@ -24,6 +26,10 @@
 	--color-accent-error: #f44336;
 
 	--animate-breathing: 'bounceScale 2s linear infinite';
+
+	--spacing-prose-full: '85ch';
+	--spacing-prose: '65ch';
+	--spacing-prose-short: '45ch';
 
 	/* Scaling calculations */
 	/* DON'T TOUCH */
@@ -45,4 +51,9 @@
 	--radius-3xl: calc(var(--radius-size) * (var(--radius-scale) ** 4));
 	--radius-4xl: calc(var(--radius-size) * (var(--radius-scale) ** 5));
 	--radius-full: 9999px;
+
+	--spacing-icon-sm: calc(var(--icon-base-size) * (1 / var(--icon-scale)));
+	--spacing-icon: var(--icon-base-size);
+	--spacing-icon-lg: calc(var(--icon-base-size) * (var(--icon-scale)));
+	--spacing-icon-xl: calc(var(--icon-base-size) * (var(--icon-scale) ** 2));
 }
