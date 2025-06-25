@@ -247,7 +247,7 @@ export type Settings = {
     _type: "image";
   };
   blurb?: string;
-  contact?: Contact;
+  contact?: Contact_2;
   about?: string;
   homepage?: {
     _ref: string;
@@ -717,7 +717,7 @@ export type SettingsQueryResult = {
     } | null;
   } | null;
   blurb?: string;
-  contact?: Contact;
+  contact?: Contact_2;
   about?: string;
   homepage: {
     slug: null;
@@ -1062,7 +1062,7 @@ export type DocumentQueryResult = {
     _type: "image";
   };
   blurb?: string;
-  contact?: Contact;
+  contact?: Contact_2;
   about?: string;
   homepage?: {
     _ref: string;

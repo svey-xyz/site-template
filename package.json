@@ -7,7 +7,9 @@
   },
   "workspaces": [
     "next-app",
-    "studio",
-    "web-theme-kit"
-  ]
+    "studio"
+  ],
+  "dependencies": {
+    "next": "^15.3.4"
+  }
 }

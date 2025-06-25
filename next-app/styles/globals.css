@@ -1,3 +1,9 @@
-@import "tailwindcss/tailwind.css";
-@import "../../web-theme-kit/examples/modern/style/modern.style.css";
-@source "../../web-theme-kit";
+@import "tailwindcss";
+
+@import "./utilities.css";
+@import "./base.css";
+@import "./components.css";
+@import "./theme.vars.css";
+
+@plugin "@tailwindcss/typography";
+@custom-variant dark (&:where(.dark, .dark *));

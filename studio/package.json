@@ -37,8 +37,7 @@
 		"slugify": "^1.6.6",
 		"styled-components": "^6.1.15",
 		"tailwindcss": "^4.1.0",
-		"vite-tsconfig-paths": "^5.1.4",
-		"web-theme-kit": "workspace:*"
+		"vite-tsconfig-paths": "^5.1.4"
 	},
 	"overrides": {
 		"react": "$react",

@@ -10,12 +10,8 @@ import { draftMode } from 'next/headers'
 import { SanityLive } from '@sanity.next-app/lib/live'
 import { VisualEditing } from "next-sanity";
 import { handleError } from "./client-utils";
-import { ACTIVE_THEME } from '@styles.next-app/theme';
-// import { Theme } from '@styles.next-app/theme';
 
 const inter = Inter({ subsets: ['latin'] })
-
-const font = ACTIVE_THEME?.text?.font
 
 export default async function RootLayout({
 	children
@@ -23,12 +19,12 @@ export default async function RootLayout({
 	children: React.ReactNode
 }) {
 	const draft = await draftMode()
-	const documentClasses = `${inter.className} ${font?.variable} relative`
+	const documentClasses = `${inter.className} relative`
 
 	return (
 		// suppress hydration required for theme handler
 		<html lang="en" className={documentClasses} suppressHydrationWarning>
-			<Head theme={ACTIVE_THEME} />
+			<Head />
 			<body className='min-h-screen h-full overflow-x-hidden flex flex-col'>
 				
 				{ draft.isEnabled && <VisualEditing /> }

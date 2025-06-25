@@ -46,7 +46,7 @@ export default function ThemeHandler({
 			themes={themes.map((theme) => theme)}>
 			<div ref={topChevron} className='reveal-section fixed bottom-8 w-full z-50 pointer-events-none'>
 				<div className='relative main-padding flex flex-col justify-end items-end mb-8'>
-					<ChevronUpIcon className="absolute w-icon h-icon hover-button pointer-events-auto"
+					<ChevronUpIcon className="absolute size-icon hover-button pointer-events-auto"
 						onClick={(e: React.MouseEvent<SVGSVGElement, MouseEvent>) => { if (mounted) chevronClick(e) }} />
 				</div>
 			</div>

@@ -1,0 +1,14 @@
+/** It would be great if there was a way to declare darkMode utilities seperately in tailwind.config; but that is not supported as of yet. */
+
+/** BOX SHADOW */
+/* offset-x | offset-y | blur-radius | spread-radius | color */
+
+@layer utilities {
+	.main-padding {
+		@apply max-w-[1600px] w-full mx-auto px-6 sm:px-12 md:px-20 lg:px-32;
+	}
+
+	.image-fade {
+		mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1.0) 0%, transparent 100%);
+	}
+}
