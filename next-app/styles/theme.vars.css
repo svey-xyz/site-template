@@ -25,18 +25,18 @@
 	--color-accent-success: #4caf50;
 	--color-accent-error: #f44336;
 
-	--animate-breathing: 'bounceScale 2s linear infinite';
+	--animate-breathing: bounceScale 2s linear infinite;
 
-	--spacing-prose-full: '85ch';
-	--spacing-prose: '65ch';
-	--spacing-prose-short: '45ch';
+	--spacing-prose-full: 85ch;
+	--spacing-prose: 65ch;
+	--spacing-prose-short: 45ch;
 
 	/* Breakpoints */
-	--breakpoint-sm: '480px';
-	--breakpoint-md: '768px';
-	--breakpoint-lg: '976px';
-	--breakpoint-xl: '1200px';
-	--breakpoint-2xl: '1440px';
+	--breakpoint-sm: 480px;
+	--breakpoint-md: 768px;
+	--breakpoint-lg: 976px;
+	--breakpoint-xl: 1200px;
+	--breakpoint-2xl: 1440px;
 
 	/* Scaling calculations */
 	/* DON'T TOUCH */
