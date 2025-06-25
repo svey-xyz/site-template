@@ -4,55 +4,11 @@
 /* offset-x | offset-y | blur-radius | spread-radius | color */
 
 @layer utilities {
-	.dark {
-		.shadow-lg {
-			box-shadow: 0 0px 8px -2px rgba(0,0,0,0.9), 0 0px 8px -1px rgba(0,0,0,.06);
-		}
-
-		/* .shadow-extrude {
-			box-shadow: 4px 4px 5px 0px rgb(0 0 0 / 0.9), -4px -4px 6px -3px rgb(255 255 255 / 0.3);
-		} */
-	}
-
-	/* .shadow-extrude {
-		box-shadow: 4px 4px 5px -3px rgb(0 0 0 / 0.5), -4px -4px 6px -2px rgb(200 200 200 / 0.4);
-	} */
-
-	.shadow-lg {
-		box-shadow: 0 0px 8px -6px rgba(0,0,0,0.6), 0 0px 6px -1px rgba(0,0,0,.04);
+	.main-padding {
+		@apply max-w-[1600px] w-full mx-auto px-6 sm:px-12 md:px-20 lg:px-32;
 	}
 
 	.image-fade {
 		mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1.0) 0%, transparent 100%);
-	}
-
-	.variable-transition {
-		@apply motion-safe:transition motion-safe:duration-150 motion-reduce:duration-0 will-change-auto;
-	}
-
-	.hover-button {
-		@apply cursor-pointer transform variable-transition motion-safe:hover:scale-105 will-change-transform;
-	}
-
-	.hover-text {
-		@apply cursor-pointer variable-transition motion-safe:hover:opacity-85 motion-safe:hover:brightness-105 will-change-transform;
-	}
-
-	.main-padding {
-		@apply max-w-[1600px] w-full mx-auto px-6 sm:px-12 md:px-20 lg:px-32;
-	}
-	.separator {
-		@apply before:-z-1 before:absolute before:inset-0 before:border-b-2 before:border-solid before:border-fg before:opacity-60;
-	}
-	.separator-top {
-		@apply before:-z-1 before:absolute before:inset-0 before:border-t-2 before:border-solid before:border-fg before:opacity-60;
-	}
-
-	.reveal-section {
-		@apply motion-safe:translate-y-[-5vh] motion-safe:invisible motion-safe:transition-all motion-safe:duration-1000 motion-safe:ease-out motion-safe:opacity-0 will-change-auto
-		motion-reduce:translate-y-0 motion-reduce:visible;
-	}
-	.reveal-section.is-visible {
-		@apply motion-safe:transform-none motion-safe:visible motion-safe:opacity-100;
 	}
 }

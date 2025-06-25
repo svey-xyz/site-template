@@ -8,8 +8,6 @@ const { join } = require('path');
 
 module.exports = {
 	plugins: {
-		'postcss-import': {},
-		'tailwindcss/nesting': {},
 		'@tailwindcss/postcss': {
 			config: join(__dirname, 'tailwind.config.ts'),
 		},

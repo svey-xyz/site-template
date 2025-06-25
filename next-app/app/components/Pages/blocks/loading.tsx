@@ -5,7 +5,7 @@ const Spinner = ({className}:{className?:string}) => {
 
 	return (
 		<div className={`relative ${className}`}>
-			<div className="animate-spin rounded-full h-icon w-icon border-2 border-fg/40 border-solid border-b-accent"></div>
+			<div className="animate-spin rounded-full h-icon w-icon border-2 border-primary-fg/40 border-solid border-b-accent"></div>
 
 		</div>
 	)

@@ -8,5 +8,8 @@
   "workspaces": [
     "next-app",
     "studio"
-  ]
+  ],
+  "dependencies": {
+    "next": "^15.3.4"
+  }
 }
