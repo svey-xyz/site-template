@@ -5,11 +5,13 @@ import { types } from "@schemas.studio/index";
 import ARTICLES from "@schemas.studio/documents/articles";
 import { camelCaseToWords, pluralize } from "@lib.studio/stringFunctions";
 
-import { Cog6ToothIcon, TagIcon } from "@heroicons/react/24/solid";
+import { Cog6ToothIcon, TagIcon, DocumentTextIcon } from "@heroicons/react/24/solid";
 
 // abstraction required for sanity typescript check
 const _Cog6ToothIcon = () => <Cog6ToothIcon />;
 const _TagIcon = () => <TagIcon />;
+const _DocumentTextIcon = () => <TagIcon />;
+
 
 
 // Define the actions that should be available for singleton documents
@@ -33,7 +35,7 @@ export const structure = (S: StructureBuilder, context: StructureResolverContext
 		S.documentTypeListItem('taxonomy').title('Taxonomies').icon(_TagIcon),
 		S.divider(),
 
-		S.documentTypeListItem('page').title('Pages').icon(_TagIcon),
+		S.documentTypeListItem('page').title('Pages').icon(_DocumentTextIcon),
 		
 		...typesList(S),
 	])
