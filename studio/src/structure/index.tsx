@@ -21,7 +21,7 @@ const singletonActions = new Set(["publish", "discardChanges", "restore"])
 const singletonTypes = new Set(["settings"])
 
 const typesList = (S: StructureBuilder) => ARTICLES.flatMap(article => {
-	const Title = camelCaseToWords(article.type)
+	const Title = camelCaseToWords(article.name)
 
 	return S.documentTypeListItem(article.name).title(pluralize(Title)).icon(article.icon)
 })
