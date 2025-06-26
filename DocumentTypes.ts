@@ -1,5 +1,6 @@
 export enum _ARTICLE_TYPES {
 	ARTICLE = 'article',
+	PROJECT = 'project',
 }
 
 export enum _BLOCK_TYPES {
