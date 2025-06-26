@@ -1,0 +1,47 @@
+{
+  "name": "nextjs-app-template",
+  "private": true,
+  "scripts": {
+    "predev": "bun run typegen",
+    "dev": "next --turbo",
+    "prebuild": "bun run typegen",
+    "build": "next build --turbo",
+    "start": "next start --turbo",
+    "lint": "next lint --turbo",
+    "typegen": "sanity typegen generate"
+  },
+  "dependencies": {
+    "@headlessui/react": "^2.2.0",
+    "@sanity/client": "^6.27.2",
+    "@sanity/image-url": "^1.1.0",
+    "@sanity/react-loader": "^1.10.47",
+    "@sanity/uuid": "^3.0.2",
+    "@svgr/webpack": "^8.1.0",
+    "@tailwindcss/postcss": "^4.1.10",
+    "@tailwindcss/typography": "^0.5.16",
+    "@vercel/speed-insights": "^1.1.0",
+    "autoprefixer": "^10.4.20",
+    "date-fns": "^3.6.0",
+    "next": "^15.3.4",
+    "next-sanity": "^9.12.0",
+    "next-sanity-image": "^6.1.1",
+    "next-themes": "^0.4.4",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "rehype-starry-night": "^2.2.0",
+    "remark-gfm": "^4.0.1",
+    "sanity": "^3.74.0",
+    "sonner": "^1.7.0",
+    "swiper": "^11.2.5"
+  },
+  "devDependencies": {
+    "@types/node": "^20.17.17",
+    "@types/react": "19.1.8",
+    "@types/react-dom": "19.1.6",
+    "eslint": "^8.57.0",
+    "eslint-config-next": "15.3.4",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^4.1.10",
+    "typescript": "5.6.3"
+  }
+}

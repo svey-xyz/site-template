@@ -1,0 +1,78 @@
+// For format details, see https://aka.ms/devcontainer.json. For config options, see the
+// README at: https://github.com/devcontainers/templates/tree/main/src/typescript-node
+{
+	"name": "svey-dev",
+
+	// Or use a Dockerfile or Docker Compose file. More info: https://containers.dev/guide/dockerfile
+	"image": "mcr.microsoft.com/devcontainers/typescript-node:1-22-bookworm",
+
+	// Features to add to the dev container. More info: https://containers.dev/features.
+	"features": {
+		"ghcr.io/devcontainers/features/github-cli:1": {
+			"installDirectlyFromGitHubRelease": true,
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers/features/sshd:1": {
+			"version": "latest"
+		},
+		"ghcr.io/joedmck/devcontainer-features/wrangler:1": {},
+		"ghcr.io/lumenpink/devcontainer-features/bun:0": {},
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": true,
+			"configureZshAsDefaultShell": true,
+			"installOhMyZsh": true,
+			"installOhMyZshConfig": true,
+			"upgradePackages": true,
+			"username": "svey",
+			"userUid": "automatic",
+			"userGid": "automatic"
+		},
+		"ghcr.io/devcontainers-extra/features/sanity-cli:1": {
+			"version": "latest"
+		},
+		"ghcr.io/devcontainers-extra/features/vercel-cli:1": {
+			"version": "latest"
+		}
+	},
+
+	// Use 'forwardPorts' to make a list of ports inside the container available locally.
+	"forwardPorts": [3000],
+	"portsAttributes": {
+		"3000": {
+			"label": "site",
+			"onAutoForward": "notify"
+		}
+	},
+
+	// Configure tool-specific properties.
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"oven.bun-vscode",
+				"oouo-diogo-perdigao.docthis",
+				"yzhang.markdown-all-in-one",
+				"christian-kohler.path-intellisense",
+				"Prisma.prisma",
+				"chrmarti.regex",
+				"sanity-io.vscode-sanity",
+				"jock.svg",
+				"bradlc.vscode-tailwindcss",
+				"mikestead.dotenv",
+				"GraphQL.vscode-graphql-syntax",
+				"csstools.postcss",
+				"streetsidesoftware.code-spell-checker"
+			],
+			"settings": {
+				"sync.autoUpload": true,
+				"sync.autoDownload": true,
+				"terminal.integrated.defaultProfile.linux": "zsh"
+			}
+		}
+	},
+
+	// Use 'postCreateCommand' to run commands after the container is created.
+	"postCreateCommand": "git config devcontainers-theme.show-dirty 1 && bun i && bun run dev",
+
+	// Uncomment to connect as svey instead. More info: https://aka.ms/dev-containers-non-root.
+	"remoteUser": "svey"
+}

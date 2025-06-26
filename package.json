@@ -1,0 +1,15 @@
+{
+  "name": "site-template",
+  "version": "2025.04.05",
+  "private": true,
+  "scripts": {
+    "dev": "bun run --filter '*' dev"
+  },
+  "workspaces": [
+    "next-app",
+    "studio"
+  ],
+  "dependencies": {
+    "next": "^15.3.4"
+  }
+}

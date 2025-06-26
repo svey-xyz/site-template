@@ -1,0 +1,30 @@
+{
+  "compilerOptions": {
+		"target": "esnext",
+		"lib": [ "dom", "dom.iterable", "esnext"],
+		"allowJs": true,
+		"skipLibCheck": true,
+		"strict": true,
+		"noEmit": true,
+		"esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "module": "preserve",
+    "moduleDetection": "force",
+    "isolatedModules": true,
+    "jsx": "preserve",
+    "incremental": true,
+		"paths": {
+			"@components.studio/*": ["./src/components/*"],
+			"@lib.studio/*": ["./src/lib/*"],
+			"@schemas.studio/*": ["./src/schemas/*"],
+			"@structure.studio/*": ["./src/structure/*"],
+			"@style.studio/*": ["./src/style/*"],
+			"@src.studio/*": ["./src/*"],
+			"@/*": ["./*"],
+			"@root.site-template/*": ["../*"],
+			},
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"],
+	
+}
