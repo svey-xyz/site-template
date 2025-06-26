@@ -10,7 +10,7 @@ import { Cog6ToothIcon, TagIcon, DocumentTextIcon } from "@heroicons/react/24/so
 // abstraction required for sanity typescript check
 const _Cog6ToothIcon = () => <Cog6ToothIcon />;
 const _TagIcon = () => <TagIcon />;
-const _DocumentTextIcon = () => <TagIcon />;
+const _DocumentTextIcon = () => <DocumentTextIcon />;
 
 
 
