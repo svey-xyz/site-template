@@ -1,0 +1,3 @@
+[submodule "shared-lib"]
+	path = shared-lib
+	url = git@github.com:svey-xyz/shared-lib.git
