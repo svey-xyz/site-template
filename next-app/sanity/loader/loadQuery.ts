@@ -5,7 +5,7 @@ import { client } from "@sanity.next-app/lib/client";
 import { token } from '@sanity.next-app/lib/token';
 import { queryStore } from '@sanity.next-app/loader/queryStore';
 
-export const serverClient: SanityClient = client.withConfig({
+export const serverClient = client.withConfig({
 	token,
 	// Enable stega if it's a Vercel preview deployment, as the Vercel Toolbar has controls that shows overlays
 	stega: process.env.VERCEL_ENV === 'preview',
