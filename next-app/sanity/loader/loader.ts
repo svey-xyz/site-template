@@ -1,6 +1,5 @@
 import { queryClient } from "@sanity.next-app/loader/loadQuery"
 import { SanityDocument } from "next-sanity"
-import { pluralize } from "shared-lib/StringTransforms"
 
 import {
 	settingsQuery,
@@ -9,10 +8,11 @@ import {
 	staticArchivesQuery,
 	documentQuery,
 } from '@sanity.next-app/queries/queries'
+import { SettingsQueryResult } from "@next-app/sanity.types"
 
 export const load_Settings = async () => {
 
-	const initial = await queryClient<any>(
+	const initial = await queryClient<SettingsQueryResult>(
 		settingsQuery,
 		{},
 		{ next: { tags: ['settings', 'home', 'page'] } },
@@ -20,12 +20,13 @@ export const load_Settings = async () => {
 
 	const data = initial.data
 	return data
+
 }
 
 
 export const loadSingle_Document = async (id: string) => {
 
-	const initial = await queryClient<SanityDocument | null>(
+	const initial = await queryClient<SanityDocument>(
 		documentQuery,
 		{ id },
 		{},
