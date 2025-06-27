@@ -1,4 +1,3 @@
-import { partial_ImageObject, partial_Sections, partial_Blocks } from "@sanity.next-app/queries/partials";
 import { defineQuery, groq } from "next-sanity";
 
 export const pagesSlugs = defineQuery(`
@@ -15,7 +14,41 @@ export const getPageQuery = defineQuery(`
     slug,
 		blocks{
 			blocks[] {
-				${partial_Blocks},
+				...,
+				_type == "archive_block" => {
+					...,
+					featuredTaxonomies[]-> {
+						...,
+					} 
+				},
+				_type == "featuredTaxonomies_block" => {
+					...,
+					taxonomies[]->,
+				},
+				_type == "featuredArticles_block" => {
+					...,
+					articles[]-> {
+						...,
+						image {
+							...,
+							"imageAsset":asset->
+						}
+					},
+				},
+				_type == "image_block" => {
+					...,
+					image {
+						...,
+						"imageAsset":asset->
+					}
+				},
+				_type == "gallery_block" => {
+					...,
+					images[] {
+						...,
+						"imageAsset":asset->
+					}
+				}
 			}
 		}
   }
@@ -26,18 +59,16 @@ export const settingsQuery: string = groq`
 	*[_id == "siteSettings"][0] {
 		...,
 		logo {
-			${partial_ImageObject}
+			...,
+			"imageAsset":asset->
 		},
 		homepage->{
 			slug
 		},
 		navigation[]{
-			// ...,
 			title,
 			pages[]->{
-				...,
-				"slug":slug.current,
-				${partial_Sections}
+				"slug":slug.current
 			}
 		}
 	}
@@ -46,7 +77,46 @@ export const settingsQuery: string = groq`
 export const pageQuery: string = groq`
 	*[_type=='page' && slug.current match $slug][0] {
   	...,
-		${partial_Sections}
+		sections[] {
+			...,
+			blocks[] {
+				...,
+				_type == "archive_block" => {
+					...,
+					featuredTaxonomies[]-> {
+						...,
+					} 
+				},
+				_type == "featuredTaxonomies_block" => {
+					...,
+					taxonomies[]->,
+				},
+				_type == "featuredArticles_block" => {
+					...,
+					articles[]-> {
+						...,
+						image {
+							...,
+							"imageAsset":asset->
+						}
+					},
+				},
+				_type == "image_block" => {
+					...,
+					image {
+						...,
+						"imageAsset":asset->
+					}
+				},
+				_type == "gallery_block" => {
+					...,
+					images[] {
+						...,
+						"imageAsset":asset->
+					}
+				}
+			}
+		}
 	}
 `
 
@@ -54,14 +124,92 @@ export const staticPagesQuery: string = groq`
 	*[_type == 'page'] {
 		...,
 		"slug":slug.current,
-		${partial_Sections}
+		sections[] {
+			...,
+			blocks[] {
+				...,
+				_type == "archive_block" => {
+					...,
+					featuredTaxonomies[]-> {
+						...,
+					} 
+				},
+				_type == "featuredTaxonomies_block" => {
+					...,
+					taxonomies[]->,
+				},
+				_type == "featuredArticles_block" => {
+					...,
+					articles[]-> {
+						...,
+						image {
+							...,
+							"imageAsset":asset->
+						}
+					},
+				},
+				_type == "image_block" => {
+					...,
+					image {
+						...,
+						"imageAsset":asset->
+					}
+				},
+				_type == "gallery_block" => {
+					...,
+					images[] {
+						...,
+						"imageAsset":asset->
+					}
+				}
+			}
+		}
 	}
 `
 
 export const staticArchivesQuery: string = groq`
 	*[_type == 'archive'] {
 		...,
-		${partial_Sections}
+		sections[] {
+			...,
+			blocks[] {
+				...,
+				_type == "archive_block" => {
+					...,
+					featuredTaxonomies[]-> {
+						...,
+					} 
+				},
+				_type == "featuredTaxonomies_block" => {
+					...,
+					taxonomies[]->,
+				},
+				_type == "featuredArticles_block" => {
+					...,
+					articles[]-> {
+						...,
+						image {
+							...,
+							"imageAsset":asset->
+						}
+					},
+				},
+				_type == "image_block" => {
+					...,
+					image {
+						...,
+						"imageAsset":asset->
+					}
+				},
+				_type == "gallery_block" => {
+					...,
+					images[] {
+						...,
+						"imageAsset":asset->
+					}
+				}
+			}
+		}
 	}
 `
 
@@ -75,7 +223,46 @@ export const documentQuery: string = groq`
 export const archiveQuery: string = groq`
 	*[_type=='archive' && _id == $archiveID][0] {
   	...,
-		${partial_Sections}
+		sections[] {
+			...,
+			blocks[] {
+				...,
+				_type == "archive_block" => {
+					...,
+					featuredTaxonomies[]-> {
+						...,
+					} 
+				},
+				_type == "featuredTaxonomies_block" => {
+					...,
+					taxonomies[]->,
+				},
+				_type == "featuredArticles_block" => {
+					...,
+					articles[]-> {
+						...,
+						image {
+							...,
+							"imageAsset":asset->
+						}
+					},
+				},
+				_type == "image_block" => {
+					...,
+					image {
+						...,
+						"imageAsset":asset->
+					}
+				},
+				_type == "gallery_block" => {
+					...,
+					images[] {
+						...,
+						"imageAsset":asset->
+					}
+				}
+			}
+		}
 	}
 `
 
