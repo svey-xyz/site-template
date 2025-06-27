@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity';
-import { camelCaseToWords } from '../../../lib/stringFunctions';
+import { camelCaseToWords } from "shared-lib/StringTransforms"
 
 import { PhotoIcon } from '@heroicons/react/24/solid'
 import { _CUSTOM_IMAGE_FIELD_VALUES } from '@schemas.studio/fields/CustomImage';

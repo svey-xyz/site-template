@@ -1,5 +1,5 @@
 import { defineField, defineType } from 'sanity';
-import { camelCaseToWords } from '@lib.studio/stringFunctions';
+import { camelCaseToWords } from "shared-lib/StringTransforms"
 
 import { ArchiveBoxIcon } from '@heroicons/react/24/solid'
 import { _BLOCK_PREVIEW } from '@schemas.studio/objects/blocks/utils/preview';

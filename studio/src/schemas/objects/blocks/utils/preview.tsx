@@ -1,4 +1,4 @@
-import { camelCaseToWords } from "@lib.studio/stringFunctions"
+import { camelCaseToWords } from "shared-lib/StringTransforms"
 
 export const _BLOCK_PREVIEW = {
 	select: {

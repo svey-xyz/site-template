@@ -3,8 +3,7 @@ import { DocumentActionComponent, DocumentActionsContext, Template } from "sanit
 
 import { types } from "@schemas.studio/index";
 import ARTICLES from "@schemas.studio/documents/articles";
-import { camelCaseToWords, pluralize } from "@lib.studio/stringFunctions";
-
+import { StringTransforms } from "shared-lib"
 import { Cog6ToothIcon, TagIcon, DocumentTextIcon } from "@heroicons/react/24/solid";
 
 // abstraction required for sanity typescript check
@@ -21,9 +20,9 @@ const singletonActions = new Set(["publish", "discardChanges", "restore"])
 const singletonTypes = new Set(["settings"])
 
 const typesList = (S: StructureBuilder) => ARTICLES.flatMap(article => {
-	const Title = camelCaseToWords(article.name)
+	const Title = StringTransforms.camelCaseToWords(article.name)
 
-	return S.documentTypeListItem(article.name).title(pluralize(Title)).icon(article.icon)
+	return S.documentTypeListItem(article.name).title(StringTransforms.pluralize(Title)).icon(article.icon)
 })
 
 export const structure = (S: StructureBuilder, context: StructureResolverContext) =>

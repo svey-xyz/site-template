@@ -1,5 +1,5 @@
 import { DocumentTextIcon } from "@heroicons/react/24/solid"
-import { camelCaseToWords } from "@lib.studio/stringFunctions"
+import { camelCaseToWords } from "shared-lib/StringTransforms"
 import { Blocks } from "@/sanity.types"
 
 export const _PAGE_PREVIEW = {

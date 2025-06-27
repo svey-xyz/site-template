@@ -1,6 +1,6 @@
 import { queryClient } from "@sanity.next-app/loader/loadQuery"
 import { SanityDocument } from "next-sanity"
-import pluralize from "pluralize"
+import { pluralize } from "shared-lib/StringTransforms"
 
 import * as _PARTIAL_ARTICLE_QUERIES from '@sanity.next-app/queries/partials'
 import {

@@ -7,7 +7,8 @@
   },
   "workspaces": [
     "next-app",
-    "studio"
+    "studio",
+		"shared-lib"
   ],
   "dependencies": {
     "next": "^15.3.4"

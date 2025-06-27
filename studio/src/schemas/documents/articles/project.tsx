@@ -1,4 +1,4 @@
-import { camelCaseToWords } from "@lib.studio/stringFunctions";
+import { camelCaseToWords } from "shared-lib/StringTransforms"
 import { _ARTICLE_FIELDS } from "@schemas.studio/documents/articles/utils/fields";
 import { _ARTICLE_PREVIEW } from "@schemas.studio/documents/articles/utils/preview";
 import { defineField, defineType } from "sanity";
