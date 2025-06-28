@@ -2,6 +2,15 @@ import { _CUSTOM_IMAGE_FIELD_VALUES } from "@schemas.studio/fields/CustomImage"
 import { defineArrayMember, defineField } from "sanity"
 
 export const _ARTICLE_FIELDS = [
+	// This field exists for query typegen
+	defineField({
+		name: 'isArticle',
+		type: 'boolean',
+		hidden: true,
+		initialValue: true,
+		readOnly: true
+	}),
+	
 	defineField({
 			title: 'Title',
 			name: 'title',

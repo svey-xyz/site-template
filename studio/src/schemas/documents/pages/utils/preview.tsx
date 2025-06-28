@@ -1,5 +1,5 @@
 import { DocumentTextIcon } from "@heroicons/react/24/solid"
-import { camelCaseToWords } from "shared-lib/StringTransforms"
+import { StringTransforms } from "shared-lib"
 import { Blocks } from "@/sanity.types"
 
 export const _PAGE_PREVIEW = {
@@ -11,7 +11,7 @@ export const _PAGE_PREVIEW = {
 		prepare(value: any) {
 			const { image, blocks, title } = value
 			const blockNames = blocks ? ((blocks.blocks) as Blocks['blocks'])?.map((block) => {
-				return ` ${camelCaseToWords(block?._type)}`
+				return ` ${StringTransforms.camelCaseToWords(block?._type)}`
 			}) : []
 			const subtitle = blocks ?
 				`Blocks: ${blockNames}` :

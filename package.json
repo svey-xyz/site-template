@@ -3,7 +3,8 @@
   "version": "2025.04.05",
   "private": true,
   "scripts": {
-    "dev": "bun run --filter '*' dev"
+    "dev": "bun run --filter '*' dev",
+		"typegen-lib": "bun run --filter '*' clean && bun run --filter './studio' typegen && cp ./studio/schema.json ./next-app && bun run --filter './next-app' typegen"
   },
   "workspaces": [
     "next-app",

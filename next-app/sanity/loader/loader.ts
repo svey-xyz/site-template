@@ -7,8 +7,13 @@ import {
 	staticPagesQuery,
 	staticArchivesQuery,
 	documentQuery,
+	articleQuery,
+	bundleArticleQuery,
 } from '@sanity.next-app/queries/queries'
-import { SettingsQueryResult } from "@next-app/sanity.types"
+import { ArticleQueryResult, BundleArticleQueryResult, SettingsQueryResult } from "@next-app/sanity.types"
+import { _ARTICLE_TYPES } from "@root.site-template/DocumentTypes"
+import { StringTransforms } from "shared-lib"
+
 
 export const load_Settings = async () => {
 
@@ -23,6 +28,31 @@ export const load_Settings = async () => {
 
 }
 
+
+export const loadSingle_Article = async (id: string) => {
+
+	const initial = await queryClient<ArticleQueryResult>(
+		articleQuery,
+		{ id },
+		{},
+	)
+
+	const data = initial.data
+	return data
+}
+
+export const loadBundle_Articles = async (article: _ARTICLE_TYPES) => {
+
+	const initial = await queryClient<BundleArticleQueryResult>(
+		bundleArticleQuery,
+		{ article },
+		{ next: { tags: [`articles`, 'article', article, StringTransforms.pluralize(article)] } },
+
+	)
+
+	const data = initial.data
+	return data
+}
 
 export const loadSingle_Document = async (id: string) => {
 

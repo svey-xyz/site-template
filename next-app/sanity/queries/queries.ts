@@ -6,55 +6,6 @@ export const pagesSlugs = defineQuery(`
 	}
 `);
 
-export const getPageQuery = defineQuery(`
-  *[_type == 'page' && slug.current == $slug][0]{
-    _id,
-    _type,
-    title,
-    slug,
-		blocks{
-			blocks[] {
-				...,
-				_type == "archive_block" => {
-					...,
-					featuredTaxonomies[]-> {
-						...,
-					} 
-				},
-				_type == "featuredTaxonomies_block" => {
-					...,
-					taxonomies[]->,
-				},
-				_type == "featuredArticles_block" => {
-					...,
-					articles[]-> {
-						...,
-						image {
-							...,
-							"imageAsset":asset->
-						}
-					},
-				},
-				_type == "image_block" => {
-					...,
-					image {
-						...,
-						"imageAsset":asset->
-					}
-				},
-				_type == "gallery_block" => {
-					...,
-					images[] {
-						...,
-						"imageAsset":asset->
-					}
-				}
-			}
-		}
-  }
-`);
-
-
 export const settingsQuery: string = groq`
 	*[_id == "siteSettings"][0] {
 		...,
@@ -217,6 +168,22 @@ export const documentQuery: string = groq`
 	*[_id == $id][0] {
   	...,
 		"slug":slug.current,
+	}
+`
+
+export const articleQuery: string = groq`
+	*[_id == $id && isArticle == true][0] {
+  	...,
+		"slug":slug.current,
+		taxonomies[]->
+	}
+`
+
+export const bundleArticleQuery: string = groq`
+	*[_type == $article && isArticle == true] {
+		...,
+		"slug":slug.current,
+		taxonomies[]->
 	}
 `
 

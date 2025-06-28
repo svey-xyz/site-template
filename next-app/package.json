@@ -8,10 +8,12 @@
     "build": "next build --turbo",
     "start": "next start --turbo",
     "lint": "next lint --turbo",
+		"clean": "rm -f ./schema.json && rm -f ./sanity.types.ts && rm -rf ./.next",
     "typegen": "sanity typegen generate"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.0",
+    "@sanity/cli": "^3.95.0",
     "@sanity/client": "^6.27.2",
     "@sanity/image-url": "^1.1.0",
     "@sanity/react-loader": "^1.10.47",
@@ -32,6 +34,7 @@
     "rehype-starry-night": "^2.2.0",
     "remark-gfm": "^4.0.1",
     "sanity": "^3.74.0",
+		"shared-lib": "workspace:*",
     "sonner": "^1.7.0",
     "swiper": "^11.2.5"
   },

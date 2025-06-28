@@ -1,4 +1,4 @@
-import { camelCaseToWords } from "shared-lib/StringTransforms"
+import { StringTransforms } from "shared-lib"
 
 export const _BLOCK_PREVIEW = {
 	select: {
@@ -9,7 +9,7 @@ export const _BLOCK_PREVIEW = {
 	prepare(value: any) {
 		const { type, title } = value
 		return {
-			title: type ? camelCaseToWords(type) : 'Unknown Block Type',
+			title: type ? StringTransforms.camelCaseToWords(type) : 'Unknown Block Type',
 		}
 	},
 }
