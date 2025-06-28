@@ -10,8 +10,5 @@
     "next-app",
     "studio",
 		"shared-lib"
-  ],
-  "dependencies": {
-    "next": "^15.3.4"
-  }
+  ]
 }
