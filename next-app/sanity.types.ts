@@ -487,9 +487,21 @@ export type Slug = {
 
 export type AllSanitySchemaTypes = SanityImagePaletteSwatch | SanityImagePalette | SanityImageDimensions | SanityFileAsset | Geopoint | Article | Gallery | Contact | Image | Archive | Info | Newsletter | FeaturedArticles | Text | FeaturedTaxonomies | Taxonomy | Settings | NavGroup | Note | Mdx | Contact_2 | BasicDate | Link | Archive_2 | Page | SanityImageCrop | SanityImageHotspot | SanityImageAsset | SanityAssetSourceData | SanityImageMetadata | Social | Icon | MediaTag | Slug;
 export declare const internalGroqTypeReferenceTo: unique symbol;
-// Source: ./sanity/loader/loader.ts
+// Source: ./sanity/queries/queries.ts
+// Variable: pagesSlugs
+// Query: *[_type == "page" && defined(slug.current)] {		"slug": slug.current	}
+export type PagesSlugsResult = Array<never>;
+// Variable: getPageQuery
+// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    _type,    title,    slug,		blocks{			blocks[] {				...,				_type == "archive_block" => {					...,					featuredTaxonomies[]-> {						...,					} 				},				_type == "featuredTaxonomies_block" => {					...,					taxonomies[]->,				},				_type == "featuredArticles_block" => {					...,					articles[]-> {						...,						image {							...,							"imageAsset":asset->						}					},				},				_type == "image_block" => {					...,					image {						...,						"imageAsset":asset->					}				},				_type == "gallery_block" => {					...,					images[] {						...,						"imageAsset":asset->					}				}			}		}  }
+export type GetPageQueryResult = {
+  _id: string;
+  _type: "page";
+  title: string;
+  slug: null;
+  blocks: null;
+} | null;
 // Variable: settingsQuery
-// Query: *[_id == "siteSettings"][0] {			...,			logo {				...,				"imageAsset":asset->			},			homepage->{				slug			},			navigation[]{				title,				pages[]->{					"slug":slug.current				}			}		}
+// Query: *[_id == "siteSettings"][0] {		...,		logo {			...,			"imageAsset":asset->		},		homepage->{			slug		},		navigation[]{			title,			pages[]->{				"slug":slug.current			}		}	}
 export type SettingsQueryResult = {
   _id: string;
   _type: "archive";
@@ -740,20 +752,6 @@ export type SettingsQueryResult = {
   logo: null;
   homepage: null;
   navigation: null;
-} | null;
-
-// Source: ./sanity/queries/queries.ts
-// Variable: pagesSlugs
-// Query: *[_type == "page" && defined(slug.current)] {		"slug": slug.current	}
-export type PagesSlugsResult = Array<never>;
-// Variable: getPageQuery
-// Query: *[_type == 'page' && slug.current == $slug][0]{    _id,    _type,    title,    slug,		blocks{			blocks[] {				...,				_type == "archive_block" => {					...,					featuredTaxonomies[]-> {						...,					} 				},				_type == "featuredTaxonomies_block" => {					...,					taxonomies[]->,				},				_type == "featuredArticles_block" => {					...,					articles[]-> {						...,						image {							...,							"imageAsset":asset->						}					},				},				_type == "image_block" => {					...,					image {						...,						"imageAsset":asset->					}				},				_type == "gallery_block" => {					...,					images[] {						...,						"imageAsset":asset->					}				}			}		}  }
-export type GetPageQueryResult = {
-  _id: string;
-  _type: "page";
-  title: string;
-  slug: null;
-  blocks: null;
 } | null;
 // Variable: pageQuery
 // Query: *[_type=='page' && slug.current match $slug][0] {  	...,		sections[] {			...,			blocks[] {				...,				_type == "archive_block" => {					...,					featuredTaxonomies[]-> {						...,					} 				},				_type == "featuredTaxonomies_block" => {					...,					taxonomies[]->,				},				_type == "featuredArticles_block" => {					...,					articles[]-> {						...,						image {							...,							"imageAsset":asset->						}					},				},				_type == "image_block" => {					...,					image {						...,						"imageAsset":asset->					}				},				_type == "gallery_block" => {					...,					images[] {						...,						"imageAsset":asset->					}				}			}		}	}
@@ -1148,9 +1146,9 @@ export type ArchiveQueryResult = {
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    "\n\t\t*[_id == \"siteSettings\"][0] {\n\t\t\t...,\n\t\t\tlogo {\n\t\t\t\t...,\n\t\t\t\t\"imageAsset\":asset->\n\t\t\t},\n\t\t\thomepage->{\n\t\t\t\tslug\n\t\t\t},\n\t\t\tnavigation[]{\n\t\t\t\ttitle,\n\t\t\t\tpages[]->{\n\t\t\t\t\t\"slug\":slug.current\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t": SettingsQueryResult;
     "\n  *[_type == \"page\" && defined(slug.current)] {\n\t\t\"slug\": slug.current\n\t}\n": PagesSlugsResult;
     "\n  *[_type == 'page' && slug.current == $slug][0]{\n    _id,\n    _type,\n    title,\n    slug,\n\t\tblocks{\n\t\t\tblocks[] {\n\t\t\t\t...,\n\t\t\t\t_type == \"archive_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\tfeaturedTaxonomies[]-> {\n\t\t\t\t\t\t...,\n\t\t\t\t\t} \n\t\t\t\t},\n\t\t\t\t_type == \"featuredTaxonomies_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\ttaxonomies[]->,\n\t\t\t\t},\n\t\t\t\t_type == \"featuredArticles_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\tarticles[]-> {\n\t\t\t\t\t\t...,\n\t\t\t\t\t\timage {\n\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\t\"imageAsset\":asset->\n\t\t\t\t\t\t}\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t_type == \"image_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\timage {\n\t\t\t\t\t\t...,\n\t\t\t\t\t\t\"imageAsset\":asset->\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t_type == \"gallery_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\timages[] {\n\t\t\t\t\t\t...,\n\t\t\t\t\t\t\"imageAsset\":asset->\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n  }\n": GetPageQueryResult;
+    "\n\t*[_id == \"siteSettings\"][0] {\n\t\t...,\n\t\tlogo {\n\t\t\t...,\n\t\t\t\"imageAsset\":asset->\n\t\t},\n\t\thomepage->{\n\t\t\tslug\n\t\t},\n\t\tnavigation[]{\n\t\t\ttitle,\n\t\t\tpages[]->{\n\t\t\t\t\"slug\":slug.current\n\t\t\t}\n\t\t}\n\t}\n": SettingsQueryResult;
     "\n\t*[_type=='page' && slug.current match $slug][0] {\n  \t...,\n\t\tsections[] {\n\t\t\t...,\n\t\t\tblocks[] {\n\t\t\t\t...,\n\t\t\t\t_type == \"archive_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\tfeaturedTaxonomies[]-> {\n\t\t\t\t\t\t...,\n\t\t\t\t\t} \n\t\t\t\t},\n\t\t\t\t_type == \"featuredTaxonomies_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\ttaxonomies[]->,\n\t\t\t\t},\n\t\t\t\t_type == \"featuredArticles_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\tarticles[]-> {\n\t\t\t\t\t\t...,\n\t\t\t\t\t\timage {\n\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\t\"imageAsset\":asset->\n\t\t\t\t\t\t}\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t_type == \"image_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\timage {\n\t\t\t\t\t\t...,\n\t\t\t\t\t\t\"imageAsset\":asset->\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t_type == \"gallery_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\timages[] {\n\t\t\t\t\t\t...,\n\t\t\t\t\t\t\"imageAsset\":asset->\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n": PageQueryResult;
     "\n\t*[_type == 'page'] {\n\t\t...,\n\t\t\"slug\":slug.current,\n\t\tsections[] {\n\t\t\t...,\n\t\t\tblocks[] {\n\t\t\t\t...,\n\t\t\t\t_type == \"archive_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\tfeaturedTaxonomies[]-> {\n\t\t\t\t\t\t...,\n\t\t\t\t\t} \n\t\t\t\t},\n\t\t\t\t_type == \"featuredTaxonomies_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\ttaxonomies[]->,\n\t\t\t\t},\n\t\t\t\t_type == \"featuredArticles_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\tarticles[]-> {\n\t\t\t\t\t\t...,\n\t\t\t\t\t\timage {\n\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\t\"imageAsset\":asset->\n\t\t\t\t\t\t}\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t_type == \"image_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\timage {\n\t\t\t\t\t\t...,\n\t\t\t\t\t\t\"imageAsset\":asset->\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t_type == \"gallery_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\timages[] {\n\t\t\t\t\t\t...,\n\t\t\t\t\t\t\"imageAsset\":asset->\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n": StaticPagesQueryResult;
     "\n\t*[_type == 'archive'] {\n\t\t...,\n\t\tsections[] {\n\t\t\t...,\n\t\t\tblocks[] {\n\t\t\t\t...,\n\t\t\t\t_type == \"archive_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\tfeaturedTaxonomies[]-> {\n\t\t\t\t\t\t...,\n\t\t\t\t\t} \n\t\t\t\t},\n\t\t\t\t_type == \"featuredTaxonomies_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\ttaxonomies[]->,\n\t\t\t\t},\n\t\t\t\t_type == \"featuredArticles_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\tarticles[]-> {\n\t\t\t\t\t\t...,\n\t\t\t\t\t\timage {\n\t\t\t\t\t\t\t...,\n\t\t\t\t\t\t\t\"imageAsset\":asset->\n\t\t\t\t\t\t}\n\t\t\t\t\t},\n\t\t\t\t},\n\t\t\t\t_type == \"image_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\timage {\n\t\t\t\t\t\t...,\n\t\t\t\t\t\t\"imageAsset\":asset->\n\t\t\t\t\t}\n\t\t\t\t},\n\t\t\t\t_type == \"gallery_block\" => {\n\t\t\t\t\t...,\n\t\t\t\t\timages[] {\n\t\t\t\t\t\t...,\n\t\t\t\t\t\t\"imageAsset\":asset->\n\t\t\t\t\t}\n\t\t\t\t}\n\t\t\t}\n\t\t}\n\t}\n": StaticArchivesQueryResult;
