@@ -1,7 +1,5 @@
 import PAGES from './documents/pages'
 import ARTICLES from './documents/articles'
-import { _BASE_ARTICLE } from '@schemas.studio/documents/articles/utils/baseArticle'
-
 
 /**
  * Objects
@@ -25,4 +23,4 @@ import { taxonomy } from './documents/taxonomies'
 
 const _documents = [settings, taxonomy]
 
-export const types = [..._objects, ..._documents, ...PAGES, ...ARTICLES, _BASE_ARTICLE];
+export const types = [..._objects, ..._documents, ...PAGES, ...ARTICLES];
