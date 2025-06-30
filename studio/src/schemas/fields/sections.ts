@@ -1,7 +1,7 @@
 import { defineArrayMember, defineField, defineType } from "sanity";
 import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 
-export const section = defineField({
+export const sections = defineField({
 	name: 'sections',
 	title: 'Sections',
 	type: 'array',

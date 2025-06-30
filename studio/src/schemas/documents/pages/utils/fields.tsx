@@ -1,5 +1,6 @@
 import { _BLOCK_TYPES } from "@root.site-template/DocumentTypes"
 import { _CUSTOM_IMAGE_FIELD_VALUES } from "@schemas.studio/fields/CustomImage"
+import { sections } from "@schemas.studio/fields/sections"
 import { Blocks } from "@schemas.studio/objects/blocks"
 import { defineField } from "sanity"
 
@@ -32,5 +33,6 @@ export const _PAGE_FIELDS = [
 		description: 'When a hero image is set, a hero will appear with the page title and image.',
 		..._CUSTOM_IMAGE_FIELD_VALUES,
 	}),
-	Blocks
+	Blocks,
+	sections
 ]
