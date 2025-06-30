@@ -7,7 +7,6 @@ import { Archive } from './Archive'
 import { Image } from './Image'
 import { Contact } from './Contact'
 import { Gallery } from './Gallery'
-import { Standard } from './utils/standardBlock';
 
 import { defineArrayMember, defineField, defineType } from 'sanity';
 import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
