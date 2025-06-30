@@ -7,7 +7,7 @@ import { Archive } from './Archive'
 import { Image } from './Image'
 import { Contact } from './Contact'
 import { Gallery } from './Gallery'
-import { Standard } from './utils/standardBlock';
+import { Note } from './Note'
 
 import { defineArrayMember, defineField, defineType } from 'sanity';
 import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
@@ -27,7 +27,7 @@ export const Blocks = defineType({
 	]
 })
 
-export const BlockTypes = [FeaturedTaxonomies, Text, FeaturedArticles, Newsletter, Info, Archive, Image, Contact, Gallery];
+export const BlockTypes = [FeaturedTaxonomies, Text, FeaturedArticles, Newsletter, Info, Archive, Image, Contact, Gallery, Note];
 
 // export const blockTypes = Blocks.map((block) => {
 // 	return { type: block.name }
