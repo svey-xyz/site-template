@@ -5,9 +5,11 @@ import React from 'react';
 import { urlForImage } from '@sanity.next-app/lib/image';
 import { config } from '@sanity.next-app/lib/api';
 import BlockBuilder from '@components.next-app/Pages/PageBuilder';
+import { SectionBuilder } from '@components.next-app/Pages/sections';
+import { Page as PageData} from '@next-app/sanity.types';
 
 export interface PageProps {
-	data: any // PagePayload | ArchivePayload | null
+	data: PageData // PagePayload | ArchivePayload | null
 	encodeDataAttribute?: EncodeDataAttributeCallback
 	draft?: boolean
 }
@@ -41,7 +43,8 @@ export const Page = ({ data, encodeDataAttribute, draft }: PageProps) => {
 				</div>
 			}
 
-			<BlockBuilder page={data} />
+			{/* <BlockBuilder page={data} /> */}
+			<SectionBuilder page={data} />
 		</article>
 	);
 };

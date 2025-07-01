@@ -10,6 +10,7 @@ import { dataAttr } from "@sanity.next-app/lib/utils";
 import { config } from "@sanity.next-app/lib/api";
 import React from "react";
 import dynamic from "next/dynamic";
+import { Page } from "@next-app/sanity.types";
 
 type PageBuilderSection = {
 	_key: string;
@@ -48,10 +49,10 @@ function renderEmptyState(page: any) {
 	);
 }
 
-export default function BlockBuilder({ page }: { page: any }) {
+export default function BlockBuilder({ page }: { page: Page }) {
 	const blocksObject = useOptimistic<
 		any,
-		SanityDocument<any>
+		SanityDocument<Page>
 	>(page?.blocks || [], (currentBlocks, action) => {
 		if (action.id !== page?._id) return currentBlocks;
 
@@ -104,4 +105,65 @@ export default function BlockBuilder({ page }: { page: any }) {
 
 function isBlockType(value: string): value is _BLOCK_TYPES {
 	return Object.values(_BLOCK_TYPES).includes(value as _BLOCK_TYPES);
+}
+
+
+type Section = Page['sections']
+
+type ArrElement<ArrType> = ArrType extends readonly (infer ElementType)[]
+	? ElementType
+	: never;
+
+
+export function BlockBuilder2({ section }: { section: ArrElement<Section> }) {
+	const blocksObject = useOptimistic<
+		any,
+		SanityDocument<Page>
+		>(section.blocks || [], (currentBlocks, action) => {
+			if (action.id !== section?._key) return currentBlocks;
+
+		if (action.document.blocks) {
+			// Reconcile References. https://www.sanity.io/docs/enabling-drag-and-drop#ffe728eea8c1
+			return {
+				blocks: action.document.blocks.blocks?.map(
+					(block: any) =>
+						currentBlocks?.blocks?.find((b: any) => b._key === block?._key) || block,
+				)
+			}
+		}
+
+		return currentBlocks;
+	});
+
+	// if (!page) return renderEmptyState(page);
+
+	const StandardBlock = dynamic(() => import('@components.next-app/Pages/blocks/Standard'));
+
+	return blocksObject.blocks?.map((block: any) => {
+			const BlockComponent =
+				!isBlockType(block._type) ?
+					StandardBlock :
+					BlockList[block._type as _BLOCK_TYPES] ?? StandardBlock
+
+			return (
+				<div
+					key={block._key}
+					className="h-fit my-4"
+					aria-label="block"
+					data-sanity={dataAttr({
+						...config,
+						id: section._key,
+						type: section._type,
+						path: `sections.blocks[_key=="${block._key}"]`,
+					}).toString()}
+				>
+					{React.createElement(BlockComponent, {
+						key: block._key,
+						data: block,
+						// className: `main-padding`
+					})}
+				</div>
+
+			)
+		})
 }
