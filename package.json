@@ -4,11 +4,14 @@
   "private": true,
   "scripts": {
     "dev": "bun run --filter '*' dev",
-		"typegen": "bun run --filter '*' clean && bun run --filter './studio' typegen && cp ./studio/schema.json ./next-app && bun run --filter './next-app' typegen"
+    "typegen": "bun run --filter '*' clean && bun run --filter './studio' typegen && cp ./studio/schema.json ./next-app && bun run --filter './next-app' typegen"
   },
   "workspaces": [
     "next-app",
     "studio",
-		"shared-lib"
-  ]
+    "shared-lib"
+  ],
+  "dependencies": {
+    "sanity": "^3.95.0"
+  }
 }

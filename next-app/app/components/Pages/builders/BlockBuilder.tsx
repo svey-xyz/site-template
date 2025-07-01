@@ -12,18 +12,6 @@ import React from "react";
 import dynamic from "next/dynamic";
 import { Page } from "@next-app/sanity.types";
 
-type PageBuilderSection = {
-	_key: string;
-	_type: string;
-};
-
-type PageData = {
-	_id: string;
-	_type: string;
-	blocks?: PageBuilderSection[];
-};
-
-
 function renderEmptyState(page: any) {
 	if (!page) return null;
 
@@ -49,60 +37,6 @@ function renderEmptyState(page: any) {
 	);
 }
 
-export default function BlockBuilder({ page }: { page: Page }) {
-	const blocksObject = useOptimistic<
-		any,
-		SanityDocument<Page>
-	>(page?.blocks || [], (currentBlocks, action) => {
-		if (action.id !== page?._id) return currentBlocks;
-
-		if (action.document.blocks) {
-			// Reconcile References. https://www.sanity.io/docs/enabling-drag-and-drop#ffe728eea8c1
-			return { blocks: action.document.blocks.blocks?.map(
-				(block: any) =>
-					currentBlocks?.blocks?.find((b: any) => b._key === block?._key) || block,
-			)
-		} }
-
-		return currentBlocks;
-	});
-
-	if (!page) return renderEmptyState(page);
-
-	const StandardBlock = dynamic(() => import('@components.next-app/Pages/blocks/Standard'));
-
-	return blocksObject ?
-		blocksObject.blocks?.map((block: any) => {
-			const BlockComponent =
-				!isBlockType(block._type) ?
-					StandardBlock :
-					BlockList[block._type as _BLOCK_TYPES] ?? StandardBlock
-					
-			return (
-					<div
-						key={block._key}
-						className="h-fit my-4"
-						aria-label="block"
-						data-sanity={dataAttr({
-							...config,
-							id: page._id,
-							type: page._type,
-							path: `blocks.blocks[_key=="${block._key}"]`,
-						}).toString()}
-					>
-						{ React.createElement(BlockComponent, {
-							key: block._key,
-							data: block,
-							// className: `main-padding`
-						}) }
-					</div>
-						
-				)
-		}) :
-		renderEmptyState(page);
-}
-
-
 function isBlockType(value: string): value is _BLOCK_TYPES {
 	return Object.values(_BLOCK_TYPES).includes(value as _BLOCK_TYPES);
 }
@@ -116,27 +50,28 @@ type ArrElement<ArrType> = ArrType extends readonly (infer ElementType)[]
 
 type Section = ArrElement<Sections>
 type Blocks = Section['blocks']
+type Block = ArrElement<Blocks>
 
-export function BlockBuilder2({ section, page }: { section: Section, page: Page }) {
+export const BlockBuilder = ({ section, page }: { section: Section, page: Page }) => {
 	// Reconcile References. https://www.sanity.io/docs/enabling-drag-and-drop#ffe728eea8c1
 	const blocksObject = useOptimistic<
 		Blocks,
 		SanityDocument<Page>
 		>(section.blocks, (state, action) => {
-		if (action.id !== section?._key) return state;
+		// console.log('Action ID: ', action.id, '\n Matches: ', action.id == page?._id)
+		if (action.id !== page?._id) return state;
 
-
-		return section.blocks?.map((block: ArrElement<Blocks>) =>
-			state?.find((b: any) => b._key === block?._key) || block,
+			// console.log('document: ', action.document)
+		return action.document.sections?.find((s) => s._key == section._key)?.blocks?.map((block: ArrElement<Blocks>) =>
+			state?.find((b: Block) => b._key === block?._key) || block
 		)
 	});
 
-	console.log('Blocks Object: ', blocksObject)
 	// if (!page) return renderEmptyState(page);
 
 	const StandardBlock = dynamic(() => import('@components.next-app/Pages/blocks/Standard'));
 
-	return blocksObject?.map((block: any) => {
+	return blocksObject?.map((block: Block) => {
 			const BlockComponent =
 				!isBlockType(block._type) ?
 					StandardBlock :
@@ -149,9 +84,9 @@ export function BlockBuilder2({ section, page }: { section: Section, page: Page 
 					aria-label="block"
 					data-sanity={dataAttr({
 						...config,
-						id: section._key,
-						type: section._type,
-						path: `blocks[_key=="${block._key}"]`,
+						id: page._id,
+						type: page._type,
+						path: `sections[_key=="${section._key}"].blocks[_key=="${block._key}"]`,
 					}).toString()}
 				>
 					{React.createElement(BlockComponent, {

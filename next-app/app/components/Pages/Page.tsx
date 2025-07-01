@@ -1,11 +1,8 @@
 
 import { EncodeDataAttributeCallback } from '@sanity/react-loader';
-import { createDataAttribute } from '@sanity/visual-editing'
 import React from 'react';
 import { urlForImage } from '@sanity.next-app/lib/image';
-import { config } from '@sanity.next-app/lib/api';
-import BlockBuilder from '@components.next-app/Pages/PageBuilder';
-import { SectionBuilder } from '@components.next-app/Pages/sections';
+import { SectionBuilder } from '@components.next-app/Pages/builders/SectionBuilder';
 import { Page as PageData} from '@next-app/sanity.types';
 
 export interface PageProps {

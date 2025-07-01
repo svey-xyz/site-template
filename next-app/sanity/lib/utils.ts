@@ -8,6 +8,6 @@ export function dataAttr(config: DataAttributeConfig) {
 	return createDataAttribute({
 		projectId: RootConfig.projectId,
 		dataset: RootConfig.dataset,
-		baseUrl: RootConfig.baseUrl,
+		baseUrl: RootConfig.baseUrl
 	}).combine(config);
 }
