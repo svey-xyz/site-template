@@ -15,7 +15,8 @@ export const BlockList: BlockMap = {
 	archive_block: dynamic(() => import('@components.next-app/Pages/blocks/Archive')),
 	image_block: dynamic(() => import('@components.next-app/Pages/blocks/Image')),
 	gallery_block: dynamic(() => import('@components.next-app/Pages/blocks/Gallery')),
-	contact_block: dynamic(() => import('@components.next-app/Pages/blocks/Contact'))
+	contact_block: dynamic(() => import('@components.next-app/Pages/blocks/Contact')),
+	note_block: dynamic(() => import('@components.next-app/Pages/blocks/Note'))
 }
 
 export default BlockList

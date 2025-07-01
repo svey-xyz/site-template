@@ -22,7 +22,8 @@ const _FIELDS = [
 				{ title: 'Warning', value: 'warn' },
 
 			]
-		}
+		},
+		validation: Rule => Rule.required()
 	})
 ]
 
