@@ -108,38 +108,35 @@ function isBlockType(value: string): value is _BLOCK_TYPES {
 }
 
 
-type Section = Page['sections']
+type Sections = Page['sections']
 
 type ArrElement<ArrType> = ArrType extends readonly (infer ElementType)[]
 	? ElementType
 	: never;
 
+type Section = ArrElement<Sections>
+type Blocks = Section['blocks']
 
-export function BlockBuilder2({ section }: { section: ArrElement<Section> }) {
+export function BlockBuilder2({ section, page }: { section: Section, page: Page }) {
+	// Reconcile References. https://www.sanity.io/docs/enabling-drag-and-drop#ffe728eea8c1
 	const blocksObject = useOptimistic<
-		any,
+		Blocks,
 		SanityDocument<Page>
-		>(section.blocks || [], (currentBlocks, action) => {
-			if (action.id !== section?._key) return currentBlocks;
+		>(section.blocks, (state, action) => {
+		if (action.id !== section?._key) return state;
 
-		if (action.document.blocks) {
-			// Reconcile References. https://www.sanity.io/docs/enabling-drag-and-drop#ffe728eea8c1
-			return {
-				blocks: action.document.blocks.blocks?.map(
-					(block: any) =>
-						currentBlocks?.blocks?.find((b: any) => b._key === block?._key) || block,
-				)
-			}
-		}
 
-		return currentBlocks;
+		return section.blocks?.map((block: ArrElement<Blocks>) =>
+			state?.find((b: any) => b._key === block?._key) || block,
+		)
 	});
 
+	console.log('Blocks Object: ', blocksObject)
 	// if (!page) return renderEmptyState(page);
 
 	const StandardBlock = dynamic(() => import('@components.next-app/Pages/blocks/Standard'));
 
-	return blocksObject.blocks?.map((block: any) => {
+	return blocksObject?.map((block: any) => {
 			const BlockComponent =
 				!isBlockType(block._type) ?
 					StandardBlock :
@@ -154,7 +151,7 @@ export function BlockBuilder2({ section }: { section: ArrElement<Section> }) {
 						...config,
 						id: section._key,
 						type: section._type,
-						path: `sections.blocks[_key=="${block._key}"]`,
+						path: `blocks[_key=="${block._key}"]`,
 					}).toString()}
 				>
 					{React.createElement(BlockComponent, {
