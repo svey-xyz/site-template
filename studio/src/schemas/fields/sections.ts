@@ -36,17 +36,21 @@ export const sections = defineField({
 							{ title: '1-2-1', value: '1-2-1' },
 							{ title: '1-1-2', value: '1-1-2' },
 						]
-					}
+					},
+					initialValue: '1',
+					validation: Rule => Rule.required(),
 				}),
 				defineField({
 					name: 'background',
 					type: 'string',
 					options: {
 						list: [
+							{ title: 'Opaque', value: 'opaque' },
 							{ title: 'Clear', value: 'clear' },
-							{ title: 'Opaque', value: 'opaque' }
 						]
-					}
+					},
+					initialValue: 'opaque',
+					validation: Rule => Rule.required(),
 				}),
 				defineField({
 					title: 'Blocks',
