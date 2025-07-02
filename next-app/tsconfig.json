@@ -26,7 +26,7 @@
 			"@root.site-template/*": ["../*"],
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "sanity.types.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "sanity.types.ts", "../global.d.ts"],
   "exclude": ["node_modules"],
 	"files": ["modules.d.ts", "sanity.types.ts"]
 }

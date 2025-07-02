@@ -1,10 +1,10 @@
 'use client'
 
 import { Icon } from '@iconify/react';
+import { Info_block } from '@next-app/sanity.types';
 import React from 'react';
 
-export const Info = ({ data, className }: any
-	// { data: block_Info, className?: string }
+export const Info = ({ data, className }: { data: Info_block, className?: string }
 ) => {
 	return (
 		<div className={`${className} w-full`}>

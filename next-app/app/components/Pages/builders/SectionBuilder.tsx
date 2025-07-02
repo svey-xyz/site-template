@@ -9,11 +9,6 @@ import React from "react";
 import { Section } from "@components.next-app/Pages/sections";
 
 type Sections = Page['sections']
-
-type ArrElement<ArrType> = ArrType extends readonly (infer ElementType)[]
-	? ElementType
-	: never;
-
 type Section = ArrElement<Sections>
 
 export const SectionBuilder = ({ page }: { page: Page }) => {

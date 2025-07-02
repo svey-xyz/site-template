@@ -1,5 +1,6 @@
 import React from 'react';
 import dynamic from 'next/dynamic'
+import { FeaturedArticles_block } from '@next-app/sanity.types';
 
 interface CardMap {
 	[key: string]: React.ComponentType<{
@@ -12,8 +13,7 @@ const CardList: CardMap = {
 	// Default: dynamic(() => import('@/components/Pages/blocks/Archive/cards/Default')),
 }
 
-export const FeaturedArticles = ({ data, className }: any
-	// { data: block_FeaturedArticles, className?: string }
+export const FeaturedArticles = ({ data, className }: { data: FeaturedArticles_block, className?: string }
 ) => {
 	if (!data) return
 

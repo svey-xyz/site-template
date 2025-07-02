@@ -2,9 +2,9 @@
 
 import React from 'react';
 import { resolveArchiveHrefFromTaxonomy } from '@lib.next-app/resolveHref';
+import { FeaturedTaxonomies_block } from '@next-app/sanity.types';
 
-export const FeaturedTaxonomies = ({ data, className } : any
-	// { data: block_FeaturedTaxonomies | undefined, className?: string }
+export const FeaturedTaxonomies = ({ data, className } : { data: FeaturedTaxonomies_block | undefined, className?: string }
 ) => {
 	if (!data) return;
 	return (
