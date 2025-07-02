@@ -1,9 +1,6 @@
 import { notFound } from 'next/navigation'
 
 import { Page } from '@components.next-app/Pages/Page'
-import { draftMode } from 'next/headers'
-import dynamic from 'next/dynamic'
-import { queryClient } from '@sanity.next-app/loader/loadQuery'
 import { pageQuery } from '@sanity.next-app/queries/queries'
 import { ResolvingMetadata, Metadata } from 'next'
 import { sanityFetch } from '@sanity.next-app/lib/live'

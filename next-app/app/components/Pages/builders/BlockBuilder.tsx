@@ -80,7 +80,7 @@ export const BlockBuilder = ({ section, page }: { section: Section, page: Page }
 			return (
 				<div
 					key={block._key}
-					className="h-fit my-4"
+					className="relative h-fit z-10"
 					aria-label="block"
 					data-sanity={dataAttr({
 						...config,
