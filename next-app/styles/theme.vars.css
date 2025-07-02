@@ -5,7 +5,7 @@
 	--icon-base-size: 28px;
 	--icon-scale: 1.2;
 
-	--radius-size: 8px;
+	--radius-size: 6px;
 	--radius-scale: 1.2;
 }
 
@@ -61,6 +61,7 @@
 	--text-5xl: calc(var(--text-base-size) * (var(--text-scale) * 6));
 
 	--radius-sm: calc(var(--radius-size) * (1 / var(--radius-scale)));
+	--radius-md: var(--radius-size);
 	--radius-base: var(--radius-size);
 	--radius-lg: calc(var(--radius-size) * (var(--radius-scale)));
 	--radius-xl: calc(var(--radius-size) * (var(--radius-scale) * 2));

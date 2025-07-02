@@ -19,6 +19,7 @@ export const FeaturedArticles = ({ data, className }: any
 
 	return (
 		<div className={`${className}`}>
+			HIIIIIIIIIIIIIIIIII
 			{/* <h2>
 				{ data.title }
 			</h2>

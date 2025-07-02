@@ -38,7 +38,7 @@ export const SectionBuilder = ({ page }: { page: Page }) => {
 		return (
 			<div
 				key={section._key}
-				className="h-fit my-4"
+				className=""
 				aria-label="section"
 				data-sanity={dataAttr({
 					...config,

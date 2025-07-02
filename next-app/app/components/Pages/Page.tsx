@@ -17,7 +17,7 @@ export const Page = ({ data, encodeDataAttribute, draft }: PageProps) => {
 	const BG_URL = data.heroImage ? urlForImage(data.heroImage).url() : ''
 	return (
 		<article
-			className='relative flex flex-col flex-grow max-w-full main-padding'
+			className='relative flex flex-col flex-grow max-w-full'
 			// data-sanity={createDataAttribute({
 			// 	...config,
 			// 	id: data._id,
@@ -25,7 +25,7 @@ export const Page = ({ data, encodeDataAttribute, draft }: PageProps) => {
 			// 	path: 'blocks.blocks',
 			// }).toString()}
 		>
-			{	BG_URL &&
+			{/* {	BG_URL &&
 				<div
 					className={`relative max-w-full bg-fixed bg-no-repeat bg-cover bg-center`}
 					style={{
@@ -38,7 +38,7 @@ export const Page = ({ data, encodeDataAttribute, draft }: PageProps) => {
 						</h2>
 					</div>
 				</div>
-			}
+			} */}
 
 			{/* <BlockBuilder page={data} /> */}
 			<SectionBuilder page={data} />
