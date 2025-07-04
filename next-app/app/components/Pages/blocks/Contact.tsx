@@ -3,9 +3,9 @@
 import React, { useState, useRef } from 'react';
 import Form, { fieldArgs } from '@components.next-app/Form';
 import { ContactInfo } from '@components.next-app/ContactInfo';
-import { Contact_block, Settings } from '@next-app/sanity.types';
+import { Contact_block } from '@next-app/sanity.types';
 
-export const Contact = ({ data, className, siteData }: { data: Contact_block, className?: string, siteData?: Settings }
+export const Contact = ({ data, className }: { data: Contact_block, className?: string }
 ) => {
 	const nameRef = useRef<HTMLInputElement>(null);
 	const emailRef = useRef<HTMLInputElement>(null);
@@ -64,10 +64,10 @@ export const Contact = ({ data, className, siteData }: { data: Contact_block, cl
 
 	const ContactLegend = (
 		<div className='flex flex-col gap-3'>
-			<h3>{ siteData?.title }</h3>
+			{/* <h3>{ siteData?.title }</h3>
 			{ siteData?.contact &&
 				<ContactInfo contact={siteData.contact} />
-			}
+			} */}
 			<p>
 				For any inquiries, please fill out this form:
 			</p>
