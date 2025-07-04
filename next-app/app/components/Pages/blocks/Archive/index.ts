@@ -1,3 +1,4 @@
-import { Archive } from './Archive'
+import { Archive as ArchiveComponent } from './Archive'
 
-export default Archive
+export const Archive = ArchiveComponent
+export default ArchiveComponent

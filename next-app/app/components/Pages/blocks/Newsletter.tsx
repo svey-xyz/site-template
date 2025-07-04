@@ -2,7 +2,7 @@ import NewsletterForm from '@components.next-app/NewsletterForm';
 import { Newsletter_block } from '@next-app/sanity.types';
 import React from 'react';
 
-export const Standard = ({ data, className }: { data: Newsletter_block, className?: string }
+export const Newsletter = ({ data, className }: { data: Newsletter_block, className?: string }
 ) => {
 	return (
 		<div className={`${className}`}>
@@ -20,4 +20,4 @@ export const Standard = ({ data, className }: { data: Newsletter_block, classNam
 	);
 };
 
-export default Standard;
+export default Newsletter;

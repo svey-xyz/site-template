@@ -1,6 +1,18 @@
 import dynamic from 'next/dynamic'
-import { Blocks } from '@next-app/sanity.types';
+import { Archive_block, Blocks, Contact_block, FeaturedArticles_block, FeaturedTaxonomies_block, Gallery_block, Image_block, Info_block, Newsletter_block, Note_block, Text_block } from '@next-app/sanity.types';
 import React from 'react';
+
+const FeaturedTaxonomiesComponent = dynamic(() => import('@components.next-app/Pages/blocks/FeaturedTaxonomies'))
+const TextComponent = dynamic(() => import('@components.next-app/Pages/blocks/Text'))
+const NewsletterComponent = dynamic(() => import('@components.next-app/Pages/blocks/Newsletter'))
+const FeaturedArticlesComponent = dynamic(() => import('@components.next-app/Pages/blocks/FeaturedArticles'))
+const InfoComponent = dynamic(() => import('@components.next-app/Pages/blocks/Info'))
+const ArchiveComponent = dynamic(() => import('@components.next-app/Pages/blocks/Archive'))
+const ImageComponent = dynamic(() => import('@components.next-app/Pages/blocks/Image'))
+const GalleryComponent = dynamic(() => import('@components.next-app/Pages/blocks/Gallery'))
+const ContactComponent = dynamic(() => import('@components.next-app/Pages/blocks/Contact'))
+const NoteComponent = dynamic(() => import('@components.next-app/Pages/blocks/Note'))
+const StandardComponent = dynamic(() => import('@components.next-app/Pages/blocks/Standard'))
 
 type _block = ArrElement<Blocks['blocks']>
 
@@ -8,52 +20,19 @@ interface genericBlockData {
 	_type: _block['_type']
 	[x: string]: unknown;
 }
-export const BlockComponents = ({ data }:{ data: genericBlockData }) => {
 
+export const BlockComponent = ({ data }:{ data: genericBlockData }) => {
 	switch (data._type) {
-		case 'featuredTaxonomies_block':
-			const FeaturedTaxonomiesComponent = dynamic(() => import('@components.next-app/Pages/blocks/FeaturedTaxonomies'))
-			const FeaturedTaxonomiesData = data as React.ComponentPropsWithoutRef<typeof FeaturedTaxonomiesComponent>['data']
-			return <FeaturedTaxonomiesComponent data={FeaturedTaxonomiesData} />
-		case 'text_block':
-			const TextComponent = dynamic(() => import('@components.next-app/Pages/blocks/Text'))
-			const TextData = data as React.ComponentPropsWithoutRef<typeof TextComponent>['data']
-			return <TextComponent data={TextData} />
-		case 'newsletter_block':
-			const NewsletterComponent = dynamic(() => import('@components.next-app/Pages/blocks/Newsletter'))
-			const NewsletterData = data as React.ComponentPropsWithoutRef<typeof NewsletterComponent>['data']
-			return <NewsletterComponent data={NewsletterData} />
-		case 'featuredArticles_block':
-			const FeaturedArticlesComponent = dynamic(() => import('@components.next-app/Pages/blocks/FeaturedArticles'))
-			const FeaturedArticlesData = data as React.ComponentPropsWithoutRef<typeof FeaturedArticlesComponent>['data']
-			return <FeaturedArticlesComponent data={FeaturedArticlesData} />
-		case 'info_block':
-			const InfoComponent = dynamic(() => import('@components.next-app/Pages/blocks/Info'))
-			const InfoData = data as React.ComponentPropsWithoutRef<typeof InfoComponent>['data']
-			return <InfoComponent data={InfoData} />
-		case 'archive_block':
-			const ArchiveComponent = dynamic(() => import('@components.next-app/Pages/blocks/Archive'))
-			const ArchiveData = data as React.ComponentPropsWithoutRef<typeof ArchiveComponent>['data']
-			return <ArchiveComponent data={ArchiveData} />
-		case 'image_block':
-			const ImageComponent = dynamic(() => import('@components.next-app/Pages/blocks/Image'))
-			const ImageData = data as React.ComponentPropsWithoutRef<typeof ImageComponent>['data']
-			return <ImageComponent data={ImageData} />
-		case 'gallery_block':
-			const GalleryComponent = dynamic(() => import('@components.next-app/Pages/blocks/Gallery'))
-			const GalleryData = data as React.ComponentPropsWithoutRef<typeof GalleryComponent>['data']
-			return <GalleryComponent data={GalleryData} />
-		case 'contact_block':
-			const ContactComponent = dynamic(() => import('@components.next-app/Pages/blocks/Contact'))
-			const ContactData = data as React.ComponentPropsWithoutRef<typeof ContactComponent>['data']
-			return <ContactComponent data={ContactData} />
-		case 'note_block':
-			const NoteComponent = dynamic(() => import('@components.next-app/Pages/blocks/Note'))
-			const NoteData = data as React.ComponentPropsWithoutRef<typeof NoteComponent>['data']
-			return <NoteComponent data={NoteData} />
-		default:
-			const DefaultComponent = dynamic(() => import('@components.next-app/Pages/blocks/Standard'));
-			return <DefaultComponent data={data} />
-
+		case 'featuredTaxonomies_block': return <FeaturedTaxonomiesComponent data={data as FeaturedTaxonomies_block} />
+		case 'text_block': return <TextComponent data={data as Text_block} />
+		case 'newsletter_block': return <NewsletterComponent data={data as Newsletter_block} />
+		case 'featuredArticles_block': return <FeaturedArticlesComponent data={data as FeaturedArticles_block} />
+		case 'info_block': return <InfoComponent data={data as Info_block} />
+		case 'archive_block': return <ArchiveComponent data={data as Archive_block} />
+		case 'image_block': return <ImageComponent data={data as Image_block} />
+		case 'gallery_block': return <GalleryComponent data={data as Gallery_block} />
+		case 'contact_block': return <ContactComponent data={data as Contact_block} />
+		case 'note_block': return <NoteComponent data={data as Note_block} />
+		default: return <StandardComponent data={data} />
 	}
 }
