@@ -73,24 +73,39 @@ export const taxonomy = defineType({
 		defineField({
 			name: 'related',
 			title: 'Related Terms',
-			type: 'reference',
-			to: [{ type: 'taxonomy' }],
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{ type: 'taxonomy' }],
+				}
+			],
 			fieldset: 'relational',
 			description: skosSectionLink('secassociative', 'Related terms that are not broader or narrower.'),
 		}),
 		defineField({
 			name: 'broader',
 			title: 'Broader Terms',
-			type: 'reference',
-			to: [{ type: 'taxonomy' }],
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{ type: 'taxonomy' }],
+				}
+			],
 			fieldset: 'relational',
 			description: skosSectionLink('sechierarchy', 'More general terms.'),
 		}),
 		defineField({
 			name: 'narrower',
 			title: 'Narrower Terms',
-			type: 'reference',
-			to: [{ type: 'taxonomy' }],
+			type: 'array',
+			of: [
+				{
+					type: 'reference',
+					to: [{ type: 'taxonomy' }],
+				}
+			],
 			fieldset: 'relational',
 			description: skosSectionLink('sechierarchy', 'More specific terms.'),
 		}),
