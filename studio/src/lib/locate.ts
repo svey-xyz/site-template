@@ -6,7 +6,7 @@ import {
 } from 'sanity/presentation'
 
 export const locate: DocumentLocationResolver = (params, context) => {
-	if (params.type === 'siteSettings') {
+	if (params.type === 'settings') {
 		return {
 			message: 'This document is used on all pages',
 			tone: 'caution',
@@ -42,12 +42,12 @@ export const locate: DocumentLocationResolver = (params, context) => {
 		return doc$.pipe(
 			map((docs) => {
 				const isReferencedBySettings = docs?.some(
-					(doc) => doc._type === 'siteSettings',
+					(doc) => doc._type === 'settings',
 				)
 				console.log('In switch')
 				switch (params.type) {
 					case 'page':
-						const homeSlug = docs?.find((doc) => doc._type === 'siteSettings')?.homepage?.slug.current
+						const homeSlug = docs?.find((doc) => doc._type === 'settings')?.homepage?.slug.current
 						const pageSlug = docs?.find((doc) => doc._id === params.id)?.slug?.current
 						console.log('Home: ', homeSlug)
 
