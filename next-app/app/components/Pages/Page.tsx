@@ -4,7 +4,7 @@ import { SectionBuilder } from '@components.next-app/Pages/builders/SectionBuild
 import { Page as PageData} from '@next-app/sanity.types';
 
 export interface PageProps {
-	data: PageData // PagePayload | ArchivePayload | null
+	data: PageData
 	draft?: boolean
 }
 

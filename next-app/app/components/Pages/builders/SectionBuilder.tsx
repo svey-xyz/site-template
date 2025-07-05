@@ -9,11 +9,6 @@ import React from "react";
 import { Section } from "@components.next-app/Pages/sections";
 
 type Sections = Page['sections']
-
-type ArrElement<ArrType> = ArrType extends readonly (infer ElementType)[]
-	? ElementType
-	: never;
-
 type Section = ArrElement<Sections>
 
 export const SectionBuilder = ({ page }: { page: Page }) => {
@@ -28,33 +23,22 @@ export const SectionBuilder = ({ page }: { page: Page }) => {
 			state?.find((s: Section) => s._key === section?._key) || section
 		)
 	})
-	// console.log('Sections object: ', sectionsObject)
-	// if (!page) return renderEmptyState(page);
-	if (!sectionsObject?.length) {
-		return null
-	}
 
-	return sectionsObject.map((section: Section) => {
-		return (
-			<div
-				key={section._key}
-				className=""
-				aria-label="section"
-				data-sanity={dataAttr({
-					...config,
-					id: page._id,
-					type: page._type,
-					path: `sections[_key=="${section._key}"]`,
-				}).toString()}
-			>
-				{React.createElement(Section, {
-					key: section._key,
-					data: section,
-					page: page
-					// className: `main-padding`
-				})}
-			</div>
+	if (!sectionsObject?.length) return null
 
-		)
-	})
+	return sectionsObject.map((section: Section) => 
+		<div
+			key={section._key}
+			className=""
+			aria-label="section"
+			data-sanity={dataAttr({
+				...config,
+				id: page._id,
+				type: page._type,
+				path: `sections[_key=="${section._key}"]`,
+			}).toString()}
+		>
+			<Section key={section._key} data={section} page={page} />
+		</div>
+	)
 }

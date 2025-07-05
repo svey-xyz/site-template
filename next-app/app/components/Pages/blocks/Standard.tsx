@@ -1,7 +1,15 @@
 import React from 'react';
+import { Blocks } from '@next-app/sanity.types';
 
-export const Standard = ({data, className}: any
-	// {data: block, className?:string}
+type _block = ArrElement<Blocks['blocks']>
+
+interface genericBlockData {
+	_type: _block['_type']
+	[x: string]: unknown;
+}
+
+
+export const Standard = ({ data, className }: { data: genericBlockData, className?: string}
 ) => {
 	return (
 		<div className={`${className}`}>

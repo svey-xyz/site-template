@@ -4,11 +4,6 @@ import React from "react";
 import {BlockBuilder} from "@components.next-app/Pages/builders/BlockBuilder";
 
 type Sections = Page['sections']
-
-type ArrElement<ArrType> = ArrType extends readonly (infer ElementType)[]
-	? ElementType
-	: never;
-
 type Section = ArrElement<Sections>
 
 export const Section = ({ data, page }: { data: Section, page: Page }) => {
