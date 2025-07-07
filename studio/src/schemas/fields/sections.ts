@@ -64,3 +64,29 @@ export const sections = defineField({
 		})
 	]
 })
+
+// defineField({
+// 	title: 'Blocks',
+// 	name: 'blocks',
+// 	type: 'array',
+// 	of: (() => {
+// 		return Object.values(_BLOCK_TYPES).map((blockType) => { return defineArrayMember({ type: blockType }) })
+// 	})(),
+// }),
+
+
+// defineField({
+// 	title: 'Blocks',
+// 	name: 'blocks',
+// 	type: 'array',
+// 	of: [
+// 		defineArrayMember({
+// 			title: 'Block',
+// 			type: 'object',
+// 			fields: [
+
+// 			]
+// 		}),
+
+// 	],
+// }),

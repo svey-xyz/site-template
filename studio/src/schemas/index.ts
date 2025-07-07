@@ -4,7 +4,7 @@ import ARTICLES from './documents/articles'
 /**
  * Objects
  */
-import { Blocks, BlockTypes } from './objects/blocks'
+import { BlockTypes } from './objects/blocks'
 import { social } from './objects/social'
 import { link } from './objects/link'
 import { basicDate } from './objects/basicDate'
@@ -12,7 +12,7 @@ import { contact } from './objects/contact'
 import { note } from './objects/note'
 import { navGroup } from './objects/navGroup'
 
-const _objects = [social, link, basicDate, contact, note, navGroup, Blocks, ...BlockTypes]
+const _objects = [social, link, basicDate, contact, note, navGroup, ...BlockTypes]
 
 /**
  * Documents

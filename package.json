@@ -10,8 +10,5 @@
     "next-app",
     "studio",
     "shared-lib"
-  ],
-  "dependencies": {
-    "sanity": "^3.95.0"
-  }
+  ]
 }

@@ -12,20 +12,20 @@ import { Note } from './Note'
 import { defineArrayMember, defineField, defineType } from 'sanity';
 import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 
-export const Blocks = defineType({
-	name: 'blocks',
-	type: 'object',
-	fields: [
-		defineField({
-			title: 'Blocks',
-			name: 'blocks',
-			type: 'array',
-			of: (() => {
-				return Object.values(_BLOCK_TYPES).map((blockType) => { return defineArrayMember({ type: blockType })})
-			})(),
-		}),
-	]
-})
+// export const Blocks = defineType({
+// 	name: 'blocks',
+// 	type: 'object',
+// 	fields: [
+// 		defineField({
+// 			title: 'Blocks',
+// 			name: 'blocks',
+// 			type: 'array',
+// 			of: (() => {
+// 				return Object.values(_BLOCK_TYPES).map((blockType) => { return defineArrayMember({ type: blockType })})
+// 			})(),
+// 		}),
+// 	]
+// })
 
 export const BlockTypes = [FeaturedTaxonomies, Text, FeaturedArticles, Newsletter, Info, Archive, Image, Contact, Gallery, Note];
 

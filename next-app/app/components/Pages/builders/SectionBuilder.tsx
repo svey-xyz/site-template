@@ -20,25 +20,39 @@ export const SectionBuilder = ({ page }: { page: Page }) => {
 		if (action.id !== page._id) return state;
 
 		return action.document.sections?.map((section: Section) => 
-			state?.find((s: Section) => s._key === section?._key) || section
+			state?.find((s: Section) => s._key === section?._key) ?? section
 		)
 	})
 
 	if (!sectionsObject?.length) return null
 
-	return sectionsObject.map((section: Section) => 
+	return (
 		<div
-			key={section._key}
-			className=""
-			aria-label="section"
 			data-sanity={dataAttr({
 				...config,
 				id: page._id,
 				type: page._type,
-				path: `sections[_key=="${section._key}"]`,
+				path: `sections`,
 			}).toString()}
 		>
-			<Section key={section._key} data={section} page={page} />
+			{ sectionsObject.map((section: Section) =>
+				<div
+					key={section._key}
+					className=""
+					aria-label="section"
+					data-sanity={dataAttr({
+						...config,
+						id: page._id,
+						type: page._type,
+						path: `sections[_key=="${section._key}"]`,
+					}).toString()}
+				>
+					<Section data={section} page={page} />
+				</div>
+			) }
 		</div>
 	)
+	
+	
+	
 }
