@@ -1,6 +1,7 @@
 import dynamic from 'next/dynamic'
 import { Archive_block, Contact_block, FeaturedArticles_block, FeaturedTaxonomies_block, Gallery_block, Image_block, Info_block, Newsletter_block, Note_block, Text_block, Page } from '@next-app/sanity.types';
 import React from 'react';
+import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 
 // import {FeaturedTaxonomies as FeaturedTaxonomiesComponent} from '@components.next-app/Pages/blocks/FeaturedTaxonomies';
 // import {Text as TextComponent} from '@components.next-app/Pages/blocks/Text';
@@ -26,26 +27,23 @@ const ContactComponent = dynamic(() => import('@components.next-app/Pages/blocks
 const NoteComponent = dynamic(() => import('@components.next-app/Pages/blocks/Note'))
 const StandardComponent = dynamic(() => import('@components.next-app/Pages/blocks/Standard'))
 
-type _section = ArrElement<Page['sections']>
-type _block = ArrElement<_section['blocks']>
-
 interface genericBlockData {
-	_type: _block['_type']
+	_type: _BLOCK_TYPES
 	[x: string]: unknown;
 }
 
 export const BlockComponent = ({ data }:{ data: genericBlockData }) => {
 	switch (data._type) {
-		case 'featuredTaxonomies_block': return <FeaturedTaxonomiesComponent data={data as FeaturedTaxonomies_block} />
-		case 'text_block': return <TextComponent data={data as Text_block} />
-		case 'newsletter_block': return <NewsletterComponent data={data as Newsletter_block} />
-		case 'featuredArticles_block': return <FeaturedArticlesComponent data={data as FeaturedArticles_block} />
-		case 'info_block': return <InfoComponent data={data as Info_block} />
-		case 'archive_block': return <ArchiveComponent data={data as Archive_block} />
-		case 'image_block': return <ImageComponent data={data as Image_block} />
-		case 'gallery_block': return <GalleryComponent data={data as Gallery_block} />
-		case 'contact_block': return <ContactComponent data={data as Contact_block} />
-		case 'note_block': return <NoteComponent data={data as Note_block} />
+		case _BLOCK_TYPES.FEATURED_TAXONOMIES: return <FeaturedTaxonomiesComponent data={data as FeaturedTaxonomies_block} />
+		case _BLOCK_TYPES.TEXT: return <TextComponent data={data as Text_block} />
+		case _BLOCK_TYPES.NEWSLETTER: return <NewsletterComponent data={data as Newsletter_block} />
+		case _BLOCK_TYPES.FEATURED_ARTICLES: return <FeaturedArticlesComponent data={data as FeaturedArticles_block} />
+		case _BLOCK_TYPES.INFO: return <InfoComponent data={data as Info_block} />
+		case _BLOCK_TYPES.ARCHIVE: return <ArchiveComponent data={data as Archive_block} />
+		case _BLOCK_TYPES.IMAGE: return <ImageComponent data={data as Image_block} />
+		case _BLOCK_TYPES.GALLERY: return <GalleryComponent data={data as Gallery_block} />
+		case _BLOCK_TYPES.CONTACT: return <ContactComponent data={data as Contact_block} />
+		case _BLOCK_TYPES.NOTE: return <NoteComponent data={data as Note_block} />
 		default: return <StandardComponent data={data} />
 	}
 }

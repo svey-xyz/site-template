@@ -8,6 +8,7 @@ import { config } from "@sanity.next-app/lib/api";
 import React from "react";
 import { Page } from "@next-app/sanity.types";
 import { BlockComponent } from "@components.next-app/Pages/blocks";
+import { _BLOCK_TYPES } from "@root.site-template/DocumentTypes";
 
 type Sections = Page['sections']
 type Section = ArrElement<Sections>
@@ -39,8 +40,13 @@ export const BlockBuilder = ({ section, page }: { section: Section, page: Page }
 				path: `sections[_key=="${section._key}"].blocks`,
 			}).toString()}
 		>
-			{ blocksObject.map((block: Block) =>
-				<div
+			{ blocksObject.map((block: Block) => {
+				const BlockData = {
+					...block,
+					_type: block._type as _BLOCK_TYPES
+				}
+				
+				return <div
 					key={block._key}
 					className="relative h-fit z-10"
 					aria-label={block._type}
@@ -51,8 +57,10 @@ export const BlockBuilder = ({ section, page }: { section: Section, page: Page }
 						path: `sections[_key=="${section._key}"].blocks[_key=="${block._key}"]`,
 					}).toString()}
 				>
-					<BlockComponent data={block} />
+					<BlockComponent data={BlockData} />
 				</div>
+				}
+				
 			) }
 		</div>
 	)
