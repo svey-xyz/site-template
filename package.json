@@ -10,5 +10,8 @@
     "next-app",
     "studio",
     "shared-lib"
-  ]
+  ],
+  "dependencies": {
+    "next-sanity": "^9.12.0"
+  }
 }

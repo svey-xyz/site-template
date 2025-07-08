@@ -12,4 +12,5 @@ export const client = createClient({
 		studioUrl: configStudioBasePath,
 		logger: console,
 	},
+	resultSourceMap: 'withKeyArraySelector'
 })
