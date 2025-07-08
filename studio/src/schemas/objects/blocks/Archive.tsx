@@ -3,7 +3,7 @@ import { camelCaseToWords } from "shared-lib/StringTransforms"
 
 import { ArchiveBoxIcon } from '@heroicons/react/24/solid'
 import { _BLOCK_PREVIEW } from '@schemas.studio/objects/blocks/utils/preview';
-import { _ARTICLE_TYPES } from '@root.site-template/DocumentTypes';
+import { _ARTICLE_TYPES, _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 import { _BLOCK_FIELDS } from '@schemas.studio/objects/blocks/utils/fields';
 
 const archiveTypes = Object.entries(_ARTICLE_TYPES).flatMap((article) => {
@@ -49,7 +49,7 @@ const _FIELDS = [
 ]
 
 export const Archive = defineType({
-	name: 'archive_block',
+	name: _BLOCK_TYPES.ARCHIVE,
 	type: 'object',
 	icon: () => <ArchiveBoxIcon />,
 	fields: [

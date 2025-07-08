@@ -4,6 +4,7 @@ import { camelCaseToWords } from "shared-lib/StringTransforms"
 import { PhotoIcon } from '@heroicons/react/24/solid'
 import { _CUSTOM_IMAGE_FIELD_VALUES } from '@schemas.studio/fields/CustomImage';
 import { _BLOCK_FIELDS } from '@schemas.studio/objects/blocks/utils/fields';
+import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 
 const _FIELDS = [
 	defineField({
@@ -36,7 +37,7 @@ const _PREVIEW = {
 }
 
 export const Image = defineType({
-	name: 'image_block',
+	name: _BLOCK_TYPES.IMAGE,
 	type: 'object',
 	icon: () => <PhotoIcon />,
 	fields: [

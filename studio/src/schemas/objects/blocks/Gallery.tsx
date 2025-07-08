@@ -4,6 +4,7 @@ import { Squares2X2Icon } from '@heroicons/react/24/solid'
 import { _CUSTOM_IMAGE_FIELD_VALUES } from '@schemas.studio/fields/CustomImage';
 import { _BLOCK_FIELDS } from '@schemas.studio/objects/blocks/utils/fields';
 import { _BLOCK_PREVIEW } from '@schemas.studio/objects/blocks/utils/preview';
+import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 
 
 const _FIELDS = [
@@ -33,7 +34,7 @@ const _FIELDS = [
 ]
 
 export const Gallery = defineType({
-	name: 'gallery_block',
+	name: _BLOCK_TYPES.GALLERY,
 	type: 'object',
 	icon: () => <Squares2X2Icon />,
 	fields: [
