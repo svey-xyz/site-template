@@ -2,13 +2,10 @@ import { Page } from "@next-app/sanity.types"
 import { stegaClean } from "@sanity/client/stega"
 import React from "react";
 import {BlockBuilder} from "@components.next-app/Pages/builders/BlockBuilder";
+import { dataAttr } from "@sanity.next-app/lib/utils";
+import { config } from "process";
 
 type Sections = Page['sections']
-
-type ArrElement<ArrType> = ArrType extends readonly (infer ElementType)[]
-	? ElementType
-	: never;
-
 type Section = ArrElement<Sections>
 
 export const Section = ({ data, page }: { data: Section, page: Page }) => {
@@ -36,7 +33,7 @@ export const Section = ({ data, page }: { data: Section, page: Page }) => {
 			}
 		`}>
 			<div className="main-padding my-6">
-				<BlockBuilder section={data} page={page} />
+				{ data.blocks && <BlockBuilder section={data} page={page}/> }
 			</div>
 		</section>
 	)

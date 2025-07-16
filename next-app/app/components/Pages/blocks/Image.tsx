@@ -1,10 +1,9 @@
 import React from 'react';
 import ImageBuilder from '@components.next-app/Image'
+import { Image_block } from '@next-app/sanity.types';
 
-const Image = ({ data, className }: any
-	// { data: block_Image | undefined, className?: string }
+export const Image = ({ data, className }: { data: Image_block, className?: string }
 ) => {
-	if (!data) return;
 
 	return (
 		<div className={`${className}`}>

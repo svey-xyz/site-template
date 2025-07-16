@@ -3,6 +3,7 @@ import { defineField, defineType } from 'sanity';
 import { InboxArrowDownIcon } from '@heroicons/react/24/solid'
 import { _BLOCK_PREVIEW } from '@schemas.studio/objects/blocks/utils/preview';
 import { _BLOCK_FIELDS } from '@schemas.studio/objects/blocks/utils/fields';
+import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 
 const _FIELDS = [
 	defineField({
@@ -13,7 +14,7 @@ const _FIELDS = [
 ]
 
 export const Contact = defineType({
-	name: 'contact_block',
+	name: _BLOCK_TYPES.CONTACT,
 	type: 'object',
 	icon: () => <InboxArrowDownIcon />,
 	fields: [

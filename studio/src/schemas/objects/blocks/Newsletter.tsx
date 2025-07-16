@@ -3,6 +3,7 @@ import { defineField, defineType } from 'sanity';
 import { EnvelopeOpenIcon } from '@heroicons/react/24/solid'
 import { _BLOCK_FIELDS } from '@schemas.studio/objects/blocks/utils/fields';
 import { _BLOCK_PREVIEW } from '@schemas.studio/objects/blocks/utils/preview';
+import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 
 const _FIELDS = [
 	defineField({
@@ -24,7 +25,7 @@ const _FIELDS = [
 ]
 
 export const Newsletter = defineType({
-	name: 'newsletter_block',
+	name: _BLOCK_TYPES.NEWSLETTER,
 	type: 'object',
 	icon: () => <EnvelopeOpenIcon />,
 	fields: [

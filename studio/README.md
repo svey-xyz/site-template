@@ -8,6 +8,9 @@
 [![GitHub issues](https://img.shields.io/github/issues/svey-xyz/site-template)](https://GitHub.com/svey-xyz/site-template/issues/)
 [![GNU license v3.0](https://img.shields.io/badge/License-GNU-green.svg)](https://github.com/svey-xyz/site-template/LICENSE)
 
+## NOTE
+With improvements to [Sanity typegen](https://www.sanity.io/docs/apis-and-sdks/sanity-typegen), and the release of [Tailwindcss v4](https://tailwindcss.com/blog/tailwindcss-v4) this template has been overhauled to make use of the new features available. The README has NOT been updated yet. This template aims to always use the most recent version of all employed tooling.
+
 ## Description
 This repo is a template for the sites I build, it is designed to be highly flexible and customizable while providing a solid foundation to build on.
 

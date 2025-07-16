@@ -3,6 +3,7 @@ import { defineField, defineType } from 'sanity';
 import { Bars3BottomLeftIcon } from '@heroicons/react/24/solid';
 import { _BLOCK_FIELDS } from '@schemas.studio/objects/blocks/utils/fields';
 import { _BLOCK_PREVIEW } from '@schemas.studio/objects/blocks/utils/preview';
+import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 
 const _FIELDS = [
 	defineField({
@@ -14,7 +15,7 @@ const _FIELDS = [
 ]
 
 export const Text = defineType({
-	name: 'text_block',
+	name: _BLOCK_TYPES.TEXT,
 	type: 'object',
 	icon: () => <Bars3BottomLeftIcon />,
 	fields: [

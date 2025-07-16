@@ -7,12 +7,53 @@ import { Inter } from 'next/font/google'
 import Head from './head'
 import ThemeHandler from '@components.next-app/ThemeHandler';
 import { draftMode } from 'next/headers'
-import { SanityLive } from '@sanity.next-app/lib/live'
-import { VisualEditing } from "next-sanity";
+import { sanityFetch, SanityLive } from '@sanity.next-app/lib/live'
+import { toPlainText, VisualEditing } from "next-sanity";
 import { handleError } from "./client-utils";
 import { revalidatePath } from 'next/cache'
+import { settingsQuery } from '@sanity.next-app/queries/queries'
+import { Metadata } from 'next'
 
-const inter = Inter({ subsets: ['latin'] })
+/**
+ * Generate metadata for the page.
+ * Learn more: https://nextjs.org/docs/app/api-reference/functions/generate-metadata#generatemetadata-function
+ */
+export async function generateMetadata(): Promise<Metadata> {
+	const { data: settings } = await sanityFetch({
+		query: settingsQuery,
+		// Metadata should never contain stega
+		stega: false,
+	});
+	const title = settings?.title || 'No title available';
+	const description = settings?.description || 'No description available';
+
+	// const ogImage = resolveOpenGraphImage(settings?.ogImage);
+	let metadataBase: URL | undefined = undefined;
+	try {
+		metadataBase = settings?.ogImage?.metadataBase
+			? new URL(settings.ogImage.metadataBase)
+			: undefined;
+	} catch {
+		// ignore
+	}
+	return {
+		metadataBase,
+		title: {
+			template: `%s | ${title}`,
+			default: title,
+		},
+		description: toPlainText(description),
+		openGraph: {
+			// images: ogImage ? [ogImage] : [],
+		},
+	};
+}
+
+const inter = Inter({
+	variable: "--font-inter",
+	subsets: ["latin"],
+	display: "swap",
+});
 
 export default async function RootLayout({
 	children
@@ -20,7 +61,7 @@ export default async function RootLayout({
 	children: React.ReactNode
 }) {
 	const draft = await draftMode()
-	const documentClasses = `${inter.className} relative`
+	const documentClasses = `${inter.variable} relative`
 
 	return (
 		// suppress hydration required for theme handler
@@ -28,25 +69,7 @@ export default async function RootLayout({
 			<Head />
 			<body className='min-h-screen h-full overflow-x-hidden flex flex-col'>
 				
-				{ draft.isEnabled &&
-					// <VisualEditing />
-					<VisualEditing
-						refresh={async (payload) => {
-							'use server'
-							// Guard against a bad actor attempting to revalidate the page
-						if (!draft.isEnabled) {
-								return
-							}
-							if (payload.source === 'manual') {
-								await revalidatePath('/', 'layout')
-							}
-							// Only revalidate on mutations if the route doesn't have loaders or preview-kit
-							if (payload.source === 'mutation' && !payload.livePreviewEnabled) {
-								await revalidatePath('/', 'layout')
-							}
-						}}
-					/>
-				}
+				{ draft.isEnabled && <VisualEditing />}
 				<SanityLive onError={handleError} />
 
 				<ThemeHandler>

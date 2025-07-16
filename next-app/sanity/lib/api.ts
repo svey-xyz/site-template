@@ -18,7 +18,7 @@ export const apiVersion =
 	process.env.SANITY_STUDIO_API_VERSION || '2024-10-14'
 
 export const configStudioBasePath =
-	process.env.NEXT_PUBLIC_SANITY_STUDIO_BASE_PATH || '/studio'
+	process.env.NEXT_PUBLIC_SANITY_STUDIO_URL || 'http://localhost:3333'
 
 export const configStudioName =
 	process.env.NEXT_PUBLIC_SANITY_STUDIO_NAME || 'studio'

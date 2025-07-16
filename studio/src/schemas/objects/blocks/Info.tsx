@@ -5,6 +5,7 @@ import { Icon } from '@iconify/react';
 import { IdentificationIcon } from '@heroicons/react/24/solid'
 import { _BLOCK_FIELDS } from '@schemas.studio/objects/blocks/utils/fields';
 import { _BLOCK_PREVIEW } from '@schemas.studio/objects/blocks/utils/preview';
+import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 
 
 const _FIELDS = [
@@ -89,7 +90,7 @@ const _FIELDS = [
 ]
 
 export const Info = defineType({
-	name: 'info_block',
+	name: _BLOCK_TYPES.INFO,
 	type: 'object',
 	icon: () => <IdentificationIcon />,
 	fields: [

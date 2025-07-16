@@ -1,34 +1,26 @@
-export const resolveArticleHref = (
-	article: any,
-): string | undefined => {
+import { Article, Contact, Page, Taxonomy } from "@next-app/sanity.types"
+import { _ARTICLE_TYPES } from "@root.site-template/DocumentTypes"
 
+export const resolveArticleHref = (article: Article): string => {
 	return `/article/${article._type}/${article.slug}`
 }
 
 export const resolveHrefFromSlug = (slug: string, type: string): string => {
 	const href = type == 'page' ? `/${slug}` : `/archives/${slug}`
-
 	return href
 }
 
-export const resolvePageHref = (page: any): string => {
-	const slug = page._type == 'page' ? `/${(page).pathname?.current}` : `/archives/${(page)._id}`
-
+export const resolvePageHref = (page: Page): string => {
+	const slug = page._type == 'page' ? `/${(page).slug?.current}` : `/archives/${(page)._id}`
 	return slug
 }
 
-export const resolveArchiveHrefFromArticle = (articleType: string): string => {
+export const resolveArchiveHrefFromArticle = (articleType: _ARTICLE_TYPES): string => {
 	const slug = `/archives/${articleType}`
-
 	return slug
 }
 
-export const resolveArchiveHrefFromTaxonomy = (taxonomy: any): string => {
-	const typeParts = taxonomy._type.split('Taxonomy')
-	return resolveArchiveHrefFromArticle(typeParts[0])
-}
-
-export const resolveContactHref = (contact: any | undefined): string => {
+export const resolveContactHref = (contact: Contact): string => {
 	if (!contact) return ''
 	
 	if (contact.website?.link) return contact.website.link

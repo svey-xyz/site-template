@@ -9,21 +9,20 @@ import {
 } from "sanity/presentation";
 
 export const resolve: PresentationPluginOptions["resolve"] = {
-	// mainDocuments: defineDocuments([
-	// 	{
-	// 		route: '/:slug',
-	// 		filter: `_type == "page" && slug.current == $slug`,
-	// 	},
-	// 	{
-	// 		route: '/posts/:slug',
-	// 		filter: `_type == "post" && slug.current == $slug || _id == $slug`,
-	// 	},
-	// ]),
+	mainDocuments: defineDocuments([
+		{
+			route: '/:slug',
+			filter: `_type == "page" && slug.current == $slug`,
+		},
+		// {
+		// 	route: '/posts/:slug',
+		// 	filter: `_type == "post" && slug.current == $slug || _id == $slug`,
+		// },
+	]),
 	locations: (params, context) => {
 		params.version = params.version || 'drafts'
-		console.log('PARAMS: ', params)
 
-		if (params.type === 'siteSettings') {
+		if (params.type === 'settings') {
 			return {
 				message: 'This document is used on all pages',
 				tone: 'caution',
@@ -31,7 +30,6 @@ export const resolve: PresentationPluginOptions["resolve"] = {
 		}
 
 		if (
-			params.type === 'home' ||
 			params.type === 'page'
 		) {
 			const doc$ = context.documentStore.listenQuery(
@@ -59,11 +57,11 @@ export const resolve: PresentationPluginOptions["resolve"] = {
 			return doc$.pipe(
 				map((docs) => {
 					const isReferencedBySettings = docs?.some(
-						(doc) => doc._type === 'siteSettings',
+						(doc) => doc._type === 'settings',
 					)
 					switch (params.type) {
 						case 'page':
-							const homeSlug = docs?.find((doc) => doc._type === 'siteSettings')?.homepage?.slug.current
+							const homeSlug = docs?.find((doc) => doc._type === 'settings')?.homepage?.slug.current
 							const pageSlug = docs?.find((doc) => doc._id === params.id)?.slug?.current
 							console.log('Home: ', homeSlug)
 
@@ -104,22 +102,4 @@ export const resolve: PresentationPluginOptions["resolve"] = {
 		}
 		return null
 	}
-	// locations: {
-	// 	// Add more locations for other post types
-	// 	page: defineLocations({
-	// 		select: {
-	// 			title: "title",
-	// 			slug: "slug.current",
-	// 		},
-	// 		resolve: (doc) => ({
-	// 			locations: [
-	// 				{
-	// 					title: doc?.title || "Untitled",
-	// 					href: `/${doc?.slug}`,
-	// 				},
-	// 				{ title: "Home", href: `/` },
-	// 			],
-	// 		}),
-	// 	}),
-	// },
 };
