@@ -1,36 +1,33 @@
 import React from 'react';
 import dynamic from 'next/dynamic'
-import { FeaturedArticles_block } from '@next-app/sanity.types';
+import { AllSanitySchemaTypes, FeaturedArticles_block, internalGroqTypeReferenceTo } from '@next-app/sanity.types';
+import { resolveReference, WithKey } from '@sanity.next-app/lib/utils';
 
-interface CardMap {
-	[key: string]: React.ComponentType<{
-		// article: article,
-		filtered?: boolean,
-	}>
-}
+const StandardCard = dynamic(() => import('@components.next-app/Pages/blocks/Archive/cards/Default'))
 
-const CardList: CardMap = {
-	// Default: dynamic(() => import('@/components/Pages/blocks/Archive/cards/Default')),
-}
 
-export const FeaturedArticles = ({ data, className }: { data: FeaturedArticles_block, className?: string }
+
+export const FeaturedArticles = ({ data, className }: { data: WithKey<FeaturedArticles_block>, className?: string }
 ) => {
 	if (!data) return
-
+	
 	return (
 		<div className={`${className}`}>
-			HIIIIIIIIIIIIIIIIII
-			{/* <h2>
+			<h2>
 				{ data.title }
 			</h2>
 			<div className='relative flex flex-col lg:flex-row gap-8 items-center lg:items-start lg:justify-center'>
-				{	data.articles?.map((article: any) => {
+				{	data.articles?.map((article) => {
+					const referredDocument = resolveReference(article)
+					// const FeaturedCard = CardList[referredDocument._type] ?? CardList.Default
 
-					const FeaturedCard = CardList[article._type] ?? CardList.Default
-
-					return <FeaturedCard key={`${data._key}-${article._id}`} article={article} />
+					switch (referredDocument._type) {
+							// case _BLOCK_TYPES.FEATURED_TAXONOMIES: return <FeaturedTaxonomiesComponent data={data as FeaturedTaxonomies_block} />
+							default: return <StandardCard key={`${referredDocument._type}-${referredDocument._id}`} article={referredDocument} />
+					}
+					// return <FeaturedCard key={`${data._type}-${referredDocument._id}`} article={referredDocument} />
 				})}
-			</div> */}
+			</div>
 		</div>
 	);
 };

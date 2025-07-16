@@ -2,16 +2,20 @@ import React from 'react';
 import Image from '@components.next-app/Image'
 
 import { resolveArticleHref } from '@lib.next-app/resolveHref';
+import { AllSanitySchemaTypes, Article, Project } from '@next-app/sanity.types';
+import { _ARTICLE_TYPES } from '@root.site-template/DocumentTypes';
 
 type args = {
-	article: any,
+	article: Extract<AllSanitySchemaTypes, { isArticle?: boolean }>,
 	filtered?: boolean,
 }
 
-export const GenericArchiveCard = async ({ article, filtered = true }: args) => {
+
+export const GenericArchiveCard = async({ article, filtered = true }: args) => {
 
 	return (
-		<a href={resolveArticleHref(article) || ''} className={`${filtered ? 'block' : "hidden"} relative flex flex-col group cursor-pointer`} >
+		// resolveArticleHref(article) || ''
+		<a href={''} className={`${filtered ? 'block' : "hidden"} relative flex flex-col group cursor-pointer`} >
 			<div className='relative flex flex-col'>
 				<div className='relative min-h-48 max-h-48 overflow-hidden'>
 					{ article.image ?

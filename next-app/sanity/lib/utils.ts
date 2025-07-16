@@ -1,4 +1,4 @@
-import { Link } from "@next-app/sanity.types";
+import { AllSanitySchemaTypes, internalGroqTypeReferenceTo, Link } from "@next-app/sanity.types";
 import { config as RootConfig } from "@sanity.next-app/lib/api";
 import { createDataAttribute, CreateDataAttributeProps, PortableTextBlock } from "next-sanity";
 
@@ -46,3 +46,17 @@ export const blocksToText = (blocks: Partial<PortableTextBlock>[], opts = {}) =>
 		})
 		.join('\n\n')
 }
+
+
+// Helper function to resolve references in Sanity documents from generated types
+export function resolveReference<T>(obj: {
+	_type: 'reference'
+	[internalGroqTypeReferenceTo]?: T
+}) {
+	if (obj._type === 'reference')
+		throw new Error('Asset reference has not been expanded!')
+	return obj as unknown as Extract<AllSanitySchemaTypes, { _type: T }>
+}
+
+// Helper type to add keys to objects
+export type WithKey<T> = T & { _key: string }
