@@ -16,6 +16,7 @@
 		--color-secondary-bg: #202020;
 		--color-primary-fg: #ffffff;
 		--color-secondary-fg: #eeeeee;
+		--color-border: #444444;
 	}
 }
 
@@ -27,6 +28,7 @@
 	--color-secondary-bg: #d6d3d3;
 	--color-primary-fg: #000000;
 	--color-secondary-fg: #222222;
+	--color-border: #d6d3d3;
 
 	/* Accent colours */
 	--color-accent-primary: #ad7f9f;
