@@ -13,6 +13,10 @@
 	}
 
 	.translucent-bg {
-		@apply relative z-10 after:inset-0 after:absolute after:-z-1 after:backdrop-blur-2xl after:bg-gradient-to-b after:from-primary-bg/50 after:to-primary-bg after:to-75%
+		@apply relative z-10 after:inset-0 after:absolute after:-z-1 after:backdrop-blur-2xl after:bg-primary-bg/50
+	}
+
+	.translucent-gradient-bg {
+		@apply relative z-10 after:inset-0 after:absolute after:-z-1 after:backdrop-blur-2xl after:bg-gradient-to-b after:from-primary-bg/50 after:to-secondary-bg after:to-75%;
 	}
 }
