@@ -28,6 +28,7 @@ export const SectionBuilder = ({ page }: { page: Page }) => {
 
 	return (
 		<div
+			className="flex flex-col grow"
 			data-sanity={dataAttr({
 				...config,
 				id: page._id,
@@ -38,7 +39,7 @@ export const SectionBuilder = ({ page }: { page: Page }) => {
 			{ sectionsObject.map((section: Section) =>
 				<div
 					key={section._key}
-					className=""
+					className="relative flex flex-col grow h-full"
 					aria-label="section"
 					data-sanity={dataAttr({
 						...config,

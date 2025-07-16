@@ -67,14 +67,14 @@ export default async function RootLayout({
 		// suppress hydration required for theme handler
 		<html lang="en" className={documentClasses} suppressHydrationWarning>
 			<Head />
-			<body className='min-h-screen h-full overflow-x-hidden flex flex-col'>
+			<body className='relative min-h-screen h-fit w-screen overflow-x-hidden flex flex-col'>
 				
 				{ draft.isEnabled && <VisualEditing />}
 				<SanityLive onError={handleError} />
 
 				<ThemeHandler>
 					<Header />
-					<main className='relative flex flex-grow'>
+					<main className='relative flex flex-col grow max-w-full'>
 						{children}
 					</main>
 					<Footer />

@@ -26,7 +26,7 @@ export const Section = ({ data, page }: { data: Section, page: Page }) => {
 	})()
 
 	return (
-		<section id={data.title} className={`relative grid ${cols} gap-6
+		<section id={data.title} className={`relative grid ${cols} gap-6 grow
 			${ (bg == 'opaque') ?
 				'bg-primary-bg mt-12 border-t border-accent-secondary/40 shadow-lg after:inset-0 after:absolute after:-z-1 after:backdrop-blur-2xl after:bg-gradient-to-b after:from-bg/50 after:to-bg after:to-75%' :
 				''

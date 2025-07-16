@@ -53,7 +53,7 @@ const Page = async (props: Props) => {
 	if (!page) notFound()
 
 	return (
-		<article className='relative flex flex-col flex-grow max-w-full'>
+		<article className='relative flex flex-col grow max-w-full'>
 			<SectionBuilder page={page} />
 		</article>
 	)
