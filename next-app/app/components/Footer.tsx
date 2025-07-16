@@ -8,7 +8,7 @@ const Footer = async ({}:{}) => {
 	if (!settings) return
 
 	return (
-		<section className='relative w-full'>
+		<section className='relative w-full bg-primary-bg'>
 			<div className='main-padding py-8 flex flex-row justify-between'>
 				{ settings.contact?.socials &&
 					<Socials socials={settings.contact.socials} className='' />
