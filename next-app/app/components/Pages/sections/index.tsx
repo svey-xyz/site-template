@@ -1,5 +1,5 @@
 import { Page } from "@next-app/sanity.types"
-
+import { stegaClean } from "@sanity/client/stega"
 import React from "react";
 import {BlockBuilder} from "@components.next-app/Pages/builders/BlockBuilder";
 
@@ -12,6 +12,8 @@ type ArrElement<ArrType> = ArrType extends readonly (infer ElementType)[]
 type Section = ArrElement<Sections>
 
 export const Section = ({ data, page }: { data: Section, page: Page }) => {
+	const bg = stegaClean(data.background)
+
 	const cols = (() => {
 		switch (data.layout) {
 			case "1": return 'grid-cols-[1fr]'
@@ -28,8 +30,8 @@ export const Section = ({ data, page }: { data: Section, page: Page }) => {
 
 	return (
 		<section id={data.title} className={`relative grid ${cols} gap-6
-			${ (data.background.match('opaque') != null) ?
-				'mt-12 border-t border-accent-secondary/40 shadow-lg after:inset-0 after:absolute after:-z-1 after:backdrop-blur-2xl after:bg-gradient-to-b after:from-bg/50 after:to-bg after:to-75%' :
+			${ (bg == 'opaque') ?
+				'bg-primary-bg mt-12 border-t border-accent-secondary/40 shadow-lg after:inset-0 after:absolute after:-z-1 after:backdrop-blur-2xl after:bg-gradient-to-b after:from-bg/50 after:to-bg after:to-75%' :
 				''
 			}
 		`}>
