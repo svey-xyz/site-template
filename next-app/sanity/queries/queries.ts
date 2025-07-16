@@ -7,7 +7,7 @@ export const pagesSlugs = defineQuery(`
 `);
 
 export const settingsQuery: string = groq`
-	*[_id == "settings"][0] {
+	*[_id == "settings" && _type == "settings"][0] {
 		...,
 		logo {
 			...,
