@@ -5,12 +5,13 @@ import { socialIcon } from '@lib.next-app/SocialIcon';
 import { Social } from '@next-app/sanity.types';
 import { WithKey } from '@sanity.next-app/lib/utils';
 
-export const SocialsArray = ({ socials, className }: { socials: Array<WithKey<Social>>, className?:string}) => {
+export const SocialsArray = ({ socials, className }: { socials: Array<WithKey<Partial<Social>>>, className?:string}) => {
 	
 	return (
 		<div className={`${className} flex flex-row gap-2`}>
-			{ socials.map((social) => {
-
+			{ socials.flatMap((social) => {
+				if (!social || !social.url || !social.socialType) return [];
+				
 				const Icon = socialIcon(`${social.socialType}`)
 
 					return (
