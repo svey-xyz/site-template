@@ -11,7 +11,7 @@ type args = {
 }
 
 
-export const GenericArchiveCard = async({ article, filtered = true }: args) => {
+export const GenericArchiveCard = ({ article, filtered = true }: args) => {
 
 	return (
 		// resolveArticleHref(article) || ''

@@ -1,5 +1,5 @@
 import type { Metadata, ResolvingMetadata } from 'next'
-import Pages from '@components.next-app/Pages'
+import { Pages } from '@components.next-app/Pages'
 import { loadBundle_Archives, loadSingle_Archive } from '@sanity.next-app/loader/loader';
 
 export const generateStaticParams = async () => {
