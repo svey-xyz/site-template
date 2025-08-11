@@ -13,5 +13,6 @@ export enum _BLOCK_TYPES {
 	INFO = 'info_block',
 	NEWSLETTER = 'newsletter_block',
 	TEXT = 'text_block',
-	NOTE = 'note_block'
+	NOTE = 'note_block',
+	SOCIALS = 'socials_block',
 }

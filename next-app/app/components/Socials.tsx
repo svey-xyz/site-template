@@ -2,8 +2,10 @@ import Link from 'next/link';
 import React from 'react';
 
 import { socialIcon } from '@lib.next-app/SocialIcon';
+import { Social } from '@next-app/sanity.types';
+import { WithKey } from '@sanity.next-app/lib/utils';
 
-const Socials = ({ socials, className }: { socials: Array<any>, className?:string}) => {
+export const SocialsArray = ({ socials, className }: { socials: Array<WithKey<Social>>, className?:string}) => {
 	
 	return (
 		<div className={`${className} flex flex-row gap-4`}>
@@ -14,7 +16,7 @@ const Socials = ({ socials, className }: { socials: Array<any>, className?:strin
 					return (
 						<Link key={social._key} href={social.url} target="_blank" referrerPolicy="no-referrer" aria-label={`External link to social network: ${social.socialType}`}
 							className="group relative inline-flex items-center justify-center w-icon h-icon hover-button" >
-							{/* <Icon className='fill-fg' /> */}
+							<Icon className='fill-fg' />
 						</Link >
 					)
 				})
@@ -23,4 +25,4 @@ const Socials = ({ socials, className }: { socials: Array<any>, className?:strin
 	);
 };
 
-export default Socials;
+export default SocialsArray;
