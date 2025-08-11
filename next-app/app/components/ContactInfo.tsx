@@ -1,4 +1,4 @@
-import SocialsArray from '@components.next-app/Socials';
+import SocialsArray from '@components.next-app/SocialsArray';
 import { resolveContactHref } from '@lib.next-app/resolveHref';
 import React from 'react';
 
