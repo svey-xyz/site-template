@@ -15,38 +15,24 @@ export const GenericArchiveCard = ({ article, filtered = true }: args) => {
 
 	return (
 		// resolveArticleHref(article) || ''
-		<a href={''} className={`${filtered ? 'block' : "hidden"} relative flex flex-col group cursor-pointer`} >
-			<div className='relative flex flex-col'>
-				<div className='relative min-h-48 max-h-48 overflow-hidden'>
-					{ article.image ?
-						<div className='relative flex flex-col w-full h-full items-center justify-center'>
-							<Image
-								image={article.image}
-								size={{ width: 400, height: 400 }}
-								style={{ objectFit: 'contain', width: 'auto', height: '100%' }}
-								className='p-2'
-							/>
-							<Image
-								image={article.image}
-								size={{ width: 400, height: 400 }}
-								style={{ objectFit: 'cover', width: '100%', height: '100%', filter: 'blur(50px)' }}
-								className='absolute inset-0 -z-1 opacity-60'
-							/>
-						</div>
-						:
-						<div className='absolute inset-0 bg-accent-secondary/80 flex flex-col items-center justify-center'>
-							<span className='text-2xl font-black text-bg text-center'>
-								{article.title}
+		<a href={`/projects/${article.slug}`} className={`${filtered ? 'block' : "hidden"} my-2 max-w-full group opacity-100`}>
+			<div className="relative py-4 px-2 flex flex-col md:flex-row justify-between w-full border border-accent-secondary/40 rounded
+				after:absolute after:inset-0 after:-z-1 after:backdrop-blur-3xl after:bg-accent-secondary/5 group-hover:after:bg-accent-secondary/10
+				after:duration-[1500ms] after:transition-colors group-hover:after:duration-100">
+				<div className="text-fg-primary opacity-80 group-hover:opacity-100
+					duration-[1500ms] transition-opacity group-hover:duration-100">
+					{article.title}
+				</div>
+				{(article.taxonomies &&
+					<div className="relative flex text-right flex-wrap gap-x-2 md:justify-end">
+						{/* {article.taxonomies.map((tax, i, arr) => {
+							if (article.title == allTagTitle) return
+							return <span key={`${article.title}-${tax.title}`} className="text-fg-primary opacity-50">
+								{tax.title}{i < arr.length - 1 ? ',' : ''}
 							</span>
-						</div>
-					}
-				</div>
-				
-				<div className='py-2 bg-bg w-full flex flex-col gap-4'>
-					<span className=''>
-						{article.title}
-					</span>
-				</div>
+						})} */}
+					</div>
+				)}
 			</div>
 		</a>
 	);

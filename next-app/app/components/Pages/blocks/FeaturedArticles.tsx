@@ -7,19 +7,19 @@ import { GenericArchiveCard } from '@components.next-app/Pages/blocks/Archive/ca
 export const FeaturedArticles = ({ data, className }: { data: WithKey<FeaturedArticles_block>, className?: string }
 ) => {
 	if (!data) return
-	
+
 	return (
 		<div className={`${className}`}>
 			<h2>
-				{ data.title }
+				{data.title}
 			</h2>
-			<div className='relative flex flex-col lg:flex-row gap-8 items-center lg:items-start lg:justify-center'>
-				{	data.articles?.map((article) => {
+			<div className='relative flex flex-col gap-8'>
+				{data.articles?.map((article) => {
 					const referredDocument = resolveReference(article)
 					// const FeaturedCard = CardList[referredDocument._type] ?? CardList.Default
 
 					switch (referredDocument._type) {
-							// case _BLOCK_TYPES.FEATURED_TAXONOMIES: return <FeaturedTaxonomiesComponent data={data as FeaturedTaxonomies_block} />
+						// case _BLOCK_TYPES.FEATURED_TAXONOMIES: return <FeaturedTaxonomiesComponent data={data as FeaturedTaxonomies_block} />
 						default: return <GenericArchiveCard key={`${referredDocument._type}-${referredDocument._id}`} article={referredDocument} />
 					}
 					// return <FeaturedCard key={`${data._type}-${referredDocument._id}`} article={referredDocument} />
