@@ -13,10 +13,9 @@ import { PluginOptions, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
 import { AdjustmentsHorizontalIcon, DocumentTextIcon, ArchiveBoxIcon, TableCellsIcon } from '@heroicons/react/24/solid'
-import {
-	presentationTool,
-} from 'sanity/presentation'
+import { presentationTool } from 'sanity/presentation'
 import { resolve } from './src/lib/resolve'
+import { taxonomyManager } from 'sanity-plugin-taxonomy-manager'
 
 const deskPlugins = [
 	presentationTool({
@@ -40,6 +39,20 @@ const deskPlugins = [
 		showName: false,
 		collections: ['heroicons']
 
+	}),
+	taxonomyManager({
+		// Optional: Set a Base URI to use for new concepts & concept schemes
+		baseUri: configStudioBasePath,
+		// Optional: Use `customConceptFields` and `customSchemeFields` keys to add custom fields to Concept or Concept Scheme document types
+		// customConceptFields: [
+		// 	{
+		// 		name: 'sameAs',
+		// 		title: 'Same As',
+		// 		type: 'url',
+		// 		description:
+		// 			'Specify a fully qualified IRI that identifies the same concept in another vocabulary',
+		// 	},
+		// ],
 	}),
 ] as PluginOptions[]
 

@@ -12,6 +12,7 @@
     "shared-lib"
   ],
   "dependencies": {
-    "next-sanity": "^11.1.3"
+    "next-sanity": "^11.1.3",
+    "sanity-plugin-taxonomy-manager": "^4.0.0"
   }
 }
