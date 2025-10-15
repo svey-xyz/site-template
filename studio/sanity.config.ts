@@ -42,7 +42,8 @@ const deskPlugins = [
 	}),
 	taxonomyManager({
 		// Optional: Set a Base URI to use for new concepts & concept schemes
-		baseUri: configStudioBasePath,
+		// baseUri: configStudioBasePath,
+		baseUri: "https://site-template.svey.xyz/",
 		// Optional: Use `customConceptFields` and `customSchemeFields` keys to add custom fields to Concept or Concept Scheme document types
 		// customConceptFields: [
 		// 	{
@@ -53,7 +54,7 @@ const deskPlugins = [
 		// 			'Specify a fully qualified IRI that identifies the same concept in another vocabulary',
 		// 	},
 		// ],
-	}),
+	})
 ] as PluginOptions[]
 
 

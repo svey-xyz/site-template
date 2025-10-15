@@ -31,7 +31,7 @@ export const structure = (S: StructureBuilder, context: StructureResolverContext
 		S.listItem().title('Site Settings').icon(_Cog6ToothIcon).child(
 			S.document().title('Site Settings').schemaType('settings').documentId('settings')
 		),
-		S.documentTypeListItem('taxonomy').title('Taxonomies').icon(_TagIcon),
+		// S.documentTypeListItem('taxonomy').title('Taxonomies').icon(_TagIcon),
 		S.divider(),
 
 		S.documentTypeListItem('page').title('Pages').icon(_DocumentTextIcon),

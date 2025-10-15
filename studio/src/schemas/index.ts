@@ -18,9 +18,9 @@ const _objects = [social, link, basicDate, contact, note, navGroup, ...BlockType
  * Documents
  */
 import { settings } from './singletons/settings'
-import { taxonomy } from './documents/taxonomies'
+// import { taxonomy } from './documents/taxonomies'
 
 
-const _documents = [settings, taxonomy]
+const _documents = [settings]
 
 export const types = [..._objects, ..._documents, ...PAGES, ...ARTICLES];
