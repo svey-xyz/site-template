@@ -34,7 +34,7 @@ sanity.json
 .env
 .env.production
 .sanity
-
+.backup.json
 # vercel
 .vercel
 
