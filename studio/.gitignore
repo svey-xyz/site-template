@@ -30,6 +30,7 @@
 *.production
 *.env.*
 .backup.json
+*.test.json
 
 # ignore generated files
 sanity.types.ts

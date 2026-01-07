@@ -1,5 +1,7 @@
 {
   "compilerOptions": {
+		"resolveJsonModule": true,
+		"esModuleInterop": true,
     "target": "esnext",
     "allowJs": true,
     "skipLibCheck": true,
@@ -10,7 +12,11 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+		"baseUrl": ".",
+		"paths": {
+			"@root.site-template/*": ["./*"],
+		},
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "./env.ts", "./env.json"],
   "exclude": ["node_modules"]
 }

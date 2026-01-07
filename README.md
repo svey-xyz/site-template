@@ -52,6 +52,13 @@ NEXT_PUBLIC_SANITY_CONFIG_STUDIO_TITLE='studio'
 ```
 Then run a dev environment and navigate to the studio to add all the required fields.
 
+Make sure to init the included submodules-
+```bash
+git submodule update --init --recursive
+cd ./shared-lib
+bun i && bun run build
+```
+
 *Creating new *articles*, *sections*, and *blocks* all follow a similar process, steps for each are documented below.*
 
 ### Creating an article

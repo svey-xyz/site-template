@@ -6,6 +6,7 @@
 .pnp.js
 package-lock.json
 bun.lockb
+bun.lock
 .lockb
 
 # testing
@@ -28,6 +29,7 @@ yarn-debug.log*
 yarn-error.log*
 
 # local env files
+env.json
 .env*.local
 .env.*
 sanity.json
@@ -35,6 +37,9 @@ sanity.json
 .env.production
 .sanity
 .backup.json
+
+
+
 # vercel
 .vercel
 

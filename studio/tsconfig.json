@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+		"resolveJsonModule": true,
 		"target": "esnext",
 		"lib": [ "dom", "dom.iterable", "esnext"],
 		"allowJs": true,
@@ -24,7 +25,6 @@
 			"@root.site-template/*": ["../*"],
 			},
   },
-  "include": ["**/*.ts", "**/*.tsx"],
+  "include": ["**/*.ts", "**/*.tsx", "../env.ts", "../env.json"],
   "exclude": ["node_modules"],
-	
 }

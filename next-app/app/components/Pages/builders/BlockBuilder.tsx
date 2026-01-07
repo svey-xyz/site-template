@@ -4,7 +4,7 @@ import { SanityDocument } from "next-sanity";
 import { useOptimistic } from "next-sanity/hooks";
 
 import { dataAttr } from "@sanity.next-app/lib/utils";
-import { config } from "@sanity.next-app/lib/api";
+import { config } from "@root.site-template/env";
 import React from "react";
 import { Page } from "@next-app/sanity.types";
 import { BlockComponent } from "@components.next-app/Pages/blocks";

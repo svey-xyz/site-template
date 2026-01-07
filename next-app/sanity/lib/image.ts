@@ -1,5 +1,5 @@
 import createImageUrlBuilder from '@sanity/image-url'
-import { dataset, projectId } from './api'
+import { dataset, projectId } from '@root.site-template/env'
 
 const imageBuilder = createImageUrlBuilder({
   projectId: projectId || '',

@@ -4,6 +4,7 @@ export const _CUSTOM_IMAGE_FIELD_VALUES = {
 	type: 'image',
 	options: {
 		sources: [customMediaAssetSource],
+		hotspot: true,
 	},
 	preview: {
 		select: {

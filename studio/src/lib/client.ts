@@ -17,7 +17,7 @@
 
 import { createClient } from 'next-sanity'
 
-import { projectId, dataset, apiVersion, configStudioBasePath } from './api'
+import { projectId, dataset, apiVersion, configStudioBasePath } from '@lib.studio/env'
 
 export const client = createClient({
 	projectId,

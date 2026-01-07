@@ -3,15 +3,26 @@
   "version": "2025.04.05",
   "private": true,
   "scripts": {
+    "init": "bun run --filter '*' clean && bun install --recursive && bun run init:shared",
+		"init:shared": "cd shared-config && bun run build && cd ../shared-lib && bun run build",
     "dev": "bun run --filter '*' dev",
-    "typegen": "bun run --filter '*' clean && bun run --filter './studio' typegen && cp ./studio/schema.json ./next-app && bun run --filter './next-app' typegen",
-    "test:update": "bun run --filter '*' clean && cp ./studio/package.json ./studio/package.test.json && cp ./next-app/package.json ./next-app/package.test.json && bun update --recursive --latest --no-cache --dry-run --verbose --no-save",
-    "full:update": "bun run --filter '*' clean && bun update --recursive --latest --no-cache && bun install --recursive",
-    "clean": "rm -rf **/node_modules .turbo .next .vercel .cache dist *.log"
+    "typegen": "bun run clean && bun run typegen:studio && bun run typegen:next",
+    "typegen:studio": "cd studio && bun run typegen",
+    "typegen:next": "cp ./studio/schema.json ./next-app && cd next-app && bun run typegen",
+    "update:test": "bun run --filter '*' clean && cp ./studio/package.json ./studio/package.test.json && cp ./next-app/package.json ./next-app/package.test.json && bun update --recursive --latest --no-cache --dry-run --verbose --no-save",
+    "update:full": "bun run --filter '*' clean && bun update --recursive --latest --no-cache && bun install --recursive",
+    "clean": "rm -rf **/node_modules .turbo .next .vercel .cache dist *.log && bun install --filter '*' --recursive"
   },
   "workspaces": [
     "next-app",
     "studio",
-    "shared-lib"
-  ]
+    "shared-lib",
+    "shared-config"
+  ],
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  }
 }

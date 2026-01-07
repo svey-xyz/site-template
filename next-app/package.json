@@ -35,6 +35,7 @@
     "remark-gfm": "^4.0.1",
     "sanity": "^3.74.0",
 		"shared-lib": "workspace:*",
+		"shared-config": "workspace:*",
     "sonner": "^1.7.0",
     "swiper": "^11.2.5"
   },
