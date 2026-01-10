@@ -1,7 +1,11 @@
 {
   "compilerOptions": {
     "target": "esnext",
-    "lib": [ "dom", "dom.iterable", "esnext" ],
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -9,7 +13,7 @@
     "noEmit": true,
     "module": "preserve",
     "isolatedModules": true,
-    "jsx": "preserve",
+    "jsx": "react-jsx",
     "incremental": true,
     "plugins": [
       {
@@ -17,16 +21,45 @@
       }
     ],
     "paths": {
-      "@components.next-app/*": ["./app/components/*"],
-			"@sanity.next-app/*": ["./sanity/*"],
-			"@lib.next-app/*": ["./lib/*"],
-			"@styles.next-app/*": ["./styles/*"],
-			"@public.next-app/*": ["./public/*"],
-			"@next-app/*": ["./*"],
-			"@root.site-template/*": ["../*"],
+      "@components.next-app/*": [
+        "./app/components/*"
+      ],
+      "@sanity.next-app/*": [
+        "./sanity/*"
+      ],
+      "@lib.next-app/*": [
+        "./lib/*"
+      ],
+      "@styles.next-app/*": [
+        "./styles/*"
+      ],
+      "@public.next-app/*": [
+        "./public/*"
+      ],
+      "@next-app/*": [
+        "./*"
+      ],
+      "@root.site-template/*": [
+        "../*"
+      ]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "sanity.types.ts", "../global.d.ts", "../env.ts", "../env.json"],
-  "exclude": ["node_modules"],
-	"files": ["modules.d.ts", "sanity.types.ts"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    "sanity.types.ts",
+    "../global.d.ts",
+    "../env.ts",
+    "../env.json",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ],
+  "files": [
+    "modules.d.ts",
+    "sanity.types.ts"
+  ]
 }

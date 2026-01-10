@@ -8,7 +8,8 @@ import Head from './head'
 import ThemeHandler from '@components.next-app/ThemeHandler';
 import { draftMode } from 'next/headers'
 import { sanityFetch, SanityLive } from '@sanity.next-app/lib/live'
-import { toPlainText, VisualEditing } from "next-sanity";
+import { toPlainText } from "next-sanity";
+import { VisualEditing } from "next-sanity/visual-editing";
 import { handleError } from "./client-utils";
 import { revalidatePath } from 'next/cache'
 import { settingsQuery } from '@sanity.next-app/queries/queries'

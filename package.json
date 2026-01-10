@@ -4,8 +4,8 @@
   "private": true,
   "scripts": {
     "init": "bun run clean && bun install --recursive && bun run init:shared && bun run typegen",
-		"init:shared": "cd shared-config && bun run build && cd ../shared-lib && bun run build",
-		"predev": "bun run init",
+    "init:shared": "cd shared-config && bun run build && cd ../shared-lib && bun run build",
+    "predev": "bun run init",
     "dev": "bun run --filter '*' dev",
     "typegen": "bun run typegen:studio && bun run typegen:next",
     "typegen:studio": "cd studio && bun run typegen",
@@ -21,9 +21,9 @@
     "shared-config"
   ],
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "^1.3.5"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^5.9.3"
   }
 }
