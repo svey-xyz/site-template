@@ -1,5 +1,8 @@
 import dotenv from 'dotenv';
 import path from 'path';
+import { assertValue } from './assert';
+
+export * from './customConf'
 
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
 
@@ -43,12 +46,4 @@ export const config = {
 	projectId,
 	dataset,
 	baseUrl: 'http://localhost:3333',
-}
-
-function assertValue<T>(v: T | undefined, errorMessage: string): T {
-	console.log('Value: ', v);
-	if (v === undefined) {
-		throw new Error(errorMessage)
-	}
-	return v
 }
