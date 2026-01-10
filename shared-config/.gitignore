@@ -1,2 +1,4 @@
 **.custom.ts
 dist/
+node_modules/
+.env
