@@ -4,7 +4,7 @@ import { Page } from "@next-app/sanity.types"
 import { dataAttr } from "@sanity.next-app/lib/utils";
 import { SanityDocument } from "next-sanity";
 import { useOptimistic } from "next-sanity/hooks";
-import { config } from "shared-config";
+import { config } from "@config";
 import React from "react";
 import { Section } from "@components.next-app/Pages/sections";
 

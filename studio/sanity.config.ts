@@ -7,15 +7,16 @@ import './src/style/studio.css'
 import { structureTool } from 'sanity/structure'
 
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
-import { configStudioBasePath, configStudioName, configStudioTitle, dataset, projectId, sanityStudioPreviewURL } from 'shared-config'
-import { structure, schemaOptions, documentOptions } from '@src.studio/structure'
+import { configStudioBasePath, configStudioName, configStudioTitle, dataset, projectId, sanityStudioPreviewURL } from '@config'
+// import { structure, schemaOptions, documentOptions } from '@src.studio/structure'
 import { PluginOptions, defineConfig } from 'sanity'
 import { media } from 'sanity-plugin-media'
 import { iconify } from 'sanity-plugin-iconify';
 import { AdjustmentsHorizontalIcon, DocumentTextIcon, ArchiveBoxIcon, TableCellsIcon } from '@heroicons/react/24/solid'
 import { presentationTool } from 'sanity/presentation'
-import { resolve } from './src/lib/resolve'
+import { resolve } from './lib/resolve'
 import { taxonomyManager } from 'sanity-plugin-taxonomy-manager'
+import { structure, schemaOptions, documentOptions } from '@structure.studio/index'
 
 const deskPlugins = [
 	presentationTool({

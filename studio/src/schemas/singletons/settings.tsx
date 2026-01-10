@@ -1,4 +1,4 @@
-import { customMediaAssetSource } from "../../lib/assetSource";
+import { customMediaAssetSource } from "../../../lib/assetSource";
 import { Cog6ToothIcon } from "@heroicons/react/24/solid";
 import {
 	defineField,

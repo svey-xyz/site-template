@@ -1,9 +1,17 @@
-import dotenv from 'dotenv';
-import path from 'path';
-dotenv.config({ path: path.resolve(__dirname, '../.env') });
+// import { assertValue } from 'shared-lib';
 
-import { assertValue } from './assert';
-export * from './customConf'
+const assertValue = <T>(v: T | undefined, errorMessage: string): T => {
+	if (v === undefined) {
+		throw new Error(errorMessage)
+	}
+	return v
+}
+
+type EnvData = {
+	[key: string]: string | undefined
+}
+
+const envData: EnvData = process.env as EnvData;
 
 /**
  * As this file is reused in several other files, try to keep it lean and small.
@@ -35,11 +43,7 @@ export const configStudioName =
 export const configStudioTitle =
 	process.env.NEXT_PUBLIC_SANITY_STUDIO_TITLE || 'studio'
 
-export const sanityStudioPreviewURL =
-	process.env.SANITY_STUDIO_PREVIEW_URL || 'http://localhost:3000'
-
-export const sanityStudioHost =
-	process.env.SANITY_STUDIO_HOST || 'localhost'
+export const sanityAPIReadToken = process.env.SANITY_API_READ_TOKEN
 
 export const config = {
 	projectId,

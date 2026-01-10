@@ -36,7 +36,6 @@
     "rehype-starry-night": "^2.2.0",
     "remark-gfm": "^4.0.1",
     "sanity": "^3.74.0",
-    "shared-config": "workspace:*",
     "shared-lib": "workspace:*",
     "sonner": "^1.7.0",
     "swiper": "^11.2.5"

@@ -20,6 +20,7 @@
         "name": "next"
       }
     ],
+    "baseUrl": ".",
     "paths": {
       "@components.next-app/*": [
         "./app/components/*"
@@ -39,6 +40,9 @@
       "@next-app/*": [
         "./*"
       ],
+      "@config": [
+        "./lib/env.conf.ts"
+      ],
       "@root.site-template/*": [
         "../*"
       ]
@@ -48,12 +52,10 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    ".next/types/**/*.ts",
     "sanity.types.ts",
     "../global.d.ts",
-    "../env.ts",
-    "../env.json",
-    ".next/dev/types/**/*.ts"
+    ".next/dev/types/**/*.ts",
+    ".next/types/**/*.ts"
   ],
   "exclude": [
     "node_modules"

@@ -1,4 +1,4 @@
-import { customMediaAssetSource } from "@lib.studio/assetSource"
+import { customMediaAssetSource } from "@/lib/assetSource"
 
 export const _CUSTOM_IMAGE_FIELD_VALUES = {
 	type: 'image',
