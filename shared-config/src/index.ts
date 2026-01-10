@@ -1,10 +1,9 @@
 import dotenv from 'dotenv';
 import path from 'path';
-import { assertValue } from './assert';
-
-export * from './customConf'
-
 dotenv.config({ path: path.resolve(__dirname, '../.env') });
+
+import { assertValue } from './assert';
+export * from './customConf'
 
 /**
  * As this file is reused in several other files, try to keep it lean and small.
