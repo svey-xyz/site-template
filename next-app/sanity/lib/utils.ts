@@ -1,5 +1,5 @@
 import { AllSanitySchemaTypes, internalGroqTypeReferenceTo, Link } from "@next-app/sanity.types";
-import { config as RootConfig } from "@root.site-template/env";
+import { config as RootConfig } from "shared-config";
 import { createDataAttribute, CreateDataAttributeProps, PortableTextBlock } from "next-sanity";
 
 type DataAttributeConfig = CreateDataAttributeProps &
