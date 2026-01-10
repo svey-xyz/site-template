@@ -15,7 +15,7 @@
 
 // export default client;
 
-import { createClient } from 'next-sanity'
+import { createClient } from '@sanity/client'
 
 import { projectId, dataset, apiVersion, configStudioBasePath } from 'shared-config'
 
