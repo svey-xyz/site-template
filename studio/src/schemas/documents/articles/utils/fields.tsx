@@ -42,7 +42,7 @@ export const _ARTICLE_FIELDS = [
 		name: 'taxonomies',
 		title: 'Taxonomies',
 		description: 'Array input component with scheme filter (scheme ids)',
-		validation: rule => rule.max(3),
+		// validation: rule => rule.max(3),
 		type: 'array',
 		of: [
 			{
