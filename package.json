@@ -3,8 +3,9 @@
   "version": "2025.04.05",
   "private": true,
   "scripts": {
-    "init": "bun run clean && bun install --recursive && bun run init:shared && bun run typegen",
+    "init": "bun run clean && bun install --recursive && bun run init:env && bun run init:shared && bun run typegen",
     "init:shared": "cd ./shared-lib && bun run build",
+		"init:env": "bun ./scripts/env/transforms.ts",
     "predev": "bun run init",
     "dev": "bun run --filter '*' dev",
     "typegen": "bun run typegen:studio && bun run typegen:next",
@@ -24,5 +25,8 @@
   },
   "peerDependencies": {
     "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "ts-node": "^10.9.2"
   }
 }

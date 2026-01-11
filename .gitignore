@@ -32,10 +32,9 @@ yarn-error.log*
 # local env files
 env.json
 .env*.local
-.env.*
 sanity.json
 .env
-.env.production
+.env*.production
 .sanity
 .backup.json
 

@@ -1,18 +1,9 @@
-// import { assertValue } from 'shared-lib';
-
 const assertValue = <T>(v: T | undefined, errorMessage: string): T => {
-	console.log('envData', v);
 	if (v === undefined) {
 		throw new Error(errorMessage)
 	}
 	return v
 }
-
-type EnvData = {
-	[key: string]: string | undefined
-}
-
-const envData: EnvData = process.env as EnvData;
 
 /**
  * As this file is reused in several other files, try to keep it lean and small.
