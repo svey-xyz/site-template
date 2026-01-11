@@ -1,11 +1,11 @@
 import { defineField, defineType } from 'sanity';
 import { camelCaseToWords } from "shared-lib/StringTransforms"
 
-import { ArchiveBoxIcon } from '@heroicons/react/24/solid'
 import { _BLOCK_PREVIEW } from '@schemas.studio/objects/blocks/utils/preview';
 import { _ARTICLE_TYPES, _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 import { _BLOCK_FIELDS } from '@schemas.studio/objects/blocks/utils/fields';
 import { schemeFilter, ReferenceHierarchyInput } from 'sanity-plugin-taxonomy-manager';
+import { getIcon } from '@root.site-template/IconRegistry';
 
 const archiveTypes = Object.entries(_ARTICLE_TYPES).flatMap((article) => {
 	return { title: camelCaseToWords(article[1]), value: article[1] }
@@ -63,7 +63,7 @@ const _FIELDS = [
 export const Archive = defineType({
 	name: _BLOCK_TYPES.ARCHIVE,
 	type: 'object',
-	icon: () => <ArchiveBoxIcon />,
+	icon: getIcon(_BLOCK_TYPES.ARCHIVE),
 	fields: [
 		..._BLOCK_FIELDS,
 		..._FIELDS

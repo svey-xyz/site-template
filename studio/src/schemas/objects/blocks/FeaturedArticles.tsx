@@ -1,10 +1,9 @@
 import { defineField, defineType } from 'sanity';
 
-import { SparklesIcon } from '@heroicons/react/24/solid'
 import { _ARTICLE_TYPES, _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 import { _BLOCK_FIELDS } from '@schemas.studio/objects/blocks/utils/fields';
 import { _BLOCK_PREVIEW } from '@schemas.studio/objects/blocks/utils/preview';
-
+import { getIcon } from '@root.site-template/IconRegistry';
 
 const articleTypes = Object.values(_ARTICLE_TYPES).flatMap((article) => {
 	return { type: article }
@@ -36,7 +35,7 @@ const _FIELDS = [
 export const FeaturedArticles = defineType({
 	name: _BLOCK_TYPES.FEATURED_ARTICLES,
 	type: 'object',
-	icon: () => <SparklesIcon />,
+	icon: getIcon(_BLOCK_TYPES.FEATURED_ARTICLES),
 	fields: [
 		..._BLOCK_FIELDS,
 		..._FIELDS

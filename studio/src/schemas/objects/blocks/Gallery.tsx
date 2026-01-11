@@ -1,11 +1,10 @@
 import { defineField, defineType } from 'sanity';
 
-import { Squares2X2Icon } from '@heroicons/react/24/solid'
 import { _CUSTOM_IMAGE_FIELD_VALUES } from '@schemas.studio/fields/CustomImage';
 import { _BLOCK_FIELDS } from '@schemas.studio/objects/blocks/utils/fields';
 import { _BLOCK_PREVIEW } from '@schemas.studio/objects/blocks/utils/preview';
 import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
-
+import { getIcon } from '@root.site-template/IconRegistry';
 
 const _FIELDS = [
 	defineField({
@@ -36,7 +35,7 @@ const _FIELDS = [
 export const Gallery = defineType({
 	name: _BLOCK_TYPES.GALLERY,
 	type: 'object',
-	icon: () => <Squares2X2Icon />,
+	icon: getIcon(_BLOCK_TYPES.GALLERY),
 	fields: [
 		..._BLOCK_FIELDS,
 		..._FIELDS

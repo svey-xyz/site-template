@@ -2,11 +2,10 @@ import { defineField, defineType } from 'sanity';
 // import constructors from '../../documents/pages/utils';
 import { Icon } from '@iconify/react';
 
-import { IdentificationIcon } from '@heroicons/react/24/solid'
 import { _BLOCK_FIELDS } from '@schemas.studio/objects/blocks/utils/fields';
 import { _BLOCK_PREVIEW } from '@schemas.studio/objects/blocks/utils/preview';
 import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
-
+import { getIcon } from '@root.site-template/IconRegistry';
 
 const _FIELDS = [
 	defineField({
@@ -92,7 +91,7 @@ const _FIELDS = [
 export const Info = defineType({
 	name: _BLOCK_TYPES.INFO,
 	type: 'object',
-	icon: () => <IdentificationIcon />,
+	icon: getIcon(_BLOCK_TYPES.INFO),
 	fields: [
 		..._BLOCK_FIELDS,
 		..._FIELDS

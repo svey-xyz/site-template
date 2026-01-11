@@ -5,7 +5,7 @@
   "scripts": {
     "init": "bun run clean && bun install --recursive && bun run init:env && bun run init:shared && bun run typegen",
     "init:shared": "cd ./shared-lib && bun run build",
-		"init:env": "bun ./scripts/env/transforms.ts",
+    "init:env": "bun ./scripts/env/transforms.ts",
     "predev": "bun run init",
     "dev": "bun run --filter '*' dev",
     "typegen": "bun run typegen:studio && bun run typegen:next",
@@ -27,6 +27,7 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
+    "@heroicons/react": "^2.2.0",
     "ts-node": "^10.9.2"
   }
 }
