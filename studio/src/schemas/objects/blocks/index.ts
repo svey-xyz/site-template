@@ -9,7 +9,8 @@ import { Contact } from './Contact'
 import { Gallery } from './Gallery'
 import { Note } from './Note'
 import { Socials } from './Socials';
+import { Spacer } from './Spacer';
 
 import { _BLOCK_TYPES } from '@root.site-template/DocumentTypes';
 
-export const BlockTypes = [FeaturedTaxonomies, Text, FeaturedArticles, Newsletter, Info, Archive, Image, Contact, Gallery, Note, Socials];
+export const BlockTypes = [FeaturedTaxonomies, Text, FeaturedArticles, Newsletter, Info, Archive, Image, Contact, Gallery, Note, Socials, Spacer];

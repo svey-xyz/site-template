@@ -15,4 +15,5 @@ export enum _BLOCK_TYPES {
 	TEXT = 'text_block',
 	NOTE = 'note_block',
 	SOCIALS = 'socials_block',
+	SPACER = 'spacer_block',
 }
