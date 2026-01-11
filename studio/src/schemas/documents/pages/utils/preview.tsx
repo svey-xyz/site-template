@@ -1,21 +1,23 @@
 import { DocumentTextIcon } from "@heroicons/react/24/solid"
 import { StringTransforms } from "shared-lib"
-import { Blocks } from "@/sanity.types"
+// import { Blocks } from "@/sanity.types"
 
 export const _PAGE_PREVIEW = {
 		select: {
 			title: 'title',
 			image: 'image',
-			blocks: 'blocks'
+			sections: 'sections'
+			// blocks: 'blocks'
 		},
 		prepare(value: any) {
-			const { image, blocks, title } = value
-			const blockNames = blocks ? ((blocks.blocks) as Blocks['blocks'])?.map((block) => {
-				return ` ${StringTransforms.camelCaseToWords(block?._type)}`
+			const { image, sections, title } = value
+			const sectionTitles = sections ? (sections as any)?.map((section: any) => {
+				console.log('section', section)
+				return ` ${section.title ?? 'Untitled'}`
 			}) : []
-			const subtitle = blocks ?
-				`Blocks: ${blockNames}` :
-				`No blocks configured!`
+			const subtitle = sections ?
+				`Sections: ${sectionTitles}` :
+				`No sections configured!`
 			return {
 				title: `${title}`,
 				subtitle,
